@@ -1,0 +1,33 @@
+//
+//  Prefix header
+//
+//  The contents of this file are implicitly included at the beginning of every source file.
+//
+
+#import <Availability.h>
+
+#ifndef __IPHONE_6_0
+#warning "This project uses features only available in iOS SDK 6.0 and later."
+#endif
+
+#ifdef __OBJC__
+#import <UIKit/UIKit.h>
+#import <Foundation/Foundation.h>
+#import <CoreData/CoreData.h>
+
+// 3rdParty
+#import "TTCategoryHeader.h"
+#import <DDLog.h>
+#import <DDTTYLogger.h>
+#import <ReactiveCocoa/ReactiveCocoa.h>
+#import <ReactiveCocoa/RACEXTScope.h>
+#import <ReactiveViewModel/ReactiveViewModel.h>
+
+// MK
+#import "IMMacros.h"
+#import "IMUIMacros.h"
+#import "MKUIHelper.h"
+#import "IMManager.h"
+#import "IMDataBaseManager.h"
+
+#endif

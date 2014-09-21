@@ -1,0 +1,13 @@
+/* 
+  Localizable.strings
+  JLIM4iPhone
+
+  Created by jimneylee on 14-5-25.
+  Copyright (c) 2014年 jimneylee. All rights reserved.
+*/
+"loading text" = "正在加载...";
+"photo library" = "相册";
+"handling text" = "正在处理...";
+
+"qrscan title" = "二维码/条码";
+"no scan result" = "未找到二维码/条码，点击重新扫描";

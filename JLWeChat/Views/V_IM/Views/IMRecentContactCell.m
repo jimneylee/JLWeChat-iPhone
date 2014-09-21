@@ -7,8 +7,7 @@
 //
 
 #import "IMRecentContactCell.h"
-#import "NIBadgeView.h"
-
+#import "JSCustomBadge.h"
 #import "XMPPMessageArchiving_Contact_CoreDataObject.h"
 #import "XMPPMessageArchiving_Contact_CoreDataObject+RecentContact.h"
 #import "NSDate+IM.h"
@@ -26,7 +25,7 @@
 
 @property (nonatomic, strong) UIImageView *headView;
 @property (nonatomic, strong) UILabel *dateLabel;
-@property (nonatomic, strong) NIBadgeView *badgeView;
+@property (nonatomic, strong) JSCustomBadge *badgeView;
 
 @property (nonatomic, strong) XMPPMessageArchiving_Contact_CoreDataObject* contact;
 
@@ -47,9 +46,8 @@
         [self.contentView addSubview:self.headView];
         
         // badge
-        self.badgeView = [[NIBadgeView alloc] initWithFrame:CGRectZero];
-        self.badgeView.tintColor = [UIColor redColor];
-        self.badgeView.font = [UIFont systemFontOfSize:12.f];
+        self.badgeView = [[JSCustomBadge alloc] initWithFrame:CGRectZero];
+        self.badgeView.badgeTextColor = [UIColor redColor];
         [self.contentView addSubview:self.badgeView];
     
         // name
@@ -102,9 +100,9 @@
     self.headView.left = cellMarin;
     self.headView.top = cellMarin;
     
-    [self.badgeView sizeToFit];
-    self.badgeView.center = CGPointMake(self.headView.right - CELL_PADDING_2,
-                                        self.headView.top + CELL_PADDING_2);
+//    [self.badgeView sizeToFit];
+//    self.badgeView.center = CGPointMake(self.headView.right - CELL_PADDING_2,
+//                                        self.headView.top + CELL_PADDING_2);
 //    self.badgeView.hidden = (self.contact.unreadMessages.intValue > 0) ? NO : YES;
 
     CGFloat textMaxWidth = self.contentView.width - self.headView.width - cellMarin * 2 - padding;
@@ -153,7 +151,7 @@
         
         if (self.contact.unreadMessages.intValue > 0) {
             self.badgeView.hidden = NO;
-            self.badgeView.text = self.contact.unreadMessages.stringValue;
+            self.badgeView.badgeText = self.contact.unreadMessages.stringValue;
         }
         else {
             self.badgeView.hidden = YES;

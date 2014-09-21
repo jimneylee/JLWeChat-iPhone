@@ -7,11 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "NIBadgeView.h"
 
 @interface IMStaticContactCell : UITableViewCell
 
-@property (nonatomic, strong) NIBadgeView *badgeView;
 
 - (BOOL)shouldUpdateCellWithObject:(id)object unsubscribedCountNum:(NSNumber *)unsubscribedCountNum;
 

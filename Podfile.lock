@@ -32,6 +32,7 @@ PODS:
   - CocoaLumberjack/Extensions (1.6.5.1):
     - CocoaLumberjack/Core
   - HPGrowingTextView (1.1)
+  - JSCustomBadge (1.0.1)
   - libwebp (0.4.0):
     - libwebp/dec
     - libwebp/demux
@@ -48,6 +49,58 @@ PODS:
   - libwebp/utils (0.4.0)
   - libwebp/webp (0.4.0)
   - MBProgressHUD (0.8)
+  - Nimbus (1.2.0):
+    - Nimbus/AttributedLabel
+    - Nimbus/Badge
+    - Nimbus/Collections
+    - Nimbus/Collections
+    - Nimbus/Core
+    - Nimbus/CSS
+    - Nimbus/Interapp
+    - Nimbus/Launcher
+    - Nimbus/Models
+    - Nimbus/NetworkControllers
+    - Nimbus/NetworkImage
+    - Nimbus/Overview
+    - Nimbus/PagingScrollView
+    - Nimbus/Photos
+    - Nimbus/Textfield
+    - Nimbus/WebController
+  - Nimbus/AttributedLabel (1.2.0):
+    - Nimbus/Core
+  - Nimbus/Badge (1.2.0):
+    - Nimbus/Core
+  - Nimbus/Collections (1.2.0):
+    - Nimbus/Core
+  - Nimbus/Core (1.2.0)
+  - Nimbus/CSS (1.2.0):
+    - AFNetworking (~> 2.1)
+    - Nimbus/Core
+    - Nimbus/Textfield
+  - Nimbus/Interapp (1.2.0):
+    - Nimbus/Core
+  - Nimbus/Launcher (1.2.0):
+    - Nimbus/Core
+    - Nimbus/PagingScrollView
+  - Nimbus/Models (1.2.0):
+    - Nimbus/Core
+  - Nimbus/NetworkControllers (1.2.0):
+    - Nimbus/Core
+  - Nimbus/NetworkImage (1.2.0):
+    - AFNetworking (~> 2.1)
+    - Nimbus/Core
+  - Nimbus/Overview (1.2.0):
+    - Nimbus/Core
+    - Nimbus/Models
+  - Nimbus/PagingScrollView (1.2.0):
+    - Nimbus/Core
+  - Nimbus/Photos (1.2.0):
+    - Nimbus/Core
+    - Nimbus/PagingScrollView
+  - Nimbus/Textfield (1.2.0):
+    - Nimbus/Core
+  - Nimbus/WebController (1.2.0):
+    - Nimbus/Core
   - NSObject-MUJSONMapping (1.0.0)
   - QBImagePickerController (2.1)
   - ReactiveCocoa (2.3.1):
@@ -206,7 +259,9 @@ DEPENDENCIES:
   - AFNetworking2-RACExtensions (~> 0.0.1)
   - CocoaAsyncSocket (~> 7.3.5)
   - HPGrowingTextView (~> 1.1)
+  - JSCustomBadge (~> 1.0.1)
   - MBProgressHUD (~> 0.8)
+  - Nimbus (~> 1.2.0)
   - NSObject-MUJSONMapping (~> 1.0.0)
   - QBImagePickerController (~> 2.1)
   - ReactiveCocoa (~> 2.3)
@@ -221,8 +276,10 @@ SPEC CHECKSUMS:
   CocoaAsyncSocket: 45bdbbc1c0a5ed0640ff4c42af325ba43a2f099a
   CocoaLumberjack: baf4a09a3bcbdfea3363556a90104e026d3504e2
   HPGrowingTextView: 07d5ab1f1e867acfb7a6f498b819948c9e97d07c
+  JSCustomBadge: d48f5917ababec44971cca9d9bfdc8f646946ce9
   libwebp: 7774a1ee15d19c0f70a992a7e4e4a23f3874a253
   MBProgressHUD: c356980b0cd097f19acec959b49dca5eb8ec31be
+  Nimbus: 14fd6f034c5f53d3dccef6cfd5763959497289a9
   NSObject-MUJSONMapping: f9d7d686ebda20f9613fb05c4b8d006bc0e8d7f2
   QBImagePickerController: c2273a11d55e7c308ac2f88625ef58bb56b5b7a4
   ReactiveCocoa: dca75777b9d18990c8714a3a6f2149f29b4d1462

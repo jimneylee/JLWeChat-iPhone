@@ -8,12 +8,13 @@
 
 #import "JLFullScreenPhotoBrowseView.h"
 #import "UIScrollView+ZoomToPoint.h"
+#import <SDWebImage/UIImageView+WebCache.h>
 
 #define PROGRESS_VIEW_WIDTH 60.f
 #define BUTTON_SIDE_MARGIN 20.f
 #define PREVIEW_ANIMATION_DURATION 0.5f
 
-@interface JLFullScreenPhotoBrowseView ()<UIScrollViewDelegate, NINetworkImageViewDelegate>
+@interface JLFullScreenPhotoBrowseView ()<UIScrollViewDelegate>
 
 @property (nonatomic, assign) CGRect fromRect;
 @property (nonatomic, strong) MBRoundProgressView* progressIndicator;
@@ -35,7 +36,9 @@
         self.fromRect = rect;
         self.thumbnail = thumbnail;
         self.urlPath = urlPath;
+        
         [self initAllViews];
+        
         UITapGestureRecognizer* singleTap = [[UITapGestureRecognizer alloc]
                                               initWithTarget:self action:@selector(removeFromSuperviewAnimation)];
         [self addGestureRecognizer:singleTap];
@@ -46,7 +49,6 @@
         // enable double tap
         [singleTap requireGestureRecognizerToFail:doubleTap];
         
-        self.imageView.initialImage = self.thumbnail;
         self.isOriginPhotoLoaded = NO;
         self.saveBtn.enabled = NO;
         [self showImageViewAnimation];
@@ -76,8 +78,7 @@
     _scrollView.backgroundColor = [UIColor clearColor];
     [self addSubview:_scrollView];
     
-    _imageView = [[NINetworkImageView alloc] initWithFrame:_scrollView.bounds];
-    _imageView.delegate = self;
+    _imageView = [[UIImageView alloc] initWithFrame:_scrollView.bounds];
     _imageView.backgroundColor = [UIColor clearColor];
     [_scrollView addSubview:_imageView];
     
@@ -128,7 +129,24 @@
             self.alpha = 1.f;
         } completion:^(BOOL finished) {
             if (self.urlPath) {
-                [self.imageView setPathToNetworkImage:self.urlPath contentMode:UIViewContentModeScaleAspectFit];
+                
+                [self addSubview:self.progressIndicator];
+
+                //[self.imageView setPathToNetworkImage:self.urlPath contentMode:UIViewContentModeScaleAspectFit];
+                [self.imageView sd_setImageWithURL:[NSURL URLWithString:self.urlPath]
+                                  placeholderImage:self.thumbnail
+                                           options:SDWebImageProgressiveDownload
+                                          progress:^(NSInteger receivedSize, NSInteger expectedSize) {
+                                              
+                                              CGFloat progress = (float)receivedSize / (float)receivedSize;
+                                              self.progressIndicator.progress = progress;
+                                          } completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
+                                              
+                                              [self.progressIndicator removeFromSuperview];
+                                              self.isOriginPhotoLoaded = YES;
+                                              self.saveBtn.enabled = YES;
+                                              self.scrollView.contentSize = self.imageView.bounds.size;
+                                          }];
             }
         }];
     }
@@ -141,7 +159,8 @@
             self.alpha = 1.f;
         } completion:^(BOOL finished) {
             if (self.urlPath) {
-                [self.imageView setPathToNetworkImage:self.urlPath contentMode:UIViewContentModeScaleAspectFit];
+                //[self.imageView setPathToNetworkImage:self.urlPath contentMode:UIViewContentModeScaleAspectFit];
+                self.imageView.image = nil;
             }
         }];
     }
@@ -250,6 +269,7 @@
                                  scrollView.contentSize.height * 0.5f + offsetY);
 }
 
+#if 0
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 #pragma mark - NINetworkImageViewDelegate
@@ -281,5 +301,6 @@
     CGFloat progress = (float)readBytes / (float)totalBytes;
     self.progressIndicator.progress = progress;
 }
+#endif
 
 @end

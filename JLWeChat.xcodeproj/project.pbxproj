@@ -7,9 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		282F7FEA19CEE5A900827F78 /* NSDate+IM.m in Sources */ = {isa = PBXBuildFile; fileRef = 282F7FE319CEE5A900827F78 /* NSDate+IM.m */; };
+		282F7FEB19CEE5A900827F78 /* NSObject+EntityParse.m in Sources */ = {isa = PBXBuildFile; fileRef = 282F7FE519CEE5A900827F78 /* NSObject+EntityParse.m */; };
+		282F7FEC19CEE5A900827F78 /* UIViewController+Camera.m in Sources */ = {isa = PBXBuildFile; fileRef = 282F7FE719CEE5A900827F78 /* UIViewController+Camera.m */; };
+		282F7FED19CEE5A900827F78 /* UIViewController+NavigationBlock.m in Sources */ = {isa = PBXBuildFile; fileRef = 282F7FE919CEE5A900827F78 /* UIViewController+NavigationBlock.m */; };
+		282F7FF419CEE5C100827F78 /* MKCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 282F7FEF19CEE5C100827F78 /* MKCache.m */; };
+		282F7FF519CEE5C100827F78 /* MKUIHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 282F7FF119CEE5C100827F78 /* MKUIHelper.m */; };
+		282F7FF619CEE5C100827F78 /* MKUploader.m in Sources */ = {isa = PBXBuildFile; fileRef = 282F7FF319CEE5C100827F78 /* MKUploader.m */; };
 		289D6EDD19B0BF620046A853 /* IMSearchChatContactCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 289D6EDC19B0BF620046A853 /* IMSearchChatContactCell.m */; };
-		289D6EE019B0C0610046A853 /* MKUploader.m in Sources */ = {isa = PBXBuildFile; fileRef = 289D6EDF19B0C0610046A853 /* MKUploader.m */; };
-		289D6EE319B0C0C40046A853 /* MKCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 289D6EE219B0C0C40046A853 /* MKCache.m */; };
 		289D6EE519B0C3330046A853 /* TODO in Resources */ = {isa = PBXBuildFile; fileRef = 289D6EE419B0C3330046A853 /* TODO */; };
 		289E0F12192AF2FA00FFE90D /* NSDataAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 289E0EFE192AF2FA00FFE90D /* NSDataAdditions.m */; };
 		289E0F13192AF2FA00FFE90D /* NSDateAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 289E0F00192AF2FA00FFE90D /* NSDateAdditions.m */; };
@@ -28,7 +33,6 @@
 		289E0F6B192AF6EC00FFE90D /* IMMessageC.m in Sources */ = {isa = PBXBuildFile; fileRef = 289E0F64192AF6EC00FFE90D /* IMMessageC.m */; };
 		289E0F6C192AF6EC00FFE90D /* IMTabC.m in Sources */ = {isa = PBXBuildFile; fileRef = 289E0F66192AF6EC00FFE90D /* IMTabC.m */; };
 		289E0F71192AF71000FFE90D /* IMManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 289E0F70192AF71000FFE90D /* IMManager.m */; };
-		289E0F79192B28C500FFE90D /* MKUIHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 289E0F78192B28C500FFE90D /* MKUIHelper.m */; };
 		289E0F8A192B4CA400FFE90D /* IMChatC.m in Sources */ = {isa = PBXBuildFile; fileRef = 289E0F83192B4CA400FFE90D /* IMChatC.m */; };
 		289E0F8B192B4CA400FFE90D /* IMSimpleLoginC.m in Sources */ = {isa = PBXBuildFile; fileRef = 289E0F85192B4CA400FFE90D /* IMSimpleLoginC.m */; };
 		289E0F8C192B4CA400FFE90D /* IMSimpleLoginC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 289E0F86192B4CA400FFE90D /* IMSimpleLoginC.xib */; };
@@ -76,7 +80,6 @@
 		28F0D7E8192C9FFD001975AC /* IMMessageViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 28F0D7E7192C9FFD001975AC /* IMMessageViewModel.m */; };
 		28F0D7EE192CC8FC001975AC /* IMAddressBookViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 28F0D7ED192CC8FC001975AC /* IMAddressBookViewModel.m */; };
 		28F49F33192E255A00FEF861 /* IMMessageCellFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = 28F49F32192E255A00FEF861 /* IMMessageCellFactory.m */; };
-		28F49F37192E404100FEF861 /* NSDate+IM.m in Sources */ = {isa = PBXBuildFile; fileRef = 28F49F36192E404100FEF861 /* NSDate+IM.m */; };
 		28FAC055192EBDB600BBA9E0 /* IMChatMessageEntityFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = 28FAC054192EBDB600BBA9E0 /* IMChatMessageEntityFactory.m */; };
 		28FAC058192EC4AE00BBA9E0 /* IMEmotionEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = 28FAC057192EC4AE00BBA9E0 /* IMEmotionEntity.m */; };
 		28FAC129192EC53B00BBA9E0 /* emotion_icons.plist in Resources */ = {isa = PBXBuildFile; fileRef = 28FAC0C1192EC53B00BBA9E0 /* emotion_icons.plist */; };
@@ -108,8 +111,6 @@
 		528E6AB21920574500FFB5A6 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 528E6A951920574500FFB5A6 /* UIKit.framework */; };
 		528E6AB31920574500FFB5A6 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 528E6A971920574500FFB5A6 /* CoreData.framework */; };
 		52B842DC1931DADD0051F056 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 52B842DE1931DADD0051F056 /* Localizable.strings */; };
-		52B842F519343B320051F056 /* UIViewController+Camera.m in Sources */ = {isa = PBXBuildFile; fileRef = 52B842F219343B320051F056 /* UIViewController+Camera.m */; };
-		52B842F619343B320051F056 /* UIViewController+NavigationBlock.m in Sources */ = {isa = PBXBuildFile; fileRef = 52B842F419343B320051F056 /* UIViewController+NavigationBlock.m */; };
 		C49EA468193ECBE100AD1CC8 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C49EA467193ECBE100AD1CC8 /* CoreLocation.framework */; };
 		C49EA46A193ECC1800AD1CC8 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C49EA469193ECC1800AD1CC8 /* QuartzCore.framework */; };
 		C49EA46C193ECC2500AD1CC8 /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C49EA46B193ECC2500AD1CC8 /* OpenGLES.framework */; };
@@ -236,7 +237,6 @@
 		CE21332819341CD6002EBE49 /* UIImage+Utils.m in Sources */ = {isa = PBXBuildFile; fileRef = CE21332719341CD6002EBE49 /* UIImage+Utils.m */; };
 		CE3525B91939743800EEED5E /* IMLocalSearchViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = CE3525B81939743800EEED5E /* IMLocalSearchViewModel.m */; };
 		CE3525BC19397F5400EEED5E /* XMPPMessageArchiving_Contact_CoreDataObject+RecentContact.m in Sources */ = {isa = PBXBuildFile; fileRef = CE3525BB19397F5400EEED5E /* XMPPMessageArchiving_Contact_CoreDataObject+RecentContact.m */; };
-		CE3A63C319333DD4007A3B3F /* NSObject+EntityParse.m in Sources */ = {isa = PBXBuildFile; fileRef = CE3A63C219333DD4007A3B3F /* NSObject+EntityParse.m */; };
 		CE3BDFF9193EBB1600221074 /* JLFullScreenPhotoBrowseView.m in Sources */ = {isa = PBXBuildFile; fileRef = CE3BDFF8193EBB1600221074 /* JLFullScreenPhotoBrowseView.m */; };
 		CE3BDFFD193EBC1000221074 /* UIView+findViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE3BDFFC193EBC1000221074 /* UIView+findViewController.m */; };
 		CE3BE001193EBF3400221074 /* UIScrollView+ZoomToPoint.m in Sources */ = {isa = PBXBuildFile; fileRef = CE3BE000193EBF3400221074 /* UIScrollView+ZoomToPoint.m */; };
@@ -263,12 +263,23 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		282F7FE219CEE5A900827F78 /* NSDate+IM.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+IM.h"; sourceTree = "<group>"; };
+		282F7FE319CEE5A900827F78 /* NSDate+IM.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+IM.m"; sourceTree = "<group>"; };
+		282F7FE419CEE5A900827F78 /* NSObject+EntityParse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+EntityParse.h"; sourceTree = "<group>"; };
+		282F7FE519CEE5A900827F78 /* NSObject+EntityParse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+EntityParse.m"; sourceTree = "<group>"; };
+		282F7FE619CEE5A900827F78 /* UIViewController+Camera.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+Camera.h"; sourceTree = "<group>"; };
+		282F7FE719CEE5A900827F78 /* UIViewController+Camera.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+Camera.m"; sourceTree = "<group>"; };
+		282F7FE819CEE5A900827F78 /* UIViewController+NavigationBlock.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+NavigationBlock.h"; sourceTree = "<group>"; };
+		282F7FE919CEE5A900827F78 /* UIViewController+NavigationBlock.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+NavigationBlock.m"; sourceTree = "<group>"; };
+		282F7FEE19CEE5C100827F78 /* MKCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MKCache.h; path = JLWeChat/Utilities/MKCache.h; sourceTree = SOURCE_ROOT; };
+		282F7FEF19CEE5C100827F78 /* MKCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MKCache.m; path = JLWeChat/Utilities/MKCache.m; sourceTree = SOURCE_ROOT; };
+		282F7FF019CEE5C100827F78 /* MKUIHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MKUIHelper.h; path = JLWeChat/Utilities/MKUIHelper.h; sourceTree = SOURCE_ROOT; };
+		282F7FF119CEE5C100827F78 /* MKUIHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MKUIHelper.m; path = JLWeChat/Utilities/MKUIHelper.m; sourceTree = SOURCE_ROOT; };
+		282F7FF219CEE5C100827F78 /* MKUploader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MKUploader.h; path = JLWeChat/Utilities/MKUploader.h; sourceTree = SOURCE_ROOT; };
+		282F7FF319CEE5C100827F78 /* MKUploader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MKUploader.m; path = JLWeChat/Utilities/MKUploader.m; sourceTree = SOURCE_ROOT; };
+		282F7FF719CEEDF600827F78 /* JLWeChat-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "JLWeChat-Prefix.pch"; sourceTree = "<group>"; };
 		289D6EDB19B0BF620046A853 /* IMSearchChatContactCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMSearchChatContactCell.h; sourceTree = "<group>"; };
 		289D6EDC19B0BF620046A853 /* IMSearchChatContactCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMSearchChatContactCell.m; sourceTree = "<group>"; };
-		289D6EDE19B0C0610046A853 /* MKUploader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MKUploader.h; sourceTree = "<group>"; };
-		289D6EDF19B0C0610046A853 /* MKUploader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MKUploader.m; sourceTree = "<group>"; };
-		289D6EE119B0C0C40046A853 /* MKCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MKCache.h; sourceTree = "<group>"; };
-		289D6EE219B0C0C40046A853 /* MKCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MKCache.m; sourceTree = "<group>"; };
 		289D6EE419B0C3330046A853 /* TODO */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = TODO; sourceTree = "<group>"; };
 		289E0EFD192AF2FA00FFE90D /* NSDataAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NSDataAdditions.h; sourceTree = "<group>"; };
 		289E0EFE192AF2FA00FFE90D /* NSDataAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NSDataAdditions.m; sourceTree = "<group>"; };
@@ -303,8 +314,6 @@
 		289E0F66192AF6EC00FFE90D /* IMTabC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMTabC.m; sourceTree = "<group>"; };
 		289E0F6F192AF71000FFE90D /* IMManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMManager.h; sourceTree = "<group>"; };
 		289E0F70192AF71000FFE90D /* IMManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMManager.m; sourceTree = "<group>"; };
-		289E0F77192B28C500FFE90D /* MKUIHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MKUIHelper.h; sourceTree = "<group>"; };
-		289E0F78192B28C500FFE90D /* MKUIHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MKUIHelper.m; sourceTree = "<group>"; };
 		289E0F82192B4CA400FFE90D /* IMChatC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMChatC.h; sourceTree = "<group>"; };
 		289E0F83192B4CA400FFE90D /* IMChatC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMChatC.m; sourceTree = "<group>"; };
 		289E0F84192B4CA400FFE90D /* IMSimpleLoginC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMSimpleLoginC.h; sourceTree = "<group>"; };
@@ -360,8 +369,6 @@
 		28F0D7ED192CC8FC001975AC /* IMAddressBookViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMAddressBookViewModel.m; sourceTree = "<group>"; };
 		28F49F31192E255A00FEF861 /* IMMessageCellFactory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMMessageCellFactory.h; sourceTree = "<group>"; };
 		28F49F32192E255A00FEF861 /* IMMessageCellFactory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMMessageCellFactory.m; sourceTree = "<group>"; };
-		28F49F35192E404100FEF861 /* NSDate+IM.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+IM.h"; sourceTree = "<group>"; };
-		28F49F36192E404100FEF861 /* NSDate+IM.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+IM.m"; sourceTree = "<group>"; };
 		28FAC053192EBDB600BBA9E0 /* IMChatMessageEntityFactory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMChatMessageEntityFactory.h; sourceTree = "<group>"; };
 		28FAC054192EBDB600BBA9E0 /* IMChatMessageEntityFactory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMChatMessageEntityFactory.m; sourceTree = "<group>"; };
 		28FAC056192EC4AE00BBA9E0 /* IMEmotionEntity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMEmotionEntity.h; sourceTree = "<group>"; };
@@ -402,7 +409,6 @@
 		528E6A9B1920574500FFB5A6 /* JLWeChat-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "JLWeChat-Info.plist"; sourceTree = "<group>"; };
 		528E6A9D1920574500FFB5A6 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		528E6A9F1920574500FFB5A6 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		528E6AA11920574500FFB5A6 /* MeiKeMeiShi-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "MeiKeMeiShi-Prefix.pch"; sourceTree = "<group>"; };
 		528E6AA21920574500FFB5A6 /* IMAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IMAppDelegate.h; sourceTree = "<group>"; };
 		528E6AA31920574500FFB5A6 /* IMAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = IMAppDelegate.m; sourceTree = "<group>"; };
 		528E6AA81920574500FFB5A6 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
@@ -411,10 +417,6 @@
 		52B842D81931D97A0051F056 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
 		52B842DD1931DADD0051F056 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		52B842E41931DBA30051F056 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
-		52B842F119343B320051F056 /* UIViewController+Camera.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+Camera.h"; sourceTree = "<group>"; };
-		52B842F219343B320051F056 /* UIViewController+Camera.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+Camera.m"; sourceTree = "<group>"; };
-		52B842F319343B320051F056 /* UIViewController+NavigationBlock.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+NavigationBlock.h"; sourceTree = "<group>"; };
-		52B842F419343B320051F056 /* UIViewController+NavigationBlock.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+NavigationBlock.m"; sourceTree = "<group>"; };
 		C49EA467193ECBE100AD1CC8 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		C49EA469193ECC1800AD1CC8 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		C49EA46B193ECC2500AD1CC8 /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
@@ -548,8 +550,6 @@
 		CE3525B81939743800EEED5E /* IMLocalSearchViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMLocalSearchViewModel.m; sourceTree = "<group>"; };
 		CE3525BA19397F5400EEED5E /* XMPPMessageArchiving_Contact_CoreDataObject+RecentContact.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "XMPPMessageArchiving_Contact_CoreDataObject+RecentContact.h"; sourceTree = "<group>"; };
 		CE3525BB19397F5400EEED5E /* XMPPMessageArchiving_Contact_CoreDataObject+RecentContact.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "XMPPMessageArchiving_Contact_CoreDataObject+RecentContact.m"; sourceTree = "<group>"; };
-		CE3A63C119333DD4007A3B3F /* NSObject+EntityParse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+EntityParse.h"; sourceTree = "<group>"; };
-		CE3A63C219333DD4007A3B3F /* NSObject+EntityParse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+EntityParse.m"; sourceTree = "<group>"; };
 		CE3BDFF7193EBB1600221074 /* JLFullScreenPhotoBrowseView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JLFullScreenPhotoBrowseView.h; sourceTree = "<group>"; };
 		CE3BDFF8193EBB1600221074 /* JLFullScreenPhotoBrowseView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JLFullScreenPhotoBrowseView.m; sourceTree = "<group>"; };
 		CE3BDFFB193EBC1000221074 /* UIView+findViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+findViewController.h"; sourceTree = "<group>"; };
@@ -605,6 +605,22 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		282F7FE119CEE5A900827F78 /* Categories */ = {
+			isa = PBXGroup;
+			children = (
+				282F7FE219CEE5A900827F78 /* NSDate+IM.h */,
+				282F7FE319CEE5A900827F78 /* NSDate+IM.m */,
+				282F7FE419CEE5A900827F78 /* NSObject+EntityParse.h */,
+				282F7FE519CEE5A900827F78 /* NSObject+EntityParse.m */,
+				282F7FE619CEE5A900827F78 /* UIViewController+Camera.h */,
+				282F7FE719CEE5A900827F78 /* UIViewController+Camera.m */,
+				282F7FE819CEE5A900827F78 /* UIViewController+NavigationBlock.h */,
+				282F7FE919CEE5A900827F78 /* UIViewController+NavigationBlock.m */,
+			);
+			name = Categories;
+			path = JLWeChat/Categories;
+			sourceTree = SOURCE_ROOT;
+		};
 		289E0EFB192AF2FA00FFE90D /* Vendor */ = {
 			isa = PBXGroup;
 			children = (
@@ -768,12 +784,12 @@
 		289E0F76192B28C500FFE90D /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
-				289E0F77192B28C500FFE90D /* MKUIHelper.h */,
-				289E0F78192B28C500FFE90D /* MKUIHelper.m */,
-				289D6EDE19B0C0610046A853 /* MKUploader.h */,
-				289D6EDF19B0C0610046A853 /* MKUploader.m */,
-				289D6EE119B0C0C40046A853 /* MKCache.h */,
-				289D6EE219B0C0C40046A853 /* MKCache.m */,
+				282F7FEE19CEE5C100827F78 /* MKCache.h */,
+				282F7FEF19CEE5C100827F78 /* MKCache.m */,
+				282F7FF019CEE5C100827F78 /* MKUIHelper.h */,
+				282F7FF119CEE5C100827F78 /* MKUIHelper.m */,
+				282F7FF219CEE5C100827F78 /* MKUploader.h */,
+				282F7FF319CEE5C100827F78 /* MKUploader.m */,
 			);
 			name = Utilities;
 			path = JLIM4iPhone/Utilities;
@@ -876,22 +892,6 @@
 				28F0D7BC192C1FA5001975AC /* ToolViewKeyboardHL@2x.png */,
 			);
 			path = chat;
-			sourceTree = "<group>";
-		};
-		28F49F34192E400300FEF861 /* Categories */ = {
-			isa = PBXGroup;
-			children = (
-				52B842F119343B320051F056 /* UIViewController+Camera.h */,
-				52B842F219343B320051F056 /* UIViewController+Camera.m */,
-				52B842F319343B320051F056 /* UIViewController+NavigationBlock.h */,
-				52B842F419343B320051F056 /* UIViewController+NavigationBlock.m */,
-				28F49F35192E404100FEF861 /* NSDate+IM.h */,
-				28F49F36192E404100FEF861 /* NSDate+IM.m */,
-				CE3A63C119333DD4007A3B3F /* NSObject+EntityParse.h */,
-				CE3A63C219333DD4007A3B3F /* NSObject+EntityParse.m */,
-			);
-			name = Categories;
-			path = JLIM4iPhone/Categories;
 			sourceTree = "<group>";
 		};
 		28FAC059192EC53B00BBA9E0 /* emotion */ = {
@@ -1051,10 +1051,10 @@
 			children = (
 				CE9FA522194E92DE00E7F77A /* Doc */,
 				289E0F3A192AF59900FFE90D /* Resource */,
-				28F49F34192E400300FEF861 /* Categories */,
+				282F7FE119CEE5A900827F78 /* Categories */,
 				289E0F76192B28C500FFE90D /* Utilities */,
 				289E0EFB192AF2FA00FFE90D /* Vendor */,
-				528E6A991920574500FFB5A6 /* JLIM4iPhone */,
+				528E6A991920574500FFB5A6 /* JLWeChat */,
 				528E6A901920574500FFB5A6 /* Frameworks */,
 				528E6A8F1920574500FFB5A6 /* Products */,
 				4F8D919AC9C44E229C80CA14 /* Pods.xcconfig */,
@@ -1092,7 +1092,7 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		528E6A991920574500FFB5A6 /* JLIM4iPhone */ = {
+		528E6A991920574500FFB5A6 /* JLWeChat */ = {
 			isa = PBXGroup;
 			children = (
 				CE19C131194C171C00350262 /* DataBase */,
@@ -1105,7 +1105,6 @@
 				528E6AA81920574500FFB5A6 /* Images.xcassets */,
 				528E6A9A1920574500FFB5A6 /* Supporting Files */,
 			);
-			name = JLIM4iPhone;
 			path = JLWeChat;
 			sourceTree = "<group>";
 		};
@@ -1115,7 +1114,7 @@
 				528E6A9B1920574500FFB5A6 /* JLWeChat-Info.plist */,
 				528E6A9C1920574500FFB5A6 /* InfoPlist.strings */,
 				528E6A9F1920574500FFB5A6 /* main.m */,
-				528E6AA11920574500FFB5A6 /* MeiKeMeiShi-Prefix.pch */,
+				282F7FF719CEEDF600827F78 /* JLWeChat-Prefix.pch */,
 				52B842DE1931DADD0051F056 /* Localizable.strings */,
 			);
 			name = "Supporting Files";
@@ -1246,9 +1245,6 @@
 				LastUpgradeCheck = 0510;
 				ORGANIZATIONNAME = john;
 				TargetAttributes = {
-					528E6A8D1920574500FFB5A6 = {
-						DevelopmentTeam = 655CUC95QK;
-					};
 					528E6AAD1920574500FFB5A6 = {
 						TestTargetID = 528E6A8D1920574500FFB5A6;
 					};
@@ -1499,7 +1495,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				28FD4E67192DE66000A714AA /* IMContactModel.m in Sources */,
-				CE3A63C319333DD4007A3B3F /* NSObject+EntityParse.m in Sources */,
 				CE3BE001193EBF3400221074 /* UIScrollView+ZoomToPoint.m in Sources */,
 				28F0D7EE192CC8FC001975AC /* IMAddressBookViewModel.m in Sources */,
 				CE19C130194C12EF00350262 /* MeiKeMeiShi.xcdatamodeld in Sources */,
@@ -1509,20 +1504,19 @@
 				CE19C134194C173700350262 /* IMDataBaseManager.m in Sources */,
 				289E0FFE192B824400FFE90D /* IMChatSendBar.m in Sources */,
 				528E6AA41920574500FFB5A6 /* IMAppDelegate.m in Sources */,
-				28F49F37192E404100FEF861 /* NSDate+IM.m in Sources */,
 				CE3525B91939743800EEED5E /* IMLocalSearchViewModel.m in Sources */,
-				289D6EE019B0C0610046A853 /* MKUploader.m in Sources */,
 				CE6CC18C194AE85A00FD3764 /* IMStaticContactCell.m in Sources */,
 				28FD4E60192DE33600A714AA /* JLPinyinSortItem.m in Sources */,
 				CE3525BC19397F5400EEED5E /* XMPPMessageArchiving_Contact_CoreDataObject+RecentContact.m in Sources */,
-				52B842F519343B320051F056 /* UIViewController+Camera.m in Sources */,
 				28E373E319CA694A0020F638 /* MKKeywordRegularParser.m in Sources */,
+				282F7FF519CEE5C100827F78 /* MKUIHelper.m in Sources */,
 				28FD4E64192DE4B400A714AA /* IMContactEntity.m in Sources */,
 				28F0D7E8192C9FFD001975AC /* IMMessageViewModel.m in Sources */,
 				289E0F1A192AF2FA00FFE90D /* UIViewAdditions.m in Sources */,
 				289E0F12192AF2FA00FFE90D /* NSDataAdditions.m in Sources */,
 				289E0F14192AF2FA00FFE90D /* NSStringAdditions.m in Sources */,
 				289E0F71192AF71000FFE90D /* IMManager.m in Sources */,
+				282F7FEB19CEE5A900827F78 /* NSObject+EntityParse.m in Sources */,
 				CE1EE1BE1930409B0093DBB7 /* XMPPMessageArchiving_Message_CoreDataObject+ChatMessage.m in Sources */,
 				CE21332819341CD6002EBE49 /* UIImage+Utils.m in Sources */,
 				289E0F8A192B4CA400FFE90D /* IMChatC.m in Sources */,
@@ -1532,18 +1526,20 @@
 				28FAC055192EBDB600BBA9E0 /* IMChatMessageEntityFactory.m in Sources */,
 				28F49F33192E255A00FEF861 /* IMMessageCellFactory.m in Sources */,
 				289D6EDD19B0BF620046A853 /* IMSearchChatContactCell.m in Sources */,
-				52B842F619343B320051F056 /* UIViewController+NavigationBlock.m in Sources */,
+				282F7FF419CEE5C100827F78 /* MKCache.m in Sources */,
 				28FD4E5A192DE12A00A714AA /* pinyin.c in Sources */,
+				282F7FEC19CEE5A900827F78 /* UIViewController+Camera.m in Sources */,
 				289E0F6B192AF6EC00FFE90D /* IMMessageC.m in Sources */,
 				CE18F88E193C6C09008CD9AC /* IMSearchDisplayController.m in Sources */,
-				289D6EE319B0C0C40046A853 /* MKCache.m in Sources */,
+				282F7FEA19CEE5A900827F78 /* NSDate+IM.m in Sources */,
+				282F7FED19CEE5A900827F78 /* UIViewController+NavigationBlock.m in Sources */,
 				28FD4E48192DBFA200A714AA /* IMContactCell.m in Sources */,
 				528E6AA01920574500FFB5A6 /* main.m in Sources */,
 				289E0F8B192B4CA400FFE90D /* IMSimpleLoginC.m in Sources */,
 				CE3BDFFD193EBC1000221074 /* UIView+findViewController.m in Sources */,
 				289E0F1B192AF2FA00FFE90D /* UIWindowAdditions.m in Sources */,
 				289E0F17192AF2FA00FFE90D /* TTGlobalUICommon.m in Sources */,
-				289E0F79192B28C500FFE90D /* MKUIHelper.m in Sources */,
+				282F7FF619CEE5C100827F78 /* MKUploader.m in Sources */,
 				289E0F19192AF2FA00FFE90D /* UIImageAdditions.m in Sources */,
 				289E0F6C192AF6EC00FFE90D /* IMTabC.m in Sources */,
 				289E0F16192AF2FA00FFE90D /* TTGlobalCoreLocale.m in Sources */,
@@ -1677,7 +1673,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_INPUT_FILETYPE = automatic;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "JLIM4iPhone/JLWeChat-Prefix.pch";
+				GCC_PREFIX_HEADER = "JLWeChat/JLWeChat-Prefix.pch";
 				HEADER_SEARCH_PATHS = (
 					"\"${PODS_ROOT}/Headers\"",
 					"\"${PODS_ROOT}/Headers/AFNetworking\"",
@@ -1695,7 +1691,7 @@
 					"$(SDKROOT)/usr/include/libxml2",
 					"$(SDKROOT)/usr/include/libresolv",
 				);
-				INFOPLIST_FILE = "JLIM4iPhone/JLWeChat-Info.plist";
+				INFOPLIST_FILE = "$(SRCROOT)/JLWeChat/JLWeChat-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1723,7 +1719,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_INPUT_FILETYPE = automatic;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "JLIM4iPhone/JLWeChat-Prefix.pch";
+				GCC_PREFIX_HEADER = "JLWeChat/JLWeChat-Prefix.pch";
 				HEADER_SEARCH_PATHS = (
 					"\"${PODS_ROOT}/Headers\"",
 					"\"${PODS_ROOT}/Headers/AFNetworking\"",
@@ -1741,7 +1737,7 @@
 					"$(SDKROOT)/usr/include/libxml2",
 					"$(SDKROOT)/usr/include/libresolv",
 				);
-				INFOPLIST_FILE = "JLIM4iPhone/JLWeChat-Info.plist";
+				INFOPLIST_FILE = "$(SRCROOT)/JLWeChat/JLWeChat-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",

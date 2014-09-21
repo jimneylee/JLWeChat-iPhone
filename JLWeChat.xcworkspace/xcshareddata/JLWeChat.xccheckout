@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>234C0C80-874D-453D-9092-2213AB3F47D4</string>
+	<key>IDESourceControlProjectName</key>
+	<string>JLWeChat</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>8C1F590B-0489-4115-ACE9-7976FC198BAE</key>
+		<string>https://git.oschina.net/jimneylee/JLWeChat.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>JLWeChat.xcworkspace</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>8C1F590B-0489-4115-ACE9-7976FC198BAE</key>
+		<string>..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://git.oschina.net/jimneylee/JLWeChat.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>110</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>8C1F590B-0489-4115-ACE9-7976FC198BAE</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>8C1F590B-0489-4115-ACE9-7976FC198BAE</string>
+			<key>IDESourceControlWCCName</key>
+			<string>JLWeChat</string>
+		</dict>
+	</array>
+</dict>
+</plist>

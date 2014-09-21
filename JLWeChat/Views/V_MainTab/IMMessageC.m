@@ -75,7 +75,8 @@
     self.searchController = searchDisplayController;
 
     // check login
-    IMSimpleLoginC *loginC = [[IMSimpleLoginC alloc] initWithNibName:@"MKSimpleLoginC" bundle:nil];
+    IMSimpleLoginC *loginC = [[IMSimpleLoginC alloc] initWithNibName:NSStringFromClass([IMSimpleLoginC class])
+                                                              bundle:nil];
     [self.navigationController presentViewController:loginC animated:NO completion:NULL];
 }
 

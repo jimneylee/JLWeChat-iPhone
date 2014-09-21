@@ -7,6 +7,7 @@
 //
 
 #import "IMStaticContactCell.h"
+#import "JSCustomBadge.h"
 
 #define NAME_FONT_SIZE [UIFont boldSystemFontOfSize:18.f]
 
@@ -16,6 +17,7 @@ typedef void (^ContactCompleteBlock)(BOOL complete);
 
 @interface IMStaticContactCell()
 
+@property (nonatomic, strong) JSCustomBadge *badgeView;
 @property (nonatomic, strong) UIImageView *headView;
 
 @end
@@ -35,9 +37,8 @@ typedef void (^ContactCompleteBlock)(BOOL complete);
         [self.contentView addSubview:self.headView];
         
         // badge
-        self.badgeView = [[NIBadgeView alloc] initWithFrame:CGRectZero];
-        self.badgeView.tintColor = [UIColor redColor];
-        self.badgeView.font = [UIFont systemFontOfSize:12.f];
+        self.badgeView = [[JSCustomBadge alloc] initWithFrame:CGRectZero];
+        self.badgeView.badgeTextColor = [UIColor redColor];
         self.badgeView.hidden = YES;
         [self.contentView addSubview:self.badgeView];
         
@@ -102,7 +103,7 @@ typedef void (^ContactCompleteBlock)(BOOL complete);
         
         if ([unsubscribedCountNum intValue] > 0) {
             self.badgeView.hidden = NO;
-            self.badgeView.text = unsubscribedCountNum.stringValue;
+            self.badgeView.badgeText = unsubscribedCountNum.stringValue;
         }
         else {
             self.badgeView.hidden = YES;

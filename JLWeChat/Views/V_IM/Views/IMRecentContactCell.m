@@ -47,13 +47,12 @@
         
         // badge
         self.badgeView = [JSCustomBadge customBadgeWithString:nil
-                                                 withStringColor:[UIColor whiteColor]
-                                                  withInsetColor:[UIColor redColor]
-                                                  withBadgeFrame:YES
-                                             withBadgeFrameColor:[UIColor redColor]
-                                                       withScale:.8f
-                                                     withShining:NO];
-        self.badgeView.badgeTextColor = [UIColor redColor];
+                                              withStringColor:[UIColor whiteColor]
+                                               withInsetColor:[UIColor redColor]
+                                               withBadgeFrame:YES
+                                          withBadgeFrameColor:[UIColor redColor]
+                                                    withScale:.8f
+                                                  withShining:NO];
         [self.contentView addSubview:self.badgeView];
     
         // name
@@ -101,15 +100,14 @@
     [super layoutSubviews];
     
     CGFloat cellMarin = CELL_PADDING_10;
-    CGFloat padding = CELL_PADDING_6;
+    CGFloat padding = CELL_PADDING_10;
     
     self.headView.left = cellMarin;
     self.headView.top = cellMarin;
     
-//    [self.badgeView sizeToFit];
-//    self.badgeView.center = CGPointMake(self.headView.right - CELL_PADDING_2,
-//                                        self.headView.top + CELL_PADDING_2);
-//    self.badgeView.hidden = (self.contact.unreadMessages.intValue > 0) ? NO : YES;
+    [self.badgeView sizeToFit];
+    self.badgeView.centerX = self.headView.right;
+    self.badgeView.top = 0.f;
 
     CGFloat textMaxWidth = self.contentView.width - self.headView.width - cellMarin * 2 - padding;
     CGFloat nameWidth = (textMaxWidth * 2 ) / 3;
@@ -157,7 +155,7 @@
         
         if (self.contact.unreadMessages.intValue > 0) {
             self.badgeView.hidden = NO;
-            self.badgeView.badgeText = self.contact.unreadMessages.stringValue;
+            [self.badgeView autoBadgeSizeWithString:self.contact.unreadMessages.stringValue];
         }
         else {
             self.badgeView.hidden = YES;

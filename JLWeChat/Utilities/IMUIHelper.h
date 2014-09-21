@@ -15,7 +15,7 @@
 #define HUD_LOADING_MESSAGE @"努力加载中..."
 #define HUD_LOAD_FAILDMESSAGE @"加载失败！"
 
-@interface MKUIHelper : NSObject
+@interface IMUIHelper : NSObject
 
 + (void)showWaitingMessage:(NSString *)message inView:(UIView *)view;
 + (void)hideWaitingMessage:(NSString *)message inView:(UIView *)view;

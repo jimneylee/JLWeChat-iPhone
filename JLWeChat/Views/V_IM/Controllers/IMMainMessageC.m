@@ -6,7 +6,7 @@
 //  Copyright (c) 2014年 jimneylee. All rights reserved.
 //
 
-#import "IMMessageC.h"
+#import "IMMainMessageC.h"
 #import "IMManager.h"
 
 #import "UIViewController+NavigationBlock.h"
@@ -14,24 +14,24 @@
 #import "IMChatC.h"
 #import "IMSearchDisplayController.h"
 #import "IMRecentContactCell.h"
-#import "IMMessageViewModel.h"
+#import "IMMainMessageViewModel.h"
 #import "IMManager.h"
 
-@interface IMMessageC ()<NSFetchedResultsControllerDelegate, UISearchDisplayDelegate, UISearchBarDelegate>
+@interface IMMainMessageC ()<NSFetchedResultsControllerDelegate, UISearchDisplayDelegate, UISearchBarDelegate>
 
 @property (nonatomic, strong) UISearchBar *searchBar;
 @property (nonatomic, strong) IMSearchDisplayController *searchController;
 
 @end
 
-@implementation IMMessageC
+@implementation IMMainMessageC
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
     self = [super initWithStyle:style];
     if (self) {
         self.title = @"消息";
-        self.viewModel = [IMMessageViewModel sharedViewModel];
+        self.viewModel = [IMMainMessageViewModel sharedViewModel];
         
         [[IMManager sharedManager].xmppStream addDelegate:self delegateQueue:dispatch_get_main_queue()];
         
@@ -47,9 +47,6 @@
                                                  selector:@selector(resetCurrentContactUnreadMessagesCountNofity:)
                                                      name:@"RESET_CURRENT_CONTACT_UNREAD_MESSAGES_COUNT"
                                                    object:nil];
-        //[self.navigationController.view removeGestureRecognizer:(UIPanGestureRecognizer *)[self.navigationController.view viewWithTag:888]];
-        
-               // Custom initialization
     }
     return self;
 }

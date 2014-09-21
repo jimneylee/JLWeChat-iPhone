@@ -11,17 +11,9 @@
 
 #define APP_MAIN_COLOR RGBCOLOR(45.f, 184.f, 173.f)
 
-// UIColor <- RGBA
-#define RGBCOLOR(r,g,b) [UIColor colorWithRed:(r)/255.0f green:(g)/255.0f blue:(b)/255.0f alpha:1]
-#define RGBACOLOR(r,g,b,a) [UIColor colorWithRed:(r)/255.0f green:(g)/255.0f blue:(b)/255.0f alpha:(a)]
-
 // 搜索框激活时背景色
 #define SEARCH_ACTIVE_BG_COLOR RGBCOLOR(201, 201, 206)
 #define TABLEVIEW_GROUP_BG_COLOR RGBCOLOR(240, 239, 246)
-
-#define MK_SCREEN_SIZE [UIScreen mainScreen].bounds.size
-
-#define MK_SIZE_HD(size) CGSizeMake(size.width * 2, size.height * 2)
 
 // Cell布局
 #define CELL_PADDING_10 10

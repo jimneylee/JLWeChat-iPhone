@@ -9,7 +9,7 @@
 #import "RVMViewModel.h"
 #import "XMPPMessageArchiving_Contact_CoreDataObject+RecentContact.h"
 
-@interface IMMessageViewModel : RVMViewModel
+@interface IMMainMessageViewModel : RVMViewModel
 
 @property (nonatomic, readonly) RACSignal *updatedContentSignal;
 @property (nonatomic, readonly) NSNumber *totalUnreadMessagesNum;
@@ -20,8 +20,8 @@
 - (BOOL)deleteRecentContactWithJid:(XMPPJID *)recentContactJId;
 - (BOOL)resetUnreadMessagesCountForCurrentContact:(XMPPJID *)contactJid;
 
--(NSInteger)numberOfItemsInSection:(NSInteger)section;
--(XMPPMessageArchiving_Contact_CoreDataObject *)objectAtIndexPath:(NSIndexPath *)indexPath;
+- (NSInteger)numberOfItemsInSection:(NSInteger)section;
+- (XMPPMessageArchiving_Contact_CoreDataObject *)objectAtIndexPath:(NSIndexPath *)indexPath;
 
 -(void)deleteObjectAtIndexPath:(NSIndexPath *)indexPath;
 

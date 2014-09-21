@@ -8,7 +8,7 @@
 
 #import "IMChatViewModel.h"
 #import "IMChatMessageEntityFactory.h"
-#import "MKUploader.h"
+#import "IMUploader.h"
 #import "NSDate+IM.h"
 
 // Log levels: off, error, warn, info, verbose
@@ -24,7 +24,7 @@ static const int ddLogLevel = LOG_LEVEL_INFO;
 
 @property (nonatomic, strong) RACSubject *fetchLaterSignal;
 @property (nonatomic, strong) RACSubject *fetchEarlierSignal;
-@property (nonatomic, strong) MKUploader *uploader;
+@property (nonatomic, strong) IMUploader *uploader;
 
 @property (nonatomic, strong) NSFetchedResultsController *fetchedEarlierResultsController;
 @property (nonatomic, strong) NSFetchedResultsController *fetchedLaterResultsController;
@@ -59,10 +59,10 @@ static const int ddLogLevel = LOG_LEVEL_INFO;
     return self;
 }
 
-- (MKUploader *)uploader
+- (IMUploader *)uploader
 {
     if (!_uploader) {
-        _uploader = [MKUploader uploader];
+        _uploader = [IMUploader uploader];
     }
     return _uploader;
 }

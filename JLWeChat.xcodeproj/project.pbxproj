@@ -11,9 +11,16 @@
 		282F7FEB19CEE5A900827F78 /* NSObject+EntityParse.m in Sources */ = {isa = PBXBuildFile; fileRef = 282F7FE519CEE5A900827F78 /* NSObject+EntityParse.m */; };
 		282F7FEC19CEE5A900827F78 /* UIViewController+Camera.m in Sources */ = {isa = PBXBuildFile; fileRef = 282F7FE719CEE5A900827F78 /* UIViewController+Camera.m */; };
 		282F7FED19CEE5A900827F78 /* UIViewController+NavigationBlock.m in Sources */ = {isa = PBXBuildFile; fileRef = 282F7FE919CEE5A900827F78 /* UIViewController+NavigationBlock.m */; };
-		282F7FF419CEE5C100827F78 /* MKCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 282F7FEF19CEE5C100827F78 /* MKCache.m */; };
-		282F7FF519CEE5C100827F78 /* MKUIHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 282F7FF119CEE5C100827F78 /* MKUIHelper.m */; };
-		282F7FF619CEE5C100827F78 /* MKUploader.m in Sources */ = {isa = PBXBuildFile; fileRef = 282F7FF319CEE5C100827F78 /* MKUploader.m */; };
+		282F7FF419CEE5C100827F78 /* IMCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 282F7FEF19CEE5C100827F78 /* IMCache.m */; };
+		282F7FF519CEE5C100827F78 /* IMUIHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 282F7FF119CEE5C100827F78 /* IMUIHelper.m */; };
+		282F7FF619CEE5C100827F78 /* IMUploader.m in Sources */ = {isa = PBXBuildFile; fileRef = 282F7FF319CEE5C100827F78 /* IMUploader.m */; };
+		282F800719CF08AA00827F78 /* icon_tab1@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 282F800219CF08AA00827F78 /* icon_tab1@2x.png */; };
+		282F800819CF08AA00827F78 /* icon_tab1h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 282F800319CF08AA00827F78 /* icon_tab1h@2x.png */; };
+		282F800919CF08AA00827F78 /* icon_tab2@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 282F800419CF08AA00827F78 /* icon_tab2@2x.png */; };
+		282F800A19CF08AA00827F78 /* icon_tab2h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 282F800519CF08AA00827F78 /* icon_tab2h@2x.png */; };
+		282F800B19CF08AA00827F78 /* tabbar_bg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 282F800619CF08AA00827F78 /* tabbar_bg@2x.png */; };
+		282F801119CF174600827F78 /* IMContactsC.m in Sources */ = {isa = PBXBuildFile; fileRef = 282F800E19CF174600827F78 /* IMContactsC.m */; };
+		282F801219CF174600827F78 /* IMMainMessageC.m in Sources */ = {isa = PBXBuildFile; fileRef = 282F801019CF174600827F78 /* IMMainMessageC.m */; };
 		289D6EDD19B0BF620046A853 /* IMSearchChatContactCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 289D6EDC19B0BF620046A853 /* IMSearchChatContactCell.m */; };
 		289D6EE519B0C3330046A853 /* TODO in Resources */ = {isa = PBXBuildFile; fileRef = 289D6EE419B0C3330046A853 /* TODO */; };
 		289E0F12192AF2FA00FFE90D /* NSDataAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 289E0EFE192AF2FA00FFE90D /* NSDataAdditions.m */; };
@@ -25,12 +32,6 @@
 		289E0F19192AF2FA00FFE90D /* UIImageAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 289E0F0D192AF2FA00FFE90D /* UIImageAdditions.m */; };
 		289E0F1A192AF2FA00FFE90D /* UIViewAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 289E0F0F192AF2FA00FFE90D /* UIViewAdditions.m */; };
 		289E0F1B192AF2FA00FFE90D /* UIWindowAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 289E0F11192AF2FA00FFE90D /* UIWindowAdditions.m */; };
-		289E0F52192AF59900FFE90D /* icon_tab1@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 289E0F44192AF59900FFE90D /* icon_tab1@2x.png */; };
-		289E0F53192AF59900FFE90D /* icon_tab1h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 289E0F45192AF59900FFE90D /* icon_tab1h@2x.png */; };
-		289E0F56192AF59900FFE90D /* icon_tab2@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 289E0F48192AF59900FFE90D /* icon_tab2@2x.png */; };
-		289E0F57192AF59900FFE90D /* icon_tab2h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 289E0F49192AF59900FFE90D /* icon_tab2h@2x.png */; };
-		289E0F6A192AF6EC00FFE90D /* IMAddressBookC.m in Sources */ = {isa = PBXBuildFile; fileRef = 289E0F62192AF6EC00FFE90D /* IMAddressBookC.m */; };
-		289E0F6B192AF6EC00FFE90D /* IMMessageC.m in Sources */ = {isa = PBXBuildFile; fileRef = 289E0F64192AF6EC00FFE90D /* IMMessageC.m */; };
 		289E0F6C192AF6EC00FFE90D /* IMTabC.m in Sources */ = {isa = PBXBuildFile; fileRef = 289E0F66192AF6EC00FFE90D /* IMTabC.m */; };
 		289E0F71192AF71000FFE90D /* IMManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 289E0F70192AF71000FFE90D /* IMManager.m */; };
 		289E0F8A192B4CA400FFE90D /* IMChatC.m in Sources */ = {isa = PBXBuildFile; fileRef = 289E0F83192B4CA400FFE90D /* IMChatC.m */; };
@@ -77,8 +78,8 @@
 		28F0D7E0192C1FA5001975AC /* ToolViewKeyboardHL@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 28F0D7BC192C1FA5001975AC /* ToolViewKeyboardHL@2x.png */; };
 		28F0D7E3192C24F9001975AC /* TypeSelectorBtn_Black@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 28F0D7E1192C24F9001975AC /* TypeSelectorBtn_Black@2x.png */; };
 		28F0D7E4192C24F9001975AC /* TypeSelectorBtnHL_Black@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 28F0D7E2192C24F9001975AC /* TypeSelectorBtnHL_Black@2x.png */; };
-		28F0D7E8192C9FFD001975AC /* IMMessageViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 28F0D7E7192C9FFD001975AC /* IMMessageViewModel.m */; };
-		28F0D7EE192CC8FC001975AC /* IMAddressBookViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 28F0D7ED192CC8FC001975AC /* IMAddressBookViewModel.m */; };
+		28F0D7E8192C9FFD001975AC /* IMMainMessageViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 28F0D7E7192C9FFD001975AC /* IMMainMessageViewModel.m */; };
+		28F0D7EE192CC8FC001975AC /* IMContactsViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 28F0D7ED192CC8FC001975AC /* IMContactsViewModel.m */; };
 		28F49F33192E255A00FEF861 /* IMMessageCellFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = 28F49F32192E255A00FEF861 /* IMMessageCellFactory.m */; };
 		28FAC055192EBDB600BBA9E0 /* IMChatMessageEntityFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = 28FAC054192EBDB600BBA9E0 /* IMChatMessageEntityFactory.m */; };
 		28FAC058192EC4AE00BBA9E0 /* IMEmotionEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = 28FAC057192EC4AE00BBA9E0 /* IMEmotionEntity.m */; };
@@ -249,7 +250,6 @@
 		CE4E85351941EAB200DF2655 /* Three20.bundle in Resources */ = {isa = PBXBuildFile; fileRef = CE4E85341941EAB200DF2655 /* Three20.bundle */; };
 		CE6CC18C194AE85A00FD3764 /* IMStaticContactCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CE6CC18B194AE85A00FD3764 /* IMStaticContactCell.m */; };
 		CE9FA524194E92FE00E7F77A /* xmpp_changes in Resources */ = {isa = PBXBuildFile; fileRef = CE9FA523194E92FE00E7F77A /* xmpp_changes */; };
-		CEA9A452193581B100DF5206 /* tabbar_bg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = CEA9A451193581B100DF5206 /* tabbar_bg@2x.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -271,13 +271,22 @@
 		282F7FE719CEE5A900827F78 /* UIViewController+Camera.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+Camera.m"; sourceTree = "<group>"; };
 		282F7FE819CEE5A900827F78 /* UIViewController+NavigationBlock.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+NavigationBlock.h"; sourceTree = "<group>"; };
 		282F7FE919CEE5A900827F78 /* UIViewController+NavigationBlock.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+NavigationBlock.m"; sourceTree = "<group>"; };
-		282F7FEE19CEE5C100827F78 /* MKCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MKCache.h; path = JLWeChat/Utilities/MKCache.h; sourceTree = SOURCE_ROOT; };
-		282F7FEF19CEE5C100827F78 /* MKCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MKCache.m; path = JLWeChat/Utilities/MKCache.m; sourceTree = SOURCE_ROOT; };
-		282F7FF019CEE5C100827F78 /* MKUIHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MKUIHelper.h; path = JLWeChat/Utilities/MKUIHelper.h; sourceTree = SOURCE_ROOT; };
-		282F7FF119CEE5C100827F78 /* MKUIHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MKUIHelper.m; path = JLWeChat/Utilities/MKUIHelper.m; sourceTree = SOURCE_ROOT; };
-		282F7FF219CEE5C100827F78 /* MKUploader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MKUploader.h; path = JLWeChat/Utilities/MKUploader.h; sourceTree = SOURCE_ROOT; };
-		282F7FF319CEE5C100827F78 /* MKUploader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MKUploader.m; path = JLWeChat/Utilities/MKUploader.m; sourceTree = SOURCE_ROOT; };
+		282F7FEE19CEE5C100827F78 /* IMCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = IMCache.h; path = JLWeChat/Utilities/IMCache.h; sourceTree = SOURCE_ROOT; };
+		282F7FEF19CEE5C100827F78 /* IMCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = IMCache.m; path = JLWeChat/Utilities/IMCache.m; sourceTree = SOURCE_ROOT; };
+		282F7FF019CEE5C100827F78 /* IMUIHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = IMUIHelper.h; path = JLWeChat/Utilities/IMUIHelper.h; sourceTree = SOURCE_ROOT; };
+		282F7FF119CEE5C100827F78 /* IMUIHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = IMUIHelper.m; path = JLWeChat/Utilities/IMUIHelper.m; sourceTree = SOURCE_ROOT; };
+		282F7FF219CEE5C100827F78 /* IMUploader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = IMUploader.h; path = JLWeChat/Utilities/IMUploader.h; sourceTree = SOURCE_ROOT; };
+		282F7FF319CEE5C100827F78 /* IMUploader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = IMUploader.m; path = JLWeChat/Utilities/IMUploader.m; sourceTree = SOURCE_ROOT; };
 		282F7FF719CEEDF600827F78 /* JLWeChat-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "JLWeChat-Prefix.pch"; sourceTree = "<group>"; };
+		282F800219CF08AA00827F78 /* icon_tab1@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_tab1@2x.png"; sourceTree = "<group>"; };
+		282F800319CF08AA00827F78 /* icon_tab1h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_tab1h@2x.png"; sourceTree = "<group>"; };
+		282F800419CF08AA00827F78 /* icon_tab2@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_tab2@2x.png"; sourceTree = "<group>"; };
+		282F800519CF08AA00827F78 /* icon_tab2h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_tab2h@2x.png"; sourceTree = "<group>"; };
+		282F800619CF08AA00827F78 /* tabbar_bg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tabbar_bg@2x.png"; sourceTree = "<group>"; };
+		282F800D19CF174600827F78 /* IMContactsC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMContactsC.h; sourceTree = "<group>"; };
+		282F800E19CF174600827F78 /* IMContactsC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMContactsC.m; sourceTree = "<group>"; };
+		282F800F19CF174600827F78 /* IMMainMessageC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMMainMessageC.h; sourceTree = "<group>"; };
+		282F801019CF174600827F78 /* IMMainMessageC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMMainMessageC.m; sourceTree = "<group>"; };
 		289D6EDB19B0BF620046A853 /* IMSearchChatContactCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMSearchChatContactCell.h; sourceTree = "<group>"; };
 		289D6EDC19B0BF620046A853 /* IMSearchChatContactCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMSearchChatContactCell.m; sourceTree = "<group>"; };
 		289D6EE419B0C3330046A853 /* TODO */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = TODO; sourceTree = "<group>"; };
@@ -302,14 +311,6 @@
 		289E0F10192AF2FA00FFE90D /* UIWindowAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIWindowAdditions.h; sourceTree = "<group>"; };
 		289E0F11192AF2FA00FFE90D /* UIWindowAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIWindowAdditions.m; sourceTree = "<group>"; };
 		289E0F1E192AF30800FFE90D /* IMUIMacros.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMUIMacros.h; sourceTree = "<group>"; };
-		289E0F44192AF59900FFE90D /* icon_tab1@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_tab1@2x.png"; sourceTree = "<group>"; };
-		289E0F45192AF59900FFE90D /* icon_tab1h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_tab1h@2x.png"; sourceTree = "<group>"; };
-		289E0F48192AF59900FFE90D /* icon_tab2@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_tab2@2x.png"; sourceTree = "<group>"; };
-		289E0F49192AF59900FFE90D /* icon_tab2h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_tab2h@2x.png"; sourceTree = "<group>"; };
-		289E0F61192AF6EC00FFE90D /* IMAddressBookC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMAddressBookC.h; sourceTree = "<group>"; };
-		289E0F62192AF6EC00FFE90D /* IMAddressBookC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMAddressBookC.m; sourceTree = "<group>"; };
-		289E0F63192AF6EC00FFE90D /* IMMessageC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMMessageC.h; sourceTree = "<group>"; };
-		289E0F64192AF6EC00FFE90D /* IMMessageC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMMessageC.m; sourceTree = "<group>"; };
 		289E0F65192AF6EC00FFE90D /* IMTabC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMTabC.h; sourceTree = "<group>"; };
 		289E0F66192AF6EC00FFE90D /* IMTabC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMTabC.m; sourceTree = "<group>"; };
 		289E0F6F192AF71000FFE90D /* IMManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMManager.h; sourceTree = "<group>"; };
@@ -363,10 +364,10 @@
 		28F0D7BC192C1FA5001975AC /* ToolViewKeyboardHL@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ToolViewKeyboardHL@2x.png"; sourceTree = "<group>"; };
 		28F0D7E1192C24F9001975AC /* TypeSelectorBtn_Black@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "TypeSelectorBtn_Black@2x.png"; sourceTree = "<group>"; };
 		28F0D7E2192C24F9001975AC /* TypeSelectorBtnHL_Black@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "TypeSelectorBtnHL_Black@2x.png"; sourceTree = "<group>"; };
-		28F0D7E6192C9FFD001975AC /* IMMessageViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMMessageViewModel.h; sourceTree = "<group>"; };
-		28F0D7E7192C9FFD001975AC /* IMMessageViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMMessageViewModel.m; sourceTree = "<group>"; };
-		28F0D7EC192CC8FC001975AC /* IMAddressBookViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMAddressBookViewModel.h; sourceTree = "<group>"; };
-		28F0D7ED192CC8FC001975AC /* IMAddressBookViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMAddressBookViewModel.m; sourceTree = "<group>"; };
+		28F0D7E6192C9FFD001975AC /* IMMainMessageViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMMainMessageViewModel.h; sourceTree = "<group>"; };
+		28F0D7E7192C9FFD001975AC /* IMMainMessageViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMMainMessageViewModel.m; sourceTree = "<group>"; };
+		28F0D7EC192CC8FC001975AC /* IMContactsViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMContactsViewModel.h; sourceTree = "<group>"; };
+		28F0D7ED192CC8FC001975AC /* IMContactsViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMContactsViewModel.m; sourceTree = "<group>"; };
 		28F49F31192E255A00FEF861 /* IMMessageCellFactory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMMessageCellFactory.h; sourceTree = "<group>"; };
 		28F49F32192E255A00FEF861 /* IMMessageCellFactory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMMessageCellFactory.m; sourceTree = "<group>"; };
 		28FAC053192EBDB600BBA9E0 /* IMChatMessageEntityFactory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMChatMessageEntityFactory.h; sourceTree = "<group>"; };
@@ -566,7 +567,6 @@
 		CE6CC18A194AE85A00FD3764 /* IMStaticContactCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMStaticContactCell.h; sourceTree = "<group>"; };
 		CE6CC18B194AE85A00FD3764 /* IMStaticContactCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMStaticContactCell.m; sourceTree = "<group>"; };
 		CE9FA523194E92FE00E7F77A /* xmpp_changes */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = xmpp_changes; sourceTree = "<group>"; };
-		CEA9A451193581B100DF5206 /* tabbar_bg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tabbar_bg@2x.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -721,11 +721,11 @@
 		289E0F43192AF59900FFE90D /* tabbar */ = {
 			isa = PBXGroup;
 			children = (
-				289E0F44192AF59900FFE90D /* icon_tab1@2x.png */,
-				289E0F45192AF59900FFE90D /* icon_tab1h@2x.png */,
-				289E0F48192AF59900FFE90D /* icon_tab2@2x.png */,
-				289E0F49192AF59900FFE90D /* icon_tab2h@2x.png */,
-				CEA9A451193581B100DF5206 /* tabbar_bg@2x.png */,
+				282F800219CF08AA00827F78 /* icon_tab1@2x.png */,
+				282F800319CF08AA00827F78 /* icon_tab1h@2x.png */,
+				282F800419CF08AA00827F78 /* icon_tab2@2x.png */,
+				282F800519CF08AA00827F78 /* icon_tab2h@2x.png */,
+				282F800619CF08AA00827F78 /* tabbar_bg@2x.png */,
 			);
 			path = tabbar;
 			sourceTree = "<group>";
@@ -744,10 +744,6 @@
 			children = (
 				289E0F65192AF6EC00FFE90D /* IMTabC.h */,
 				289E0F66192AF6EC00FFE90D /* IMTabC.m */,
-				289E0F63192AF6EC00FFE90D /* IMMessageC.h */,
-				289E0F64192AF6EC00FFE90D /* IMMessageC.m */,
-				289E0F61192AF6EC00FFE90D /* IMAddressBookC.h */,
-				289E0F62192AF6EC00FFE90D /* IMAddressBookC.m */,
 			);
 			path = V_MainTab;
 			sourceTree = "<group>";
@@ -755,10 +751,10 @@
 		289E0F6D192AF6FD00FFE90D /* VM_IM */ = {
 			isa = PBXGroup;
 			children = (
-				28F0D7E6192C9FFD001975AC /* IMMessageViewModel.h */,
-				28F0D7E7192C9FFD001975AC /* IMMessageViewModel.m */,
-				28F0D7EC192CC8FC001975AC /* IMAddressBookViewModel.h */,
-				28F0D7ED192CC8FC001975AC /* IMAddressBookViewModel.m */,
+				28F0D7E6192C9FFD001975AC /* IMMainMessageViewModel.h */,
+				28F0D7E7192C9FFD001975AC /* IMMainMessageViewModel.m */,
+				28F0D7EC192CC8FC001975AC /* IMContactsViewModel.h */,
+				28F0D7ED192CC8FC001975AC /* IMContactsViewModel.m */,
 				28FD4E3E192D776400A714AA /* IMChatViewModel.h */,
 				28FD4E3F192D776400A714AA /* IMChatViewModel.m */,
 				CE3525B71939743800EEED5E /* IMLocalSearchViewModel.h */,
@@ -784,12 +780,12 @@
 		289E0F76192B28C500FFE90D /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
-				282F7FEE19CEE5C100827F78 /* MKCache.h */,
-				282F7FEF19CEE5C100827F78 /* MKCache.m */,
-				282F7FF019CEE5C100827F78 /* MKUIHelper.h */,
-				282F7FF119CEE5C100827F78 /* MKUIHelper.m */,
-				282F7FF219CEE5C100827F78 /* MKUploader.h */,
-				282F7FF319CEE5C100827F78 /* MKUploader.m */,
+				282F7FEE19CEE5C100827F78 /* IMCache.h */,
+				282F7FEF19CEE5C100827F78 /* IMCache.m */,
+				282F7FF019CEE5C100827F78 /* IMUIHelper.h */,
+				282F7FF119CEE5C100827F78 /* IMUIHelper.m */,
+				282F7FF219CEE5C100827F78 /* IMUploader.h */,
+				282F7FF319CEE5C100827F78 /* IMUploader.m */,
 			);
 			name = Utilities;
 			path = JLIM4iPhone/Utilities;
@@ -798,6 +794,10 @@
 		289E0F81192B4CA400FFE90D /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				282F800F19CF174600827F78 /* IMMainMessageC.h */,
+				282F801019CF174600827F78 /* IMMainMessageC.m */,
+				282F800D19CF174600827F78 /* IMContactsC.h */,
+				282F800E19CF174600827F78 /* IMContactsC.m */,
 				289E0F82192B4CA400FFE90D /* IMChatC.h */,
 				289E0F83192B4CA400FFE90D /* IMChatC.m */,
 				CE18F88C193C6C09008CD9AC /* IMSearchDisplayController.h */,
@@ -1276,6 +1276,7 @@
 			files = (
 				CE4E85351941EAB200DF2655 /* Three20.bundle in Resources */,
 				CE1EE2541930D3670093DBB7 /* Expression_44@2x.png in Resources */,
+				282F800A19CF08AA00827F78 /* icon_tab2h@2x.png in Resources */,
 				CE1EE2791930D3670093DBB7 /* Expression_81@2x.png in Resources */,
 				CE1EE2621930D3670093DBB7 /* Expression_58@2x.png in Resources */,
 				CE1EE25E1930D3670093DBB7 /* Expression_54@2x.png in Resources */,
@@ -1304,7 +1305,6 @@
 				28F0D7C4192C1FA5001975AC /* ReceiverVoiceNodeBkg@2x.png in Resources */,
 				28F0D7DA192C1FA5001975AC /* ToolViewEmotionHL@2x.png in Resources */,
 				CE1EE2391930D3670093DBB7 /* Expression_9@2x.png in Resources */,
-				289E0F53192AF59900FFE90D /* icon_tab1h@2x.png in Resources */,
 				28F0D7C5192C1FA5001975AC /* ReceiverVoiceNodePlaying@2x.png in Resources */,
 				CE3BE005193EBFE600221074 /* 37x-Checkmark.png in Resources */,
 				CE1EE1CB1930C0EC0093DBB7 /* sharemore_video@2x.png in Resources */,
@@ -1327,24 +1327,27 @@
 				CE1EE2861930D3670093DBB7 /* Expression_94@2x.png in Resources */,
 				CE1EE25C1930D3670093DBB7 /* Expression_52@2x.png in Resources */,
 				28F0D7CC192C1FA5001975AC /* SenderVoiceNodeBack@2x.png in Resources */,
-				289E0F56192AF59900FFE90D /* icon_tab2@2x.png in Resources */,
 				CE1EE27A1930D3670093DBB7 /* Expression_82@2x.png in Resources */,
 				CE1EE2871930D3670093DBB7 /* Expression_95@2x.png in Resources */,
+				282F800B19CF08AA00827F78 /* tabbar_bg@2x.png in Resources */,
 				CE1EE23D1930D3670093DBB7 /* Expression_13@2x.png in Resources */,
 				CE1EE2841930D3670093DBB7 /* Expression_92@2x.png in Resources */,
 				CE1EE2491930D3670093DBB7 /* Expression_25@2x.png in Resources */,
 				CE1EE2881930D3670093DBB7 /* Expression_96@2x.png in Resources */,
 				28F0D7C1192C1FA5001975AC /* ReceiverTextNodeBkg@2x.png in Resources */,
+				282F800819CF08AA00827F78 /* icon_tab1h@2x.png in Resources */,
 				CE1EE23E1930D3670093DBB7 /* Expression_14@2x.png in Resources */,
 				CE1EE26E1930D3670093DBB7 /* Expression_70@2x.png in Resources */,
 				CE1EE25F1930D3670093DBB7 /* Expression_55@2x.png in Resources */,
 				CE3BE00D193EC19300221074 /* preview_save_icon.png in Resources */,
+				282F800919CF08AA00827F78 /* icon_tab2@2x.png in Resources */,
 				28F0D7CB192C1FA5001975AC /* SenderTextNodeBkgHL@2x.png in Resources */,
 				CE1EE2781930D3670093DBB7 /* Expression_80@2x.png in Resources */,
 				CE1EE2591930D3670093DBB7 /* Expression_49@2x.png in Resources */,
 				28F0D7BE192C1FA5001975AC /* ReceiverAppNodeBkg_HL@2x.png in Resources */,
 				CE1EE2801930D3670093DBB7 /* Expression_88@2x.png in Resources */,
 				CE1EE2A51930E6F80093DBB7 /* Expression_33@2x.png in Resources */,
+				282F800719CF08AA00827F78 /* icon_tab1@2x.png in Resources */,
 				CE1EE27F1930D3670093DBB7 /* Expression_87@2x.png in Resources */,
 				528E6AA91920574500FFB5A6 /* Images.xcassets in Resources */,
 				CE1EE2571930D3670093DBB7 /* Expression_47@2x.png in Resources */,
@@ -1354,7 +1357,6 @@
 				28F0D7C3192C1FA5001975AC /* ReceiverVoiceNodeBack@2x.png in Resources */,
 				28F0D7C2192C1FA5001975AC /* ReceiverTextNodeBkgHL@2x.png in Resources */,
 				CE1EE23A1930D3670093DBB7 /* Expression_10@2x.png in Resources */,
-				289E0F57192AF59900FFE90D /* icon_tab2h@2x.png in Resources */,
 				CE1EE2741930D3670093DBB7 /* Expression_76@2x.png in Resources */,
 				CE1EE2331930D3670093DBB7 /* Expression_3@2x.png in Resources */,
 				CE1EE2811930D3670093DBB7 /* Expression_89@2x.png in Resources */,
@@ -1375,8 +1377,6 @@
 				28F0D7E0192C1FA5001975AC /* ToolViewKeyboardHL@2x.png in Resources */,
 				CE1EE24A1930D3670093DBB7 /* Expression_34@2x.png in Resources */,
 				CE1EE1C91930C0EC0093DBB7 /* sharemore_location@2x.png in Resources */,
-				CEA9A452193581B100DF5206 /* tabbar_bg@2x.png in Resources */,
-				289E0F52192AF59900FFE90D /* icon_tab1@2x.png in Resources */,
 				CE1EE2A11930E6F80093DBB7 /* Expression_29@2x.png in Resources */,
 				28F0D7C6192C1FA5001975AC /* SenderAppNodeBkg@2x.png in Resources */,
 				28F0D7D4192C1FA5001975AC /* SenderVoiceNodePlaying002@2x.png in Resources */,
@@ -1496,7 +1496,7 @@
 			files = (
 				28FD4E67192DE66000A714AA /* IMContactModel.m in Sources */,
 				CE3BE001193EBF3400221074 /* UIScrollView+ZoomToPoint.m in Sources */,
-				28F0D7EE192CC8FC001975AC /* IMAddressBookViewModel.m in Sources */,
+				28F0D7EE192CC8FC001975AC /* IMContactsViewModel.m in Sources */,
 				CE19C130194C12EF00350262 /* MeiKeMeiShi.xcdatamodeld in Sources */,
 				28FD4E43192D8C9F00A714AA /* IMRecentContactCell.m in Sources */,
 				CE3BDFF9193EBB1600221074 /* JLFullScreenPhotoBrowseView.m in Sources */,
@@ -1509,28 +1509,28 @@
 				28FD4E60192DE33600A714AA /* JLPinyinSortItem.m in Sources */,
 				CE3525BC19397F5400EEED5E /* XMPPMessageArchiving_Contact_CoreDataObject+RecentContact.m in Sources */,
 				28E373E319CA694A0020F638 /* MKKeywordRegularParser.m in Sources */,
-				282F7FF519CEE5C100827F78 /* MKUIHelper.m in Sources */,
+				282F7FF519CEE5C100827F78 /* IMUIHelper.m in Sources */,
 				28FD4E64192DE4B400A714AA /* IMContactEntity.m in Sources */,
-				28F0D7E8192C9FFD001975AC /* IMMessageViewModel.m in Sources */,
+				28F0D7E8192C9FFD001975AC /* IMMainMessageViewModel.m in Sources */,
 				289E0F1A192AF2FA00FFE90D /* UIViewAdditions.m in Sources */,
 				289E0F12192AF2FA00FFE90D /* NSDataAdditions.m in Sources */,
 				289E0F14192AF2FA00FFE90D /* NSStringAdditions.m in Sources */,
 				289E0F71192AF71000FFE90D /* IMManager.m in Sources */,
 				282F7FEB19CEE5A900827F78 /* NSObject+EntityParse.m in Sources */,
+				282F801219CF174600827F78 /* IMMainMessageC.m in Sources */,
 				CE1EE1BE1930409B0093DBB7 /* XMPPMessageArchiving_Message_CoreDataObject+ChatMessage.m in Sources */,
 				CE21332819341CD6002EBE49 /* UIImage+Utils.m in Sources */,
 				289E0F8A192B4CA400FFE90D /* IMChatC.m in Sources */,
-				289E0F6A192AF6EC00FFE90D /* IMAddressBookC.m in Sources */,
 				28FAC12F192F20E100BBA9E0 /* IMEmotionMainView.m in Sources */,
 				CE1EE1C1193085B80093DBB7 /* IMChatShareMoreView.m in Sources */,
 				28FAC055192EBDB600BBA9E0 /* IMChatMessageEntityFactory.m in Sources */,
 				28F49F33192E255A00FEF861 /* IMMessageCellFactory.m in Sources */,
 				289D6EDD19B0BF620046A853 /* IMSearchChatContactCell.m in Sources */,
-				282F7FF419CEE5C100827F78 /* MKCache.m in Sources */,
+				282F7FF419CEE5C100827F78 /* IMCache.m in Sources */,
 				28FD4E5A192DE12A00A714AA /* pinyin.c in Sources */,
 				282F7FEC19CEE5A900827F78 /* UIViewController+Camera.m in Sources */,
-				289E0F6B192AF6EC00FFE90D /* IMMessageC.m in Sources */,
 				CE18F88E193C6C09008CD9AC /* IMSearchDisplayController.m in Sources */,
+				282F801119CF174600827F78 /* IMContactsC.m in Sources */,
 				282F7FEA19CEE5A900827F78 /* NSDate+IM.m in Sources */,
 				282F7FED19CEE5A900827F78 /* UIViewController+NavigationBlock.m in Sources */,
 				28FD4E48192DBFA200A714AA /* IMContactCell.m in Sources */,
@@ -1539,7 +1539,7 @@
 				CE3BDFFD193EBC1000221074 /* UIView+findViewController.m in Sources */,
 				289E0F1B192AF2FA00FFE90D /* UIWindowAdditions.m in Sources */,
 				289E0F17192AF2FA00FFE90D /* TTGlobalUICommon.m in Sources */,
-				282F7FF619CEE5C100827F78 /* MKUploader.m in Sources */,
+				282F7FF619CEE5C100827F78 /* IMUploader.m in Sources */,
 				289E0F19192AF2FA00FFE90D /* UIImageAdditions.m in Sources */,
 				289E0F6C192AF6EC00FFE90D /* IMTabC.m in Sources */,
 				289E0F16192AF2FA00FFE90D /* TTGlobalCoreLocale.m in Sources */,

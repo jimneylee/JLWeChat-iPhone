@@ -7,14 +7,14 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "IMMessageViewModel.h"
+#import "IMMainMessageViewModel.h"
 
 /**
  * 消息主界面
  */
 
-@interface IMMessageC : UITableViewController
+@interface IMMainMessageC : UITableViewController
 
-@property (nonatomic, strong) IMMessageViewModel *viewModel;
+@property (nonatomic, strong) IMMainMessageViewModel *viewModel;
 
 @end

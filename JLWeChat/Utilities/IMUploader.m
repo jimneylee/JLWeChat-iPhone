@@ -6,13 +6,13 @@
 //  Copyright (c) 2014年 jimneylee. All rights reserved.
 //
 
-#import "MKUploader.h"
+#import "IMUploader.h"
 #import <AFNetworking/AFNetworking.h>
 #import <MUResponseSerializer.h>
 #import "IMMacros.h"
-#import "MKUIHelper.h"
+#import "IMUIHelper.h"
 #import <ReactiveCocoa/RACEXTScope.h>
-#import "MKCache.h"
+#import "IMCache.h"
 
 
 #define IMAGE_TYPE_PNG      @"image/png"
@@ -41,13 +41,13 @@
 @end
 
 
-@interface MKUploader ()
+@interface IMUploader ()
 
 @property (strong, nonatomic) AFHTTPRequestOperationManager* manager;
 
 @end
 
-@implementation MKUploader
+@implementation IMUploader
 
 + (instancetype)uploader
 {
@@ -138,7 +138,7 @@
     }
     if (self.showAlert) {
         dispatch_async(dispatch_get_main_queue(), ^{
-            [MKUIHelper showWaitingMessage:@"上传中..."];
+            [IMUIHelper showWaitingMessage:@"上传中..."];
         });
     }
 
@@ -177,13 +177,13 @@
         NSLog(@"Success: %@ %@", operation, responseObject);
         if (self.showAlert) {
             dispatch_async(dispatch_get_main_queue(), ^{
-                [MKUIHelper hideWaitingMessage:nil];
+                [IMUIHelper hideWaitingMessage:nil];
             });
         }
         
         MKUploadResponse* uploadRes = (MKUploadResponse*)responseObject;
         if (uploadRes.url) {
-            [[MKCache sharedCache] cacheData:data
+            [[IMCache sharedCache] cacheData:data
                                   forRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:uploadRes.url]]];
         }
         block(uploadRes.url);
@@ -192,7 +192,7 @@
         NSLog(@"Error: %@", error);
         if (self.showAlert) {
             dispatch_async(dispatch_get_main_queue(), ^{
-                [MKUIHelper hideWaitingMessage:nil];
+                [IMUIHelper hideWaitingMessage:nil];
             });
         }
         

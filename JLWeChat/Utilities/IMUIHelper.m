@@ -6,9 +6,9 @@
 //  Copyright (c) 2014年 jimneylee. All rights reserved.
 //
 
-#import "MKUIHelper.h"
+#import "IMUIHelper.h"
 
-@implementation MKUIHelper
+@implementation IMUIHelper
 
 + (void)showWaitingMessage:(NSString *)message inView:(UIView *)view
 {
@@ -49,15 +49,17 @@
 
 + (void)showWaitingMessage:(NSString *)message
 {
-    [MKUIHelper showWaitingMessage:message inView:[UIApplication sharedApplication].keyWindow];
+    [IMUIHelper showWaitingMessage:message inView:[UIApplication sharedApplication].keyWindow];
 }
+
 + (void)hideWaitingMessage:(NSString *)message
 {
-    [MKUIHelper hideWaitingMessage:message inView:[UIApplication sharedApplication].keyWindow];
+    [IMUIHelper hideWaitingMessage:message inView:[UIApplication sharedApplication].keyWindow];
 }
+
 + (void)showTextMessage:(NSString *)message
 {
-    [MKUIHelper showTextMessage:message inView:[UIApplication sharedApplication].keyWindow];
+    [IMUIHelper showTextMessage:message inView:[UIApplication sharedApplication].keyWindow];
 }
 
 /////////////////////////////////////////////////////////////////////////
@@ -70,17 +72,10 @@
 
 + (UIImage *)stretchableImageNamed:(NSString *)imageName{
     UIImage *image = [UIImage imageNamed:imageName];
-    return [image stretchableImageWithLeftCapWidth:image.size.width/2
-                                      topCapHeight:image.size.height/2];
+    return [image stretchableImageWithLeftCapWidth:image.size.width / 2
+                                      topCapHeight:image.size.height / 2];
 }
 
-+ (UIImage *)getImageFromAsset:(ALAsset *)asset
-{
-    if (asset) {
-        UIImage* image = [UIImage imageWithCGImage:[[asset defaultRepresentation] fullScreenImage]];
-        return image;
-    }
-    return nil;
-}
+
 
 @end

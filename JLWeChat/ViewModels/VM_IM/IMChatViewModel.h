@@ -24,14 +24,14 @@
 @property (nonatomic, strong) NSMutableArray *earlierResultsSectionArray;
 @property (nonatomic, strong) NSMutableArray *totalResultsSectionArray;
 
--(instancetype)initWithModel:(id)model;
+- (instancetype)initWithModel:(id)model;
 
--(NSInteger)numberOfSections;
+- (NSInteger)numberOfSections;
 - (NSString *)titleForHeaderInSection:(NSInteger)section;
--(NSInteger)numberOfItemsInSection:(NSInteger)section;
--(XMPPMessageArchiving_Message_CoreDataObject *)objectAtIndexPath:(NSIndexPath *)indexPath;
+- (NSInteger)numberOfItemsInSection:(NSInteger)section;
+- (XMPPMessageArchiving_Message_CoreDataObject *)objectAtIndexPath:(NSIndexPath *)indexPath;
 
--(void)deleteObjectAtIndexPath:(NSIndexPath *)indexPath;
+- (void)deleteObjectAtIndexPath:(NSIndexPath *)indexPath;
 
 - (void)fetchEarlierMessage;
 - (void)fetchLaterMessage;

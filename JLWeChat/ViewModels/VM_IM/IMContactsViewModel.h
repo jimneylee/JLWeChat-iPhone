@@ -9,7 +9,7 @@
 #import "RVMViewModel.h"
 #import "IMManager.h"
 
-@interface IMAddressBookViewModel : RVMViewModel
+@interface IMContactsViewModel : RVMViewModel
 
 @property (nonatomic, readonly) RACSignal *updatedContentSignal;
 @property (nonatomic, strong)   NSFetchedResultsController *fetchedResultsController;

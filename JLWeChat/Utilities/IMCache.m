@@ -6,10 +6,10 @@
 //  Copyright (c) 2014年 jimneylee. All rights reserved.
 //
 
-#import "MKCache.h"
+#import "IMCache.h"
 //#import "MKUtil.h"
 
-@interface MKCache ()
+@interface IMCache ()
 
 @property(nonatomic,strong) NSString *cacheDir;
 
@@ -18,14 +18,14 @@
 @end
 
 
-@implementation MKCache
+@implementation IMCache
 
-+ (MKCache*)sharedCache
++ (IMCache*)sharedCache
 {
-    static MKCache *_sharedCache = nil;
+    static IMCache *_sharedCache = nil;
     static dispatch_once_t oncePredicate;
     dispatch_once(&oncePredicate, ^{
-        _sharedCache = [[MKCache alloc] init];
+        _sharedCache = [[IMCache alloc] init];
         
         [[NSNotificationCenter defaultCenter] addObserverForName:UIApplicationDidReceiveMemoryWarningNotification object:nil queue:[NSOperationQueue mainQueue] usingBlock:^(NSNotification * __unused notification) {
             [_sharedCache removeAllObjects];

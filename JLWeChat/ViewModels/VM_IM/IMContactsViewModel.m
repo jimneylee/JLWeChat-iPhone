@@ -6,12 +6,12 @@
 //  Copyright (c) 2014年 jimneylee. All rights reserved.
 //
 
-#import "IMAddressBookViewModel.h"
+#import "IMContactsViewModel.h"
 #import "IMContactModel.h"
 #import "IMManager.h"
 #import <UIAlertView+RACSignalSupport.h>
 #import "XMPPPresence+XEP_0172.h"
-#import "IMMessageViewModel.h"
+#import "IMMainMessageViewModel.h"
 
 // Log levels: off, error, warn, info, verbose
 #if DEBUG
@@ -20,18 +20,18 @@ static const int ddLogLevel = LOG_LEVEL_VERBOSE;
 static const int ddLogLevel = LOG_LEVEL_INFO;
 #endif
 
-@interface IMAddressBookViewModel()<NSFetchedResultsControllerDelegate>
+@interface IMContactsViewModel()<NSFetchedResultsControllerDelegate>
 
 @property (nonatomic, strong) RACSubject *updatedContentSignal;
 @property (nonatomic, strong) IMContactModel *contactModel;
 
 @end
 
-@implementation IMAddressBookViewModel
+@implementation IMContactsViewModel
 
 + (instancetype)sharedViewModel
 {
-    static IMAddressBookViewModel *_sharedViewModel = nil;
+    static IMContactsViewModel *_sharedViewModel = nil;
     static dispatch_once_t onceToken;
     
     dispatch_once(&onceToken, ^{
@@ -57,7 +57,7 @@ static const int ddLogLevel = LOG_LEVEL_INFO;
         [[IMManager sharedManager].xmppStream addDelegate:self delegateQueue:dispatch_get_main_queue()];
 
         self.updatedContentSignal = [[RACSubject subject] setNameWithFormat:@"%@ updatedContentSignal",
-                                     NSStringFromClass([IMAddressBookViewModel class])];
+                                     NSStringFromClass([IMContactsViewModel class])];
         
         @weakify(self)
         [self.didBecomeActiveSignal subscribeNext:^(id x) {
@@ -397,7 +397,7 @@ static const int ddLogLevel = LOG_LEVEL_INFO;
 
         dispatch_async(dispatch_get_main_queue(), ^{
             // 删除最近联系人
-            if ([[IMMessageViewModel sharedViewModel] deleteRecentContactWithJid:[XMPPJID jidWithString:[presence fromStr]]]) {
+            if ([[IMMainMessageViewModel sharedViewModel] deleteRecentContactWithJid:[XMPPJID jidWithString:[presence fromStr]]]) {
                 NSLog(@"deleteRecentContact:%@", [XMPPJID jidWithString:[presence fromStr]]);
             }
             

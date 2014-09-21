@@ -46,7 +46,13 @@
         [self.contentView addSubview:self.headView];
         
         // badge
-        self.badgeView = [[JSCustomBadge alloc] initWithFrame:CGRectZero];
+        self.badgeView = [JSCustomBadge customBadgeWithString:nil
+                                                 withStringColor:[UIColor whiteColor]
+                                                  withInsetColor:[UIColor redColor]
+                                                  withBadgeFrame:YES
+                                             withBadgeFrameColor:[UIColor redColor]
+                                                       withScale:.8f
+                                                     withShining:NO];
         self.badgeView.badgeTextColor = [UIColor redColor];
         [self.contentView addSubview:self.badgeView];
     

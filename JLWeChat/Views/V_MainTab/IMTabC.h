@@ -1,5 +1,5 @@
 //
-//  MKTabC.h
+//  IMTabC.h
 //  JLIM4iPhone
 //
 //  Created by jimneylee on 14-5-17.

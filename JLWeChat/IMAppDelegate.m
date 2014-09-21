@@ -9,7 +9,7 @@
 #import "IMAppDelegate.h"
 #import <AFNetworkReachabilityManager.h>
 #import <UIImageView+AFNetworking.h>
-#import "MKCache.h"
+#import "IMCache.h"
 
 @implementation IMAppDelegate
 
@@ -36,7 +36,6 @@
 - (void)configAppCapabilities
 {
     [[AFNetworkReachabilityManager sharedManager] startMonitoring];
-    [UIImageView setSharedImageCache:[MKCache sharedCache]];
 }
 
 #pragma mark - UIApplicationDelegate

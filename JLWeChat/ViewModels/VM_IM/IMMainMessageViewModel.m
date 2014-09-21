@@ -6,9 +6,9 @@
 //  Copyright (c) 2014年 jimneylee. All rights reserved.
 //
 
-#import "IMMessageViewModel.h"
+#import "IMMainMessageViewModel.h"
 #import "IMManager.h"
-#import "IMMessageViewModel.h"
+#import "IMMainMessageViewModel.h"
 
 // Log levels: off, error, warn, info, verbose
 #if DEBUG
@@ -17,7 +17,7 @@ static const int ddLogLevel = LOG_LEVEL_VERBOSE;
 static const int ddLogLevel = LOG_LEVEL_INFO;
 #endif
 
-@interface IMMessageViewModel()<NSFetchedResultsControllerDelegate>
+@interface IMMainMessageViewModel()<NSFetchedResultsControllerDelegate>
 
 @property (nonatomic, strong) RACSubject *updatedContentSignal;
 @property (nonatomic, strong) NSManagedObjectContext *model;
@@ -27,11 +27,11 @@ static const int ddLogLevel = LOG_LEVEL_INFO;
 
 @end
 
-@implementation IMMessageViewModel
+@implementation IMMainMessageViewModel
 
 + (instancetype)sharedViewModel
 {
-    static IMMessageViewModel *_sharedViewModel = nil;
+    static IMMainMessageViewModel *_sharedViewModel = nil;
     static dispatch_once_t onceToken;
     
     dispatch_once(&onceToken, ^{
@@ -41,14 +41,14 @@ static const int ddLogLevel = LOG_LEVEL_INFO;
     return _sharedViewModel;
 }
 
--(instancetype)init
+- (instancetype)init
 {
     self = [super init];
     if (self) {
         self.model = [[IMManager sharedManager] managedObjectContext_messageArchiving];
 
         self.updatedContentSignal = [[RACSubject subject] setNameWithFormat:@"%@ updatedContentSignal",
-                                     NSStringFromClass([IMMessageViewModel class])];
+                                     NSStringFromClass([IMMainMessageViewModel class])];
         
         @weakify(self)
         [self.didBecomeActiveSignal subscribeNext:^(id x) {
@@ -72,12 +72,11 @@ static const int ddLogLevel = LOG_LEVEL_INFO;
 
 - (BOOL)resetUnreadMessagesCountForCurrentContact:(XMPPJID *)contactJid
 {
-    NSIndexPath *indexPath = nil;
     XMPPMessageArchiving_Contact_CoreDataObject *contact = nil;
     XMPPMessageArchiving_Contact_CoreDataObject *currentChatContact = nil;
     
     for (int i = 0; i < [self numberOfItemsInSection:0]; i++) {
-        contact = [self objectAtIndexPath:indexPath];
+        contact = [self objectAtIndexPath:[NSIndexPath indexPathForRow:i inSection:0]];
         if ([contactJid isEqualToJID:contact.bareJid options:XMPPJIDCompareBare]) {
             currentChatContact = contact;
             break;

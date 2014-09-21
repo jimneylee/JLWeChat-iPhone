@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 #import <AssetsLibrary/AssetsLibrary.h>
 
-@interface MKUploader : NSObject
+@interface IMUploader : NSObject
 
 @property (nonatomic) BOOL showAlert;
 

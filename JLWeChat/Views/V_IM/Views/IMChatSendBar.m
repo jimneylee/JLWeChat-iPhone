@@ -9,7 +9,7 @@
 #import "IMChatSendBar.h"
 #import "HPGrowingTextView.h"
 #import <AFNetworkReachabilityManager.h>
-#import "MKUIHelper.h"
+#import "IMUIHelper.h"
 #import "IMEmotionManager.h"
 
 #define CHAT_INPUT_BAR_SIZE CGSizeMake([UIScreen mainScreen].bounds.size.width, TT_TOOLBAR_HEIGHT)
@@ -403,7 +403,7 @@
                 }
             }
             else {
-                [MKUIHelper showTextMessage:@"网络不可用，无法发送"
+                [IMUIHelper showTextMessage:@"网络不可用，无法发送"
                                      inView:[UIApplication sharedApplication].keyWindow];
             }
         }

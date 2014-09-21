@@ -9,9 +9,9 @@
 #import <Foundation/Foundation.h>
 #import <AFNetworking/UIImageView+AFNetworking.h>
 
-@interface MKCache : NSCache <AFImageCache>
+@interface IMCache : NSCache <AFImageCache>
 
-+ (MKCache*)sharedCache;
++ (IMCache*)sharedCache;
 - (void)removeAllCache;
 - (void)cacheData:(NSData*)data forRequest:(NSURLRequest *)request;
 - (NSData *)cachedDataForRequest:(NSURLRequest *)request;

@@ -207,7 +207,7 @@
                                        @selector(image:didFinishSavingWithError:contextInfo:), nil);
 	}
     else {
-        [MKUIHelper showTextMessage:@"图片未下载完成，无法保存" inView:self];
+        [IMUIHelper showTextMessage:@"图片未下载完成，无法保存" inView:self];
     }
 }
 
@@ -231,7 +231,7 @@
 -(void) image:(UIImage *)image didFinishSavingWithError:(NSError *)error contextInfo:(void *)contextInfo
 {
     if (error) {
-        [MKUIHelper showTextMessage:@"保存失败" inView:self];
+        [IMUIHelper showTextMessage:@"保存失败" inView:self];
     }
     else {
         [MBProgressHUD hideHUDForView:self animated:YES];

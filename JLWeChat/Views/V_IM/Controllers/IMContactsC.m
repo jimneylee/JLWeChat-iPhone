@@ -1,12 +1,12 @@
 //
-//  MKAddressBookC.m
+//  IMContactsC.m
 //  IMModel
 //
 //  Created by jimneylee on 14-5-19.
 //  Copyright (c) 2014年 jimneylee. All rights reserved.
 //
 
-#import "IMAddressBookC.h"
+#import "IMContactsC.h"
 #import "IMManager.h"
 #import "IMLocalSearchViewModel.h"
 #import "IMContactCell.h"
@@ -14,17 +14,17 @@
 #import "IMChatC.h"
 #import "IMSearchDisplayController.h"
 #import "UIViewController+NavigationBlock.h"
-#import "IMMessageViewModel.h"
+#import "IMMainMessageViewModel.h"
 #import "IMContactEntity.h"
 
-@interface IMAddressBookC ()<NSFetchedResultsControllerDelegate>
+@interface IMContactsC ()<NSFetchedResultsControllerDelegate>
 
 @property (nonatomic, strong) UISearchBar *searchBar;
 @property (nonatomic, strong) IMSearchDisplayController *searchController;
 
 @end
 
-@implementation IMAddressBookC
+@implementation IMContactsC
 
 - (void)dealloc
 {
@@ -40,7 +40,7 @@
         [[UIBarButtonItem alloc] initWithTitle:@"添加朋友" style:UIBarButtonItemStylePlain
                                         target:self action:@selector(showAddFriendsView)];
         
-        self.viewModel = [IMAddressBookViewModel sharedViewModel];
+        self.viewModel = [IMContactsViewModel sharedViewModel];
                 
         @weakify(self);
         [self.viewModel.updatedContentSignal subscribeNext:^(id x) {
@@ -195,7 +195,7 @@
         [[IMManager sharedManager].xmppRoster removeUser:user.jid];
 
         // 3、同步删除联系人
-        if ([[IMMessageViewModel sharedViewModel] deleteRecentContactWithJid:user.jid]) {
+        if ([[IMMainMessageViewModel sharedViewModel] deleteRecentContactWithJid:user.jid]) {
             NSLog(@"deleteRecentContact:%@", user.jid.bare);
         };
         

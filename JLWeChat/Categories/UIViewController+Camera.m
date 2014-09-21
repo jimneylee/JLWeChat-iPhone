@@ -9,7 +9,7 @@
 #import "UIViewController+Camera.h"
 #import "UIImageAdditions.h"
 #import <objc/runtime.h>
-#import "MKUIHelper.h"
+#import "IMUIHelper.h"
 #import <ReactiveCocoa/UIActionSheet+RACSignalSupport.h>
 
 static const void *CameraBlock1 = &CameraBlock1;

@@ -1,6 +1,6 @@
 //
 //  MMAppDelegate.m
-//  JLIM4iPhone
+//  JLWeChat
 //
 //  Created by jimneylee on 14-5-12.
 //  Copyright (c) 2014年 jimneylee. All rights reserved.
@@ -9,6 +9,7 @@
 #import "IMAppDelegate.h"
 #import <AFNetworkReachabilityManager.h>
 #import <UIImageView+AFNetworking.h>
+#import <AVOSCloud/AVOSCloud.h>
 #import "IMCache.h"
 
 @implementation IMAppDelegate
@@ -30,12 +31,16 @@
     }
     
     [[UITabBar appearance] setBackgroundColor:APP_MAIN_COLOR];
-    [[UITabBar appearance] setTintColor:APP_MAIN_COLOR];
+    [[UITabBar appearance] setTintColor:[UIColor whiteColor]];
 }
 
 - (void)configAppCapabilities
 {
     [[AFNetworkReachabilityManager sharedManager] startMonitoring];
+    
+    // avos
+    [AVOSCloud setApplicationId:@"t6lz5bvwdtn7jgdimwyeeme6f6jwphljcmmjl4zxa1s4vxb1"
+                      clientKey:@"7vsub9e76ntqqmt3n5i3tml0m7q8bof63r89rc0q7wvawiml"];
 }
 
 #pragma mark - UIApplicationDelegate
@@ -44,6 +49,7 @@
 {
     [self configAppAppearance];
     [self configAppCapabilities];
+    //[AVAnalytics trackAppOpenedWithLaunchOptions:launchOptions];
     
     self.tabBarC = [[IMTabC alloc] init];
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];

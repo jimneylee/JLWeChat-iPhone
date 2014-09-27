@@ -6,9 +6,9 @@
 //  Copyright (c) 2013年 jimneylee. All rights reserved.
 //
 
-#import "MKPaserdKeyword.h"
+#import "JLPaserdKeyword.h"
 
-@interface MKKeywordRegularParser : NSObject
+@interface JLKeywordRegularParser : NSObject
 
 // 返回所有at某人的range数组
 + (NSArray *)keywordRangesOfAtPersonInString:(NSString *)string;

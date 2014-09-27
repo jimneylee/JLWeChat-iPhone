@@ -6,7 +6,7 @@
 //  Copyright (c) 2013年 jimneylee. All rights reserved.
 //
 
-#import "MKKeywordRegularParser.h"
+#import "JLKeywordRegularParser.h"
 #import "NSStringAdditions.h"
 
 static NSString* atRegular = @"@[^.,:;!?()\\s#@。，：；！？（）]+";
@@ -15,7 +15,7 @@ static NSString* emojiRegular = @"\\[([\u4e00-\u9fa5|OK|NO]+)\\]";
 //http://stackoverflow.com/questions/16710554/c-sharp-regex-parse-to-pull-photos-from-markdown
 static NSString* imageRegular = @"!\\[.*?\\]\()\\(.*?\\)";
 
-@implementation MKKeywordRegularParser
+@implementation JLKeywordRegularParser
 
 + (NSArray *)keywordRangesOfAtPersonInString:(NSString *)string {
     NSError *error;
@@ -25,7 +25,7 @@ static NSString* imageRegular = @"!\\[.*?\\]\()\\(.*?\\)";
                                                                              error:&error];
     __block NSMutableArray *rangesArray = [NSMutableArray array];
     __block NSString* keyword = nil;
-    __block MKPaserdKeyword* keywordEntity = nil;
+    __block JLPaserdKeyword* keywordEntity = nil;
     [regex enumerateMatchesInString:string
                             options:0
                               range:NSMakeRange(0, string.length)
@@ -39,7 +39,7 @@ static NSString* imageRegular = @"!\\[.*?\\]\()\\(.*?\\)";
                              if (keyword.length) {
                                  // @someone
                                  keyword = [keyword substringWithRange:NSMakeRange(1, keyword.length-1)];
-                                 keywordEntity = [[MKPaserdKeyword alloc] init];
+                                 keywordEntity = [[JLPaserdKeyword alloc] init];
                                  keywordEntity.keyword = keyword;
                                  keywordEntity.range = resultRange;
                                  [rangesArray addObject:keywordEntity];
@@ -56,7 +56,7 @@ static NSString* imageRegular = @"!\\[.*?\\]\()\\(.*?\\)";
                                                                              error:&error];
     __block NSMutableArray *rangesArray = [NSMutableArray array];
     __block NSString* keyword = nil;
-    __block MKPaserdKeyword* keywordEntity = nil;
+    __block JLPaserdKeyword* keywordEntity = nil;
     [regex enumerateMatchesInString:string
                             options:0
                               range:NSMakeRange(0, string.length)
@@ -70,7 +70,7 @@ static NSString* imageRegular = @"!\\[.*?\\]\()\\(.*?\\)";
                              if (keyword.length) {
                                  // #software#
                                  keyword = [keyword substringWithRange:NSMakeRange(1, keyword.length-2)];
-                                 keywordEntity = [[MKPaserdKeyword alloc] init];
+                                 keywordEntity = [[JLPaserdKeyword alloc] init];
                                  keywordEntity.keyword = keyword;
                                  keywordEntity.range = resultRange;
                                  [rangesArray addObject:keywordEntity];
@@ -88,7 +88,7 @@ static NSString* imageRegular = @"!\\[.*?\\]\()\\(.*?\\)";
     __block NSMutableString *mutableString = [string mutableCopy];
     __block NSInteger offset = 0;
     __block NSString* keyword = nil;
-    __block MKPaserdKeyword* keywordEntity = nil;
+    __block JLPaserdKeyword* keywordEntity = nil;
     [regex enumerateMatchesInString:string
                             options:0
                               range:NSMakeRange(0, string.length)
@@ -100,7 +100,7 @@ static NSString* imageRegular = @"!\\[.*?\\]\()\\(.*?\\)";
                                                                 inString:mutableString
                                                                   offset:offset
                                                                 template:@"$0"];
-                             keywordEntity = [[MKPaserdKeyword alloc] init];
+                             keywordEntity = [[JLPaserdKeyword alloc] init];
                              keywordEntity.keyword = keyword;
                              keywordEntity.range = resultRange;
                              [rangesArray addObject:keywordEntity];

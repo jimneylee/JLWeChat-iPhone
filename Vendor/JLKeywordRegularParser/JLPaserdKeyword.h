@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-@interface MKPaserdKeyword : NSObject
+@interface JLPaserdKeyword : NSObject
 
 @property (nonatomic, copy) NSString* keyword;
 @property (nonatomic, assign) NSRange range;

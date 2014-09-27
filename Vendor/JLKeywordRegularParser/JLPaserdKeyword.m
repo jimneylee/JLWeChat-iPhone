@@ -6,9 +6,9 @@
 //  Copyright (c) 2013年 jimneylee. All rights reserved.
 //
 
-#import "MKPaserdKeyword.h"
+#import "JLPaserdKeyword.h"
 
-@implementation MKPaserdKeyword
+@implementation JLPaserdKeyword
 
 - (instancetype)initWithKeyword:(NSString *)keyword atRange:(NSRange)range
 {

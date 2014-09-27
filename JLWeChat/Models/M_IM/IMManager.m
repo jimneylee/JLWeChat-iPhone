@@ -261,7 +261,7 @@ static const int ddLogLevel = LOG_LEVEL_INFO;
     
 	NSError *error = nil;
     
-    NSString *userID = GetUserDefaults(XMPP_USER_ID);
+    NSString *userID = [[NSUserDefaults standardUserDefaults] objectForKey:XMPP_USER_ID];
     
 	if (userID == nil) {
 		return NO;
@@ -309,8 +309,8 @@ static const int ddLogLevel = LOG_LEVEL_INFO;
 
 - (BOOL)doLogin
 {
-    NSString *userID = GetUserDefaults(XMPP_USER_ID);
-    NSString *password = GetUserDefaults(XMPP_PASSWORD);
+    NSString *userID = [[NSUserDefaults standardUserDefaults] objectForKey:XMPP_USER_ID];
+    NSString *password = [[NSUserDefaults standardUserDefaults] objectForKey:XMPP_PASSWORD];
     
     if (userID == nil || password == nil) {
         return NO;

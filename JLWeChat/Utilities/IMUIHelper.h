@@ -1,6 +1,6 @@
 //
 //  MKUIHelper.h
-//  JLIM4iPhone
+//  JLWeChat
 //
 //  Created by jimneylee on 14-5-20.
 //  Copyright (c) 2014年 jimneylee. All rights reserved.
@@ -17,18 +17,25 @@
 
 @interface IMUIHelper : NSObject
 
-+ (void)showWaitingMessage:(NSString *)message inView:(UIView *)view;
-+ (void)hideWaitingMessage:(NSString *)message inView:(UIView *)view;
+// show hud message
++ (void)showTextMessage:(NSString *)message;
 + (void)showTextMessage:(NSString *)message inView:(UIView *)view;
-
++ (void)showWaitingMessage:(NSString *)message;
++ (void)showWaitingMessage:(NSString *)message inView:(UIView *)view;
 + (void)showWaitingMessage:(NSString *)message inView:(UIView *)view inBlock:(dispatch_block_t)block;
 
-+ (void)showWaitingMessage:(NSString *)message;
+// hide hud message
 + (void)hideWaitingMessage:(NSString *)message;
-+ (void)showTextMessage:(NSString *)message;
++ (void)hideWaitingMessage:(NSString *)message inView:(UIView *)view;
++ (void)hideWaitingMessageImmediately;
++ (void)hideWaitingMessageImmediatelyInView:(UIView *)view;
 
+// show alert text
++ (void)showAlertMessage:(NSString *)message;
+
+// configure flat UI
 + (void)configAppearenceForNavigationBar:(UINavigationBar *)navigationBar;
-+ (UIImage *)stretchableImageNamed:(NSString *)imageName;
++ (UIBarButtonItem *)createButtonItemWithTitle:(NSString *)title target:(id)target selector:(SEL)selector;
++ (UIBarButtonItem *)createButtonItemWithImage:(UIImage *)image target:(id)target selector:(SEL)selector;
 
-+ (UIImage *)getImageFromAsset:(ALAsset *)asset;
 @end

@@ -1,6 +1,6 @@
 //
 //  IMTabC.m
-//  JLIM4iPhone
+//  JLWeChat
 //
 //  Created by jimneylee on 14-5-17.
 //  Copyright (c) 2014年 jimneylee. All rights reserved.
@@ -31,10 +31,10 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-
+    
     self.viewControllers = [self generateViewContrllers];
-  
 }
+
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
@@ -48,51 +48,52 @@
     Class NavClass = [UINavigationController class];
     
     IMMainMessageC *messageMainC = [[IMMainMessageC alloc] initWithStyle:UITableViewStylePlain];
-    IMContactsC *contacsC = [[IMContactsC alloc] init];
+    IMContactsC *contactsC = [[IMContactsC alloc] init];
     
     UINavigationController *messageMainNavC = [[NavClass alloc] initWithRootViewController:messageMainC];
-    UINavigationController *contacsCNav = [[NavClass alloc] initWithRootViewController:contacsC];
+    UINavigationController *contactsCNav = [[NavClass alloc] initWithRootViewController:contactsC];
     
     [IMUIHelper configAppearenceForNavigationBar:messageMainNavC.navigationBar];
-    [IMUIHelper configAppearenceForNavigationBar:contacsCNav.navigationBar];
-    
-    NSArray *titles = @[@"消息", @"通讯录"];
-    NSArray *navArray = @[messageMainNavC, contacsCNav];
-    UINavigationController *nav = nil;
-    NSString *normalImageName = nil;
-    NSString *selectedImageName = nil;
+    [IMUIHelper configAppearenceForNavigationBar:contactsCNav.navigationBar];
     
     if (TTOSVersionIsAtLeast7()) {
-        for (int i = 0; i < navArray.count; i++) {
-            nav = navArray[i];
-            normalImageName = [NSString stringWithFormat:@"icon_tab%d", i+1];
-            selectedImageName = [NSString stringWithFormat:@"icon_tab%dh", i+1];
-            nav.tabBarItem = [[UITabBarItem alloc] initWithTitle:titles[i]
-                                                           image:[[UIImage imageNamed:normalImageName] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal]
-                                                   selectedImage:[[UIImage imageNamed:selectedImageName] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal]];
-        }
+        messageMainNavC.tabBarItem = [[UITabBarItem alloc] initWithTitle:@"消息"
+                                                                   image:[[UIImage imageNamed:@"tabbar_mainframe"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal]
+                                                           selectedImage:[[UIImage imageNamed:@"tabbar_mainframeHL"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal]];
+        
+        contactsCNav.tabBarItem = [[UITabBarItem alloc] initWithTitle:@"通讯录"
+                                                                image:[[UIImage imageNamed:@"tabbar_contacts"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal]
+                                                        selectedImage:[[UIImage imageNamed:@"tabbar_contactsHL"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal]];
+        
+        // custom background view for ios7+
+        UIView *customBgView = [[UIView alloc] initWithFrame:self.tabBar.bounds];
+        customBgView.backgroundColor = APP_MAIN_COLOR;
+        [self.tabBar insertSubview:customBgView atIndex:0];
+        self.tabBar.opaque = YES;
     }
     else {
-        for (int i = 0; i < navArray.count; i++) {
-            nav = navArray[i];
-            normalImageName = [NSString stringWithFormat:@"icon_tab%d", i+1];
-            selectedImageName = [NSString stringWithFormat:@"icon_tab%dh", i+1];
-            [nav.tabBarItem setFinishedSelectedImage:[UIImage imageNamed:selectedImageName]
-                          withFinishedUnselectedImage:[UIImage imageNamed:normalImageName]];
-        }
-        [[UITabBar appearance] setBackgroundImage:[[UIImage imageNamed:@"tabbar_bg.png"]
+        messageMainC.tabBarItem.title = @"消息";
+        [messageMainNavC.tabBarItem setFinishedSelectedImage:[UIImage imageNamed:@"tabbar_mainframeHL"]
+                                 withFinishedUnselectedImage:[UIImage imageNamed:@"tabbar_mainframe"]];
+        
+        contactsCNav.tabBarItem.title = @"通讯录";
+        [contactsCNav.tabBarItem setFinishedSelectedImage:[UIImage imageNamed:@"tabbar_contactsHL"]
+                              withFinishedUnselectedImage:[UIImage imageNamed:@"tabbar_contacts"]];
+        
+        [[UITabBar appearance] setBackgroundImage:[[UIImage imageNamed:@"tabbarBkg.png"]
                                                    stretchableImageWithLeftCapWidth:5.f topCapHeight:5.f]];
-        [[UITabBar appearance] setSelectionIndicatorImage:[[UIImage imageNamed:@"tabbar_bg.png"]
+        [[UITabBar appearance] setSelectionIndicatorImage:[[UIImage imageNamed:@"tabbarBkg.png"]
                                                            stretchableImageWithLeftCapWidth:5.f topCapHeight:5.f]];
         
-        NSDictionary *normalState = @{UITextAttributeTextColor : [UIColor grayColor]};
-        NSDictionary *selectedState = @{UITextAttributeTextColor : APP_MAIN_COLOR};
-        
-        [[UITabBarItem appearance] setTitleTextAttributes:normalState forState:UIControlStateNormal];
-        [[UITabBarItem appearance] setTitleTextAttributes:selectedState forState:UIControlStateHighlighted];
+//        NSDictionary *normalState = @{UITextAttributeTextColor : [UIColor grayColor]};
+//        NSDictionary *selectedState = @{UITextAttributeTextColor : APP_MAIN_COLOR};
+//        
+//        [[UITabBarItem appearance] setTitleTextAttributes:normalState forState:UIControlStateNormal];
+//        [[UITabBarItem appearance] setTitleTextAttributes:selectedState forState:UIControlStateHighlighted];
     }
         
-    RAC(messageMainNavC.tabBarItem, badgeValue) = [RACObserve(messageMainC.viewModel, totalUnreadMessagesNum) map:^id(NSNumber *value) {
+    RAC(messageMainNavC.tabBarItem, badgeValue) = [RACObserve(messageMainC.viewModel, totalUnreadMessagesNum)
+                                                   map:^id(NSNumber *value) {
         if ([value intValue] > 0) {
             return [value stringValue];
         }
@@ -101,7 +102,8 @@
         }
     }];
     
-    RAC(contacsCNav.tabBarItem, badgeValue) = [RACObserve(contacsC.viewModel, unsubscribedCountNum) map:^id(NSNumber *value) {
+    RAC(contactsCNav.tabBarItem, badgeValue) = [RACObserve(contactsC.viewModel, unsubscribedCountNum)
+                                                map:^id(NSNumber *value) {
         if ([value intValue] > 0) {
             return [value stringValue];
         }
@@ -110,7 +112,7 @@
         }
     }];
     
-    return @[messageMainNavC, contacsCNav];
+    return @[messageMainNavC, contactsCNav];
 }
 
 @end

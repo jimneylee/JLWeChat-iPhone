@@ -1,6 +1,6 @@
 //
 //  MKEmotionManager.h
-//  JLIM4iPhone
+//  JLWeChat
 //
 //  Created by jimneylee on 14-5-23.
 //  Copyright (c) 2014年 jimneylee. All rights reserved.
@@ -13,7 +13,6 @@
 
 + (instancetype)sharedManager;
 
-// Emotion
 - (NSArray *)emotionsArray;
 - (NSString *)imageNameForEmotionCode:(NSString*)code;
 - (NSString *)imageNameForEmotionName:(NSString*)name;

@@ -3,7 +3,7 @@
 //  MKCommon
 //
 //  Created by jimneylee on 14-5-19.
-//  Copyright (c) 2014年 taocz. All rights reserved.
+//  Copyright (c) 2014年 jimneylee. All rights reserved.
 //
 
 #ifndef MKCommon_TTCategoryHeader_h

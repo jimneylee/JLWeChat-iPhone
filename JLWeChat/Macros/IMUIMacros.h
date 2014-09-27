@@ -1,15 +1,16 @@
 //
 //  IMUIMacros.h
-//  JLIM4iPhone
+//  JLWeChat
 //
 //  Created by jimneylee on 14-5-19.
-//  Copyright (c) 2014年 taocz. All rights reserved.
+//  Copyright (c) 2014年 jimneylee. All rights reserved.
 //
 
-#ifndef JLIM4iPhone_IMUIMacros_h
-#define JLIM4iPhone_IMUIMacros_h
+#ifndef JLWeChat_IMUIMacros_h
+#define JLWeChat_IMUIMacros_h
 
-#define APP_MAIN_COLOR RGBCOLOR(45.f, 184.f, 173.f)
+// APP 主色调
+#define APP_MAIN_COLOR RGBCOLOR(33.f, 40.f, 42.f)
 
 // 搜索框激活时背景色
 #define SEARCH_ACTIVE_BG_COLOR RGBCOLOR(201, 201, 206)
@@ -22,6 +23,10 @@
 #define CELL_PADDING_4 4
 #define CELL_PADDING_2 2
 
+// Screen Size
+#define SCREEN_SIZE [UIScreen mainScreen].bounds.size
+
+// Line Color
 #define LINE_COLOR RGBCOLOR(240, 240, 240)
 
 // 消息页面Cell固定高度
@@ -35,8 +40,6 @@
 
 // 朋友圈回复tableview的width
 #define COMMENT_LIST_VIEW_Width 250
-
-#define GetUserDefaults(xx)   [[NSUserDefaults standardUserDefaults] objectForKey:xx]
 
 // 拍照分享图片最多张数
 #define PHOTO_PICK_MAX_COUNT 9

@@ -1,13 +1,13 @@
 //
 //  IMMacros.h
-//  JLIM4iPhone
+//  JLWeChat
 //
 //  Created by jimneylee on 14-5-22.
 //  Copyright (c) 2014年 jimneylee. All rights reserved.
 //
 
-#ifndef JLIM4iPhone_IMMacros_h
-#define JLIM4iPhone_IMMacros_h
+#ifndef JLWeChat_IMMacros_h
+#define JLWeChat_IMMacros_h
 
 // 是否为本地地址测试
 #define LOCAL_TEST 0

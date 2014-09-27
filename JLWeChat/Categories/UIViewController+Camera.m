@@ -1,9 +1,9 @@
 //
 //  UIViewController+Camera.m
-//  CarInsurance
+//  JLWeChat
 //
-//  Created by jimneylee on 14-5-3.
-//  Copyright (c) 2014年 蒋宇. All rights reserved.
+//  Created by John on 14-5-3.
+//  Copyright (c) 2014年 John. All rights reserved.
 //
 
 #import "UIViewController+Camera.h"
@@ -96,6 +96,7 @@ static const char kAllowsEditingKey;
     imagePickerController.sourceType = UIImagePickerControllerSourceTypeCamera;
     
     imagePickerController.delegate = self;
+    [IMUIHelper configAppearenceForNavigationBar:imagePickerController.navigationBar];
     [self.navigationController presentViewController:imagePickerController animated:YES completion:NULL];
 }
 
@@ -109,6 +110,7 @@ static const char kAllowsEditingKey;
     imagePickerController.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
     
     imagePickerController.delegate = self;
+    [IMUIHelper configAppearenceForNavigationBar:imagePickerController.navigationBar];
     [self.navigationController presentViewController:imagePickerController animated:YES completion:NULL];
 }
 

@@ -1,6 +1,6 @@
 //
 //  MKRecentContactCell.m
-//  JLIM4iPhone
+//  JLWeChat
 //
 //  Created by jimneylee on 14-5-22.
 //  Copyright (c) 2014年 jimneylee. All rights reserved.
@@ -44,6 +44,8 @@
         self.headView = [[UIImageView alloc] initWithFrame:CGRectMake(0.f, 0.f, HEAD_IAMGE_HEIGHT, HEAD_IAMGE_HEIGHT)];
         self.headView.image = [UIImage imageNamed:@"head_s.png"];
         [self.contentView addSubview:self.headView];
+        self.headView.layer.cornerRadius = 4.f;
+        self.headView.clipsToBounds = YES;// must be set for cornerRadius
         
         // badge
         self.badgeView = [JSCustomBadge customBadgeWithString:nil

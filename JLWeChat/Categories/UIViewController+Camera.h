@@ -1,9 +1,9 @@
 //
 //  UIViewController+Camera.h
-//  CarInsurance
+//  JLWeChat
 //
-//  Created by jimneylee on 14-5-3.
-//  Copyright (c) 2014年 蒋宇. All rights reserved.
+//  Created by John on 14-5-3.
+//  Copyright (c) 2014年 John. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>

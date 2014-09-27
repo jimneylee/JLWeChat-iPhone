@@ -1,9 +1,9 @@
 //
 //  MKImageCache.h
-//  JLIM4iPhone
+//  JLWeChat
 //
-//  Created by jimneylee on 14-5-22.
-//  Copyright (c) 2014年 jimneylee. All rights reserved.
+//  Created by john on 14-5-22.
+//  Copyright (c) 2014年 john. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>

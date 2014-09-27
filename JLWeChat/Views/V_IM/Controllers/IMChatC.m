@@ -1,6 +1,6 @@
 //
 //  MKChatC.m
-//  JLIM4iPhone
+//  JLWeChat
 //
 //  Created by jimneylee on 14-5-20.
 //  Copyright (c) 2014年 jimneylee. All rights reserved.
@@ -20,10 +20,10 @@
 #import "XMPPMessageArchiving_Contact_CoreDataObject+RecentContact.h"
 
 #define DATE_LABEL_MARGIN 4.f
-@interface MKChatDateLabel : UILabel
+@interface IMChatDateLabel : UILabel
 
 @end
-@implementation MKChatDateLabel
+@implementation IMChatDateLabel
 
 - (void)drawTextInRect:(CGRect)rect {
     UIEdgeInsets insets = {DATE_LABEL_MARGIN, DATE_LABEL_MARGIN, DATE_LABEL_MARGIN, DATE_LABEL_MARGIN};
@@ -51,6 +51,10 @@ MKChatSendBarDelegate, MKEmotionDelegate, MKChatShareMoreViewDelegate>
 
 @implementation IMChatC
 
+///////////////////////////////////////////////////////////////////////////////////////////////////
+#pragma mark - Class Static
+///////////////////////////////////////////////////////////////////////////////////////////////////
+
 + (XMPPJID *)currentBuddyJid
 {
     return currentChatBuddyJid;
@@ -60,6 +64,10 @@ MKChatSendBarDelegate, MKEmotionDelegate, MKChatShareMoreViewDelegate>
 {
     currentChatBuddyJid = jid;
 }
+
+///////////////////////////////////////////////////////////////////////////////////////////////////
+#pragma mark - Init & Dealloc
+///////////////////////////////////////////////////////////////////////////////////////////////////
 
 - (void)dealloc
 {
@@ -116,6 +124,10 @@ MKChatSendBarDelegate, MKEmotionDelegate, MKChatShareMoreViewDelegate>
     return self;
 }
 
+///////////////////////////////////////////////////////////////////////////////////////////////////
+#pragma mark - UIViewController
+///////////////////////////////////////////////////////////////////////////////////////////////////
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -132,13 +144,13 @@ MKChatSendBarDelegate, MKEmotionDelegate, MKChatShareMoreViewDelegate>
     self.chatSendBar.backgroundColor = RGBCOLOR(244, 244, 244);
     self.chatSendBar.bottom = self.view.height;
     
-    CGFloat tableViewHeight = [UIScreen mainScreen].bounds.size.height - TTStatusBarHeight()
+    CGFloat tableViewHeight = self.view.height - TTStatusBarHeight()
     - TTToolbarHeightForOrientation(self.interfaceOrientation) - self.chatSendBar.height;
     
     self.tableView = [[UITableView alloc] initWithFrame:CGRectMake(0.f, 0.f, self.view.width, tableViewHeight)
                                                   style:UITableViewStyleGrouped];
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
-    self.tableView.backgroundColor = [UIColor whiteColor];
+    self.tableView.backgroundColor = [UIColor groupTableViewBackgroundColor];
     self.tableView.backgroundView = [[UIView alloc] init];
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
@@ -187,7 +199,9 @@ MKChatSendBarDelegate, MKEmotionDelegate, MKChatShareMoreViewDelegate>
     [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
+///////////////////////////////////////////////////////////////////////////////////////////////////
 #pragma mark - Private
+///////////////////////////////////////////////////////////////////////////////////////////////////
 
 - (void)registerKeyboardNotifications
 {
@@ -217,7 +231,18 @@ MKChatSendBarDelegate, MKEmotionDelegate, MKChatShareMoreViewDelegate>
     [self.refreshControl endRefreshing];
 }
 
+// TODO: 待深入考虑
+
+- (BOOL)isNearbyBottom
+{
+    CGFloat delta = 200.f;//200-80
+    NSLog(@"offsety = %f, height = %f", self.tableView.contentOffset.y, self.tableView.contentSize.height - self.tableView.height);
+    return self.tableView.contentOffset.y + delta > self.tableView.contentSize.height - self.tableView.height;
+}
+
+///////////////////////////////////////////////////////////////////////////////////////////////////
 #pragma mark - UI Create
+///////////////////////////////////////////////////////////////////////////////////////////////////
 
 - (IMEmotionMainView *)emotionMainView
 {
@@ -242,7 +267,9 @@ MKChatSendBarDelegate, MKEmotionDelegate, MKChatShareMoreViewDelegate>
     return _shareMoreView;
 }
 
+///////////////////////////////////////////////////////////////////////////////////////////////////
 #pragma mark - Animation
+///////////////////////////////////////////////////////////////////////////////////////////////////
 
 - (void)popdownSendBarAnimation
 {
@@ -256,11 +283,6 @@ MKChatSendBarDelegate, MKEmotionDelegate, MKChatShareMoreViewDelegate>
     }];
 }
 
-///////////////////////////////////////////////////////////////////////////////////////////////////
-/**
- *  表情试图和分享更多试图的弹出切换策略：
- *  统一处理，只做前置显示
- */
 - (void)popupEmotionViewOrShareMoreViewAnimation
 {
     self.willShowEmtionOrShareMoreView = YES;
@@ -280,7 +302,6 @@ MKChatSendBarDelegate, MKEmotionDelegate, MKChatShareMoreViewDelegate>
     }];
 }
 
-///////////////////////////////////////////////////////////////////////////////////////////////////
 - (void)popdownEmotionViewOrShareMoreViewAnimation
 {
     [UIView animateWithDuration:.2f animations:^{
@@ -290,7 +311,6 @@ MKChatSendBarDelegate, MKEmotionDelegate, MKChatShareMoreViewDelegate>
     }];
 }
 
-///////////////////////////////////////////////////////////////////////////////////////////////////
 - (void)popupEmotionViewAnimation
 {
     // create shareMoreView
@@ -300,16 +320,13 @@ MKChatSendBarDelegate, MKEmotionDelegate, MKChatShareMoreViewDelegate>
     [self popupEmotionViewOrShareMoreViewAnimation];
 }
 
-///////////////////////////////////////////////////////////////////////////////////////////////////
 - (void)popdownEmotionViewAnimation
 {
     [self popdownEmotionViewOrShareMoreViewAnimation];
 }
 
-///////////////////////////////////////////////////////////////////////////////////////////////////
 - (void)popupShareMoreViewAnimation
 {
-    // create emotionView
     if (self.emotionMainView) {
         [self.view bringSubviewToFront:self.shareMoreView];
     }
@@ -317,7 +334,6 @@ MKChatSendBarDelegate, MKEmotionDelegate, MKChatShareMoreViewDelegate>
     [self popupEmotionViewOrShareMoreViewAnimation];
 }
 
-///////////////////////////////////////////////////////////////////////////////////////////////////
 - (void)popdownShareMoreViewAnimation
 {
     [self popdownEmotionViewOrShareMoreViewAnimation];
@@ -330,28 +346,21 @@ MKChatSendBarDelegate, MKEmotionDelegate, MKChatShareMoreViewDelegate>
                           atScrollPosition:UITableViewScrollPositionBottom animated:YES];
 }
 
-- (BOOL)isNearbyBottom
-{
-    CGFloat delta = 200.f;//200-80
-    NSLog(@"offsety = %f, height = %f", self.tableView.contentOffset.y, self.tableView.contentSize.height - self.tableView.height);
-    return self.tableView.contentOffset.y + delta > self.tableView.contentSize.height - self.tableView.height;
-}
-
-///////////////////////////////////////////////////////////////////////////////////////////////////
 - (void)scrollToBottomAnimated:(BOOL)animated
 {
     [self.tableView scrollRectToVisible:CGRectMake(0.f, self.tableView.contentSize.height - self.tableView.height,
                                                    self.tableView.width, self.tableView.height) animated:animated];
 }
 
-///////////////////////////////////////////////////////////////////////////////////////////////////
 - (void)scrollToTopAnimated:(BOOL)animated
 {
     [self.tableView scrollRectToVisible:CGRectMake(0.f, 0.f,
                                                    self.tableView.width, self.tableView.height) animated:animated];
 }
 
+///////////////////////////////////////////////////////////////////////////////////////////////////
 #pragma mark - UIKeyboardNotification
+///////////////////////////////////////////////////////////////////////////////////////////////////
 
 - (void)keyboardWillShow:(NSNotification*)notification
 {
@@ -402,7 +411,9 @@ MKChatSendBarDelegate, MKEmotionDelegate, MKChatShareMoreViewDelegate>
     }];
 }
 
+///////////////////////////////////////////////////////////////////////////////////////////////////
 #pragma mark - MKChatSendBarDelegate
+///////////////////////////////////////////////////////////////////////////////////////////////////
 
 - (void)sendPlainMessage:(NSString *)plainMessage
 {
@@ -457,7 +468,9 @@ MKChatSendBarDelegate, MKEmotionDelegate, MKChatShareMoreViewDelegate>
     [self.viewModel sendMessageWithText:self.chatSendBar.inputText];
 }
 
+///////////////////////////////////////////////////////////////////////////////////////////////////
 #pragma mark - MKChatShareMoreViewDelegate
+///////////////////////////////////////////////////////////////////////////////////////////////////
 
 - (void)didPickPhotoFromLibrary
 {
@@ -468,6 +481,10 @@ MKChatSendBarDelegate, MKEmotionDelegate, MKChatShareMoreViewDelegate>
         if (object) {
             [self.viewModel sendMessageWithImage:object];
         }
+
+        if (TTOSVersionIsAtLeast7()) {
+            [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
+        }
     } allowsEditing:NO];
 }
 
@@ -475,16 +492,20 @@ MKChatSendBarDelegate, MKEmotionDelegate, MKChatShareMoreViewDelegate>
 {
     @weakify(self);
     [self photoFromCamera:^(id object) {
-        
+
         @strongify(self);
         if (object) {
             [self.viewModel sendMessageWithImage:object];
+        }
+        
+        if (TTOSVersionIsAtLeast7()) {
+            [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
         }
     } allowsEditing:NO];
 }
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-#pragma mark UITableViewDataSource
+#pragma mark - UITableViewDataSource
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
@@ -505,12 +526,12 @@ MKChatSendBarDelegate, MKEmotionDelegate, MKChatShareMoreViewDelegate>
 	
 	XMPPMessageArchiving_Message_CoreDataObject *coreDataMessage = [self.viewModel objectAtIndexPath:indexPath];
     id message = coreDataMessage.chatMessage;
-    MKMessageBaseCell *cell = nil;
+    IMMessageBaseCell *cell = nil;
     
     if ([message isKindOfClass:[IMChatMessageTextEntity class]]) {
         cell = [tableView dequeueReusableCellWithIdentifier:MessageTextCellIdentifier];
         if (!cell) {
-            cell = [[MKMessageTextCell alloc] initWithStyle:UITableViewCellStyleSubtitle
+            cell = [[IMMessageTextCell alloc] initWithStyle:UITableViewCellStyleSubtitle
                                             reuseIdentifier:MessageTextCellIdentifier];
             cell.selectionStyle = UITableViewCellSelectionStyleNone;
         }
@@ -520,7 +541,7 @@ MKChatSendBarDelegate, MKEmotionDelegate, MKChatShareMoreViewDelegate>
     else if ([message isKindOfClass:[IMChatMessageImageEntity class]]) {
         cell = [tableView dequeueReusableCellWithIdentifier:MessageImageCellIdentifier];
         if (!cell) {
-            cell = [[MKMessageImageCell alloc] initWithStyle:UITableViewCellStyleSubtitle
+            cell = [[IMMessageImageCell alloc] initWithStyle:UITableViewCellStyleSubtitle
                                             reuseIdentifier:MessageImageCellIdentifier];
             cell.selectionStyle = UITableViewCellSelectionStyleNone;
         }
@@ -529,7 +550,7 @@ MKChatSendBarDelegate, MKEmotionDelegate, MKChatShareMoreViewDelegate>
     else {
         cell = [tableView dequeueReusableCellWithIdentifier:MessageVoiceCellIdentifier];
         if (!cell) {
-            cell = [[MKMessageBaseCell alloc] initWithStyle:UITableViewCellStyleSubtitle
+            cell = [[IMMessageBaseCell alloc] initWithStyle:UITableViewCellStyleSubtitle
                                           reuseIdentifier:MessageVoiceCellIdentifier];
         }
     }
@@ -537,7 +558,9 @@ MKChatSendBarDelegate, MKEmotionDelegate, MKChatShareMoreViewDelegate>
     return cell;
 }
 
+///////////////////////////////////////////////////////////////////////////////////////////////////
 #pragma mark - UITabelViewDelegate
+///////////////////////////////////////////////////////////////////////////////////////////////////
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -545,25 +568,25 @@ MKChatSendBarDelegate, MKEmotionDelegate, MKChatShareMoreViewDelegate>
     id message = coreDataMessage.chatMessage;
     
     if ([message isKindOfClass:[IMChatMessageTextEntity class]]) {
-        return [MKMessageTextCell heightForObject:message atIndexPath:indexPath tableView:tableView];
+        return [IMMessageTextCell heightForObject:message atIndexPath:indexPath tableView:tableView];
     }
     
     else if ([message isKindOfClass:[IMChatMessageImageEntity class]]) {
-        return [MKMessageImageCell heightForObject:message atIndexPath:indexPath tableView:tableView];
+        return [IMMessageImageCell heightForObject:message atIndexPath:indexPath tableView:tableView];
     }
     
-    else return 44.f;
+    else return TT_ROW_HEIGHT;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
 {
-    return 20.f;
+    return 24.f;
 }
 
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
 {
-    UIView *bgView = [[UIView alloc] initWithFrame:CGRectMake(0.f, 0.f, tableView.width, 20.f)];
-    MKChatDateLabel *dateTextView = [[MKChatDateLabel alloc] initWithFrame:CGRectZero];
+    UIView *bgView = [[UIView alloc] initWithFrame:CGRectMake(0.f, 0.f, tableView.width, 24.f)];
+    IMChatDateLabel *dateTextView = [[IMChatDateLabel alloc] initWithFrame:CGRectZero];
     dateTextView.textColor = [UIColor whiteColor];
     dateTextView.font = [UIFont systemFontOfSize:13.f];
     dateTextView.backgroundColor = [UIColor lightGrayColor];
@@ -575,12 +598,14 @@ MKChatSendBarDelegate, MKEmotionDelegate, MKChatShareMoreViewDelegate>
     dateTextView.text = title;
     [dateTextView sizeToFit];
     dateTextView.width = dateTextView.width + DATE_LABEL_MARGIN * 2;
-    dateTextView.center = CGPointMake([UIScreen mainScreen].bounds.size.width / 2, bgView.height / 2);
+    dateTextView.center = CGPointMake(tableView.width / 2, bgView.height / 2);
     
     return bgView;
 }
 
+///////////////////////////////////////////////////////////////////////////////////////////////////
 #pragma mark - UIScrollViewDelegate
+///////////////////////////////////////////////////////////////////////////////////////////////////
 
 - (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView
 {
@@ -592,7 +617,9 @@ MKChatSendBarDelegate, MKEmotionDelegate, MKChatShareMoreViewDelegate>
     }
 }
 
+///////////////////////////////////////////////////////////////////////////////////////////////////
 #pragma mark - XMPPStreamDelegate
+///////////////////////////////////////////////////////////////////////////////////////////////////
 
 - (void)xmppStream:(XMPPStream *)sender didSendMessage:(XMPPMessage *)message
 {

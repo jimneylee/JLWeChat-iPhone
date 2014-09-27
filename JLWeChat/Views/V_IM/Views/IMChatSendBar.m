@@ -89,7 +89,7 @@
     
     CGFloat kTextViewBgMargin = 2.f;
     CGFloat kTextViewMinHeight = 35.f;
-    CGFloat kTextViewMaxHeight = [UIScreen mainScreen].bounds.size.height - TT_KEYBOARD_HEIGHT
+    CGFloat kTextViewMaxHeight = SCREEN_SIZE.height - TT_KEYBOARD_HEIGHT
     - (TT_STATUSBAR_HEITH + TT_TOOLBAR_HEIGHT) - TT_TOOLBAR_HEIGHT * 3;// 粗略估算
     
     if (self.functionOptions & MKChatSendBarFunctionOption_Voice) {

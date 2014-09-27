@@ -1,6 +1,6 @@
 //
 //  XMPPMessageArchiving_Contact_CoreDataObject+RecentContact.m
-//  JLIM4iPhone
+//  JLWeChat
 //
 //  Created by Lee jimney on 5/31/14.
 //  Copyright (c) 2014 jimneylee. All rights reserved.

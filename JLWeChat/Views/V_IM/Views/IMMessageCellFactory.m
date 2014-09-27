@@ -1,6 +1,6 @@
 //
 //  MKMessageCellFactory.m
-//  JLIM4iPhone
+//  JLWeChat
 //
 //  Created by jimneylee on 14-5-22.
 //  Copyright (c) 2014年 jimneylee. All rights reserved.
@@ -8,7 +8,7 @@
 
 #import "IMMessageCellFactory.h"
 #import <Nimbus/NIAttributedLabel.h>
-#import "MKPaserdKeyword.h"
+#import "JLPaserdKeyword.h"
 #import "XMPPMessageArchiving_Message_CoreDataObject+ChatMessage.h"
 #import "IMManager.h"
 #import "IMChatMessageEntityFactory.h"
@@ -28,7 +28,7 @@
 
 #pragma mark - MKMessageBaseCell
 
-@interface MKMessageBaseCell()
+@interface IMMessageBaseCell()
 
 @property (nonatomic, strong) UIImageView *headView;
 @property (nonatomic, strong) UIImageView *bubbleBgView;
@@ -38,7 +38,7 @@
 
 @end
 
-@implementation MKMessageBaseCell
+@implementation IMMessageBaseCell
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 - (instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
@@ -84,7 +84,7 @@
 {
     [super layoutSubviews];
     
-    self.contentView.frame = CGRectMake(0.f, 0.f, [UIScreen mainScreen].bounds.size.width, self.height);
+    self.contentView.frame = CGRectMake(0.f, 0.f, SCREEN_SIZE.width, self.height);
     
     UIImage *bubbleBgImage = [self bubbleImageForMessageType:self.type
                                                   isOutgoing:self.isOutgoing];
@@ -173,27 +173,27 @@
 #define BUBBLE_BOTTOM_MARGIN 20
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
-@interface MKMessageTextCell()<NIAttributedLabelDelegate>
+@interface IMMessageTextCell()<NIAttributedLabelDelegate>
 
 @property (nonatomic, strong) NIAttributedLabel *contentLabel;
 @property (nonatomic, strong) IMChatMessageTextEntity *textMessage;
 
 @end
 
-@implementation MKMessageTextCell
+@implementation IMMessageTextCell
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 + (void)insertAllEmotionsInContentLabel:(NIAttributedLabel *)contentLabel
                         withChatMessage:(IMChatMessageTextEntity *)message
 {
-    MKPaserdKeyword* keyworkEntity = nil;
+    JLPaserdKeyword* keyworkEntity = nil;
     if (message.emotionRanges.count) {
         NSString* emotionImageName = nil;
         
         // replace emotion from nail to head, so range's location is right. it's very important, good idea!
         NSData *imageData = nil;
         for (int i = message.emotionRanges.count - 1; i >= 0; i--) {
-            keyworkEntity = (MKPaserdKeyword*)message.emotionRanges[i];
+            keyworkEntity = (JLPaserdKeyword*)message.emotionRanges[i];
             
             if (i < message.emotionImageNames.count) {
                 emotionImageName = message.emotionImageNames[i];
@@ -340,7 +340,7 @@
 
         [self.textMessage parseAllKeywords];
         self.contentLabel.text = self.textMessage.text;
-        [MKMessageTextCell insertAllEmotionsInContentLabel:self.contentLabel
+        [IMMessageTextCell insertAllEmotionsInContentLabel:self.contentLabel
                                            withChatMessage:self.textMessage];
     }
     return YES;
@@ -371,14 +371,14 @@
 #define IMAGE_MAX_LENGTH 100
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
-@interface MKMessageImageCell()
+@interface IMMessageImageCell()
 
 @property (nonatomic, strong) IMChatMessageImageEntity *imageMessage;
 @property (nonatomic, strong) UIImageView *contentImageView;
 
 @end
 
-@implementation MKMessageImageCell
+@implementation IMMessageImageCell
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 + (CGFloat)heightForObject:(id)object atIndexPath:(NSIndexPath *)indexPath tableView:(UITableView *)tableView

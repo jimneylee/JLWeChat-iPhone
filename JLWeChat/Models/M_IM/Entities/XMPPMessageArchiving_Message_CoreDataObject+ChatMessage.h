@@ -1,6 +1,6 @@
 //
 //  XMPPMessageArchiving_Message_CoreDataObject+ChatMessage.h
-//  JLIM4iPhone
+//  JLWeChat
 //
 //  Created by Lee jimney on 5/24/14.
 //  Copyright (c) 2014 jimneylee. All rights reserved.

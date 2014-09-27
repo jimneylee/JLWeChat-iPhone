@@ -6,9 +6,6 @@ PODS:
     - AFNetworking/Security
     - AFNetworking/Serialization
     - AFNetworking/UIKit
-  - AFNetworking-MUResponseSerializer (1.0.0):
-    - AFNetworking
-    - NSObject-MUJSONMapping
   - AFNetworking/NSURLConnection (2.2.4):
     - AFNetworking/Reachability
     - AFNetworking/Security
@@ -24,6 +21,7 @@ PODS:
   - AFNetworking2-RACExtensions (0.0.1):
     - AFNetworking (~> 2.0)
     - ReactiveCocoa (~> 2.0)
+  - AVOSCloud (2.6.0)
   - CocoaAsyncSocket (7.3.5)
   - CocoaLumberjack (1.6.5.1):
     - CocoaLumberjack/Core
@@ -101,7 +99,6 @@ PODS:
     - Nimbus/Core
   - Nimbus/WebController (1.2.0):
     - Nimbus/Core
-  - NSObject-MUJSONMapping (1.0.0)
   - QBImagePickerController (2.1)
   - ReactiveCocoa (2.3.1):
     - ReactiveCocoa/UI
@@ -255,14 +252,13 @@ PODS:
 
 DEPENDENCIES:
   - AFNetworking (~> 2.2.4)
-  - AFNetworking-MUResponseSerializer (~> 1.0.0)
   - AFNetworking2-RACExtensions (~> 0.0.1)
+  - AVOSCloud (~> 2.6.0)
   - CocoaAsyncSocket (~> 7.3.5)
   - HPGrowingTextView (~> 1.1)
   - JSCustomBadge (~> 1.0.1)
   - MBProgressHUD (~> 0.8)
   - Nimbus (~> 1.2.0)
-  - NSObject-MUJSONMapping (~> 1.0.0)
   - QBImagePickerController (~> 2.1)
   - ReactiveCocoa (~> 2.3)
   - ReactiveViewModel (~> 0.2)
@@ -271,8 +267,8 @@ DEPENDENCIES:
 
 SPEC CHECKSUMS:
   AFNetworking: ab63e259fe91eef4519b371ef0a4955af0e73e64
-  AFNetworking-MUResponseSerializer: 0a5922fcae7a102e872be9b8da841970f1dc6cb1
   AFNetworking2-RACExtensions: 38ac068ed0257ca0a11f380bfd8375023c1cbe57
+  AVOSCloud: 2583e139a61db44abfe328b90d4425fee91a21b0
   CocoaAsyncSocket: 45bdbbc1c0a5ed0640ff4c42af325ba43a2f099a
   CocoaLumberjack: baf4a09a3bcbdfea3363556a90104e026d3504e2
   HPGrowingTextView: 07d5ab1f1e867acfb7a6f498b819948c9e97d07c
@@ -280,7 +276,6 @@ SPEC CHECKSUMS:
   libwebp: 7774a1ee15d19c0f70a992a7e4e4a23f3874a253
   MBProgressHUD: c356980b0cd097f19acec959b49dca5eb8ec31be
   Nimbus: 14fd6f034c5f53d3dccef6cfd5763959497289a9
-  NSObject-MUJSONMapping: f9d7d686ebda20f9613fb05c4b8d006bc0e8d7f2
   QBImagePickerController: c2273a11d55e7c308ac2f88625ef58bb56b5b7a4
   ReactiveCocoa: dca75777b9d18990c8714a3a6f2149f29b4d1462
   ReactiveViewModel: 78387196df2e7535bb2776c41df15dbb17300f8a

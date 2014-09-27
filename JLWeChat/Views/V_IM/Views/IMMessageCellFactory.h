@@ -1,6 +1,6 @@
 //
 //  MKMessageCellFactory.h
-//  JLIM4iPhone
+//  JLWeChat
 //
 //  Created by jimneylee on 14-5-22.
 //  Copyright (c) 2014年 jimneylee. All rights reserved.
@@ -13,19 +13,19 @@
 @end
 
 
-@interface MKMessageBaseCell : UITableViewCell
+@interface IMMessageBaseCell : UITableViewCell
 
 - (BOOL)shouldUpdateCellWithObject:(id)object;
 
 @end
 
-@interface MKMessageTextCell : MKMessageBaseCell
+@interface IMMessageTextCell : IMMessageBaseCell
 
 + (CGFloat)heightForObject:(id)object atIndexPath:(NSIndexPath *)indexPath tableView:(UITableView *)tableView;
 
 @end
 
-@interface MKMessageImageCell : MKMessageBaseCell
+@interface IMMessageImageCell : IMMessageBaseCell
 
 + (CGFloat)heightForObject:(id)object atIndexPath:(NSIndexPath *)indexPath tableView:(UITableView *)tableView;
 

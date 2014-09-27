@@ -1,14 +1,14 @@
 //
 //  MKUploader.m
-//  JLIM4iPhone
+//  JLWeChat
 //
-//  Created by jimneylee on 14-5-23.
-//  Copyright (c) 2014年 jimneylee. All rights reserved.
+//  Created by john on 14-5-23.
+//  Copyright (c) 2014年 john. All rights reserved.
 //
 
 #import "IMUploader.h"
 #import <AFNetworking/AFNetworking.h>
-#import <MUResponseSerializer.h>
+//#import <MUResponseSerializer.h>
 #import "IMMacros.h"
 #import "IMUIHelper.h"
 #import <ReactiveCocoa/RACEXTScope.h>
@@ -60,7 +60,7 @@
     if (self) {
         self.showAlert = YES;
         self.manager = [AFHTTPRequestOperationManager manager];
-        [self.manager setResponseSerializer:[[MUResponseSerializer alloc] initWithResponseClass:[MKUploadResponse class]]];
+//        [self.manager setResponseSerializer:[[MUResponseSerializer alloc] initWithResponseClass:[MKUploadResponse class]]];
     }
     return self;
 }

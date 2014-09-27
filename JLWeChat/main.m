@@ -1,6 +1,6 @@
 //
 //  main.m
-//  JLIM4iPhone
+//  JLWeChat
 //
 //  Created by jimneylee on 14-5-12.
 //  Copyright (c) 2014年 jimneylee. All rights reserved.

@@ -1,13 +1,13 @@
 //
 //  MKChatMessageEntity.m
-//  JLIM4iPhone
+//  JLWeChat
 //
 //  Created by jimneylee on 14-5-23.
 //  Copyright (c) 2014年 jimneylee. All rights reserved.
 //
 
 #import "IMChatMessageEntityFactory.h"
-#import "MKKeywordRegularParser.h"
+#import "JLKeywordRegularParser.h"
 #import "IMEmotionManager.h"
 
 #pragma mark MKChatMessageBaseEntity
@@ -63,12 +63,12 @@
         if (!self.emotionRanges) {
             
             NSString *trimedString = self.text;
-            self.emotionRanges = [MKKeywordRegularParser keywordRangesOfEmotionInString:self.text
+            self.emotionRanges = [JLKeywordRegularParser keywordRangesOfEmotionInString:self.text
                                                                            trimedString:&trimedString];
             self.text = trimedString;
             NSMutableArray* emotionImageNames = [NSMutableArray arrayWithCapacity:self.emotionRanges.count];
             
-            for (MKPaserdKeyword *keyworkEntity in self.emotionRanges) {
+            for (JLPaserdKeyword *keyworkEntity in self.emotionRanges) {
                 NSString* keyword = keyworkEntity.keyword;
                 
                 for (IMEmotionEntity *emotionEntity in [IMEmotionManager sharedManager].emotionsArray) {
@@ -86,7 +86,7 @@
         if (!self.text.length) {
             self.text = @" ";
             if (!TTOSVersionIsAtLeast7()) {
-                for (MKPaserdKeyword *keyword in self.emotionRanges) {
+                for (JLPaserdKeyword *keyword in self.emotionRanges) {
                     keyword.range = NSMakeRange(keyword.range.location + 1, keyword.range.length);
                 }
             }

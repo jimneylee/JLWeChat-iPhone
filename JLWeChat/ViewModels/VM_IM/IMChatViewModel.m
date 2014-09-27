@@ -1,12 +1,13 @@
 //
 //  IMMessageViewModel.m
-//  JLIM4iPhone
+//  JLWeChat
 //
 //  Created by jimneylee on 14-5-21.
 //  Copyright (c) 2014年 jimneylee. All rights reserved.
 //
 
 #import "IMChatViewModel.h"
+#import <AVOSCloud/AVOSCloud.h>
 #import "IMChatMessageEntityFactory.h"
 #import "IMUploader.h"
 #import "NSDate+IM.h"
@@ -183,7 +184,18 @@ static const int ddLogLevel = LOG_LEVEL_INFO;
 
 - (void)sendMessageWithImage:(UIImage *)image
 {
-#if 1
+    NSData *imageData = UIImagePNGRepresentation(image);
+    AVFile *imageFile = [AVFile fileWithName:@"image.png" data:imageData];
+//    [imageFile save];
+    
+    AVObject *userPhoto = [AVObject objectWithClassName:@"ChatPhotos"];
+//    [userPhoto setObject:@"My trip to Hawaii!" forKey:@"imageName"];
+    [userPhoto setObject:imageFile             forKey:@"photoFile"];
+    [userPhoto saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+        
+    }];
+    
+#if 0
     @weakify(self);
     [self.uploader uploadImage:image url:^(NSString *url) {
         
@@ -199,15 +211,14 @@ static const int ddLogLevel = LOG_LEVEL_INFO;
         }
     }];
 #else
-    //http://g.hiphotos.baidu.com/image/pic/item/b219ebc4b74543a91c5891c61c178a82b901147c.jpg
     NSString *url = @"http://g.hiphotos.baidu.com/image/pic/item/b219ebc4b74543a91c5891c61c178a82b901147c.jpg";
     if (url.length > 0) {
-        NSString *JSONString = [MKChatMessageImageEntity JSONStringWithImageWidth:500
+        NSString *JSONString = [IMChatMessageImageEntity JSONStringWithImageWidth:500
                                                                            height:750
                                                                               url:url];
         if (JSONString.length > 0) {
             [[IMManager sharedManager] sendChatMessage:JSONString
-                                                   toJID:self.buddyJID];
+                                                 toJID:self.buddyJID];
         }
     }
 #endif

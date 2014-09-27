@@ -1,6 +1,6 @@
 //
 //  MKEmotionMainView.m
-//  JLIM4iPhone
+//  JLWeChat
 //
 //  Created by jimney on 13-3-5.
 //  Copyright (c) 2013年 jimneylee. All rights reserved.

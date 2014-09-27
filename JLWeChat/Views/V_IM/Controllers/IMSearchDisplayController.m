@@ -1,6 +1,6 @@
 //
 //  MKSearchDisplayController.m
-//  JLIM4iPhone
+//  JLWeChat
 //
 //  Created by Lee jimney on 6/2/14.
 //  Copyright (c) 2014 jimneylee. All rights reserved.

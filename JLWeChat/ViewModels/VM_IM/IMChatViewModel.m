@@ -11,6 +11,7 @@
 #import "IMChatMessageEntityFactory.h"
 #import "IMUploader.h"
 #import "NSDate+IM.h"
+#import "QNAuthPolicy.h"
 
 // Log levels: off, error, warn, info, verbose
 #if DEBUG
@@ -182,6 +183,14 @@ static const int ddLogLevel = LOG_LEVEL_INFO;
     }
 }
 
+- (NSString *)tokenWithScope:(NSString *)scope
+{
+    QNAuthPolicy *p = [[QNAuthPolicy alloc] init];
+    p.scope = scope;
+    return [p makeToken:@"903l5JQnmIRgHD_Rhwdwnrtr0qKRj1C3GPcwj_jh"//AK
+              secretKey:@"kuZCw35r20ErLP8y5jaD9nxAAhIlnGASYdtRkdYH"];//SK
+}
+
 - (void)sendMessageWithImage:(UIImage *)image
 {
 #if 0
@@ -205,12 +214,14 @@ static const int ddLogLevel = LOG_LEVEL_INFO;
     
     __block QNResponseInfo *testInfo = nil;
 	__block NSDictionary *testResp = nil;
-    static NSString *const g_token = @"QWYn5TFQsLLU1pL5MFEmX3s5DmHdUThav9WyOWOm:FRHDJVxqvEregQ2N_h8xCtJ0n1k=:eyJzY29wZSI6Imlvc3NkayIsImRlYWRsaW5lIjoyMDQzMzcxNDYzfQ==";
+//    static NSString *const g_token = @"QWYn5TFQsLLU1pL5MFEmX3s5DmHdUThav9WyOWOm:FRHDJVxqvEregQ2N_h8xCtJ0n1k=:eyJzY29wZSI6Imlvc3NkayIsImRlYWRsaW5lIjoyMDQzMzcxNDYzfQ==";
     
-	QNUploadOption *opt = [[QNUploadOption alloc] initWithMime:@"text/plain" progressHandler:nil params:@{ @"x:foo":@"bar" } checkCrc:YES cancellationSignal:nil];
+    NSString *token = [self tokenWithScope:@"jlwechat"];
+	QNUploadOption *opt = [[QNUploadOption alloc] initWithMime:@"image/jpeg" progressHandler:nil params:nil checkCrc:YES cancellationSignal:nil];
     
     QNUploadManager *upManager = [QNUploadManager sharedInstanceWithRecorder:nil recorderKeyGenerator:nil];
-	[upManager putData:imageData key:@"你好" token:g_token complete: ^(QNResponseInfo *info, NSString *key, NSDictionary *resp) {
+	[upManager putData:imageData key:[self generateImageKey]
+                 token:token complete: ^(QNResponseInfo *info, NSString *key, NSDictionary *resp) {
 	    testInfo = info;
 	    testResp = resp;
 	} option:opt];
@@ -227,6 +238,15 @@ static const int ddLogLevel = LOG_LEVEL_INFO;
         }
     }
 #endif
+}
+
+- (NSString *)generateImageKey
+{
+    NSDateFormatter *f = [[NSDateFormatter alloc] init];
+    [f setDateFormat:@"yyyy-MM-dd-HH-mm-ss"];
+    [f setTimeZone:[NSTimeZone timeZoneWithName:@"GMT"]];
+    NSString *timeString = [f stringFromDate:[NSDate date]];
+    return [NSString stringWithFormat:@"%@.jpg", timeString];
 }
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

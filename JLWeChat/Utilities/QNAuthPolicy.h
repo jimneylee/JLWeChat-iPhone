@@ -17,4 +17,6 @@
 @property (nonatomic, assign) long long expires;
 @property (nonatomic, assign) long long escape;
 
+- (NSString *)makeToken:(NSString *)accessKey secretKey:(NSString *)secretKey;
+
 @end

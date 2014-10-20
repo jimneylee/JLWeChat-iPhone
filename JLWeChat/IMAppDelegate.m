@@ -9,7 +9,6 @@
 #import "IMAppDelegate.h"
 #import <AFNetworkReachabilityManager.h>
 #import <UIImageView+AFNetworking.h>
-#import <AVOSCloud/AVOSCloud.h>
 #import "IMCache.h"
 
 @implementation IMAppDelegate
@@ -38,9 +37,6 @@
 {
     [[AFNetworkReachabilityManager sharedManager] startMonitoring];
     
-    // avos
-    [AVOSCloud setApplicationId:@"t6lz5bvwdtn7jgdimwyeeme6f6jwphljcmmjl4zxa1s4vxb1"
-                      clientKey:@"7vsub9e76ntqqmt3n5i3tml0m7q8bof63r89rc0q7wvawiml"];
 }
 
 #pragma mark - UIApplicationDelegate

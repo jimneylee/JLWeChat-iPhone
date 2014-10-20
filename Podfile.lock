@@ -21,7 +21,6 @@ PODS:
   - AFNetworking2-RACExtensions (0.0.1):
     - AFNetworking (~> 2.0)
     - ReactiveCocoa (~> 2.0)
-  - AVOSCloud (2.6.0)
   - CocoaAsyncSocket (7.3.5)
   - CocoaLumberjack (1.6.5.1):
     - CocoaLumberjack/Core
@@ -253,7 +252,6 @@ PODS:
 DEPENDENCIES:
   - AFNetworking (~> 2.2.4)
   - AFNetworking2-RACExtensions (~> 0.0.1)
-  - AVOSCloud (~> 2.6.0)
   - CocoaAsyncSocket (~> 7.3.5)
   - HPGrowingTextView (~> 1.1)
   - JSCustomBadge (~> 1.0.1)
@@ -268,7 +266,6 @@ DEPENDENCIES:
 SPEC CHECKSUMS:
   AFNetworking: ab63e259fe91eef4519b371ef0a4955af0e73e64
   AFNetworking2-RACExtensions: 38ac068ed0257ca0a11f380bfd8375023c1cbe57
-  AVOSCloud: 2583e139a61db44abfe328b90d4425fee91a21b0
   CocoaAsyncSocket: 45bdbbc1c0a5ed0640ff4c42af325ba43a2f099a
   CocoaLumberjack: baf4a09a3bcbdfea3363556a90104e026d3504e2
   HPGrowingTextView: 07d5ab1f1e867acfb7a6f498b819948c9e97d07c

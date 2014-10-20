@@ -7,7 +7,7 @@
 //
 
 #import "IMChatViewModel.h"
-#import <AVOSCloud/AVOSCloud.h>
+#import "QiniuSDK.h"
 #import "IMChatMessageEntityFactory.h"
 #import "IMUploader.h"
 #import "NSDate+IM.h"
@@ -184,17 +184,6 @@ static const int ddLogLevel = LOG_LEVEL_INFO;
 
 - (void)sendMessageWithImage:(UIImage *)image
 {
-    NSData *imageData = UIImagePNGRepresentation(image);
-    AVFile *imageFile = [AVFile fileWithName:@"image.png" data:imageData];
-//    [imageFile save];
-    
-    AVObject *userPhoto = [AVObject objectWithClassName:@"ChatPhotos"];
-//    [userPhoto setObject:@"My trip to Hawaii!" forKey:@"imageName"];
-    [userPhoto setObject:imageFile             forKey:@"photoFile"];
-    [userPhoto saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
-        
-    }];
-    
 #if 0
     @weakify(self);
     [self.uploader uploadImage:image url:^(NSString *url) {
@@ -211,6 +200,22 @@ static const int ddLogLevel = LOG_LEVEL_INFO;
         }
     }];
 #else
+    
+    NSData *imageData = UIImagePNGRepresentation(image);
+    
+    __block QNResponseInfo *testInfo = nil;
+	__block NSDictionary *testResp = nil;
+    static NSString *const g_token = @"QWYn5TFQsLLU1pL5MFEmX3s5DmHdUThav9WyOWOm:FRHDJVxqvEregQ2N_h8xCtJ0n1k=:eyJzY29wZSI6Imlvc3NkayIsImRlYWRsaW5lIjoyMDQzMzcxNDYzfQ==";
+    
+	QNUploadOption *opt = [[QNUploadOption alloc] initWithMime:@"text/plain" progressHandler:nil params:@{ @"x:foo":@"bar" } checkCrc:YES cancellationSignal:nil];
+    
+    QNUploadManager *upManager = [QNUploadManager sharedInstanceWithRecorder:nil recorderKeyGenerator:nil];
+	[upManager putData:imageData key:@"你好" token:g_token complete: ^(QNResponseInfo *info, NSString *key, NSDictionary *resp) {
+	    testInfo = info;
+	    testResp = resp;
+	} option:opt];
+
+    
     NSString *url = @"http://g.hiphotos.baidu.com/image/pic/item/b219ebc4b74543a91c5891c61c178a82b901147c.jpg";
     if (url.length > 0) {
         NSString *JSONString = [IMChatMessageImageEntity JSONStringWithImageWidth:500

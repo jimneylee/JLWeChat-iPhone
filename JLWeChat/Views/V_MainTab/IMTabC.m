@@ -84,12 +84,6 @@
                                                    stretchableImageWithLeftCapWidth:5.f topCapHeight:5.f]];
         [[UITabBar appearance] setSelectionIndicatorImage:[[UIImage imageNamed:@"tabbarBkg.png"]
                                                            stretchableImageWithLeftCapWidth:5.f topCapHeight:5.f]];
-        
-//        NSDictionary *normalState = @{UITextAttributeTextColor : [UIColor grayColor]};
-//        NSDictionary *selectedState = @{UITextAttributeTextColor : APP_MAIN_COLOR};
-//        
-//        [[UITabBarItem appearance] setTitleTextAttributes:normalState forState:UIControlStateNormal];
-//        [[UITabBarItem appearance] setTitleTextAttributes:selectedState forState:UIControlStateHighlighted];
     }
         
     RAC(messageMainNavC.tabBarItem, badgeValue) = [RACObserve(messageMainC.viewModel, totalUnreadMessagesNum)

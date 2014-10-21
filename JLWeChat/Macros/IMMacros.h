@@ -20,6 +20,12 @@
 #define XMPP_HOST_NAME      @"121.41.129.248"
 #endif//LOCAL_TEST
 
+// Qiniu
+#define QN_AK @"903l5JQnmIRgHD_Rhwdwnrtr0qKRj1C3GPcwj_jh"
+#define QN_SK @"kuZCw35r20ErLP8y5jaD9nxAAhIlnGASYdtRkdYH"
+#define QN_URL_FOR_KEY(key) [NSString stringWithFormat:@"http://jlwechat.qiniudn.com/%@", key]
+#define QN_BUCKET_NAME @"jlwechat"
+
 #define XMPP_RESOURCE       @"iPhoneXMPP"
 #define XMPP_DEFAULT_GROUP_NAME @"friends"
 

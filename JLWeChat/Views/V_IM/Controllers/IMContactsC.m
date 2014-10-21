@@ -13,7 +13,6 @@
 #import "IMStaticContactCell.h"
 #import "IMChatC.h"
 #import "IMSearchDisplayController.h"
-#import "UIViewController+NavigationBlock.h"
 #import "IMMainMessageViewModel.h"
 #import "IMContactEntity.h"
 

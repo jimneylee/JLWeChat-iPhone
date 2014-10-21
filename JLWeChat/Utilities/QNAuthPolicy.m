@@ -13,6 +13,31 @@
 
 @implementation QNAuthPolicy
 
++ (NSString *)defaultToken
+{
+    static NSString *defaultToken = nil;
+    if (!defaultToken) {
+        defaultToken = [[QNAuthPolicy tokenWithScope:QN_BUCKET_NAME] copy];
+    }
+    return defaultToken;
+}
+
++ (NSString *)tokenWithScope:(NSString *)scope
+{
+    QNAuthPolicy *p = [[QNAuthPolicy alloc] init];
+    p.scope = scope;
+    return [p makeToken:QN_AK secretKey:QN_SK];
+}
+
++ (NSString *)generateImageTimeKey
+{
+    NSDateFormatter *f = [[NSDateFormatter alloc] init];
+    [f setDateFormat:@"yyyy-MM-dd-HH-mm-ss"];
+    [f setTimeZone:[NSTimeZone timeZoneWithName:@"GMT"]];
+    NSString *timeString = [f stringFromDate:[NSDate date]];
+    return [NSString stringWithFormat:@"%@.jpg", timeString];
+}
+
 // Make a token string conform to the UpToken spec.
 
 - (NSString *)makeToken:(NSString *)accessKey secretKey:(NSString *)secretKey

@@ -9,7 +9,6 @@
 #import "IMMainMessageC.h"
 #import "IMManager.h"
 
-#import "UIViewController+NavigationBlock.h"
 #import "IMSimpleLoginC.h"
 #import "IMChatC.h"
 #import "IMSearchDisplayController.h"
@@ -74,7 +73,9 @@
     // check login
     IMSimpleLoginC *loginC = [[IMSimpleLoginC alloc] initWithNibName:NSStringFromClass([IMSimpleLoginC class])
                                                               bundle:nil];
-    [self.navigationController presentViewController:loginC animated:NO completion:NULL];
+    UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:loginC];
+    [IMUIHelper configAppearenceForNavigationBar:nav.navigationBar];
+    [self.navigationController presentViewController:nav animated:NO completion:NULL];
 }
 
 - (void)didReceiveMemoryWarning

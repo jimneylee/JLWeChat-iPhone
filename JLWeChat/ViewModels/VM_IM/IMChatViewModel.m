@@ -9,7 +9,6 @@
 #import "IMChatViewModel.h"
 #import "QiniuSDK.h"
 #import "IMChatMessageEntityFactory.h"
-#import "IMUploader.h"
 #import "NSDate+IM.h"
 #import "QNAuthPolicy.h"
 
@@ -21,13 +20,11 @@ static const int ddLogLevel = LOG_LEVEL_INFO;
 #endif
 
 #define PAGE_COUNT 10
-#define QN_URL_FOR_KEY(key) [NSString stringWithFormat:@"http://jlwechat.qiniudn.com/%@", key]
 
 @interface IMChatViewModel()<NSFetchedResultsControllerDelegate>
 
 @property (nonatomic, strong) RACSubject *fetchLaterSignal;
 @property (nonatomic, strong) RACSubject *fetchEarlierSignal;
-@property (nonatomic, strong) IMUploader *uploader;
 
 @property (nonatomic, strong) NSFetchedResultsController *fetchedEarlierResultsController;
 @property (nonatomic, strong) NSFetchedResultsController *fetchedLaterResultsController;
@@ -61,15 +58,6 @@ static const int ddLogLevel = LOG_LEVEL_INFO;
     
     return self;
 }
-
-- (IMUploader *)uploader
-{
-    if (!_uploader) {
-        _uploader = [IMUploader uploader];
-    }
-    return _uploader;
-}
-
 
 -(void)updateFetchLaterDate
 {
@@ -186,44 +174,18 @@ static const int ddLogLevel = LOG_LEVEL_INFO;
 
 - (void)sendMessageWithImage:(UIImage *)image
 {
-#if 0
-    @weakify(self);
-    [self.uploader uploadImage:image url:^(NSString *url) {
-        
-        @strongify(self);
-        if (url.length > 0) {
-            NSString *JSONString = [IMChatMessageImageEntity JSONStringWithImageWidth:image.size.width
-                                                                               height:image.size.height
-                                                                                  url:url];
-            if (JSONString.length > 0) {
-                [[IMManager sharedManager] sendChatMessage:JSONString
-                                                       toJID:self.buddyJID];
-            }
-        }
-    }];
-#else
-    
     NSData *imageData = UIImageJPEGRepresentation(image, 0.8f);
-    
-    __block QNResponseInfo *testInfo = nil;
-	__block NSDictionary *testResp = nil;
-//    static NSString *const g_token = @"QWYn5TFQsLLU1pL5MFEmX3s5DmHdUThav9WyOWOm:FRHDJVxqvEregQ2N_h8xCtJ0n1k=:eyJzY29wZSI6Imlvc3NkayIsImRlYWRsaW5lIjoyMDQzMzcxNDYzfQ==";
-    
-    NSString *token = [self tokenWithScope:@"jlwechat"];
+    NSString *token = [QNAuthPolicy defaultToken];
 	QNUploadOption *opt = [[QNUploadOption alloc] initWithMime:@"image/jpeg" progressHandler:nil
                                                         params:nil checkCrc:YES cancellationSignal:nil];
     
     QNUploadManager *upManager = [QNUploadManager sharedInstanceWithRecorder:nil recorderKeyGenerator:nil];
-	[upManager putData:imageData key:[self generateImageKey]
+	[upManager putData:imageData key:[QNAuthPolicy generateImageTimeKey]
                  token:token complete: ^(QNResponseInfo *info, NSString *key, NSDictionary *resp) {
-                     testInfo = info;
-                     testResp = resp;
-                     
-//                     NSString *url = @"http://g.hiphotos.baidu.com/image/pic/item/b219ebc4b74543a91c5891c61c178a82b901147c.jpg";
                      // http://developer.qiniu.com/docs/v6/api/reference/fop/image/imageview2.html
                      if (key.length > 0) {
-                         NSString *JSONString = [IMChatMessageImageEntity JSONStringWithImageWidth:image.size.width//500
-                                                                                            height:image.size.height//750
+                         NSString *JSONString = [IMChatMessageImageEntity JSONStringWithImageWidth:image.size.width
+                                                                                            height:image.size.height
                                                                                                url:QN_URL_FOR_KEY(key)];
                          if (JSONString.length > 0) {
                              [[IMManager sharedManager] sendChatMessage:JSONString
@@ -231,24 +193,6 @@ static const int ddLogLevel = LOG_LEVEL_INFO;
                          }
                      }
                  } option:opt];
-#endif
-}
-
-- (NSString *)generateImageKey
-{
-    NSDateFormatter *f = [[NSDateFormatter alloc] init];
-    [f setDateFormat:@"yyyy-MM-dd-HH-mm-ss"];
-    [f setTimeZone:[NSTimeZone timeZoneWithName:@"GMT"]];
-    NSString *timeString = [f stringFromDate:[NSDate date]];
-    return [NSString stringWithFormat:@"%@.jpg", timeString];
-}
-
-- (NSString *)tokenWithScope:(NSString *)scope
-{
-    QNAuthPolicy *p = [[QNAuthPolicy alloc] init];
-    p.scope = scope;
-    return [p makeToken:@"903l5JQnmIRgHD_Rhwdwnrtr0qKRj1C3GPcwj_jh"//AK
-              secretKey:@"kuZCw35r20ErLP8y5jaD9nxAAhIlnGASYdtRkdYH"];//SK
 }
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

@@ -17,6 +17,9 @@
 @property (nonatomic, assign) long long expires;
 @property (nonatomic, assign) long long escape;
 
++ (NSString *)defaultToken;
++ (NSString *)tokenWithScope:(NSString *)scope;
++ (NSString *)generateImageTimeKey;
 - (NSString *)makeToken:(NSString *)accessKey secretKey:(NSString *)secretKey;
 
 @end

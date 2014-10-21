@@ -135,9 +135,7 @@ static const char kAllowsEditingKey;
     }
 }
 
-#pragma mark - 
-
-
+#pragma mark - QBImagePickerControllerDelegate
 
 - (void)imagePickerController:(QBImagePickerController *)imagePickerController didSelectAsset:(ALAsset *)asset
 {

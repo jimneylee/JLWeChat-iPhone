@@ -174,18 +174,28 @@ static const int ddLogLevel = LOG_LEVEL_INFO;
 
 - (void)sendMessageWithImage:(UIImage *)image
 {
-    NSData *imageData = UIImageJPEGRepresentation(image, 0.8f);
+    // scale image with mode UIViewContentModeScaleAspectFit
+    UIImage* newImage = image;
+    CGFloat kMaxLength = 400.f;
+    if (image.size.width > kMaxLength || image.size.height > kMaxLength) {
+        CGRect rect = [image convertRect:CGRectMake(0.f, 0.f, kMaxLength, kMaxLength)
+                         withContentMode:UIViewContentModeScaleAspectFit];
+        newImage = [image transformWidth:rect.size.width height:rect.size.height rotate:YES];
+    }
+
+    NSData *imageData = UIImageJPEGRepresentation(newImage, 1.f);
     NSString *token = [QNAuthPolicy defaultToken];
 	QNUploadOption *opt = [[QNUploadOption alloc] initWithMime:@"image/jpeg" progressHandler:nil
                                                         params:nil checkCrc:YES cancellationSignal:nil];
-    
     QNUploadManager *upManager = [QNUploadManager sharedInstanceWithRecorder:nil recorderKeyGenerator:nil];
 	[upManager putData:imageData key:[QNAuthPolicy generateImageTimeKey]
                  token:token complete: ^(QNResponseInfo *info, NSString *key, NSDictionary *resp) {
-                     // http://developer.qiniu.com/docs/v6/api/reference/fop/image/imageview2.html
+                     
+                     // developer.qiniu.com/docs/v6/api/reference/fop/image/imageview2.html
+                     //
                      if (key.length > 0) {
-                         NSString *JSONString = [IMChatMessageImageEntity JSONStringWithImageWidth:image.size.width
-                                                                                            height:image.size.height
+                         NSString *JSONString = [IMChatMessageImageEntity JSONStringWithImageWidth:newImage.size.width
+                                                                                            height:newImage.size.height
                                                                                                url:QN_URL_FOR_KEY(key)];
                          if (JSONString.length > 0) {
                              [[IMManager sharedManager] sendChatMessage:JSONString

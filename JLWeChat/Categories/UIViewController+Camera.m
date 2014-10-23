@@ -9,29 +9,32 @@
 #import "UIViewController+Camera.h"
 #import "UIImageAdditions.h"
 #import <objc/runtime.h>
-#import "IMUIHelper.h"
 #import <ReactiveCocoa/UIActionSheet+RACSignalSupport.h>
+#import "IMUIHelper.h"
 
-static const void *CameraBlock1 = &CameraBlock1;
+static const char kCameraBlockKey;
 static const char kAllowsEditingKey;
 
 @implementation UIViewController (Camera)
 
 @dynamic cameraBlock;
 
+#pragma mark - Public
+
 - (void)setCameraBlock:(CameraBlock)cameraBlock
 {
-    objc_setAssociatedObject(self, CameraBlock1, cameraBlock, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+    objc_setAssociatedObject(self, &kCameraBlockKey, cameraBlock, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
 }
 
 -(CameraBlock)cameraBlock
 {
-    return objc_getAssociatedObject(self, CameraBlock1);
+    return objc_getAssociatedObject(self, &kCameraBlockKey);
 }
 
 -(void)setAllowsEditing:(BOOL)allowsEditing
 {
-    objc_setAssociatedObject(self, &kAllowsEditingKey, [NSNumber numberWithBool:allowsEditing], OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+    objc_setAssociatedObject(self, &kAllowsEditingKey, [NSNumber numberWithBool:allowsEditing],
+                             OBJC_ASSOCIATION_RETAIN_NONATOMIC);
 }
 
 -(BOOL)allowsEditing
@@ -44,7 +47,6 @@ static const char kAllowsEditingKey;
         return [allowsEditingNumber boolValue];
     }
 }
-
 
 - (void)takeMultiPhoto:(CameraBlock)block maxNum:(int)max
 {
@@ -60,8 +62,7 @@ static const char kAllowsEditingKey;
         } else if([indexNumber intValue] == 1){
             [self multiPhotoFromLibrary:block maxNum:max];
         }
-        else
-        {
+        else {
             
         }
     }];
@@ -130,7 +131,7 @@ static const char kAllowsEditingKey;
         }
         
         UINavigationController *navigationController =
-            [[UINavigationController alloc] initWithRootViewController:imagePickerController];
+        [[UINavigationController alloc] initWithRootViewController:imagePickerController];
         [self.navigationController presentViewController:navigationController animated:YES completion:NULL];
     }
 }
@@ -155,6 +156,7 @@ static const char kAllowsEditingKey;
             [array addObject:image];
         }
     }
+    
     @weakify(self);
     [imagePickerController dismissViewControllerAnimated:YES completion:^{
         @strongify(self);
@@ -162,7 +164,7 @@ static const char kAllowsEditingKey;
     }];
 }
 
-#pragma mark - UIImagePicker
+#pragma mark - UIImagePickerDelegate
 
 - (void)imagePickerControllerDidCancel:(UIImagePickerController *)picker
 {
@@ -175,22 +177,18 @@ static const char kAllowsEditingKey;
 
 - (void)imagePickerController: (UIImagePickerController *)picker didFinishPickingMediaWithInfo: (NSDictionary *)info
 {
-    UIImage* original_image = nil;
+    UIImage* originalImage = nil;
     if (self.allowsEditing) {
-        original_image = [info objectForKey:UIImagePickerControllerEditedImage];
+        originalImage = [info objectForKey:UIImagePickerControllerEditedImage];
     }
     else {
-        original_image = [info objectForKey:UIImagePickerControllerOriginalImage];
+        originalImage = [info objectForKey:UIImagePickerControllerOriginalImage];
     }
-    
-    CGRect rect = [original_image convertRect:CGRectMake(0, 0, 600, 600) withContentMode:UIViewContentModeScaleAspectFit];
-    UIImage* image = [original_image transformWidth:rect.size.width height:rect.size.height rotate:YES];
     
     @weakify(self);
     [picker dismissViewControllerAnimated:YES completion:^{
-        //;
         @strongify(self);
-        self.cameraBlock(image);
+        self.cameraBlock(originalImage);
     }];
 }
 

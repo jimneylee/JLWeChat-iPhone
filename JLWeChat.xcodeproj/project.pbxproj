@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		282F7FEA19CEE5A900827F78 /* NSDate+IM.m in Sources */ = {isa = PBXBuildFile; fileRef = 282F7FE319CEE5A900827F78 /* NSDate+IM.m */; };
-		282F7FEB19CEE5A900827F78 /* NSObject+EntityParse.m in Sources */ = {isa = PBXBuildFile; fileRef = 282F7FE519CEE5A900827F78 /* NSObject+EntityParse.m */; };
 		282F7FEC19CEE5A900827F78 /* UIViewController+Camera.m in Sources */ = {isa = PBXBuildFile; fileRef = 282F7FE719CEE5A900827F78 /* UIViewController+Camera.m */; };
 		282F801119CF174600827F78 /* IMContactsC.m in Sources */ = {isa = PBXBuildFile; fileRef = 282F800E19CF174600827F78 /* IMContactsC.m */; };
 		282F801219CF174600827F78 /* IMMainMessageC.m in Sources */ = {isa = PBXBuildFile; fileRef = 282F801019CF174600827F78 /* IMMainMessageC.m */; };
@@ -295,8 +294,6 @@
 /* Begin PBXFileReference section */
 		282F7FE219CEE5A900827F78 /* NSDate+IM.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+IM.h"; sourceTree = "<group>"; };
 		282F7FE319CEE5A900827F78 /* NSDate+IM.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+IM.m"; sourceTree = "<group>"; };
-		282F7FE419CEE5A900827F78 /* NSObject+EntityParse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+EntityParse.h"; sourceTree = "<group>"; };
-		282F7FE519CEE5A900827F78 /* NSObject+EntityParse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+EntityParse.m"; sourceTree = "<group>"; };
 		282F7FE619CEE5A900827F78 /* UIViewController+Camera.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+Camera.h"; sourceTree = "<group>"; };
 		282F7FE719CEE5A900827F78 /* UIViewController+Camera.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+Camera.m"; sourceTree = "<group>"; };
 		282F7FF719CEEDF600827F78 /* JLWeChat-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "JLWeChat-Prefix.pch"; sourceTree = "<group>"; };
@@ -706,8 +703,6 @@
 			children = (
 				282F7FE219CEE5A900827F78 /* NSDate+IM.h */,
 				282F7FE319CEE5A900827F78 /* NSDate+IM.m */,
-				282F7FE419CEE5A900827F78 /* NSObject+EntityParse.h */,
-				282F7FE519CEE5A900827F78 /* NSObject+EntityParse.m */,
 				282F7FE619CEE5A900827F78 /* UIViewController+Camera.h */,
 				282F7FE719CEE5A900827F78 /* UIViewController+Camera.m */,
 			);
@@ -1761,7 +1756,6 @@
 				289E0F12192AF2FA00FFE90D /* NSDataAdditions.m in Sources */,
 				289E0F14192AF2FA00FFE90D /* NSStringAdditions.m in Sources */,
 				289E0F71192AF71000FFE90D /* IMManager.m in Sources */,
-				282F7FEB19CEE5A900827F78 /* NSObject+EntityParse.m in Sources */,
 				282F801219CF174600827F78 /* IMMainMessageC.m in Sources */,
 				CE1EE1BE1930409B0093DBB7 /* XMPPMessageArchiving_Message_CoreDataObject+ChatMessage.m in Sources */,
 				CE21332819341CD6002EBE49 /* UIImage+Utils.m in Sources */,

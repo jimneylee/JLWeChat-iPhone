@@ -51,8 +51,10 @@ typedef NS_ENUM(NSUInteger, MKChatMessageType)
 
 @interface IMChatMessageVoiceEntity : IMChatMessageBaseEntity
 
-@property (nonatomic, assign) CGFloat time;
+@property (nonatomic, assign) NSInteger time;
 @property (nonatomic, copy)   NSString *url;
+
++ (NSString *)JSONStringWithVoiceTime:(NSInteger)time url:(NSString *)url;
 
 @end
 

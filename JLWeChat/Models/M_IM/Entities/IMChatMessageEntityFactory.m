@@ -150,6 +150,39 @@
 
 @implementation IMChatMessageVoiceEntity
 
++ (id)entityWithDictionary:(NSDictionary *)dic
+{
+    if (dic) {
+        IMChatMessageVoiceEntity *entity = [[IMChatMessageVoiceEntity alloc] init];
+        entity.time = [dic[@"time"] integerValue];
+        entity.url = dic[@"url"];
+        return entity;
+    }
+    return nil;
+}
+
++ (NSString *)JSONStringWithVoiceTime:(NSInteger)time url:(NSString *)url
+{
+    // 暂时还是多图json格式，后面便于扩展
+    NSDictionary *jsonDic = @{@"type"   : @"voice",
+                              @"data"   : @[@{
+                                                @"time"  : [NSNumber numberWithInteger:time],
+                                                @"url"    :  url
+                                                }]
+                              };
+    NSError *error = nil;
+    NSData *jsonData = [NSJSONSerialization dataWithJSONObject:jsonDic options:kNilOptions
+                                                         error:&error];
+    if (!error) {
+        return [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];
+    }
+    else {
+        NSLog(@"json->object error : %@", error);
+        return nil;
+    }
+}
+
+
 @end
 
 #pragma mark MKChatMessageNewsEntity

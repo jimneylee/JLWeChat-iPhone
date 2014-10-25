@@ -40,7 +40,7 @@ typedef NS_OPTIONS(NSUInteger, MKChatSendBarFunctionOptions) {
 
 @optional
 
-- (void)showVoice;
+- (void)showVoiceView;
 - (void)showEmtionView;
 - (void)showShareMoreView;
 - (void)showKeyboard;

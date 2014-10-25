@@ -9,6 +9,7 @@
 #import "IMChatC.h"
 #import "IMManager.h"
 #import "IMChatSendBar.h"
+#import "IMVoiceRecordView.h"
 #import "IMEmotionMainView.h"
 #import "IMChatShareMoreView.h"
 #import "UIViewController+Camera.h"
@@ -35,11 +36,12 @@
 static XMPPJID *currentChatBuddyJid = nil;
 
 @interface IMChatC ()<UITableViewDelegate, UITableViewDataSource,
-MKChatSendBarDelegate, MKEmotionDelegate, MKChatShareMoreViewDelegate>
+IMVoiceRecordViewDelegate, MKChatSendBarDelegate, MKEmotionDelegate, IMChatShareMoreViewDelegate>
 
 @property (nonatomic, strong) UIRefreshControl *refreshControl;
 @property (nonatomic, strong) UITableView *tableView;
 @property (nonatomic, strong) IMChatSendBar *chatSendBar;
+@property (nonatomic, strong) IMVoiceRecordView *voiceRecordView;
 @property (nonatomic, strong) IMEmotionMainView* emotionMainView;
 @property (nonatomic, strong) IMChatShareMoreView* shareMoreView;
 
@@ -138,7 +140,7 @@ MKChatSendBarDelegate, MKEmotionDelegate, MKChatShareMoreViewDelegate>
     
     self.view.backgroundColor = [UIColor whiteColor];
     
-    self.chatSendBar = [[IMChatSendBar alloc] initWithFunctionOptions:MKChatSendBarFunctionOption_Text
+    self.chatSendBar = [[IMChatSendBar alloc] initWithFunctionOptions:MKChatSendBarFunctionOption_Voice | MKChatSendBarFunctionOption_Text
                         | MKChatSendBarFunctionOption_Emotion | MKChatSendBarFunctionOption_More];
     self.chatSendBar.delegate = self;
     self.chatSendBar.backgroundColor = RGBCOLOR(244, 244, 244);
@@ -244,13 +246,24 @@ MKChatSendBarDelegate, MKEmotionDelegate, MKChatShareMoreViewDelegate>
 #pragma mark - UI Create
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 
+- (IMVoiceRecordView *)voiceRecordView
+{
+    if (!_voiceRecordView) {
+        _voiceRecordView = [[IMVoiceRecordView alloc] initWithFrame:
+                            CGRectMake(0.f, self.view.height, self.view.width, TT_KEYBOARD_HEIGHT)];
+        _voiceRecordView.delegate = self;
+        [self.view addSubview:_voiceRecordView];
+    }
+    return _voiceRecordView;
+}
+
 - (IMEmotionMainView *)emotionMainView
 {
     // 显示表情选择框
     if (!_emotionMainView) {
         _emotionMainView = [[IMEmotionMainView alloc] initWithFrame:
                             CGRectMake(0.f, self.view.height, self.view.width, TT_KEYBOARD_HEIGHT)];
-        _emotionMainView.EmotionDelegate = self;
+        _emotionMainView.emotionDelegate = self;
         [self.view addSubview:_emotionMainView];
     }
     return _emotionMainView;
@@ -275,8 +288,9 @@ MKChatSendBarDelegate, MKEmotionDelegate, MKChatShareMoreViewDelegate>
 {
     [UIView animateWithDuration:.3f animations:^{
         self.chatSendBar.bottom = self.view.height;
-        self.tableView.height = self.chatSendBar.top;
-        self.emotionMainView.top = self.chatSendBar.bottom;
+        self.tableView.height = self.view.height;
+        self.voiceRecordView.top =
+        self.emotionMainView.top =
         self.shareMoreView.top = self.chatSendBar.bottom;
     } completion:^(BOOL finished) {
 
@@ -286,12 +300,13 @@ MKChatSendBarDelegate, MKEmotionDelegate, MKChatShareMoreViewDelegate>
 - (void)popupEmotionViewOrShareMoreViewAnimation
 {
     self.willShowEmtionOrShareMoreView = YES;
-    self.emotionMainView.top = self.chatSendBar.bottom;
+    self.voiceRecordView.top =
+    self.emotionMainView.top =
     self.shareMoreView.top = self.chatSendBar.bottom;
     
     [UIView animateWithDuration:.2f animations:^{
-        
-        self.emotionMainView.top = self.view.height - self.emotionMainView.height;
+        self.voiceRecordView.top =
+        self.emotionMainView.top =
         self.shareMoreView.top = self.view.height - self.emotionMainView.height;
         self.chatSendBar.bottom = self.emotionMainView.top;
         self.tableView.height = self.chatSendBar.top;
@@ -305,16 +320,31 @@ MKChatSendBarDelegate, MKEmotionDelegate, MKChatShareMoreViewDelegate>
 - (void)popdownEmotionViewOrShareMoreViewAnimation
 {
     [UIView animateWithDuration:.2f animations:^{
-        self.emotionMainView.top = self.view.height;
+        self.voiceRecordView.top =
+        self.emotionMainView.top =
         self.shareMoreView.top = self.view.height;
     } completion:^(BOOL finished) {
     }];
 }
 
+- (void)popupVoiceRecordViewAnimation
+{
+    // create shareMoreView
+    if (self.shareMoreView && self.emotionMainView) {
+        [self.view bringSubviewToFront:self.voiceRecordView];
+    }
+    [self popupEmotionViewOrShareMoreViewAnimation];
+}
+
+- (void)popdownVoiceRecordViewAnimation
+{
+    [self popdownEmotionViewOrShareMoreViewAnimation];
+}
+
 - (void)popupEmotionViewAnimation
 {
     // create shareMoreView
-    if (self.shareMoreView) {
+    if (self.voiceRecordView && self.shareMoreView) {
         [self.view bringSubviewToFront:self.emotionMainView];
     }
     [self popupEmotionViewOrShareMoreViewAnimation];
@@ -327,7 +357,7 @@ MKChatSendBarDelegate, MKEmotionDelegate, MKChatShareMoreViewDelegate>
 
 - (void)popupShareMoreViewAnimation
 {
-    if (self.emotionMainView) {
+    if (self.emotionMainView && self.shareMoreView) {
         [self.view bringSubviewToFront:self.shareMoreView];
     }
     [self.view bringSubviewToFront:self.shareMoreView];
@@ -374,7 +404,8 @@ MKChatSendBarDelegate, MKEmotionDelegate, MKChatShareMoreViewDelegate>
         
         self.chatSendBar.bottom = self.view.height - keyboardBounds.size.height;
         self.tableView.height = self.chatSendBar.top;
-        self.emotionMainView.top = self.chatSendBar.bottom;
+        self.voiceRecordView.top =
+        self.emotionMainView.top =
         self.shareMoreView.top = self.chatSendBar.bottom;
 
         // TODO: 底部一起上移效果更好些，但是需要深入考虑当只有几条时候，高度如何计算
@@ -403,7 +434,8 @@ MKChatSendBarDelegate, MKEmotionDelegate, MKChatShareMoreViewDelegate>
         
         self.chatSendBar.bottom = self.view.height;
         self.tableView.height = self.chatSendBar.top;
-        self.emotionMainView.top = self.chatSendBar.bottom;
+        self.voiceRecordView.top =
+        self.emotionMainView.top = 
         self.shareMoreView.top = self.chatSendBar.bottom;
         //self.tableView.bottom = self.chatSendBar.bottom - self.chatSendBar.height;
     } completion:^(BOOL finished) {
@@ -425,9 +457,9 @@ MKChatSendBarDelegate, MKEmotionDelegate, MKChatShareMoreViewDelegate>
     [self popupEmotionViewAnimation];
 }
 
-- (void)showVoice
+- (void)showVoiceView
 {
-
+    [self popupVoiceRecordViewAnimation];
 }
 
 - (void)showKeyboard
@@ -450,6 +482,15 @@ MKChatSendBarDelegate, MKEmotionDelegate, MKChatShareMoreViewDelegate>
 }
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
+#pragma mark - IMVoiceRecordViewDelegate
+//////////////////////////////////////////////////////////////////////////////////////////////////////
+
+- (void)didFinishRecordingVoiceWithUrlKey:(NSString *)urlKey time:(NSInteger)time
+{
+    [self.viewModel sendMessageWithVoiceTime:time urlkey:urlKey];
+}
+
+///////////////////////////////////////////////////////////////////////////////////////////////////
 #pragma mark - OSCEmotionDelegate
 //////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -469,7 +510,7 @@ MKChatSendBarDelegate, MKEmotionDelegate, MKChatShareMoreViewDelegate>
 }
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
-#pragma mark - MKChatShareMoreViewDelegate
+#pragma mark - IMChatShareMoreViewDelegate
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 
 - (void)didPickPhotoFromLibrary

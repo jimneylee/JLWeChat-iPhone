@@ -25,7 +25,6 @@
 
 @property (nonatomic, strong) HPGrowingTextView *textView;
 @property (nonatomic, strong) UIImageView *textViewBgImageView;
-@property (nonatomic, strong) UIButton *recordBtn;
 @property (nonatomic, strong) UIButton *voiceKeyboardBtn;
 @property (nonatomic, strong) UIButton *emotionKeyboardBtn;
 @property (nonatomic, strong) UIButton *moreBtn;
@@ -58,13 +57,14 @@
         [self addSubview:self.textViewBgImageView];
         [self addSubview:self.emotionKeyboardBtn];
         [self addSubview:self.moreBtn];
-        [self addSubview:self.recordBtn];
         
         self.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleTopMargin;
         
+        self.voiceKeyboardBtn.tag = BUTTON_TAG_VOICE;
+        self.emotionKeyboardBtn.tag = BUTTON_TAG_EMOTION;
+        
         self.isSendKeyTapped = NO;
         self.sendEnable = YES;
-        self.recordBtn.hidden = YES;
         self.lastViewHeight = self.height;
         self.cusorRange = NSMakeRange(0, 0);
         
@@ -133,7 +133,6 @@
     self.textView.left = self.voiceKeyboardBtn.right;
     self.emotionKeyboardBtn.left = self.textViewBgImageView.right;
     self.moreBtn.left = self.emotionKeyboardBtn.right;
-    self.recordBtn.frame = self.textView.frame;
 }
 
 - (void)drawRect:(CGRect)rect
@@ -172,14 +171,13 @@
 
 - (void)switchVoiceWithKeyboard
 {
-    if (BUTTON_TAG_VOICE == self.voiceKeyboardBtn.tag) {
+    if (self.voiceKeyboardBtn.tag == BUTTON_TAG_VOICE) {
         // switch to voice input
-        if (self.delegate && [self.delegate respondsToSelector:@selector(showVoice)]) {
-            [self.delegate showVoice];
+        if (self.delegate && [self.delegate respondsToSelector:@selector(showVoiceView)]) {
+            [self.delegate showVoiceView];
         }
         
         self.lastViewHeight = self.height;//use to voice
-        self.recordBtn.hidden = NO;
         self.textView.hidden = YES;
         [self.textView resignFirstResponder];
         self.voiceKeyboardBtn.tag = BUTTON_TAG_KEYBOARD;
@@ -195,7 +193,6 @@
         }
         
         self.textView.hidden = NO;
-        self.recordBtn.hidden = YES;
         self.height = self.lastViewHeight;//use to voice
         
         [self.textView becomeFirstResponder];
@@ -204,13 +201,21 @@
                                forState:UIControlStateNormal];
         [self.voiceKeyboardBtn setImage:[UIImage imageNamed:@"ToolViewInputVoiceHL.png"]
                                forState:UIControlStateHighlighted];
-
+    }
+    
+    // reset emotion btn
+    if (self.emotionKeyboardBtn.tag == BUTTON_TAG_KEYBOARD) {
+        self.emotionKeyboardBtn.tag = BUTTON_TAG_EMOTION;
+        [self.emotionKeyboardBtn setImage:[UIImage imageNamed:@"ToolViewEmotion.png"]
+                                 forState:UIControlStateNormal];
+        [self.emotionKeyboardBtn setImage:[UIImage imageNamed:@"ToolViewEmotionHL.png"]
+                                 forState:UIControlStateHighlighted];
     }
 }
 
 - (void)switchEmotionWithKeyboard
 {
-    if (BUTTON_TAG_EMOTION == self.emotionKeyboardBtn.tag) {
+    if (self.emotionKeyboardBtn.tag == BUTTON_TAG_EMOTION) {
         
         // switch to emotion input
         if (self.delegate && [self.delegate respondsToSelector:@selector(showEmtionView)]) {
@@ -219,7 +224,6 @@
         }
         
         self.textView.hidden = NO;
-        self.recordBtn.hidden = YES;
         self.height = self.lastViewHeight;
         self.cusorRange = self.textView.internalTextView.selectedRange;
         [self.textView resignFirstResponder];
@@ -244,6 +248,15 @@
         [self.emotionKeyboardBtn setImage:[UIImage imageNamed:@"ToolViewEmotionHL.png"]
                                  forState:UIControlStateHighlighted];
     }
+    
+    // reset voice btn
+    if (self.voiceKeyboardBtn.tag == BUTTON_TAG_KEYBOARD) {
+        self.voiceKeyboardBtn.tag = BUTTON_TAG_VOICE;
+        [self.voiceKeyboardBtn setImage:[UIImage imageNamed:@"ToolViewInputVoice.png"]
+                                 forState:UIControlStateNormal];
+        [self.voiceKeyboardBtn setImage:[UIImage imageNamed:@"ToolViewInputVoiceHL.png"]
+                                 forState:UIControlStateHighlighted];
+    }
 }
 
 - (void)showMoreAction
@@ -255,8 +268,18 @@
     if (self.textView.isFirstResponder) {
         [self.textView resignFirstResponder];
     }
-
-    if (BUTTON_TAG_KEYBOARD == self.emotionKeyboardBtn.tag) {
+    
+    // reset voice btn
+    if (self.voiceKeyboardBtn.tag == BUTTON_TAG_KEYBOARD) {
+        self.voiceKeyboardBtn.tag = BUTTON_TAG_VOICE;
+        [self.voiceKeyboardBtn setImage:[UIImage imageNamed:@"ToolViewInputVoice.png"]
+                               forState:UIControlStateNormal];
+        [self.voiceKeyboardBtn setImage:[UIImage imageNamed:@"ToolViewInputVoiceHL.png"]
+                               forState:UIControlStateHighlighted];
+    }
+    
+    // reset emotion btn
+    if (self.emotionKeyboardBtn.tag == BUTTON_TAG_KEYBOARD) {
         self.emotionKeyboardBtn.tag = BUTTON_TAG_EMOTION;
         [self.emotionKeyboardBtn setImage:[UIImage imageNamed:@"ToolViewEmotion.png"]
                                  forState:UIControlStateNormal];
@@ -525,16 +548,6 @@
         _moreBtn.autoresizingMask = UIViewAutoresizingFlexibleBottomMargin | UIViewAutoresizingFlexibleLeftMargin;
     }
     return _moreBtn;
-}
-
-- (UIButton *)recordBtn
-{
-    if (!_recordBtn) {
-        _recordBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-        _recordBtn.backgroundColor = RGBCOLOR(230, 230, 230);
-        [_recordBtn addTarget:self action:@selector(recordVoiceAction) forControlEvents:UIControlEventTouchUpInside];
-    }
-    return _recordBtn;
 }
 
 @end

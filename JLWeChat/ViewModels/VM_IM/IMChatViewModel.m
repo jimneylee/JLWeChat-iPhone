@@ -11,6 +11,8 @@
 #import "IMChatMessageEntityFactory.h"
 #import "NSDate+IM.h"
 #import "QNAuthPolicy.h"
+#import "IMUtil.h"
+#import "IMCache.h"
 
 // Log levels: off, error, warn, info, verbose
 #if DEBUG
@@ -188,7 +190,7 @@ static const int ddLogLevel = LOG_LEVEL_INFO;
 	QNUploadOption *opt = [[QNUploadOption alloc] initWithMime:@"image/jpeg" progressHandler:nil
                                                         params:nil checkCrc:YES cancellationSignal:nil];
     QNUploadManager *upManager = [QNUploadManager sharedInstanceWithRecorder:nil recorderKeyGenerator:nil];
-	[upManager putData:imageData key:[QNAuthPolicy generateImageTimeKey]
+	[upManager putData:imageData key:[IMUtil generateImageTimeKey]
                  token:token complete: ^(QNResponseInfo *info, NSString *key, NSDictionary *resp) {
                      
                      // developer.qiniu.com/docs/v6/api/reference/fop/image/imageview2.html
@@ -197,6 +199,28 @@ static const int ddLogLevel = LOG_LEVEL_INFO;
                          NSString *JSONString = [IMChatMessageImageEntity JSONStringWithImageWidth:newImage.size.width
                                                                                             height:newImage.size.height
                                                                                                url:QN_URL_FOR_KEY(key)];
+                         if (JSONString.length > 0) {
+                             [[IMManager sharedManager] sendChatMessage:JSONString
+                                                                  toJID:self.buddyJID];
+                         }
+                     }
+                 } option:opt];
+}
+
+- (void)sendMessageWithVoiceTime:(NSInteger)time urlkey:(NSString *)urlkey
+{
+    NSString *token = [QNAuthPolicy defaultToken];
+	QNUploadOption *opt = [[QNUploadOption alloc] initWithMime:nil progressHandler:nil
+                                                        params:nil checkCrc:YES cancellationSignal:nil];
+    QNUploadManager *upManager = [QNUploadManager sharedInstanceWithRecorder:nil recorderKeyGenerator:nil];
+    NSData *data = [[IMCache sharedCache] cachedDataForUrlKey:urlkey];
+	[upManager putData:data key:urlkey
+                 token:token complete: ^(QNResponseInfo *info, NSString *key, NSDictionary *resp) {
+                     
+                     // developer.qiniu.com/docs/v6/api/reference/fop/image/imageview2.html
+                     //
+                     if (key.length > 0) {
+                         NSString *JSONString = [IMChatMessageVoiceEntity JSONStringWithVoiceTime:time url:QN_URL_FOR_KEY(key)];
                          if (JSONString.length > 0) {
                              [[IMManager sharedManager] sendChatMessage:JSONString
                                                                   toJID:self.buddyJID];

@@ -8,15 +8,15 @@
 
 #import <Nimbus/NimbusLauncher.h>
 
-@protocol MKChatShareMoreViewDelegate;
+@protocol IMChatShareMoreViewDelegate;
 
 @interface IMChatShareMoreView : NILauncherView
 
-@property (nonatomic, weak) id<MKChatShareMoreViewDelegate> shareMoreDelegate;
+@property (nonatomic, weak) id<IMChatShareMoreViewDelegate> shareMoreDelegate;
 
 @end
 
-@protocol MKChatShareMoreViewDelegate <NSObject>
+@protocol IMChatShareMoreViewDelegate <NSObject>
 
 @optional
 - (void)didPickPhotoFromLibrary;

@@ -93,7 +93,19 @@
 
 - (void)showAddFriendsView
 {
-
+    UIAlertView *av = [[UIAlertView alloc] initWithTitle:@"请输入好友jid" message:nil
+                                                delegate:nil cancelButtonTitle:@"取消"
+                                       otherButtonTitles:@"发送请求", nil];
+    av.alertViewStyle = UIAlertViewStylePlainTextInput;
+    [av show];
+    [[av rac_buttonClickedSignal] subscribeNext:^(id x) {
+        if ([x intValue] == 1) {
+            UITextField *tf = [av textFieldAtIndex:0];
+            XMPPJID *jid = [XMPPJID jidWithUser:tf.text domain:XMPP_DOMAIN resource:XMPP_RESOURCE];
+            [[[IMManager sharedManager] xmppRoster] addUser:jid
+                                               withNickname:tf.text];
+        }
+    }];
 }
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

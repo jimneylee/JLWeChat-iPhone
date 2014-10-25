@@ -168,14 +168,6 @@ static const int ddLogLevel = LOG_LEVEL_INFO;
     self.searchResultArray = resultArray;
 }
 
-// 网络获取nickname
-- (void)searchUserInfoForBareJidStr:(NSString *)bareJidStr
-{
-    XMPPJID *jid = [XMPPJID jidWithString:bareJidStr];
-//    self.searchUserViewModel.searchword = jid.user;
-//    [self.searchUserViewModel.subscribeCommand execute:nil];
-}
-
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 #pragma mark NSFetchedResultsController
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -334,7 +326,8 @@ static const int ddLogLevel = LOG_LEVEL_INFO;
         // 如果通讯录为空，清空本地通讯录，清空最近联系人
         if (items.count == 0) {
             [self deleteAllRoster];
-            [self deleteAllRecentContact];
+            // post notify
+            //[self deleteAllRecentContact];
         }
     }
 #endif
@@ -349,32 +342,26 @@ static const int ddLogLevel = LOG_LEVEL_INFO;
     // 别人请求加为好友
     //<presence xmlns="jabber:client" from="ljj@121.41.129.248" to="lee@121.41.129.248" type="subscribe"></presence>
     if ([[presence type] isEqualToString:@"subscribe"]) {
-//        XMPPUserCoreDataStorageObject *user = [[IMManager sharedManager].xmppRosterStorage
-//                                               userForJID:[presence from]
-//                                               xmppStream:[IMManager sharedManager].xmppStream
-//                                               managedObjectContext:[[IMManager sharedManager] managedObjectContext_roster]];
-//        if (!user)
-        {
-            NSString *body = [NSString stringWithFormat:@"%@要加你为好友", [[presence from] user]];
+        
+        NSString *body = [NSString stringWithFormat:@"%@要加你为好友", [[presence from] user]];
+        
+        if ([[UIApplication sharedApplication] applicationState] == UIApplicationStateActive) {
+            UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"好友邀请"
+                                                                message:body
+                                                               delegate:self
+                                                      cancelButtonTitle:@"拒绝"
+                                                      otherButtonTitles:@"接受", nil];
+            [alertView show];
             
-            if ([[UIApplication sharedApplication] applicationState] == UIApplicationStateActive) {
-                UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"好友邀请"
-                                                                    message:body
-                                                                   delegate:self
-                                                          cancelButtonTitle:@"拒绝"
-                                                          otherButtonTitles:@"接受", nil];
-                [alertView show];
-                
-                [[alertView rac_buttonClickedSignal] subscribeNext:^(NSNumber *x) {
-                    if ([x intValue] == 0) {
-                        [[[IMManager sharedManager] xmppRoster] rejectPresenceSubscriptionRequestFrom:[presence from]];
-                    }
-                    else {
-                        [[[IMManager sharedManager] xmppRoster] acceptPresenceSubscriptionRequestFrom:[presence from]
-                                                                                       andAddToRoster:YES];
-                    }
-                }];
-            }
+            [[alertView rac_buttonClickedSignal] subscribeNext:^(NSNumber *x) {
+                if ([x intValue] == 0) {
+                    [[[IMManager sharedManager] xmppRoster] rejectPresenceSubscriptionRequestFrom:[presence from]];
+                }
+                else {
+                    [[[IMManager sharedManager] xmppRoster] acceptPresenceSubscriptionRequestFrom:[presence from]
+                                                                                   andAddToRoster:YES];
+                }
+            }];
         }
     }
     
@@ -434,7 +421,6 @@ static const int ddLogLevel = LOG_LEVEL_INFO;
     }
     else if ([subscription isEqualToString:@"remove"]) {
         // 这边不需要处理，发送subscribe请求是无法删除的，留着只是为了跟saprk调试
-        //[MKNewFriendsViewModel deleteNewFriendWithBareJidStr:jidStr];
 #if 0
         dispatch_async(dispatch_get_main_queue(), ^{
             // 删除最近联系人，此处通过api del_roster接口
@@ -459,9 +445,6 @@ static const int ddLogLevel = LOG_LEVEL_INFO;
 	NSLog(@"%@: %@", THIS_FILE, THIS_METHOD);
     
     // 别人请求加为好友
-    //  <item jid="yj63025@61.160.250.138" name="&#x738B;&#x5927;&#x867E;" ask="subscribe" subscription="none"></item>
-    
-	//<presence xmlns="jabber:client" id="XWyMu-52" to="aaa@192.168.0.84" type="subscribe" from="uuu@192.168.0.84"></presence>
 	XMPPUserCoreDataStorageObject *user = [[IMManager sharedManager].xmppRosterStorage
                                            userForJID:[presence from]
                                            xmppStream:[IMManager sharedManager].xmppStream

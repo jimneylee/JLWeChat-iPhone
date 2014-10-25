@@ -7,8 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		282F7FEA19CEE5A900827F78 /* NSDate+IM.m in Sources */ = {isa = PBXBuildFile; fileRef = 282F7FE319CEE5A900827F78 /* NSDate+IM.m */; };
-		282F7FEC19CEE5A900827F78 /* UIViewController+Camera.m in Sources */ = {isa = PBXBuildFile; fileRef = 282F7FE719CEE5A900827F78 /* UIViewController+Camera.m */; };
 		282F801119CF174600827F78 /* IMContactsC.m in Sources */ = {isa = PBXBuildFile; fileRef = 282F800E19CF174600827F78 /* IMContactsC.m */; };
 		282F801219CF174600827F78 /* IMMainMessageC.m in Sources */ = {isa = PBXBuildFile; fileRef = 282F801019CF174600827F78 /* IMMainMessageC.m */; };
 		283FAAC619F4707E00ED6EEF /* QNAsyncRun.m in Sources */ = {isa = PBXBuildFile; fileRef = 283FAAA819F4707E00ED6EEF /* QNAsyncRun.m */; };
@@ -276,6 +274,8 @@
 		CE3BE00C193EC19300221074 /* preview_button@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = CE3BE008193EC19300221074 /* preview_button@2x.png */; };
 		CE3BE00D193EC19300221074 /* preview_save_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = CE3BE009193EC19300221074 /* preview_save_icon.png */; };
 		CE3BE00E193EC19300221074 /* preview_save_icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = CE3BE00A193EC19300221074 /* preview_save_icon@2x.png */; };
+		CE43678419FB36F400B3880B /* NSDate+IM.m in Sources */ = {isa = PBXBuildFile; fileRef = CE43678119FB36F400B3880B /* NSDate+IM.m */; };
+		CE43678519FB36F400B3880B /* UIViewController+Camera.m in Sources */ = {isa = PBXBuildFile; fileRef = CE43678319FB36F400B3880B /* UIViewController+Camera.m */; };
 		CE4E85351941EAB200DF2655 /* Three20.bundle in Resources */ = {isa = PBXBuildFile; fileRef = CE4E85341941EAB200DF2655 /* Three20.bundle */; };
 		CE6CC18C194AE85A00FD3764 /* IMStaticContactCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CE6CC18B194AE85A00FD3764 /* IMStaticContactCell.m */; };
 		CE9FA524194E92FE00E7F77A /* xmpp_changes in Resources */ = {isa = PBXBuildFile; fileRef = CE9FA523194E92FE00E7F77A /* xmpp_changes */; };
@@ -292,10 +292,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		282F7FE219CEE5A900827F78 /* NSDate+IM.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+IM.h"; sourceTree = "<group>"; };
-		282F7FE319CEE5A900827F78 /* NSDate+IM.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+IM.m"; sourceTree = "<group>"; };
-		282F7FE619CEE5A900827F78 /* UIViewController+Camera.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+Camera.h"; sourceTree = "<group>"; };
-		282F7FE719CEE5A900827F78 /* UIViewController+Camera.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+Camera.m"; sourceTree = "<group>"; };
 		282F7FF719CEEDF600827F78 /* JLWeChat-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "JLWeChat-Prefix.pch"; sourceTree = "<group>"; };
 		282F800D19CF174600827F78 /* IMContactsC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMContactsC.h; sourceTree = "<group>"; };
 		282F800E19CF174600827F78 /* IMContactsC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMContactsC.m; sourceTree = "<group>"; };
@@ -656,6 +652,10 @@
 		CE3BE008193EC19300221074 /* preview_button@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "preview_button@2x.png"; sourceTree = "<group>"; };
 		CE3BE009193EC19300221074 /* preview_save_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = preview_save_icon.png; sourceTree = "<group>"; };
 		CE3BE00A193EC19300221074 /* preview_save_icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "preview_save_icon@2x.png"; sourceTree = "<group>"; };
+		CE43678019FB36F400B3880B /* NSDate+IM.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+IM.h"; sourceTree = "<group>"; };
+		CE43678119FB36F400B3880B /* NSDate+IM.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+IM.m"; sourceTree = "<group>"; };
+		CE43678219FB36F400B3880B /* UIViewController+Camera.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+Camera.h"; sourceTree = "<group>"; };
+		CE43678319FB36F400B3880B /* UIViewController+Camera.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+Camera.m"; sourceTree = "<group>"; };
 		CE4E85341941EAB200DF2655 /* Three20.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Three20.bundle; sourceTree = "<group>"; };
 		CE6CC18A194AE85A00FD3764 /* IMStaticContactCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMStaticContactCell.h; sourceTree = "<group>"; };
 		CE6CC18B194AE85A00FD3764 /* IMStaticContactCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMStaticContactCell.m; sourceTree = "<group>"; };
@@ -698,18 +698,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		282F7FE119CEE5A900827F78 /* Categories */ = {
-			isa = PBXGroup;
-			children = (
-				282F7FE219CEE5A900827F78 /* NSDate+IM.h */,
-				282F7FE319CEE5A900827F78 /* NSDate+IM.m */,
-				282F7FE619CEE5A900827F78 /* UIViewController+Camera.h */,
-				282F7FE719CEE5A900827F78 /* UIViewController+Camera.m */,
-			);
-			name = Categories;
-			path = JLWeChat/Categories;
-			sourceTree = SOURCE_ROOT;
-		};
 		283FAAA519F4707E00ED6EEF /* QiniuSDK */ = {
 			isa = PBXGroup;
 			children = (
@@ -1278,7 +1266,6 @@
 			children = (
 				CE9FA522194E92DE00E7F77A /* Doc */,
 				289E0F3A192AF59900FFE90D /* Resource */,
-				282F7FE119CEE5A900827F78 /* Categories */,
 				289E0EFB192AF2FA00FFE90D /* Vendor */,
 				528E6A991920574500FFB5A6 /* JLWeChat */,
 				528E6A901920574500FFB5A6 /* Frameworks */,
@@ -1322,6 +1309,7 @@
 		528E6A991920574500FFB5A6 /* JLWeChat */ = {
 			isa = PBXGroup;
 			children = (
+				CE43677F19FB36F400B3880B /* Categories */,
 				28D7F68E19D62FB500F5B483 /* Utilities */,
 				CE19C131194C171C00350262 /* DataBase */,
 				289E0F1C192AF30800FFE90D /* Macros */,
@@ -1412,6 +1400,17 @@
 				CE3BE004193EBFE600221074 /* 37x-Checkmark@2x.png */,
 			);
 			path = common;
+			sourceTree = "<group>";
+		};
+		CE43677F19FB36F400B3880B /* Categories */ = {
+			isa = PBXGroup;
+			children = (
+				CE43678019FB36F400B3880B /* NSDate+IM.h */,
+				CE43678119FB36F400B3880B /* NSDate+IM.m */,
+				CE43678219FB36F400B3880B /* UIViewController+Camera.h */,
+				CE43678319FB36F400B3880B /* UIViewController+Camera.m */,
+			);
+			path = Categories;
 			sourceTree = "<group>";
 		};
 		CE9FA522194E92DE00E7F77A /* Doc */ = {
@@ -1735,6 +1734,7 @@
 				283FAAD419F4817F00ED6EEF /* QNAuthPolicy.m in Sources */,
 				CE19C134194C173700350262 /* IMDataBaseManager.m in Sources */,
 				289E0FFE192B824400FFE90D /* IMChatSendBar.m in Sources */,
+				CE43678419FB36F400B3880B /* NSDate+IM.m in Sources */,
 				28D7F6D519D640CE00F5B483 /* UISlider+FlatUI.m in Sources */,
 				528E6AA41920574500FFB5A6 /* IMAppDelegate.m in Sources */,
 				28D7F6D819D640CE00F5B483 /* UITableViewCell+FlatUI.m in Sources */,
@@ -1768,13 +1768,11 @@
 				28F49F33192E255A00FEF861 /* IMMessageCellFactory.m in Sources */,
 				289D6EDD19B0BF620046A853 /* IMSearchChatContactCell.m in Sources */,
 				28FD4E5A192DE12A00A714AA /* pinyin.c in Sources */,
-				282F7FEC19CEE5A900827F78 /* UIViewController+Camera.m in Sources */,
 				CE18F88E193C6C09008CD9AC /* IMSearchDisplayController.m in Sources */,
 				28D7F6D319D640CE00F5B483 /* UIPopoverController+FlatUI.m in Sources */,
 				282F801119CF174600827F78 /* IMContactsC.m in Sources */,
 				283FAAD119F4707E00ED6EEF /* QNUploadOption.m in Sources */,
 				28D7F6D419D640CE00F5B483 /* UIProgressView+FlatUI.m in Sources */,
-				282F7FEA19CEE5A900827F78 /* NSDate+IM.m in Sources */,
 				28D7F6D619D640CE00F5B483 /* UIStepper+FlatUI.m in Sources */,
 				28D7F6CB19D640CE00F5B483 /* FUIPopoverBackgroundView.m in Sources */,
 				28FD4E48192DBFA200A714AA /* IMContactCell.m in Sources */,
@@ -1784,6 +1782,7 @@
 				CE3BDFFD193EBC1000221074 /* UIView+findViewController.m in Sources */,
 				289E0F1B192AF2FA00FFE90D /* UIWindowAdditions.m in Sources */,
 				28D7F6CC19D640CE00F5B483 /* FUISegmentedControl.m in Sources */,
+				CE43678519FB36F400B3880B /* UIViewController+Camera.m in Sources */,
 				28D7F6D019D640CE00F5B483 /* UIFont+FlatUI.m in Sources */,
 				283FAACB19F4707E00ED6EEF /* QNHttpManager.m in Sources */,
 				283FAAD019F4707E00ED6EEF /* QNUploadManager.m in Sources */,
@@ -1926,8 +1925,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: cong wang (C8X98MEB96)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: cong wang (C8X98MEB96)";
 				GCC_INPUT_FILETYPE = automatic;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "JLWeChat/JLWeChat-Prefix.pch";
@@ -1960,7 +1959,7 @@
 				);
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_NAME = JLWeChat;
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "fffdf8d9-91fc-456f-85c3-d702599bf314";
 				SDKROOT = iphoneos7.1;
 				VALID_ARCHS = "armv7 armv7s arm64";
 				WRAPPER_EXTENSION = app;
@@ -1973,8 +1972,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: cong wang (C8X98MEB96)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: cong wang (C8X98MEB96)";
 				GCC_INPUT_FILETYPE = automatic;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "JLWeChat/JLWeChat-Prefix.pch";
@@ -2007,7 +2006,7 @@
 				);
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_NAME = JLWeChat;
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "fffdf8d9-91fc-456f-85c3-d702599bf314";
 				SDKROOT = iphoneos7.1;
 				VALID_ARCHS = "armv7 armv7s arm64";
 				WRAPPER_EXTENSION = app;

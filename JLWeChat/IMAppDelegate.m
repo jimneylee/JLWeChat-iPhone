@@ -8,7 +8,6 @@
 
 #import "IMAppDelegate.h"
 #import <AFNetworkReachabilityManager.h>
-#import <UIImageView+AFNetworking.h>
 #import "IMCache.h"
 
 @implementation IMAppDelegate
@@ -36,7 +35,6 @@
 - (void)configAppCapabilities
 {
     [[AFNetworkReachabilityManager sharedManager] startMonitoring];
-    
 }
 
 #pragma mark - UIApplicationDelegate
@@ -45,7 +43,6 @@
 {
     [self configAppAppearance];
     [self configAppCapabilities];
-    //[AVAnalytics trackAppOpenedWithLaunchOptions:launchOptions];
     
     self.tabBarC = [[IMTabC alloc] init];
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];

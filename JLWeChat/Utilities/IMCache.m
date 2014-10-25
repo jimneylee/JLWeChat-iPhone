@@ -7,7 +7,6 @@
 //
 
 #import "IMCache.h"
-//#import "MKUtil.h"
 
 @interface IMCache ()
 
@@ -113,8 +112,7 @@
 - (NSString *) MKImageCacheKeyFromURLRequest:(NSURLRequest *)request
 {
     NSString* urlStr = [[request URL] absoluteString];
-    // TODO:
-    return nil;//[MKUtil MD5FromString:urlStr];
+    return urlStr;
 }
 
 @end

@@ -94,6 +94,20 @@
 	return data;
 }
 
+- (NSData *)cachedDataForUrlKey:(NSString *)urlKey
+{
+    NSData* data = [self objectForKey:urlKey];
+    if (!data) {
+        NSString *path = [self.cacheDir stringByAppendingPathComponent:urlKey];
+        data = [NSData dataWithContentsOfFile:path];
+        if(data) {
+            [self setObject:data forKey:urlKey];
+        }
+    }
+    
+	return data;
+}
+
 - (void)removeAllCache
 {
     [self removeAllObjects];

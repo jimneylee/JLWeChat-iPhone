@@ -14,6 +14,7 @@
 + (IMCache*)sharedCache;
 - (void)removeAllCache;
 - (void)cacheData:(NSData*)data forRequest:(NSURLRequest *)request;
+- (NSData *)cachedDataForUrlKey:(NSString *)urlKey;
 - (NSData *)cachedDataForRequest:(NSURLRequest *)request;
 
 @end

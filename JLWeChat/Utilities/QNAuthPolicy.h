@@ -19,7 +19,6 @@
 
 + (NSString *)defaultToken;
 + (NSString *)tokenWithScope:(NSString *)scope;
-+ (NSString *)generateImageTimeKey;
 - (NSString *)makeToken:(NSString *)accessKey secretKey:(NSString *)secretKey;
 
 @end

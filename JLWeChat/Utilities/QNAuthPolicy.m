@@ -29,15 +29,6 @@
     return [p makeToken:QN_AK secretKey:QN_SK];
 }
 
-+ (NSString *)generateImageTimeKey
-{
-    NSDateFormatter *f = [[NSDateFormatter alloc] init];
-    [f setDateFormat:@"yyyy-MM-dd-HH-mm-ss"];
-    [f setTimeZone:[NSTimeZone timeZoneWithName:@"GMT"]];
-    NSString *timeString = [f stringFromDate:[NSDate date]];
-    return [NSString stringWithFormat:@"%@.jpg", timeString];
-}
-
 // Make a token string conform to the UpToken spec.
 
 - (NSString *)makeToken:(NSString *)accessKey secretKey:(NSString *)secretKey

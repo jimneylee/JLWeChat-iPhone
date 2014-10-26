@@ -146,9 +146,7 @@ IMVoiceRecordViewDelegate, MKChatSendBarDelegate, MKEmotionDelegate, IMChatShare
     self.chatSendBar.backgroundColor = RGBCOLOR(244, 244, 244);
     self.chatSendBar.bottom = self.view.height;
     
-    CGFloat tableViewHeight = self.view.height - TTStatusBarHeight()
-    - TTToolbarHeightForOrientation(self.interfaceOrientation) - self.chatSendBar.height;
-    
+    CGFloat tableViewHeight = [self getTableViewHeight];
     self.tableView = [[UITableView alloc] initWithFrame:CGRectMake(0.f, 0.f, self.view.width, tableViewHeight)
                                                   style:UITableViewStyleGrouped];
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
@@ -242,6 +240,11 @@ IMVoiceRecordViewDelegate, MKChatSendBarDelegate, MKEmotionDelegate, IMChatShare
     return self.tableView.contentOffset.y + delta > self.tableView.contentSize.height - self.tableView.height;
 }
 
+- (CGFloat)getTableViewHeight
+{
+    return SCREEN_SIZE.height - TTStatusBarHeight() - TTToolbarHeightForOrientation(self.interfaceOrientation) - self.chatSendBar.height;
+}
+
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 #pragma mark - UI Create
 ///////////////////////////////////////////////////////////////////////////////////////////////////
@@ -288,7 +291,7 @@ IMVoiceRecordViewDelegate, MKChatSendBarDelegate, MKEmotionDelegate, IMChatShare
 {
     [UIView animateWithDuration:.3f animations:^{
         self.chatSendBar.bottom = self.view.height;
-        self.tableView.height = self.view.height;
+        self.tableView.height = [self getTableViewHeight];
         self.voiceRecordView.top =
         self.emotionMainView.top =
         self.shareMoreView.top = self.chatSendBar.bottom;
@@ -561,6 +564,7 @@ IMVoiceRecordViewDelegate, MKChatSendBarDelegate, MKEmotionDelegate, IMChatShare
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    static NSString *MessageUnkownCellIdentifier = @"MessageUnknownCell";
 	static NSString *MessageTextCellIdentifier = @"MessageTextCell";
 	static NSString *MessageImageCellIdentifier = @"MessageImageCell";
     static NSString *MessageVoiceCellIdentifier = @"MessageVoiceCell";
@@ -588,11 +592,22 @@ IMVoiceRecordViewDelegate, MKChatSendBarDelegate, MKEmotionDelegate, IMChatShare
         }
         [cell shouldUpdateCellWithObject:message];
     }
-    else {
+    
+    else if ([message isKindOfClass:[IMChatMessageVoiceEntity class]]) {
         cell = [tableView dequeueReusableCellWithIdentifier:MessageVoiceCellIdentifier];
         if (!cell) {
+            cell = [[IMMessageVoiceCell alloc] initWithStyle:UITableViewCellStyleSubtitle
+                                             reuseIdentifier:MessageVoiceCellIdentifier];
+            cell.selectionStyle = UITableViewCellSelectionStyleNone;
+        }
+        [cell shouldUpdateCellWithObject:message];
+    }
+    
+    else {
+        cell = [tableView dequeueReusableCellWithIdentifier:MessageUnkownCellIdentifier];
+        if (!cell) {
             cell = [[IMMessageBaseCell alloc] initWithStyle:UITableViewCellStyleSubtitle
-                                          reuseIdentifier:MessageVoiceCellIdentifier];
+                                          reuseIdentifier:MessageUnkownCellIdentifier];
         }
     }
 
@@ -614,6 +629,10 @@ IMVoiceRecordViewDelegate, MKChatSendBarDelegate, MKEmotionDelegate, IMChatShare
     
     else if ([message isKindOfClass:[IMChatMessageImageEntity class]]) {
         return [IMMessageImageCell heightForObject:message atIndexPath:indexPath tableView:tableView];
+    }
+    
+    else if ([message isKindOfClass:[IMChatMessageVoiceEntity class]]) {
+        return [IMMessageVoiceCell heightForObject:message atIndexPath:indexPath tableView:tableView];
     }
     
     else return TT_ROW_HEIGHT;

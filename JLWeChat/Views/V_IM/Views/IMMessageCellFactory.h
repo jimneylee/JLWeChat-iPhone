@@ -30,3 +30,9 @@
 + (CGFloat)heightForObject:(id)object atIndexPath:(NSIndexPath *)indexPath tableView:(UITableView *)tableView;
 
 @end
+
+@interface IMMessageVoiceCell : IMMessageBaseCell
+
++ (CGFloat)heightForObject:(id)object atIndexPath:(NSIndexPath *)indexPath tableView:(UITableView *)tableView;
+
+@end

@@ -8,19 +8,24 @@
 
 #import "IMMessageCellFactory.h"
 #import <Nimbus/NIAttributedLabel.h>
+#import "UIImageView+AFNetworking.h"
+#import <SDWebImage/UIImageView+WebCache.h>
+#import <AFNetworking/UIImageView+AFNetworking.h>
+#import "JLFullScreenPhotoBrowseView.h"
 #import "JLPaserdKeyword.h"
+#import "UIImage+Utils.h"
+
 #import "XMPPMessageArchiving_Message_CoreDataObject+ChatMessage.h"
 #import "IMManager.h"
 #import "IMChatMessageEntityFactory.h"
-#import "UIImage+Utils.h"
-#import <AFNetworking/UIImageView+AFNetworking.h>
-#import "JLFullScreenPhotoBrowseView.h"
 #import "UIView+findViewController.h"
-#import "UIImageView+AFNetworking.h"
-#import <SDWebImage/UIImageView+WebCache.h>
 #import "IMChatC.h"
+#import "IMVoiceRecordPlayManager.h"
+#import "IMCache.h"
+#import "IMUtil.h"
 
 #define HEAD_IAMGE_HEIGHT 40
+#define CELL_BOTTOM_CLEAN_MARGIN 10
 
 @implementation IMMessageCellFactory
 
@@ -110,12 +115,12 @@
         IMChatMessageBaseEntity *entity = (IMChatMessageBaseEntity *)object;
         
         if (entity.isOutgoing) {
-            [self.headView setImageWithURL:nil//[NSURL URLWithString:HEAD_IMAGE(MY_JID.user)]
-                          placeholderImage:[UIImage imageNamed:@"head_s.png"]];
+            [self.headView sd_setImageWithURL:nil//[NSURL URLWithString:HEAD_IMAGE(MY_JID.user)]
+                             placeholderImage:[UIImage imageNamed:@"head_s.png"]];
         }
         else {
             if ([IMChatC currentBuddyJid]) {
-                [self.headView setImageWithURL:nil//[NSURL URLWithString:HEAD_IMAGE([IMChatC currentBuddyJid].user)]
+                [self.headView  sd_setImageWithURL:nil//[NSURL URLWithString:HEAD_IMAGE([IMChatC currentBuddyJid].user)]
                               placeholderImage:[UIImage imageNamed:@"head_s.png"]];
             }
         }
@@ -145,6 +150,7 @@
     NSString *namePrefix = isOutgoing ? @"Sender" : @"Receiver";
     switch (type) {
         case MKChatMessageType_Text:
+        case MKChatMessageType_Voice:
             bubbleBgImage = [UIImage imageNamed:[NSString stringWithFormat:@"%@TextNodeBkg.png", namePrefix]];
             break;
         case MKChatMessageType_Image:
@@ -246,7 +252,7 @@
     if ([object isKindOfClass:[IMChatMessageTextEntity class]]) {
         
         IMChatMessageTextEntity *textEntity = (IMChatMessageTextEntity *)object;
-        CGFloat margin = CELL_PADDING_10;
+        CGFloat margin = CELL_BOTTOM_CLEAN_MARGIN;
         CGFloat height = margin;
         
         CGFloat kContentLength = CONTENT_MAX_WIDTH;
@@ -265,7 +271,6 @@
         else {
             height = height + contentHeight + BUBBLE_TOP_MARGIN + BUBBLE_BOTTOM_MARGIN;
         }
-        //height = height + margin;
         
         return height;
     }
@@ -368,6 +373,9 @@
 
 @end
 
+
+#pragma mark - IMMessageImageCell
+
 #define IMAGE_MAX_LENGTH 100
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
@@ -383,7 +391,7 @@
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 + (CGFloat)heightForObject:(id)object atIndexPath:(NSIndexPath *)indexPath tableView:(UITableView *)tableView
 {
-    return IMAGE_MAX_LENGTH + CELL_PADDING_8 * 2;
+    return IMAGE_MAX_LENGTH + CELL_PADDING_8 * 2 + CELL_BOTTOM_CLEAN_MARGIN;
 }
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
@@ -549,6 +557,135 @@
     bubbleBgImage = [UIImage imageNamed:[NSString stringWithFormat:@"%@ImageNodeBorder_back.png", namePrefix]];
     
     return bubbleBgImage;
+}
+
+@end
+
+#pragma mark - IMMessageVoiceCell
+
+#define IMAGE_VOICE_HEIGHT 20
+
+@interface IMMessageVoiceCell()
+
+@property (nonatomic, strong) IMChatMessageVoiceEntity *voiceEntity;
+@property (nonatomic, strong) UIImageView *voiceImageView;
+@property (nonatomic, strong) UILabel *timeLabel;
+
+@end
+
+@implementation IMMessageVoiceCell
+
++ (CGFloat)heightForObject:(id)object atIndexPath:(NSIndexPath *)indexPath tableView:(UITableView *)tableView;
+{
+    return CONTENT_LINE_HEIGHT + BUBBLE_TOP_MARGIN + BUBBLE_BOTTOM_MARGIN + CELL_BOTTOM_CLEAN_MARGIN;
+}
+
+///////////////////////////////////////////////////////////////////////////////////////////////////
+- (instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
+{
+    self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
+    if (self) {
+        self.selectionStyle = UITableViewCellSelectionStyleNone;
+        
+        // background color
+        self.backgroundColor = [UIColor clearColor];
+        self.contentView.backgroundColor = [UIColor clearColor];
+        
+        self.selectionStyle = UITableViewCellSelectionStyleGray;
+        
+        self.voiceImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0.f, 0.f, IMAGE_VOICE_HEIGHT, IMAGE_VOICE_HEIGHT)];
+        [self.contentView addSubview:self.voiceImageView];
+        
+        self.timeLabel = [[UILabel alloc] initWithFrame:CGRectZero];
+        self.timeLabel.textColor = [UIColor grayColor];
+        self.timeLabel.font = [UIFont systemFontOfSize:16.f];
+        [self.contentView addSubview:self.timeLabel];
+        
+        UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self
+                                                                                     action:@selector(playVoiceAction)];
+        [self.bubbleBgView addGestureRecognizer:tapGesture];
+    }
+    return self;
+}
+
+///////////////////////////////////////////////////////////////////////////////////////////////////
+- (void)prepareForReuse
+{
+    [super prepareForReuse];
+    
+}
+
+///////////////////////////////////////////////////////////////////////////////////////////////////
+- (void)layoutSubviews
+{
+    [super layoutSubviews];
+    
+    CGFloat padding = CELL_PADDING_8;
+    CGFloat margin = CELL_PADDING_10;
+    
+    // status content
+    CGFloat kViewMaxLength = CONTENT_MAX_WIDTH;
+    CGFloat kViewMinLength = 40.f;
+    CGFloat viewLengthForTime = self.voiceEntity.time * 10.f + kViewMinLength;
+    CGFloat viewLength = fminf(kViewMaxLength, viewLengthForTime);
+    self.bubbleBgView.frame = CGRectMake(self.bubbleBgView.left, self.headView.top,
+                                         viewLength + padding + BUBBLE_NOT_ARROW_MARGIN + BUBBLE_ARROW_MARGIN,
+                                         CONTENT_LINE_HEIGHT + BUBBLE_TOP_MARGIN + BUBBLE_BOTTOM_MARGIN);
+    [self.timeLabel sizeToFit];
+    self.voiceImageView.top = self.headView.top + margin;
+    self.timeLabel.bottom = self.voiceImageView.bottom;
+    
+    if (self.isOutgoing) {
+        self.voiceImageView.right = self.headView.left - padding - BUBBLE_ARROW_MARGIN;
+        self.bubbleBgView.right = self.headView.left - padding;
+        self.timeLabel.right = self.bubbleBgView.left - CELL_PADDING_2;
+    }
+    else {
+        self.voiceImageView.left = self.headView.right + padding + BUBBLE_ARROW_MARGIN;
+        self.bubbleBgView.left = self.headView.right + padding;
+        self.timeLabel.left = self.bubbleBgView.right + CELL_PADDING_2;
+    }
+    
+    self.voiceImageView.image = [IMMessageVoiceCell voiceImageForIsOutgoing:self.isOutgoing];
+}
+
+///////////////////////////////////////////////////////////////////////////////////////////////////
+- (BOOL)shouldUpdateCellWithObject:(id)object
+{
+    [super shouldUpdateCellWithObject:object];
+    
+    if ([object isKindOfClass:[IMChatMessageVoiceEntity class]]) {
+        self.voiceEntity = (IMChatMessageVoiceEntity *)object;
+        self.timeLabel.text = [NSString stringWithFormat:@"%d''", self.voiceEntity.time];
+        self.isOutgoing = self.voiceEntity.isOutgoing;
+    }
+    return YES;
+}
+
++ (UIImage *)voiceImageForIsOutgoing:(BOOL)isOutgoing
+{
+    UIImage *image = nil;
+    NSString *namePrefix = isOutgoing ? @"Sender" : @"Receiver";
+    
+    image = [UIImage imageNamed:[NSString stringWithFormat:@"%@VoiceNodePlaying.png", namePrefix]];
+    
+    return image;
+}
+
+- (void)playVoiceAction
+{
+    // TODO:考虑音频的流媒体，采用七牛接口，或者先下载到本地，再播放，目前考虑后者实现更方便，便于本地缓存
+    if (self.voiceEntity.isOutgoing) {
+        [[IMVoiceRecordPlayManager sharedManager] playWithUrl:self.voiceEntity.url];
+    }
+    else {
+        [IMUtil downloadFileWithUrl:self.voiceEntity.url
+                      progressBlock:^(CGFloat progress) {
+                          
+                      } completeBlock:^(BOOL success, NSError *error) {
+                          [[IMVoiceRecordPlayManager sharedManager] playWithUrl:self.voiceEntity.url];
+                      }];
+    }
 }
 
 @end

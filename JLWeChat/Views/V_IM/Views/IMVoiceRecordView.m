@@ -75,7 +75,22 @@
     
     // delegate to send record
     if (self.delegate && [self.delegate respondsToSelector:@selector(didFinishRecordingVoiceWithUrlKey:time:)]) {
-        [self.delegate didFinishRecordingVoiceWithUrlKey:self.urlKey time:self.recorder.currentTime];
+#if 0
+        AVURLAsset* audioAsset = [AVURLAsset URLAssetWithURL:self.recordFileURL options:nil];
+        CMTime audioDuration = audioAsset.duration;
+        float audioDurationSeconds = CMTimeGetSeconds(audioDuration);
+#else
+        NSTimeInterval audioDurationSeconds = 0;
+        NSError *playerError = nil;
+        AVAudioPlayer *audioPlayer = [[AVAudioPlayer alloc] initWithContentsOfURL:self.recordFileURL error:&playerError];
+        if (audioPlayer)  {
+            audioDurationSeconds = audioPlayer.duration;
+        }
+        else {
+            NSLog(@"Error creating player: %@", [playerError description]);
+        }
+#endif
+        [self.delegate didFinishRecordingVoiceWithUrlKey:self.urlKey time:(NSInteger)(ceilf(audioDurationSeconds))];
     }
 }
 

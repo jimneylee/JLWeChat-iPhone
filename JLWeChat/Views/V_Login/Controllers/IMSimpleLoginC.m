@@ -42,6 +42,9 @@
 {
     [super viewDidLoad];
     
+    self.userIDField.text = [[NSUserDefaults standardUserDefaults] stringForKey:XMPP_USER_ID];
+    self.passwordField.text = [[NSUserDefaults standardUserDefaults] stringForKey:XMPP_PASSWORD];
+    
     UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self
                                                                                  action:@selector(tapAction)];
     [self.view addGestureRecognizer:tapGesture];
@@ -50,9 +53,7 @@
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    
-    self.userIDField.text = [[NSUserDefaults standardUserDefaults] stringForKey:XMPP_USER_ID];
-    self.passwordField.text = [[NSUserDefaults standardUserDefaults] stringForKey:XMPP_PASSWORD];
+
 }
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -69,16 +70,36 @@
     }
 }
 
+- (BOOL)checkInputValid
+{
+    BOOL valid = YES;
+    
+    if (self.userIDField.text.length == 0) {
+        [IMUIHelper showTextMessage:self.userIDField.placeholder];
+        [self.userIDField becomeFirstResponder];
+        valid = NO;
+    }
+    else if (self.passwordField.text.length == 0) {
+        [IMUIHelper showTextMessage:self.passwordField.placeholder];
+        [self.passwordField becomeFirstResponder];
+        valid = NO;
+    }
+    
+    return valid;
+}
+
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 #pragma mark Actions
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 - (IBAction)loginAction:(id)sender
 {
-    [self setField:self.userIDField forKey:XMPP_USER_ID];
-    [self setField:self.passwordField forKey:XMPP_PASSWORD];
-    
-    [[IMManager sharedManager] connectThenLogin];
+    if ([self checkInputValid]) {
+        [self setField:self.userIDField forKey:XMPP_USER_ID];
+        [self setField:self.passwordField forKey:XMPP_PASSWORD];
+        
+        [[IMManager sharedManager] connectThenLogin];
+    }
 }
 
 - (IBAction)registerAction:(id)sender

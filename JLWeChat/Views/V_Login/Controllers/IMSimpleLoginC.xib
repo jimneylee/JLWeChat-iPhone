@@ -32,7 +32,7 @@
                     <textInputTraits key="textInputTraits"/>
                 </textField>
                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Cyv-Fq-TEX">
-                    <rect key="frame" x="140" y="119" width="140" height="30"/>
+                    <rect key="frame" x="140" y="119" width="140" height="36"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <color key="backgroundColor" red="0.0" green="0.50196081399917603" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                     <state key="normal" title="登录">
@@ -44,7 +44,7 @@
                     </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="q6l-Lv-IXb">
-                    <rect key="frame" x="41" y="119" width="80" height="30"/>
+                    <rect key="frame" x="41" y="119" width="80" height="36"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <color key="backgroundColor" red="0.15625693511263289" green="0.084253868862204359" blue="0.58818957270408156" alpha="1" colorSpace="calibratedRGB"/>
                     <state key="normal" title="注册">

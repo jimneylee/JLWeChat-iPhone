@@ -54,6 +54,7 @@ typedef NS_ENUM(NSUInteger, MKChatMessageType)
 @property (nonatomic, assign) NSInteger time;
 @property (nonatomic, copy)   NSString *url;
 
++ (id)entityWithDictionary:(NSDictionary *)dic;
 + (NSString *)JSONStringWithVoiceTime:(NSInteger)time url:(NSString *)url;
 
 @end

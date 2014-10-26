@@ -102,7 +102,8 @@
 
 + (id)entityWithArray:(NSArray *)array
 {
-    if (array.count > 0) {
+    if ([array isKindOfClass:[NSArray class]] && array.count > 0) {
+        // TODO:暂时只考虑一张
         NSDictionary *dic = array[0];
         return [[self class] entityWithDictionary:dic];
     }
@@ -152,7 +153,7 @@
 
 + (id)entityWithDictionary:(NSDictionary *)dic
 {
-    if (dic) {
+    if (dic && [dic isKindOfClass:[NSDictionary class]]) {
         IMChatMessageVoiceEntity *entity = [[IMChatMessageVoiceEntity alloc] init];
         entity.time = [dic[@"time"] integerValue];
         entity.url = dic[@"url"];
@@ -165,10 +166,10 @@
 {
     // 暂时还是多图json格式，后面便于扩展
     NSDictionary *jsonDic = @{@"type"   : @"voice",
-                              @"data"   : @[@{
-                                                @"time"  : [NSNumber numberWithInteger:time],
-                                                @"url"    :  url
-                                                }]
+                              @"data"   : @{
+                                            @"time"  : [NSNumber numberWithInteger:time],
+                                            @"url"    :  url
+                                            }
                               };
     NSError *error = nil;
     NSData *jsonData = [NSJSONSerialization dataWithJSONObject:jsonDic options:kNilOptions
@@ -247,7 +248,10 @@
             }
                 
             case MKChatMessageType_Voice:
+            {
+                messageEntity = [IMChatMessageVoiceEntity entityWithDictionary:dic[@"data"]];
                 break;
+            }
                 
             case MKChatMessageType_News:
                 break;
@@ -296,10 +300,10 @@
         lastMessage = ((IMChatMessageTextEntity *)object).text;
     }
     else if ([object isKindOfClass:[IMChatMessageImageEntity class]]) {
-        lastMessage = @"图片";
+        lastMessage = @"[图片]";
     }
     else if ([object isKindOfClass:[IMChatMessageVoiceEntity class]]) {
-        lastMessage = @"语音";
+        lastMessage = @"[语音]";
     }
     else if ([object isKindOfClass:[IMChatMessageNewsEntity class]]) {
         lastMessage = ((IMChatMessageNewsEntity *)object).title;

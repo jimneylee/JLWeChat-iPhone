@@ -16,4 +16,9 @@
 // yyyy-MM-dd-HH-mm-ss.voice
 + (NSString *)generateVoiceTimeKey;
 
+// download file with url
++ (void)downloadFileWithUrl:(NSString*)url
+              progressBlock:(void (^)(CGFloat progress))progressBlock
+              completeBlock:(void (^)(BOOL success, NSError *error))completeBlock;
+
 @end

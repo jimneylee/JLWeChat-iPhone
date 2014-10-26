@@ -178,7 +178,6 @@
         }
         
         self.lastViewHeight = self.height;//use to voice
-        self.textView.hidden = YES;
         [self.textView resignFirstResponder];
         self.voiceKeyboardBtn.tag = BUTTON_TAG_KEYBOARD;
         [self.voiceKeyboardBtn setImage:[UIImage imageNamed:@"ToolViewKeyboard.png"]
@@ -192,7 +191,6 @@
             [self.delegate showKeyboard];
         }
         
-        self.textView.hidden = NO;
         self.height = self.lastViewHeight;//use to voice
         
         [self.textView becomeFirstResponder];
@@ -223,7 +221,6 @@
 
         }
         
-        self.textView.hidden = NO;
         self.height = self.lastViewHeight;
         self.cusorRange = self.textView.internalTextView.selectedRange;
         [self.textView resignFirstResponder];

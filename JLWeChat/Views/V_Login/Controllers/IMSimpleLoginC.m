@@ -1,5 +1,5 @@
 //
-//  MKSimpleLoginC.m
+//  IMSimpleLoginC.m
 //  IMModel
 //
 //  Created by jimneylee on 14-5-19.

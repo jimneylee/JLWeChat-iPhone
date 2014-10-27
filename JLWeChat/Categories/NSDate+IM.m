@@ -8,7 +8,7 @@
 
 #import "NSDate+IM.h"
 
-@implementation NSDate (MKCategory)
+@implementation NSDate (IMCategory)
 
 + (NSDate *)formatLongDateTimeFromString:(NSString *)string
 {

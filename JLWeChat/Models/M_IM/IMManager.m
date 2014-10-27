@@ -1,5 +1,5 @@
 //
-//  MKXMPPManager.m
+//  IMXMPPManager.m
 //  IMModel
 //
 //  Created by jimneylee on 14-5-19.
@@ -592,7 +592,7 @@ static const int ddLogLevel = LOG_LEVEL_INFO;
 		NSLog(@"Unable to connect to server. Check xmppStream.hostName");
 	}
     
-//    [MKUIHelper showTextMessage:@"已断开链接"];
+//    [IMUIHelper showTextMessage:@"已断开链接"];
 }
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

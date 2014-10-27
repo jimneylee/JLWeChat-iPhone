@@ -1,5 +1,5 @@
 //
-//  MKChatShareMoreView.m
+//  IMChatShareMoreView.m
 //  JLWeChat
 //
 //  Created by Lee jimney on 5/24/14.
@@ -12,10 +12,10 @@
 #define LAUNCHER_BUTTON_WIDTH 64
 #define LAUNCHER_LABEL_HEIGHT 20
 
-@interface MKChatShareButtonView : NILauncherButtonView
+@interface IMChatShareButtonView : NILauncherButtonView
 
 @end
-@implementation MKChatShareButtonView
+@implementation IMChatShareButtonView
 
 - (id)initWithReuseIdentifier:(NSString *)reuseIdentifier
 {
@@ -48,15 +48,15 @@
 
 @end
 
-@interface MKChatShareButtonObject : NILauncherViewObject
+@interface IMChatShareButtonObject : NILauncherViewObject
 
 @end
 
-@implementation MKChatShareButtonObject
+@implementation IMChatShareButtonObject
 
 - (Class)buttonViewClass
 {
-    return [MKChatShareButtonView class];
+    return [IMChatShareButtonView class];
 }
 
 @end
@@ -77,15 +77,15 @@
         NSMutableArray *items = [NSMutableArray arrayWithCapacity:10];
         
         NILauncherViewObject *item = nil;
-        item = [[MKChatShareButtonObject alloc] initWithTitle:@"照片"
+        item = [[IMChatShareButtonObject alloc] initWithTitle:@"照片"
                                                         image:[UIImage imageNamed:@"sharemore_pic"]];
         [items addObject:item];
         
-        item = [[MKChatShareButtonObject alloc] initWithTitle:@"拍摄"
+        item = [[IMChatShareButtonObject alloc] initWithTitle:@"拍摄"
                                                         image:[UIImage imageNamed:@"sharemore_video"]];
         [items addObject:item];
 #if 0
-        item = [[MKChatShareButtonObject alloc] initWithTitle:@"位置"
+        item = [[IMChatShareButtonObject alloc] initWithTitle:@"位置"
                                                         image:[UIImage imageNamed:@"sharemore_location"]];
         [items addObject:item];
 #endif

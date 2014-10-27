@@ -1,5 +1,5 @@
 //
-//  MKEmotionMainView.h
+//  IMEmotionMainView.h
 //  MeiKeiMeiShi
 //
 //  Created by jimney on 13-3-5.
@@ -8,15 +8,15 @@
 
 #import "NimbusPagingScrollView.h"
 
-@protocol MKEmotionDelegate;
+@protocol IMEmotionDelegate;
 
 @interface IMEmotionMainView : UIView
 
-@property (nonatomic, weak) id<MKEmotionDelegate> emotionDelegate;
+@property (nonatomic, weak) id<IMEmotionDelegate> emotionDelegate;
 
 @end
 
-@protocol MKEmotionDelegate <NSObject>
+@protocol IMEmotionDelegate <NSObject>
 
 @optional
 - (void)emotionSelectedWithName:(NSString*)name;

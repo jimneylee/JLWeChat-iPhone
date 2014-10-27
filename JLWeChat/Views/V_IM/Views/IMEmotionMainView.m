@@ -1,5 +1,5 @@
 //
-//  MKEmotionMainView.m
+//  IMEmotionMainView.m
 //  JLWeChat
 //
 //  Created by jimney on 13-3-5.
@@ -19,10 +19,10 @@
 #define FACE_WIDTH 30
 #define PAGE_CONTROL_HEIGHT 20
 
-@interface MKEmotionPageView : UIView <NIPagingScrollViewPage>
+@interface IMEmotionPageView : UIView <NIPagingScrollViewPage>
 
 @end
-@implementation MKEmotionPageView
+@implementation IMEmotionPageView
 @synthesize pageIndex = _pageIndex;
 
 - (void)setPageIndex:(NSInteger)pageIndex {
@@ -120,9 +120,9 @@
 	int row = ROW_COUNT;
 	int column = COLUMN_COUNT;
 	
-    MKEmotionPageView *pageView = (MKEmotionPageView *)[pagingScrollView dequeueReusablePageWithIdentifier:@"MKEmotionPageView"];
+    IMEmotionPageView *pageView = (IMEmotionPageView *)[pagingScrollView dequeueReusablePageWithIdentifier:@"IMEmotionPageView"];
 	if (pageView == nil) {
-		pageView = [[MKEmotionPageView alloc] initWithFrame:CGRectMake(0, 0, column * (FACE_WIDTH + ROW_SPACE),
+		pageView = [[IMEmotionPageView alloc] initWithFrame:CGRectMake(0, 0, column * (FACE_WIDTH + ROW_SPACE),
                                                              row * (FACE_WIDTH + COLUMN_SPACE))];
 		pageView.backgroundColor = [UIColor clearColor];
 		

@@ -45,7 +45,7 @@
 #pragma mark - UIView
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
-- (id)initWithFunctionOptions:(MKChatSendBarFunctionOptions)options;
+- (id)initWithFunctionOptions:(IMChatSendBarFunctionOptions)options;
 {
     self = [super initWithFrame:CGRectMake(0, 0, CHAT_INPUT_BAR_SIZE.width, CHAT_INPUT_BAR_SIZE.height)];
     if (self) {
@@ -92,7 +92,7 @@
     CGFloat kTextViewMaxHeight = SCREEN_SIZE.height - TT_KEYBOARD_HEIGHT
     - (TT_STATUSBAR_HEITH + TT_TOOLBAR_HEIGHT) - TT_TOOLBAR_HEIGHT * 3;// 粗略估算
     
-    if (self.functionOptions & MKChatSendBarFunctionOption_Voice) {
+    if (self.functionOptions & IMChatSendBarFunctionOption_Voice) {
         kTextViewWidth = kTextViewWidth - kBtnWidth;
         self.voiceKeyboardBtn.frame = CGRectMake(0.f, kBtnTopMargin, kBtnWidth, KBtnHeight);
     }
@@ -100,7 +100,7 @@
         self.voiceKeyboardBtn.frame = CGRectZero;
     }
     
-    if (self.functionOptions & MKChatSendBarFunctionOption_Emotion) {
+    if (self.functionOptions & IMChatSendBarFunctionOption_Emotion) {
         kTextViewWidth = kTextViewWidth - kBtnWidth;
         self.emotionKeyboardBtn.frame = CGRectMake(0.f, kBtnTopMargin, kBtnWidth, KBtnHeight);
     }
@@ -108,7 +108,7 @@
         self.emotionKeyboardBtn.frame = CGRectZero;
     }
     
-    if (self.functionOptions & MKChatSendBarFunctionOption_More) {
+    if (self.functionOptions & IMChatSendBarFunctionOption_More) {
         kTextViewWidth = kTextViewWidth - kBtnWidth;
         self.moreBtn.frame = CGRectMake(0.f, kBtnTopMargin, kBtnWidth, KBtnHeight);
     }
@@ -116,7 +116,7 @@
         self.moreBtn.frame = CGRectZero;
     }
     
-    if (self.functionOptions & MKChatSendBarFunctionOption_Text) {
+    if (self.functionOptions & IMChatSendBarFunctionOption_Text) {
         self.textViewBgImageView.frame = CGRectMake(self.voiceKeyboardBtn.right, kTextViewBgMargin,
                                                     kTextViewWidth, kViewHeight - kTextViewBgMargin * 2);
         self.textView.frame = CGRectMake(self.voiceKeyboardBtn.right, kBtnTopMargin,

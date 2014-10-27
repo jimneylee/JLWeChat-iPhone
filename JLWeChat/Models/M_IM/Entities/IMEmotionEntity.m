@@ -1,5 +1,5 @@
 //
-//  MKEmotionEntity.m
+//  IMEmotionEntity.m
 //  JLWeChat
 //
 //  Created by jimney on 13-3-5.

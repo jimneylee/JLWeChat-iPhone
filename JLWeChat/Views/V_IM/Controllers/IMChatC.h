@@ -1,5 +1,5 @@
 //
-//  MKChatC.h
+//  IMChatC.h
 //  JLWeChat
 //
 //  Created by jimneylee on 14-5-20.

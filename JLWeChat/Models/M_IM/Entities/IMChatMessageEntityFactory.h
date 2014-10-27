@@ -1,5 +1,5 @@
 //
-//  MKChatMessageEntity.h
+//  IMChatMessageEntity.h
 //  JLWeChat
 //
 //  Created by jimneylee on 14-5-23.
@@ -9,18 +9,18 @@
 #import <Foundation/Foundation.h>
 #import "XMPPMessageArchiving_Message_CoreDataObject.h"
 
-typedef NS_ENUM(NSUInteger, MKChatMessageType)
+typedef NS_ENUM(NSUInteger, IMChatMessageType)
 {
-    MKChatMessageType_Text,
-    MKChatMessageType_Image,
-    MKChatMessageType_Voice,
-    MKChatMessageType_News,
-    MKChatMessageType_Unknown
+    IMChatMessageType_Text,
+    IMChatMessageType_Image,
+    IMChatMessageType_Voice,
+    IMChatMessageType_News,
+    IMChatMessageType_Unknown
 };
 
 @interface IMChatMessageBaseEntity : NSObject
 
-@property (nonatomic, assign) MKChatMessageType type;
+@property (nonatomic, assign) IMChatMessageType type;
 @property (nonatomic, assign) BOOL isOutgoing;
 
 @end

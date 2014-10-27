@@ -1,5 +1,5 @@
 //
-//  MKSimpleLoginC.h
+//  IMSimpleLoginC.h
 //  IMModel
 //
 //  Created by jimneylee on 14-5-19.

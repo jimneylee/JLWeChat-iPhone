@@ -1,5 +1,5 @@
 //
-//  MKChatMessageEntity.m
+//  IMChatMessageEntity.m
 //  JLWeChat
 //
 //  Created by jimneylee on 14-5-23.
@@ -10,7 +10,7 @@
 #import "JLKeywordRegularParser.h"
 #import "IMEmotionManager.h"
 
-#pragma mark MKChatMessageBaseEntity
+#pragma mark IMChatMessageBaseEntity
 
 @implementation IMChatMessageBaseEntity
 
@@ -18,7 +18,7 @@
 {
     self = [super init];
     if (self) {
-        self.type = MKChatMessageType_Unknown;
+        self.type = IMChatMessageType_Unknown;
         self.isOutgoing = NO;
     }
     return self;
@@ -26,7 +26,7 @@
 
 @end
 
-#pragma mark MKChatMessageTextEntity
+#pragma mark IMChatMessageTextEntity
 
 @implementation IMChatMessageTextEntity
 
@@ -59,7 +59,7 @@
 // 识别出 表情 at某人 share软件(TODO:) 标签
 - (void)parseAllKeywords
 {
-    if (MKChatMessageType_Text == self.type && self.text.length > 0) {
+    if (IMChatMessageType_Text == self.type && self.text.length > 0) {
         if (!self.emotionRanges) {
             
             NSString *trimedString = self.text;
@@ -96,7 +96,7 @@
 
 @end
 
-#pragma mark MKChatMessageImageEntity
+#pragma mark IMChatMessageImageEntity
 
 @implementation IMChatMessageImageEntity
 
@@ -147,7 +147,7 @@
 
 @end
 
-#pragma mark MKChatMessageVoiceEntity
+#pragma mark IMChatMessageVoiceEntity
 
 @implementation IMChatMessageVoiceEntity
 
@@ -186,13 +186,13 @@
 
 @end
 
-#pragma mark MKChatMessageNewsEntity
+#pragma mark IMChatMessageNewsEntity
 
 @implementation IMChatMessageNewsEntity
 
 @end
 
-#pragma mark MKChatMessageEntityFactory
+#pragma mark IMChatMessageEntityFactory
 
 @implementation IMChatMessageEntityFactory
 
@@ -232,28 +232,28 @@
     if (dic) {
         NSString *typeStr = dic[@"type"];
         IMChatMessageBaseEntity *messageEntity = nil;
-        MKChatMessageType type = [IMChatMessageEntityFactory typeFromString:typeStr];
+        IMChatMessageType type = [IMChatMessageEntityFactory typeFromString:typeStr];
         
         switch (type) {
-            case MKChatMessageType_Text:
+            case IMChatMessageType_Text:
             {
                 messageEntity = [[IMChatMessageTextEntity alloc] initWithText:dic[@"data"]];
                 break;
             }
                 
-            case MKChatMessageType_Image:
+            case IMChatMessageType_Image:
             {
                 messageEntity = [IMChatMessageImageEntity entityWithArray:dic[@"data"]];
                 break;
             }
                 
-            case MKChatMessageType_Voice:
+            case IMChatMessageType_Voice:
             {
                 messageEntity = [IMChatMessageVoiceEntity entityWithDictionary:dic[@"data"]];
                 break;
             }
                 
-            case MKChatMessageType_News:
+            case IMChatMessageType_News:
                 break;
 
             default:
@@ -265,27 +265,27 @@
     return nil;
 }
 
-+ (MKChatMessageType)typeWithDictionary:(NSDictionary *)dic
++ (IMChatMessageType)typeWithDictionary:(NSDictionary *)dic
 {
     NSString *typeStr = dic[@"type"];
     return [IMChatMessageEntityFactory typeFromString:typeStr];
 }
 
-+ (MKChatMessageType)typeFromString:(NSString *)typeStr
++ (IMChatMessageType)typeFromString:(NSString *)typeStr
 {
-    MKChatMessageType type = MKChatMessageType_Unknown;
+    IMChatMessageType type = IMChatMessageType_Unknown;
     if (typeStr.length > 0) {
         if ([typeStr isEqualToString:@"text"]) {
-            type = MKChatMessageType_Text;
+            type = IMChatMessageType_Text;
         }
         else if ([typeStr isEqualToString:@"image"]) {
-            type = MKChatMessageType_Image;
+            type = IMChatMessageType_Image;
         }
         else if ([typeStr isEqualToString:@"voice"]) {
-            type = MKChatMessageType_Voice;
+            type = IMChatMessageType_Voice;
         }
         else if ([typeStr isEqualToString:@"news"]) {
-            type = MKChatMessageType_News;
+            type = IMChatMessageType_News;
         }
     }
     return type;

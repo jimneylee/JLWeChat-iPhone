@@ -1,5 +1,5 @@
 //
-//  MKRecentContactCell.h
+//  IMRecentContactCell.h
 //  JLWeChat
 //
 //  Created by jimneylee on 14-5-22.

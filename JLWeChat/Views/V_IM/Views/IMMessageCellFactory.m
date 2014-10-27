@@ -1,5 +1,5 @@
 //
-//  MKMessageCellFactory.m
+//  IMMessageCellFactory.m
 //  JLWeChat
 //
 //  Created by jimneylee on 14-5-22.
@@ -31,14 +31,14 @@
 
 @end
 
-#pragma mark - MKMessageBaseCell
+#pragma mark - IMMessageBaseCell
 
 @interface IMMessageBaseCell()
 
 @property (nonatomic, strong) UIImageView *headView;
 @property (nonatomic, strong) UIImageView *bubbleBgView;
 
-@property (nonatomic, assign) MKChatMessageType type;
+@property (nonatomic, assign) IMChatMessageType type;
 @property (nonatomic, assign) BOOL isOutgoing;
 
 @end
@@ -144,16 +144,16 @@
     
 }
 
-- (UIImage *)bubbleImageForMessageType:(MKChatMessageType)type isOutgoing:(BOOL)isOutgoing
+- (UIImage *)bubbleImageForMessageType:(IMChatMessageType)type isOutgoing:(BOOL)isOutgoing
 {
     UIImage *bubbleBgImage = nil;
     NSString *namePrefix = isOutgoing ? @"Sender" : @"Receiver";
     switch (type) {
-        case MKChatMessageType_Text:
-        case MKChatMessageType_Voice:
+        case IMChatMessageType_Text:
+        case IMChatMessageType_Voice:
             bubbleBgImage = [UIImage imageNamed:[NSString stringWithFormat:@"%@TextNodeBkg.png", namePrefix]];
             break;
-        case MKChatMessageType_Image:
+        case IMChatMessageType_Image:
             bubbleBgImage = [UIImage imageNamed:[NSString stringWithFormat:@"%@ImageNodeBorder.png", namePrefix]];
             break;
             // TODO: 其他类型背景
@@ -165,7 +165,7 @@
 
 @end
 
-#pragma mark - MKMessageTextCell
+#pragma mark - IMMessageTextCell
 
 // 本微博：字体 行高 文本色设置
 #define CONTENT_FONT_SIZE [UIFont fontWithName:@"STHeitiSC-Light" size:16.f]
@@ -458,7 +458,7 @@
         
             @strongify(self);
             // TODO:考虑图片是否旋转过
-            UIImage *maskImage = [[self class] maskImageWithSize:self.bubbleBgView.size//MK_SIZE_HD(self.bubbleBgView.size)
+            UIImage *maskImage = [[self class] maskImageWithSize:self.bubbleBgView.size//IM_SIZE_HD(self.bubbleBgView.size)
                                                       isOutgoing:self.isOutgoing];
             self.contentImageView.image = [image maskWithImage:maskImage];
         });
@@ -475,7 +475,7 @@
 
     if ([object isKindOfClass:[IMChatMessageImageEntity class]]) {
         self.imageMessage = (IMChatMessageImageEntity *)object;
-        self.type = MKChatMessageType_Image;
+        self.type = IMChatMessageType_Image;
         self.isOutgoing = self.imageMessage.isOutgoing;
     }
     

@@ -1,5 +1,5 @@
 //
-//  MKChatShareMoreView.h
+//  IMChatShareMoreView.h
 //  JLWeChat
 //
 //  Created by Lee jimney on 5/24/14.

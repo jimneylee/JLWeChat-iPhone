@@ -134,26 +134,26 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-	static NSString *MKContactCellIdentifier = @"MKContactCell";
-    static NSString *MKStaticContactCellIdentifier = @"MKStaticContactCellIdentifier";
+	static NSString *IMContactCellIdentifier = @"IMContactCell";
+    static NSString *IMStaticContactCellIdentifier = @"IMStaticContactCellIdentifier";
     
 	UITableViewCell *cell = nil;
     id object = [self.viewModel objectAtIndexPath:indexPath];
     if ([object isKindOfClass:[XMPPUserCoreDataStorageObject class]]) {
-        cell = [tableView dequeueReusableCellWithIdentifier:MKContactCellIdentifier];
+        cell = [tableView dequeueReusableCellWithIdentifier:IMContactCellIdentifier];
         if (!cell) {
             cell = [[IMContactCell alloc] initWithStyle:UITableViewCellStyleDefault
-                                        reuseIdentifier:MKContactCellIdentifier];
+                                        reuseIdentifier:IMContactCellIdentifier];
         }
         
         XMPPUserCoreDataStorageObject *user = (XMPPUserCoreDataStorageObject *)object;
         [(IMContactCell *)cell shouldUpdateCellWithObject:user];
     }
     else if ([object isKindOfClass:[NSString class]]) {
-        cell = [tableView dequeueReusableCellWithIdentifier:MKStaticContactCellIdentifier];
+        cell = [tableView dequeueReusableCellWithIdentifier:IMStaticContactCellIdentifier];
         if (!cell) {
             cell = [[IMStaticContactCell alloc] initWithStyle:UITableViewCellStyleDefault
-                                          reuseIdentifier:MKStaticContactCellIdentifier];
+                                          reuseIdentifier:IMStaticContactCellIdentifier];
         }
         [(IMStaticContactCell *)cell shouldUpdateCellWithObject:object
                                            unsubscribedCountNum:self.viewModel.unsubscribedCountNum];
@@ -192,7 +192,7 @@
         
         // 1、 解除好友关系，调用删除接口
 //        if (!self.rosterAddtionlViewModel) {
-//            self.rosterAddtionlViewModel = [[MKRosterAddtionalViewModel alloc] init];
+//            self.rosterAddtionlViewModel = [[IMRosterAddtionalViewModel alloc] init];
 //        }
 //        [self.rosterAddtionlViewModel deleteFriend:user.jid.user
 //                                            withMe:MY_JID.user

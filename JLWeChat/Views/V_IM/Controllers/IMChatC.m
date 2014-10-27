@@ -1,5 +1,5 @@
 //
-//  MKChatC.m
+//  IMChatC.m
 //  JLWeChat
 //
 //  Created by jimneylee on 14-5-20.
@@ -36,7 +36,7 @@
 static XMPPJID *currentChatBuddyJid = nil;
 
 @interface IMChatC ()<UITableViewDelegate, UITableViewDataSource,
-IMVoiceRecordViewDelegate, MKChatSendBarDelegate, MKEmotionDelegate, IMChatShareMoreViewDelegate>
+IMVoiceRecordViewDelegate, IMChatSendBarDelegate, IMEmotionDelegate, IMChatShareMoreViewDelegate>
 
 @property (nonatomic, strong) UIRefreshControl *refreshControl;
 @property (nonatomic, strong) UITableView *tableView;
@@ -140,8 +140,8 @@ IMVoiceRecordViewDelegate, MKChatSendBarDelegate, MKEmotionDelegate, IMChatShare
     
     self.view.backgroundColor = [UIColor whiteColor];
     
-    self.chatSendBar = [[IMChatSendBar alloc] initWithFunctionOptions:MKChatSendBarFunctionOption_Voice | MKChatSendBarFunctionOption_Text
-                        | MKChatSendBarFunctionOption_Emotion | MKChatSendBarFunctionOption_More];
+    self.chatSendBar = [[IMChatSendBar alloc] initWithFunctionOptions:IMChatSendBarFunctionOption_Voice | IMChatSendBarFunctionOption_Text
+                        | IMChatSendBarFunctionOption_Emotion | IMChatSendBarFunctionOption_More];
     self.chatSendBar.delegate = self;
     self.chatSendBar.backgroundColor = RGBCOLOR(244, 244, 244);
     self.chatSendBar.bottom = self.view.height;
@@ -447,7 +447,7 @@ IMVoiceRecordViewDelegate, MKChatSendBarDelegate, MKEmotionDelegate, IMChatShare
 }
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
-#pragma mark - MKChatSendBarDelegate
+#pragma mark - IMChatSendBarDelegate
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 
 - (void)sendPlainMessage:(NSString *)plainMessage

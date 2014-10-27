@@ -8,24 +8,24 @@
 
 #import <UIKit/UIKit.h>
 
-typedef NS_OPTIONS(NSUInteger, MKChatSendBarFunctionOptions) {
-    MKChatSendBarFunctionOption_Voice   = 1 << 0,
-    MKChatSendBarFunctionOption_Text    = 1 << 1,
-    MKChatSendBarFunctionOption_Emotion = 1 << 2,
-    MKChatSendBarFunctionOption_More    = 1 << 3,
-    MKChatSendBarFunctionOption_All     = MKChatSendBarFunctionOption_Voice | MKChatSendBarFunctionOption_Text |
-                                          MKChatSendBarFunctionOption_Emotion | MKChatSendBarFunctionOption_More
+typedef NS_OPTIONS(NSUInteger, IMChatSendBarFunctionOptions) {
+    IMChatSendBarFunctionOption_Voice   = 1 << 0,
+    IMChatSendBarFunctionOption_Text    = 1 << 1,
+    IMChatSendBarFunctionOption_Emotion = 1 << 2,
+    IMChatSendBarFunctionOption_More    = 1 << 3,
+    IMChatSendBarFunctionOption_All     = IMChatSendBarFunctionOption_Voice | IMChatSendBarFunctionOption_Text |
+                                          IMChatSendBarFunctionOption_Emotion | IMChatSendBarFunctionOption_More
 };
 
-@protocol MKChatSendBarDelegate;
+@protocol IMChatSendBarDelegate;
 
 @interface IMChatSendBar : UIView
 
-@property (nonatomic, weak) id<MKChatSendBarDelegate> delegate;
+@property (nonatomic, weak) id<IMChatSendBarDelegate> delegate;
 @property (nonatomic, copy) NSString *inputText;
-@property (nonatomic, assign) MKChatSendBarFunctionOptions functionOptions;
+@property (nonatomic, assign) IMChatSendBarFunctionOptions functionOptions;
 
-- (id)initWithFunctionOptions:(MKChatSendBarFunctionOptions)options;
+- (id)initWithFunctionOptions:(IMChatSendBarFunctionOptions)options;
 
 - (void)insertEmotionName:(NSString *)emotionName;
 - (BOOL)makeTextViewBecomeFirstResponder;
@@ -36,7 +36,7 @@ typedef NS_OPTIONS(NSUInteger, MKChatSendBarFunctionOptions) {
 
 @end
 
-@protocol MKChatSendBarDelegate <NSObject>
+@protocol IMChatSendBarDelegate <NSObject>
 
 @optional
 

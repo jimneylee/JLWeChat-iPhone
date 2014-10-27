@@ -121,7 +121,7 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-	static NSString *CellIdentifier = @"MKRecentContactCell";
+	static NSString *CellIdentifier = @"IMRecentContactCell";
 	
 	IMRecentContactCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
 	if (!cell) {

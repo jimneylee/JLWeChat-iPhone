@@ -1,5 +1,5 @@
 //
-//  MKEmotionManager.m
+//  IMEmotionManager.m
 //  JLWeChat
 //
 //  Created by jimneylee on 14-5-23.

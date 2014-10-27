@@ -1,5 +1,5 @@
 //
-//  MKContactEntity.h
+//  IMContactEntity.h
 //  SinaMBlog
 //
 //  Created by jimney on 13-3-12.

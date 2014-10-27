@@ -1,5 +1,5 @@
 //
-//  MKSearchDisplayController.h
+//  IMSearchDisplayController.h
 //  JLWeChat
 //
 //  Created by Lee jimney on 6/2/14.

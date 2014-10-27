@@ -1,5 +1,5 @@
 //
-//  MKSearchDisplayController.m
+//  IMSearchDisplayController.m
 //  JLWeChat
 //
 //  Created by Lee jimney on 6/2/14.
@@ -75,25 +75,25 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-	static NSString *MKContactCellIdentifier = @"MKContactCell";
-    static NSString *MKRecentContactCellIdentifier = @"MKRecentContactCell";
+	static NSString *IMContactCellIdentifier = @"IMContactCell";
+    static NSString *IMRecentContactCellIdentifier = @"IMRecentContactCell";
 	id object = [self.searchViewModel objectAtIndexPath:indexPath];
     
     if ([object isKindOfClass:[XMPPUserCoreDataStorageObject class]]) {
-        IMContactCell *cell = [tableView dequeueReusableCellWithIdentifier:MKContactCellIdentifier];
+        IMContactCell *cell = [tableView dequeueReusableCellWithIdentifier:IMContactCellIdentifier];
         if (!cell) {
             cell = [[IMContactCell alloc] initWithStyle:UITableViewCellStyleDefault
-                                        reuseIdentifier:MKContactCellIdentifier];
+                                        reuseIdentifier:IMContactCellIdentifier];
         }
         XMPPUserCoreDataStorageObject *user = (XMPPUserCoreDataStorageObject *)object;
         [cell shouldUpdateCellWithObject:user];
         return cell;
     }
     else if ([object isKindOfClass:[XMPPMessageArchiving_Contact_CoreDataObject class]]) {
-        IMSearchChatContactCell *cell = [tableView dequeueReusableCellWithIdentifier:MKRecentContactCellIdentifier];
+        IMSearchChatContactCell *cell = [tableView dequeueReusableCellWithIdentifier:IMRecentContactCellIdentifier];
         if (!cell) {
             cell = [[IMSearchChatContactCell alloc] initWithStyle:UITableViewCellStyleSubtitle
-                                                  reuseIdentifier:MKRecentContactCellIdentifier];
+                                                  reuseIdentifier:IMRecentContactCellIdentifier];
         }
         XMPPMessageArchiving_Contact_CoreDataObject *user = (XMPPMessageArchiving_Contact_CoreDataObject *)object;
         [cell shouldUpdateCellWithObject:user];

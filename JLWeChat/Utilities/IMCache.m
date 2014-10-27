@@ -1,5 +1,5 @@
 //
-//  MKImageCache.m
+//  IMImageCache.m
 //  JLWeChat
 //
 //  Created by john on 14-5-22.
@@ -12,7 +12,7 @@
 
 @property(nonatomic,strong) NSString *cacheDir;
 
-- (NSString*)MKImageCacheKeyFromURLRequest:(NSURLRequest *)request;
+- (NSString*)IMImageCacheKeyFromURLRequest:(NSURLRequest *)request;
 
 @end
 
@@ -64,7 +64,7 @@
 - (void)cacheData:(NSData*)data forRequest:(NSURLRequest *)request
 {
     NSAssert([NSThread isMainThread], @"Not on main thread");
-    NSString *md5 = [self MKImageCacheKeyFromURLRequest:request];
+    NSString *md5 = [self IMImageCacheKeyFromURLRequest:request];
     
     [self setObject:data forKey:md5];
     NSString *path = [self.cacheDir stringByAppendingPathComponent:[NSString stringWithFormat:@"%@.dat",md5]];
@@ -81,7 +81,7 @@
             break;
     }
     NSAssert([NSThread isMainThread], @"Not on main thread");
-    NSString *md5 = [self MKImageCacheKeyFromURLRequest:request];
+    NSString *md5 = [self IMImageCacheKeyFromURLRequest:request];
     NSData* data = [self objectForKey:md5];
     if (!data) {
         NSString *path = [self.cacheDir stringByAppendingPathComponent:[NSString stringWithFormat:@"%@.dat",md5]];
@@ -123,7 +123,7 @@
     }
 }
 
-- (NSString *) MKImageCacheKeyFromURLRequest:(NSURLRequest *)request
+- (NSString *) IMImageCacheKeyFromURLRequest:(NSURLRequest *)request
 {
     NSString* urlStr = [[request URL] absoluteString];
     return urlStr;

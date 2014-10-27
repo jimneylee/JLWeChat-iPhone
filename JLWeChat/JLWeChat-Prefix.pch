@@ -24,7 +24,7 @@
 #import <ReactiveViewModel/ReactiveViewModel.h>
 #import <Nimbus/NimbusCore.h>
 
-// MK
+// IM
 #import "IMMacros.h"
 #import "IMUIMacros.h"
 #import "IMUIHelper.h"

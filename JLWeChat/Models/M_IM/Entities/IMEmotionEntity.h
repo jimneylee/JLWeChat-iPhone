@@ -1,5 +1,5 @@
 //
-//  MKEmotionEntity.h
+//  IMEmotionEntity.h
 //  JLWeChat
 //
 //  Created by jimney on 13-3-5.

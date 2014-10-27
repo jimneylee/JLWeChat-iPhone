@@ -11,7 +11,7 @@
 
 @interface XMPPMessageArchiving_Message_CoreDataObject (ChatMessage)
 
-// chatMessage 可能为MKChatMessageTextEntity MKChatMessageImageEntity ..
+// chatMessage 可能为IMChatMessageTextEntity IMChatMessageImageEntity ..
 @property (nonatomic, strong) IMChatMessageBaseEntity *chatMessage;
 
 - (NSString *)sectionIdentifier;

@@ -1,5 +1,5 @@
 //
-//  MKDataBaseManager.m
+//  IMDataBaseManager.m
 //  JLWeChat
 //
 //  Created by Lee jimney on 6/14/14.

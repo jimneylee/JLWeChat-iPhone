@@ -1,5 +1,5 @@
 //
-//  MKImageCache.h
+//  IMImageCache.h
 //  JLWeChat
 //
 //  Created by john on 14-5-22.

@@ -1,5 +1,5 @@
 //
-//  MKAddressBookViewModel.m
+//  IMAddressBookViewModel.m
 //  JLWeChat
 //
 //  Created by jimneylee on 14-5-21.
@@ -73,21 +73,21 @@ static const int ddLogLevel = LOG_LEVEL_INFO;
             return @(NO);
         }];
         
-//        self.searchUserViewModel = [[MKVMSearchUser alloc] init];
+//        self.searchUserViewModel = [[IMVMSearchUser alloc] init];
 //        
 //        [RACObserve(self.searchUserViewModel, resultStr) subscribeNext:^(NSString *x) {
 //            
 //            if (x.integerValue > 0) {
-//                MKDSearchEnity *user = self.searchUserViewModel.resultArray[0];
+//                IMDSearchEnity *user = self.searchUserViewModel.resultArray[0];
 //                
 //                // 更新sql中nickname
 //                NSString *bareJidStr = [NSString stringWithFormat:@"%@@%@",
 //                                        user.uname, [IMManager sharedManager].myJID.domain];
-//                [MKNewFriendsViewModel updateNewFriendWithBareJidStr:bareJidStr nickname:user.nickname];
+//                [IMNewFriendsViewModel updateNewFriendWithBareJidStr:bareJidStr nickname:user.nickname];
 //            }
 //        }];
 //        
-//        self.rosterAddtionlViewModel = [[MKRosterAddtionalViewModel alloc] init];
+//        self.rosterAddtionlViewModel = [[IMRosterAddtionalViewModel alloc] init];
     }
     
     return self;
@@ -431,7 +431,7 @@ static const int ddLogLevel = LOG_LEVEL_INFO;
             XMPPUserCoreDataStorageObject *user = [[IMManager sharedManager].xmppRosterStorage
                                                    userForJID:[XMPPJID jidWithString:jidStr]
                                                    xmppStream:[IMManager sharedManager].xmppStream
-                                                   managedObjectContext:MK_MOC];
+                                                   managedObjectContext:IM_MOC];
             if ([self deleteUser:user]) {
                 NSLog(@"deleteUser:%@", user.jid.bare);
             }

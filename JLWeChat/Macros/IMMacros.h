@@ -44,7 +44,7 @@
                 ? CGSizeEqualToSize(CGSizeMake(640, 1136), [[UIScreen mainScreen] currentMode].size) \
                 : NO)
 
-#define MK_MOC [IMDataBaseManager sharedManager].managedObjectContext
+#define IM_MOC [IMDataBaseManager sharedManager].managedObjectContext
 #define MY_JID [IMManager sharedManager].myJID
 
 #endif

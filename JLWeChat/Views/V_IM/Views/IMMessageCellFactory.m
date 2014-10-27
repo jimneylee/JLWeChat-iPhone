@@ -20,7 +20,7 @@
 #import "IMChatMessageEntityFactory.h"
 #import "UIView+findViewController.h"
 #import "IMChatC.h"
-#import "IMVoiceRecordPlayManager.h"
+#import "IMAudioRecordPlayManager.h"
 #import "IMCache.h"
 #import "IMUtil.h"
 
@@ -61,8 +61,8 @@
         self.bubbleBgView.userInteractionEnabled = YES;
         [self.contentView addSubview:self.bubbleBgView];
         
-        UITapGestureRecognizer *longGesture  = [[UITapGestureRecognizer alloc] initWithTarget:self
-                                                                                       action:@selector(showMenuView)];
+        UILongPressGestureRecognizer *longGesture  = [[UILongPressGestureRecognizer alloc] initWithTarget:self
+                                                                                                   action:@selector(showMenuView)];
         [self.bubbleBgView addGestureRecognizer:longGesture];
         
         // background color
@@ -565,15 +565,16 @@
 
 #define IMAGE_VOICE_HEIGHT 20
 
-@interface IMMessageVoiceCell()
+@interface IMMessageAudioCell()
 
-@property (nonatomic, strong) IMChatMessageVoiceEntity *voiceEntity;
-@property (nonatomic, strong) UIImageView *voiceImageView;
+@property (nonatomic, strong) IMChatMessageAudioEntity *audioEntity;
+@property (nonatomic, strong) UIImageView *audioImageView;
 @property (nonatomic, strong) UILabel *timeLabel;
+@property (nonatomic, strong) MBRoundProgressView *progressView;
 
 @end
 
-@implementation IMMessageVoiceCell
+@implementation IMMessageAudioCell
 
 + (CGFloat)heightForObject:(id)object atIndexPath:(NSIndexPath *)indexPath tableView:(UITableView *)tableView;
 {
@@ -586,20 +587,23 @@
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self) {
         self.selectionStyle = UITableViewCellSelectionStyleNone;
-        
-        // background color
         self.backgroundColor = [UIColor clearColor];
         self.contentView.backgroundColor = [UIColor clearColor];
         
-        self.selectionStyle = UITableViewCellSelectionStyleGray;
-        
-        self.voiceImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0.f, 0.f, IMAGE_VOICE_HEIGHT, IMAGE_VOICE_HEIGHT)];
-        [self.contentView addSubview:self.voiceImageView];
+        self.audioImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0.f, 0.f, IMAGE_VOICE_HEIGHT, IMAGE_VOICE_HEIGHT)];
+        self.audioImageView.userInteractionEnabled = YES;
+        [self.contentView addSubview:self.audioImageView];
         
         self.timeLabel = [[UILabel alloc] initWithFrame:CGRectZero];
         self.timeLabel.textColor = [UIColor grayColor];
         self.timeLabel.font = [UIFont systemFontOfSize:16.f];
         [self.contentView addSubview:self.timeLabel];
+        
+        self.progressView = [[MBRoundProgressView alloc] initWithFrame:CGRectZero];
+        self.progressView.userInteractionEnabled = YES;
+        self.progressView.progressTintColor = [UIColor grayColor];
+        self.progressView.backgroundTintColor = [UIColor lightGrayColor];
+        [self.contentView addSubview:self.progressView];
         
         UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self
                                                                                      action:@selector(playVoiceAction)];
@@ -623,30 +627,34 @@
     CGFloat padding = CELL_PADDING_8;
     CGFloat margin = CELL_PADDING_10;
     
-    // status content
     CGFloat kViewMaxLength = CONTENT_MAX_WIDTH;
     CGFloat kViewMinLength = 40.f;
-    CGFloat viewLengthForTime = self.voiceEntity.time * 10.f + kViewMinLength;
+    CGFloat viewLengthForTime = self.audioEntity.time * 10.f + kViewMinLength;
     CGFloat viewLength = fminf(kViewMaxLength, viewLengthForTime);
     self.bubbleBgView.frame = CGRectMake(self.bubbleBgView.left, self.headView.top,
                                          viewLength + padding + BUBBLE_NOT_ARROW_MARGIN + BUBBLE_ARROW_MARGIN,
                                          CONTENT_LINE_HEIGHT + BUBBLE_TOP_MARGIN + BUBBLE_BOTTOM_MARGIN);
     [self.timeLabel sizeToFit];
-    self.voiceImageView.top = self.headView.top + margin;
-    self.timeLabel.bottom = self.voiceImageView.bottom;
-    
+    self.audioImageView.top = self.headView.top + margin;
+    self.timeLabel.bottom = self.audioImageView.bottom;
+    self.progressView.width = self.progressView.height = self.audioImageView.height;
+    self.progressView.bottom = self.audioImageView.bottom;
+
     if (self.isOutgoing) {
-        self.voiceImageView.right = self.headView.left - padding - BUBBLE_ARROW_MARGIN;
+        self.audioImageView.right = self.headView.left - padding - BUBBLE_ARROW_MARGIN;
+        self.progressView.right = self.audioImageView.left - CELL_PADDING_2;
         self.bubbleBgView.right = self.headView.left - padding;
         self.timeLabel.right = self.bubbleBgView.left - CELL_PADDING_2;
     }
     else {
-        self.voiceImageView.left = self.headView.right + padding + BUBBLE_ARROW_MARGIN;
+        self.audioImageView.left = self.headView.right + padding + BUBBLE_ARROW_MARGIN;
+        self.progressView.left = self.audioImageView.right + CELL_PADDING_2;
         self.bubbleBgView.left = self.headView.right + padding;
         self.timeLabel.left = self.bubbleBgView.right + CELL_PADDING_2;
     }
     
-    self.voiceImageView.image = [IMMessageVoiceCell voiceImageForIsOutgoing:self.isOutgoing];
+    self.progressView.hidden = YES;
+    self.audioImageView.image = [IMMessageAudioCell voiceImageForIsOutgoing:self.isOutgoing];
 }
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
@@ -654,10 +662,10 @@
 {
     [super shouldUpdateCellWithObject:object];
     
-    if ([object isKindOfClass:[IMChatMessageVoiceEntity class]]) {
-        self.voiceEntity = (IMChatMessageVoiceEntity *)object;
-        self.timeLabel.text = [NSString stringWithFormat:@"%d''", self.voiceEntity.time];
-        self.isOutgoing = self.voiceEntity.isOutgoing;
+    if ([object isKindOfClass:[IMChatMessageAudioEntity class]]) {
+        self.audioEntity = (IMChatMessageAudioEntity *)object;
+        self.timeLabel.text = [NSString stringWithFormat:@"%d''", self.audioEntity.time];
+        self.isOutgoing = self.audioEntity.isOutgoing;
     }
     return YES;
 }
@@ -674,18 +682,10 @@
 
 - (void)playVoiceAction
 {
-    // TODO:考虑音频的流媒体，采用七牛接口，或者先下载到本地，再播放，目前考虑后者实现更方便，便于本地缓存
-    if (self.voiceEntity.isOutgoing) {
-        [[IMVoiceRecordPlayManager sharedManager] playWithUrl:self.voiceEntity.url];
-    }
-    else {
-        [IMUtil downloadFileWithUrl:self.voiceEntity.url
-                      progressBlock:^(CGFloat progress) {
-                          
-                      } completeBlock:^(BOOL success, NSError *error) {
-                          [[IMVoiceRecordPlayManager sharedManager] playWithUrl:self.voiceEntity.url];
-                      }];
-    }
+    [self.audioEntity playAudioWithProgressBlock:^(CGFloat progress) {
+        self.progressView.progress = progress;
+        self.progressView.hidden = (progress < 1.0) ? NO : YES;
+    }];
 }
 
 @end

@@ -10,7 +10,7 @@
 
 @protocol IMVoiceRecordViewDelegate;
 
-@interface IMVoiceRecordView : UIView
+@interface IMAudioRecordView : UIView
 
 @property (nonatomic, weak) id<IMVoiceRecordViewDelegate> delegate;
 

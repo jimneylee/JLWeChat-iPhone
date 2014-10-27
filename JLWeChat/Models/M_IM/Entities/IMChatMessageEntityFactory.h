@@ -49,13 +49,15 @@ typedef NS_ENUM(NSUInteger, IMChatMessageType)
 
 @end
 
-@interface IMChatMessageVoiceEntity : IMChatMessageBaseEntity
+@interface IMChatMessageAudioEntity : IMChatMessageBaseEntity
 
 @property (nonatomic, assign) NSInteger time;
 @property (nonatomic, copy)   NSString *url;
 
 + (id)entityWithDictionary:(NSDictionary *)dic;
-+ (NSString *)JSONStringWithVoiceTime:(NSInteger)time url:(NSString *)url;
++ (NSString *)JSONStringWithAudioTime:(NSInteger)time url:(NSString *)url;
+// 在entity中下载，避免cell复用引起crash
+- (void)playAudioWithProgressBlock:(void (^)(CGFloat progress))progressBlock;
 
 @end
 

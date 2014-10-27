@@ -9,6 +9,8 @@
 #import "IMChatMessageEntityFactory.h"
 #import "JLKeywordRegularParser.h"
 #import "IMEmotionManager.h"
+#import "IMAudioRecordPlayManager.h"
+#import "IMUtil.h"
 
 #pragma mark IMChatMessageBaseEntity
 
@@ -149,12 +151,23 @@
 
 #pragma mark IMChatMessageVoiceEntity
 
-@implementation IMChatMessageVoiceEntity
+typedef void (^ProgressBlock)(CGFloat progress);
+typedef void (^CompleteBlock)();
+
+@interface IMChatMessageAudioEntity()
+
+@property (nonatomic, assign) BOOL isDownloading;
+@property (nonatomic, copy) ProgressBlock progressBlock;
+@property (nonatomic, copy) CompleteBlock completeBlock;
+
+@end
+
+@implementation IMChatMessageAudioEntity
 
 + (id)entityWithDictionary:(NSDictionary *)dic
 {
     if (dic && [dic isKindOfClass:[NSDictionary class]]) {
-        IMChatMessageVoiceEntity *entity = [[IMChatMessageVoiceEntity alloc] init];
+        IMChatMessageAudioEntity *entity = [[IMChatMessageAudioEntity alloc] init];
         entity.time = [dic[@"time"] integerValue];
         entity.url = dic[@"url"];
         return entity;
@@ -162,9 +175,8 @@
     return nil;
 }
 
-+ (NSString *)JSONStringWithVoiceTime:(NSInteger)time url:(NSString *)url
++ (NSString *)JSONStringWithAudioTime:(NSInteger)time url:(NSString *)url
 {
-    // 暂时还是多图json格式，后面便于扩展
     NSDictionary *jsonDic = @{@"type"   : @"voice",
                               @"data"   : @{
                                             @"time"  : [NSNumber numberWithInteger:time],
@@ -183,6 +195,33 @@
     }
 }
 
+// TODO:考虑七牛音频流媒体，或者先下载到本地再播放，目前考虑后者实现更方便，便于本地缓存
+//
+- (void)playAudioWithProgressBlock:(void (^)(CGFloat progress))progressBlock
+{
+    if (self.isOutgoing) {
+        [[IMAudioRecordPlayManager sharedManager] playWithUrl:self.url];
+        progressBlock(1.0f);
+    }
+    else {
+        if (self.isDownloading) {
+            progressBlock = self.progressBlock;
+        }
+        else {
+            @weakify(self);
+            self.isDownloading = YES;
+            [IMUtil downloadFileWithUrl:self.url
+                          progressBlock:^(CGFloat progress) {
+                              @strongify(self);
+                              progressBlock(progress);
+                              self.progressBlock = progressBlock;
+                          } completeBlock:^(BOOL success, NSError *error) {
+                              [[IMAudioRecordPlayManager sharedManager] playWithUrl:self.url];
+                              self.isDownloading = NO;
+                          }];
+        }
+    }
+}
 
 @end
 
@@ -249,7 +288,7 @@
                 
             case IMChatMessageType_Voice:
             {
-                messageEntity = [IMChatMessageVoiceEntity entityWithDictionary:dic[@"data"]];
+                messageEntity = [IMChatMessageAudioEntity entityWithDictionary:dic[@"data"]];
                 break;
             }
                 
@@ -302,7 +341,7 @@
     else if ([object isKindOfClass:[IMChatMessageImageEntity class]]) {
         lastMessage = @"[图片]";
     }
-    else if ([object isKindOfClass:[IMChatMessageVoiceEntity class]]) {
+    else if ([object isKindOfClass:[IMChatMessageAudioEntity class]]) {
         lastMessage = @"[语音]";
     }
     else if ([object isKindOfClass:[IMChatMessageNewsEntity class]]) {

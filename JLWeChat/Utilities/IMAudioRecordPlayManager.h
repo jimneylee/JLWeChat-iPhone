@@ -9,13 +9,13 @@
 #import <Foundation/Foundation.h>
 #import <AVFoundation/AVFoundation.h>
 
-@interface IMVoiceRecordPlayManager : NSObject
-
-@property (nonatomic, strong) AVAudioPlayer *player;
-@property (nonatomic, strong) AVAudioRecorder *recorder;
+@interface IMAudioRecordPlayManager : NSObject
 
 + (instancetype)sharedManager;
 
 - (void)playWithUrl:(NSString *)url;
+
+- (void)startRecord;
+- (void)stopRecordWithBlock:(void (^)(NSString *urlKey, NSInteger time))block;
 
 @end

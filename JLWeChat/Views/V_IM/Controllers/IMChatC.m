@@ -9,7 +9,7 @@
 #import "IMChatC.h"
 #import "IMManager.h"
 #import "IMChatSendBar.h"
-#import "IMVoiceRecordView.h"
+#import "IMAudioRecordView.h"
 #import "IMEmotionMainView.h"
 #import "IMChatShareMoreView.h"
 #import "UIViewController+Camera.h"
@@ -41,7 +41,7 @@ IMVoiceRecordViewDelegate, IMChatSendBarDelegate, IMEmotionDelegate, IMChatShare
 @property (nonatomic, strong) UIRefreshControl *refreshControl;
 @property (nonatomic, strong) UITableView *tableView;
 @property (nonatomic, strong) IMChatSendBar *chatSendBar;
-@property (nonatomic, strong) IMVoiceRecordView *voiceRecordView;
+@property (nonatomic, strong) IMAudioRecordView *voiceRecordView;
 @property (nonatomic, strong) IMEmotionMainView* emotionMainView;
 @property (nonatomic, strong) IMChatShareMoreView* shareMoreView;
 
@@ -249,10 +249,10 @@ IMVoiceRecordViewDelegate, IMChatSendBarDelegate, IMEmotionDelegate, IMChatShare
 #pragma mark - UI Create
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 
-- (IMVoiceRecordView *)voiceRecordView
+- (IMAudioRecordView *)voiceRecordView
 {
     if (!_voiceRecordView) {
-        _voiceRecordView = [[IMVoiceRecordView alloc] initWithFrame:
+        _voiceRecordView = [[IMAudioRecordView alloc] initWithFrame:
                             CGRectMake(0.f, self.view.height, self.view.width, TT_KEYBOARD_HEIGHT)];
         _voiceRecordView.delegate = self;
         [self.view addSubview:_voiceRecordView];
@@ -490,7 +490,7 @@ IMVoiceRecordViewDelegate, IMChatSendBarDelegate, IMEmotionDelegate, IMChatShare
 
 - (void)didFinishRecordingVoiceWithUrlKey:(NSString *)urlKey time:(NSInteger)time
 {
-    [self.viewModel sendMessageWithVoiceTime:time urlkey:urlKey];
+    [self.viewModel sendMessageWithAudioTime:time urlkey:urlKey];
 }
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
@@ -593,10 +593,10 @@ IMVoiceRecordViewDelegate, IMChatSendBarDelegate, IMEmotionDelegate, IMChatShare
         [cell shouldUpdateCellWithObject:message];
     }
     
-    else if ([message isKindOfClass:[IMChatMessageVoiceEntity class]]) {
+    else if ([message isKindOfClass:[IMChatMessageAudioEntity class]]) {
         cell = [tableView dequeueReusableCellWithIdentifier:MessageVoiceCellIdentifier];
         if (!cell) {
-            cell = [[IMMessageVoiceCell alloc] initWithStyle:UITableViewCellStyleSubtitle
+            cell = [[IMMessageAudioCell alloc] initWithStyle:UITableViewCellStyleSubtitle
                                              reuseIdentifier:MessageVoiceCellIdentifier];
             cell.selectionStyle = UITableViewCellSelectionStyleNone;
         }
@@ -631,8 +631,8 @@ IMVoiceRecordViewDelegate, IMChatSendBarDelegate, IMEmotionDelegate, IMChatShare
         return [IMMessageImageCell heightForObject:message atIndexPath:indexPath tableView:tableView];
     }
     
-    else if ([message isKindOfClass:[IMChatMessageVoiceEntity class]]) {
-        return [IMMessageVoiceCell heightForObject:message atIndexPath:indexPath tableView:tableView];
+    else if ([message isKindOfClass:[IMChatMessageAudioEntity class]]) {
+        return [IMMessageAudioCell heightForObject:message atIndexPath:indexPath tableView:tableView];
     }
     
     else return TT_ROW_HEIGHT;

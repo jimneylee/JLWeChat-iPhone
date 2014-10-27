@@ -7,9 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		280AFE4319FBDDC7003440D6 /* IMVoiceRecordView.m in Sources */ = {isa = PBXBuildFile; fileRef = 280AFE4219FBDDC7003440D6 /* IMVoiceRecordView.m */; };
+		280AFE4319FBDDC7003440D6 /* IMAudioRecordView.m in Sources */ = {isa = PBXBuildFile; fileRef = 280AFE4219FBDDC7003440D6 /* IMAudioRecordView.m */; };
 		280AFE4619FBE30C003440D6 /* IMUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 280AFE4519FBE30C003440D6 /* IMUtil.m */; };
-		2828232F19FC8C5E004EA927 /* IMVoiceRecordPlayManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 2828232E19FC8C5E004EA927 /* IMVoiceRecordPlayManager.m */; };
+		2828232F19FC8C5E004EA927 /* IMAudioRecordPlayManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 2828232E19FC8C5E004EA927 /* IMAudioRecordPlayManager.m */; };
 		282F801119CF174600827F78 /* IMContactsC.m in Sources */ = {isa = PBXBuildFile; fileRef = 282F800E19CF174600827F78 /* IMContactsC.m */; };
 		282F801219CF174600827F78 /* IMMainMessageC.m in Sources */ = {isa = PBXBuildFile; fileRef = 282F801019CF174600827F78 /* IMMainMessageC.m */; };
 		283FAAC619F4707E00ED6EEF /* QNAsyncRun.m in Sources */ = {isa = PBXBuildFile; fileRef = 283FAAA819F4707E00ED6EEF /* QNAsyncRun.m */; };
@@ -295,12 +295,12 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		280AFE4119FBDDC7003440D6 /* IMVoiceRecordView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMVoiceRecordView.h; sourceTree = "<group>"; };
-		280AFE4219FBDDC7003440D6 /* IMVoiceRecordView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMVoiceRecordView.m; sourceTree = "<group>"; };
+		280AFE4119FBDDC7003440D6 /* IMAudioRecordView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMAudioRecordView.h; sourceTree = "<group>"; };
+		280AFE4219FBDDC7003440D6 /* IMAudioRecordView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMAudioRecordView.m; sourceTree = "<group>"; };
 		280AFE4419FBE30C003440D6 /* IMUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMUtil.h; sourceTree = "<group>"; };
 		280AFE4519FBE30C003440D6 /* IMUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMUtil.m; sourceTree = "<group>"; };
-		2828232D19FC8C5E004EA927 /* IMVoiceRecordPlayManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMVoiceRecordPlayManager.h; sourceTree = "<group>"; };
-		2828232E19FC8C5E004EA927 /* IMVoiceRecordPlayManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMVoiceRecordPlayManager.m; sourceTree = "<group>"; };
+		2828232D19FC8C5E004EA927 /* IMAudioRecordPlayManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMAudioRecordPlayManager.h; sourceTree = "<group>"; };
+		2828232E19FC8C5E004EA927 /* IMAudioRecordPlayManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMAudioRecordPlayManager.m; sourceTree = "<group>"; };
 		282F7FF719CEEDF600827F78 /* JLWeChat-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "JLWeChat-Prefix.pch"; sourceTree = "<group>"; };
 		282F800D19CF174600827F78 /* IMContactsC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMContactsC.h; sourceTree = "<group>"; };
 		282F800E19CF174600827F78 /* IMContactsC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMContactsC.m; sourceTree = "<group>"; };
@@ -993,8 +993,8 @@
 				28FAC12E192F20E100BBA9E0 /* IMEmotionMainView.m */,
 				CE1EE1BF193085B80093DBB7 /* IMChatShareMoreView.h */,
 				CE1EE1C0193085B80093DBB7 /* IMChatShareMoreView.m */,
-				280AFE4119FBDDC7003440D6 /* IMVoiceRecordView.h */,
-				280AFE4219FBDDC7003440D6 /* IMVoiceRecordView.m */,
+				280AFE4119FBDDC7003440D6 /* IMAudioRecordView.h */,
+				280AFE4219FBDDC7003440D6 /* IMAudioRecordView.m */,
 				289D6EDB19B0BF620046A853 /* IMSearchChatContactCell.h */,
 				289D6EDC19B0BF620046A853 /* IMSearchChatContactCell.m */,
 			);
@@ -1012,8 +1012,8 @@
 				283FAAD319F4817F00ED6EEF /* QNAuthPolicy.m */,
 				280AFE4419FBE30C003440D6 /* IMUtil.h */,
 				280AFE4519FBE30C003440D6 /* IMUtil.m */,
-				2828232D19FC8C5E004EA927 /* IMVoiceRecordPlayManager.h */,
-				2828232E19FC8C5E004EA927 /* IMVoiceRecordPlayManager.m */,
+				2828232D19FC8C5E004EA927 /* IMAudioRecordPlayManager.h */,
+				2828232E19FC8C5E004EA927 /* IMAudioRecordPlayManager.m */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -1754,7 +1754,7 @@
 				528E6AA41920574500FFB5A6 /* IMAppDelegate.m in Sources */,
 				28D7F6D819D640CE00F5B483 /* UITableViewCell+FlatUI.m in Sources */,
 				28D7F6CE19D640CE00F5B483 /* UIBarButtonItem+FlatUI.m in Sources */,
-				280AFE4319FBDDC7003440D6 /* IMVoiceRecordView.m in Sources */,
+				280AFE4319FBDDC7003440D6 /* IMAudioRecordView.m in Sources */,
 				CE3525B91939743800EEED5E /* IMLocalSearchViewModel.m in Sources */,
 				283FAAC819F4707E00ED6EEF /* QNCrc32.m in Sources */,
 				283FAAD819F4824800ED6EEF /* GTMBase64.m in Sources */,
@@ -1799,7 +1799,7 @@
 				CE3BDFFD193EBC1000221074 /* UIView+findViewController.m in Sources */,
 				289E0F1B192AF2FA00FFE90D /* UIWindowAdditions.m in Sources */,
 				28D7F6CC19D640CE00F5B483 /* FUISegmentedControl.m in Sources */,
-				2828232F19FC8C5E004EA927 /* IMVoiceRecordPlayManager.m in Sources */,
+				2828232F19FC8C5E004EA927 /* IMAudioRecordPlayManager.m in Sources */,
 				CE43678519FB36F400B3880B /* UIViewController+Camera.m in Sources */,
 				28D7F6D019D640CE00F5B483 /* UIFont+FlatUI.m in Sources */,
 				283FAACB19F4707E00ED6EEF /* QNHttpManager.m in Sources */,

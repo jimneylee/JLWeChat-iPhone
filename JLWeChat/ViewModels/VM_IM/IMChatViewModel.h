@@ -38,6 +38,6 @@
 
 - (void)sendMessageWithText:(NSString *)text;
 - (void)sendMessageWithImage:(UIImage *)image;
-- (void)sendMessageWithVoiceTime:(NSInteger)time urlkey:(NSString *)urlkey;
+- (void)sendMessageWithAudioTime:(NSInteger)time urlkey:(NSString *)urlkey;
 
 @end

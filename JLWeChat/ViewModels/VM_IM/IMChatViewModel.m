@@ -207,7 +207,7 @@ static const int ddLogLevel = LOG_LEVEL_INFO;
                  } option:opt];
 }
 
-- (void)sendMessageWithVoiceTime:(NSInteger)time urlkey:(NSString *)urlkey
+- (void)sendMessageWithAudioTime:(NSInteger)time urlkey:(NSString *)urlkey
 {
     NSString *token = [QNAuthPolicy defaultToken];
 	QNUploadOption *opt = [[QNUploadOption alloc] initWithMime:nil progressHandler:nil
@@ -220,7 +220,7 @@ static const int ddLogLevel = LOG_LEVEL_INFO;
                      // developer.qiniu.com/docs/v6/api/reference/fop/image/imageview2.html
                      //
                      if (key.length > 0) {
-                         NSString *JSONString = [IMChatMessageVoiceEntity JSONStringWithVoiceTime:time url:QN_URL_FOR_KEY(key)];
+                         NSString *JSONString = [IMChatMessageAudioEntity JSONStringWithAudioTime:time url:QN_URL_FOR_KEY(key)];
                          if (JSONString.length > 0) {
                              [[IMManager sharedManager] sendChatMessage:JSONString
                                                                   toJID:self.buddyJID];

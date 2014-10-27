@@ -31,7 +31,7 @@
 
 @end
 
-@interface IMMessageVoiceCell : IMMessageBaseCell
+@interface IMMessageAudioCell : IMMessageBaseCell
 
 + (CGFloat)heightForObject:(id)object atIndexPath:(NSIndexPath *)indexPath tableView:(UITableView *)tableView;
 

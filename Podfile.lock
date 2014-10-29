@@ -1,21 +1,23 @@
 PODS:
-  - AFNetworking (2.2.4):
+  - AFNetworking (2.3.1):
     - AFNetworking/NSURLConnection
     - AFNetworking/NSURLSession
     - AFNetworking/Reachability
     - AFNetworking/Security
     - AFNetworking/Serialization
     - AFNetworking/UIKit
-  - AFNetworking/NSURLConnection (2.2.4):
+  - AFNetworking/NSURLConnection (2.3.1):
     - AFNetworking/Reachability
     - AFNetworking/Security
     - AFNetworking/Serialization
-  - AFNetworking/NSURLSession (2.2.4):
-    - AFNetworking/NSURLConnection
-  - AFNetworking/Reachability (2.2.4)
-  - AFNetworking/Security (2.2.4)
-  - AFNetworking/Serialization (2.2.4)
-  - AFNetworking/UIKit (2.2.4):
+  - AFNetworking/NSURLSession (2.3.1):
+    - AFNetworking/Reachability
+    - AFNetworking/Security
+    - AFNetworking/Serialization
+  - AFNetworking/Reachability (2.3.1)
+  - AFNetworking/Security (2.3.1)
+  - AFNetworking/Serialization (2.3.1)
+  - AFNetworking/UIKit (2.3.1):
     - AFNetworking/NSURLConnection
     - AFNetworking/NSURLSession
   - AFNetworking2-RACExtensions (0.0.1):
@@ -30,21 +32,6 @@ PODS:
     - CocoaLumberjack/Core
   - HPGrowingTextView (1.1)
   - JSCustomBadge (1.0.1)
-  - libwebp (0.4.0):
-    - libwebp/dec
-    - libwebp/demux
-    - libwebp/dsp
-    - libwebp/enc
-    - libwebp/mux
-    - libwebp/utils
-    - libwebp/webp
-  - libwebp/dec (0.4.0)
-  - libwebp/demux (0.4.0)
-  - libwebp/dsp (0.4.0)
-  - libwebp/enc (0.4.0)
-  - libwebp/mux (0.4.0)
-  - libwebp/utils (0.4.0)
-  - libwebp/webp (0.4.0)
   - MBProgressHUD (0.8)
   - Nimbus (1.2.0):
     - Nimbus/AttributedLabel
@@ -110,14 +97,7 @@ PODS:
     - ReactiveCocoa (~> 2.1)
   - SDWebImage (3.7.1):
     - SDWebImage/Core
-    - SDWebImage/MapKit
-    - SDWebImage/WebP
   - SDWebImage/Core (3.7.1)
-  - SDWebImage/MapKit (3.7.1):
-    - SDWebImage/Core
-  - SDWebImage/WebP (3.7.1):
-    - libwebp
-    - SDWebImage/Core
   - XMPPFramework (3.6.4):
     - XMPPFramework/Authentication
     - XMPPFramework/BandwidthMonitor
@@ -260,17 +240,16 @@ DEPENDENCIES:
   - QBImagePickerController (~> 2.1)
   - ReactiveCocoa (~> 2.3)
   - ReactiveViewModel (~> 0.2)
-  - SDWebImage (~> 3.6)
+  - SDWebImage (~> 3.7.1)
   - XMPPFramework (~> 3.6.4)
 
 SPEC CHECKSUMS:
-  AFNetworking: ab63e259fe91eef4519b371ef0a4955af0e73e64
+  AFNetworking: 6d7b76aa5d04c8c37daad3eef4b7e3f2a7620da3
   AFNetworking2-RACExtensions: 38ac068ed0257ca0a11f380bfd8375023c1cbe57
   CocoaAsyncSocket: 45bdbbc1c0a5ed0640ff4c42af325ba43a2f099a
   CocoaLumberjack: baf4a09a3bcbdfea3363556a90104e026d3504e2
   HPGrowingTextView: 07d5ab1f1e867acfb7a6f498b819948c9e97d07c
   JSCustomBadge: d48f5917ababec44971cca9d9bfdc8f646946ce9
-  libwebp: 7774a1ee15d19c0f70a992a7e4e4a23f3874a253
   MBProgressHUD: c356980b0cd097f19acec959b49dca5eb8ec31be
   Nimbus: 14fd6f034c5f53d3dccef6cfd5763959497289a9
   QBImagePickerController: c2273a11d55e7c308ac2f88625ef58bb56b5b7a4
@@ -279,4 +258,4 @@ SPEC CHECKSUMS:
   SDWebImage: 116e88633b5b416ea0ca4b334a4ac59cf72dd38d
   XMPPFramework: 15ca7fcceb7d22c2580ecf6f6e69744dbe2ba25b
 
-COCOAPODS: 0.32.1
+COCOAPODS: 0.33.1

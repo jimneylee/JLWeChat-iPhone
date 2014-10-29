@@ -1943,8 +1943,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Developer: cong wang (C8X98MEB96)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: cong wang (C8X98MEB96)";
+				CODE_SIGN_IDENTITY = "iPhone Developer: liu ling (RNU7H59V53)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: liu ling (RNU7H59V53)";
 				GCC_INPUT_FILETYPE = automatic;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "JLWeChat/JLWeChat-Prefix.pch";
@@ -1977,7 +1977,7 @@
 				);
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_NAME = JLWeChat;
-				PROVISIONING_PROFILE = "fffdf8d9-91fc-456f-85c3-d702599bf314";
+				PROVISIONING_PROFILE = "d39f87b5-e700-42c0-a50f-48b4943b2e85";
 				SDKROOT = iphoneos7.1;
 				VALID_ARCHS = "armv7 armv7s arm64";
 				WRAPPER_EXTENSION = app;
@@ -1990,8 +1990,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Developer: cong wang (C8X98MEB96)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: cong wang (C8X98MEB96)";
+				CODE_SIGN_IDENTITY = "iPhone Developer: liu ling (RNU7H59V53)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: liu ling (RNU7H59V53)";
 				GCC_INPUT_FILETYPE = automatic;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "JLWeChat/JLWeChat-Prefix.pch";
@@ -2024,7 +2024,7 @@
 				);
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_NAME = JLWeChat;
-				PROVISIONING_PROFILE = "fffdf8d9-91fc-456f-85c3-d702599bf314";
+				PROVISIONING_PROFILE = "d39f87b5-e700-42c0-a50f-48b4943b2e85";
 				SDKROOT = iphoneos7.1;
 				VALID_ARCHS = "armv7 armv7s arm64";
 				WRAPPER_EXTENSION = app;

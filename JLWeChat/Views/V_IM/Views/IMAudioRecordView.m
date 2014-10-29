@@ -58,7 +58,7 @@
     self.recordBtn.backgroundColor = [UIColor blueColor];
     
     [[IMAudioRecordPlayManager sharedManager] stopRecordWithBlock:^(NSString *urlKey, NSInteger time) {
-        if (self.delegate && [self.delegate respondsToSelector:@selector(didFinishRecordingVoiceWithUrlKey:time:)]) {
+        if (time >0 && self.delegate && [self.delegate respondsToSelector:@selector(didFinishRecordingVoiceWithUrlKey:time:)]) {
             [self.delegate didFinishRecordingVoiceWithUrlKey:urlKey time:(NSInteger)time];
         }
     }];

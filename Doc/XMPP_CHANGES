@@ -1,0 +1,18 @@
+
+# xmpp底层修改记录
+
+1、为了记录用户的未读消息数，直接使用联系人表中的字段unreadMessages
+
+    类名：XMPPStorage
+
+    方法：- (void)handleFetchRosterQueryIQ:(XMPPIQ *)iq withInfo:(XMPPBasicTrackingInfo *)basicTrackingInfo{
+
+    修改内容725行，每次获取联系人列表时，不需要删除数据库中的所有内容，故注销下面两个方法
+
+    if (!hasRoster)
+    {
+        //[xmppRosterStorage clearAllUsersAndResourcesForXMPPStream:xmppStream];
+        [self _setPopulatingRoster:YES];
+        [multicastDelegate xmppRosterDidBeginPopulating:self];
+        //[xmppRosterStorage beginRosterPopulationForXMPPStream:xmppStream];
+    }

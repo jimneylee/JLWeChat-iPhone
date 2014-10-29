@@ -281,7 +281,7 @@
 		CE43678519FB36F400B3880B /* UIViewController+Camera.m in Sources */ = {isa = PBXBuildFile; fileRef = CE43678319FB36F400B3880B /* UIViewController+Camera.m */; };
 		CE4E85351941EAB200DF2655 /* Three20.bundle in Resources */ = {isa = PBXBuildFile; fileRef = CE4E85341941EAB200DF2655 /* Three20.bundle */; };
 		CE6CC18C194AE85A00FD3764 /* IMStaticContactCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CE6CC18B194AE85A00FD3764 /* IMStaticContactCell.m */; };
-		CE9FA524194E92FE00E7F77A /* xmpp_changes in Resources */ = {isa = PBXBuildFile; fileRef = CE9FA523194E92FE00E7F77A /* xmpp_changes */; };
+		CE9FA524194E92FE00E7F77A /* XMPP_CHANGES in Resources */ = {isa = PBXBuildFile; fileRef = CE9FA523194E92FE00E7F77A /* XMPP_CHANGES */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -668,7 +668,7 @@
 		CE4E85341941EAB200DF2655 /* Three20.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Three20.bundle; sourceTree = "<group>"; };
 		CE6CC18A194AE85A00FD3764 /* IMStaticContactCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMStaticContactCell.h; sourceTree = "<group>"; };
 		CE6CC18B194AE85A00FD3764 /* IMStaticContactCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMStaticContactCell.m; sourceTree = "<group>"; };
-		CE9FA523194E92FE00E7F77A /* xmpp_changes */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = xmpp_changes; sourceTree = "<group>"; };
+		CE9FA523194E92FE00E7F77A /* XMPP_CHANGES */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = XMPP_CHANGES; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1431,7 +1431,7 @@
 		CE9FA522194E92DE00E7F77A /* Doc */ = {
 			isa = PBXGroup;
 			children = (
-				CE9FA523194E92FE00E7F77A /* xmpp_changes */,
+				CE9FA523194E92FE00E7F77A /* XMPP_CHANGES */,
 				289D6EE419B0C3330046A853 /* TODO */,
 			);
 			path = Doc;
@@ -1525,7 +1525,7 @@
 				CE1EE2951930D71A0093DBB7 /* DeleteEmoticonBtnHL@2x.png in Resources */,
 				28D7F69F19D6336B00F5B483 /* tabbar_mainframe@2x.png in Resources */,
 				CE1EE28E1930D3670093DBB7 /* Expression_102@2x.png in Resources */,
-				CE9FA524194E92FE00E7F77A /* xmpp_changes in Resources */,
+				CE9FA524194E92FE00E7F77A /* XMPP_CHANGES in Resources */,
 				28F0D7C0192C1FA5001975AC /* ReceiverImageNodeBorder_back@2x.png in Resources */,
 				CE1EE2711930D3670093DBB7 /* Expression_73@2x.png in Resources */,
 				CE1EE27E1930D3670093DBB7 /* Expression_86@2x.png in Resources */,

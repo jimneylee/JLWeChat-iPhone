@@ -91,7 +91,7 @@
 - (void)startRecord
 {
     NSString *cacheDir = [NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES) objectAtIndex:0];
-    NSString *fileName = [IMUtil generateVoiceTimeKey];
+    NSString *fileName = [IMUtil generateAudioTimeKey];
     NSString *filePath = [cacheDir stringByAppendingPathComponent:fileName];
     self.recordUrlKey = fileName;
     self.recordFileURL = [NSURL fileURLWithPath:filePath];

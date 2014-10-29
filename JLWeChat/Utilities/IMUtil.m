@@ -8,6 +8,9 @@
 
 #import "IMUtil.h"
 #import "AFHTTPRequestOperation.h"
+#import "QiniuSDK.h"
+#import "QNAuthPolicy.h"
+#import "IMCache.h"
 
 @implementation IMUtil
 
@@ -30,6 +33,24 @@
     [f setTimeZone:[NSTimeZone timeZoneWithName:@"GMT"]];
     NSString *timeString = [f stringFromDate:[NSDate date]];
     return timeString;
+}
+
++ (void)uploadFileWithUrlkey:(NSString *)urlkey
+               completeBlock:(void (^)(BOOL success,  NSString *key))completeBlock
+{
+    NSString *token = [QNAuthPolicy defaultToken];
+	QNUploadOption *opt = [[QNUploadOption alloc] initWithMime:nil progressHandler:nil
+                                                        params:nil checkCrc:YES cancellationSignal:nil];
+    QNUploadManager *upManager = [QNUploadManager sharedInstanceWithRecorder:nil recorderKeyGenerator:nil];
+    NSData *data = [[IMCache sharedCache] cachedDataForUrlKey:urlkey];
+	[upManager putData:data key:urlkey
+                 token:token complete:^(QNResponseInfo *info, NSString *key, NSDictionary *resp) {
+                     // TODO:check success with status code
+                     if (info.statusCode) {
+                         
+                     }
+                     completeBlock(YES, key);
+                 } option:opt];
 }
 
 + (void)downloadFileWithUrl:(NSString*)url

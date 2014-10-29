@@ -16,6 +16,10 @@
 // yyyy-MM-dd-HH-mm-ss.voice
 + (NSString *)generateVoiceTimeKey;
 
+//upload file with urlkey
++ (void)uploadFileWithUrlkey:(NSString *)urlkey
+               completeBlock:(void (^)(BOOL success,  NSString *key))completeBlock;
+
 // download file with url
 + (void)downloadFileWithUrl:(NSString*)url
               progressBlock:(void (^)(CGFloat progress))progressBlock

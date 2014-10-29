@@ -209,24 +209,16 @@ static const int ddLogLevel = LOG_LEVEL_INFO;
 
 - (void)sendMessageWithAudioTime:(NSInteger)time urlkey:(NSString *)urlkey
 {
-    NSString *token = [QNAuthPolicy defaultToken];
-	QNUploadOption *opt = [[QNUploadOption alloc] initWithMime:nil progressHandler:nil
-                                                        params:nil checkCrc:YES cancellationSignal:nil];
-    QNUploadManager *upManager = [QNUploadManager sharedInstanceWithRecorder:nil recorderKeyGenerator:nil];
-    NSData *data = [[IMCache sharedCache] cachedDataForUrlKey:urlkey];
-	[upManager putData:data key:urlkey
-                 token:token complete: ^(QNResponseInfo *info, NSString *key, NSDictionary *resp) {
-                     
-                     // developer.qiniu.com/docs/v6/api/reference/fop/image/imageview2.html
-                     //
-                     if (key.length > 0) {
-                         NSString *JSONString = [IMChatMessageAudioEntity JSONStringWithAudioTime:time url:QN_URL_FOR_KEY(key)];
-                         if (JSONString.length > 0) {
-                             [[IMManager sharedManager] sendChatMessage:JSONString
-                                                                  toJID:self.buddyJID];
-                         }
-                     }
-                 } option:opt];
+    [IMUtil uploadFileWithUrlkey:urlkey completeBlock:^(BOOL success, NSString *key) {
+        if (success && key.length > 0) {
+            NSString *JSONString = [IMChatMessageAudioEntity JSONStringWithAudioTime:time
+                                                                                 url:QN_URL_FOR_KEY(key)];
+            if (JSONString.length > 0) {
+                [[IMManager sharedManager] sendChatMessage:JSONString
+                                                     toJID:self.buddyJID];
+            }
+        }
+    }];
 }
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

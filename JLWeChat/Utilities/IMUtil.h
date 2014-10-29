@@ -11,10 +11,14 @@
 @interface IMUtil : NSObject
 
 // yyyy-MM-dd-HH-mm-ss.jpg
-+ (NSString *)generateImageTimeKey;
++ (NSString *)generateImageTimeKeyWithPrefix:(NSString *)keyPrefix;
 
 // yyyy-MM-dd-HH-mm-ss.voice
-+ (NSString *)generateVoiceTimeKey;
++ (NSString *)generateAudioTimeKeyWithPrefix:(NSString *)keyPrefix;
+
++ (void)uploadImage:(UIImage *)image
+          keyPrefix:(NSString *)keyPrefix
+      completeBlock:(void (^)(BOOL success,  NSString *key, CGFloat width, CGFloat height))completeBlock;
 
 //upload file with urlkey
 + (void)uploadFileWithUrlkey:(NSString *)urlkey

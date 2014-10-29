@@ -14,16 +14,19 @@
 
 @implementation IMUtil
 
-+ (NSString *)generateImageTimeKey
+
+#pragma mark -  Generate Key
+
++ (NSString *)generateImageTimeKeyWithPrefix:(NSString *)keyPrefix
 {
     NSString *timeString = [IMUtil generateTimeKey];
-    return [NSString stringWithFormat:@"%@.jpg", timeString];
+    return [NSString stringWithFormat:@"%@-%@.jpg", keyPrefix, timeString];
 }
 
-+ (NSString *)generateVoiceTimeKey
++ (NSString *)generateAudioTimeKeyWithPrefix:(NSString *)keyPrefix
 {
     NSString *timeString = [IMUtil generateTimeKey];
-    return [NSString stringWithFormat:@"%@.voice", timeString];
+    return [NSString stringWithFormat:@"%@-%@.voice", keyPrefix, timeString];
 }
 
 + (NSString *)generateTimeKey
@@ -34,6 +37,38 @@
     NSString *timeString = [f stringFromDate:[NSDate date]];
     return timeString;
 }
+
+#pragma mark Upload Image
+
++ (void)uploadImage:(UIImage *)image
+          keyPrefix:(NSString *)keyPrefix
+      completeBlock:(void (^)(BOOL success,  NSString *key, CGFloat width, CGFloat height))completeBlock
+{
+    // scale image with mode UIViewContentModeScaleAspectFit
+    UIImage* newImage = image;
+    CGFloat kMaxLength = 400.f;
+    if (image.size.width > kMaxLength || image.size.height > kMaxLength) {
+        CGRect rect = [image convertRect:CGRectMake(0.f, 0.f, kMaxLength, kMaxLength)
+                         withContentMode:UIViewContentModeScaleAspectFit];
+        newImage = [image transformWidth:rect.size.width height:rect.size.height rotate:YES];
+    }
+
+    NSData *imageData = UIImageJPEGRepresentation(newImage, 1.f);
+    NSString *token = [QNAuthPolicy defaultToken];
+    QNUploadOption *opt = [[QNUploadOption alloc] initWithMime:@"image/jpeg" progressHandler:nil
+                                                        params:nil checkCrc:YES cancellationSignal:nil];
+    QNUploadManager *upManager = [QNUploadManager sharedInstanceWithRecorder:nil recorderKeyGenerator:nil];
+    [upManager putData:imageData key:[IMUtil generateImageTimeKeyWithPrefix:keyPrefix]
+                 token:token complete: ^(QNResponseInfo *info, NSString *key, NSDictionary *resp) {
+                     // TODO:check success with status code
+                     if (info.statusCode) {
+                         
+                     }
+                     completeBlock(YES, key, newImage.size.width, newImage.size.height);
+                 } option:opt];
+}
+
+#pragma mark - Upload & Download File (Audio & Video)
 
 + (void)uploadFileWithUrlkey:(NSString *)urlkey
                completeBlock:(void (^)(BOOL success,  NSString *key))completeBlock

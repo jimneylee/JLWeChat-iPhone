@@ -564,6 +564,7 @@
 #pragma mark - IMMessageVoiceCell
 
 #define IMAGE_VOICE_HEIGHT 20
+#define PROGRESS_VIEW_LENGTH 30
 
 @interface IMMessageAudioCell()
 
@@ -599,10 +600,10 @@
         self.timeLabel.font = [UIFont systemFontOfSize:16.f];
         [self.contentView addSubview:self.timeLabel];
         
-        self.progressView = [[MBRoundProgressView alloc] initWithFrame:CGRectZero];
+        self.progressView = [[MBRoundProgressView alloc] initWithFrame:CGRectMake(0.f, 0.f, PROGRESS_VIEW_LENGTH, PROGRESS_VIEW_LENGTH)];
         self.progressView.userInteractionEnabled = YES;
-        self.progressView.progressTintColor = [UIColor grayColor];
-        self.progressView.backgroundTintColor = [UIColor lightGrayColor];
+        self.progressView.progressTintColor = [UIColor whiteColor];
+        self.progressView.backgroundTintColor = LINE_COLOR;
         [self.contentView addSubview:self.progressView];
         
         UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self
@@ -637,20 +638,19 @@
     [self.timeLabel sizeToFit];
     self.audioImageView.top = self.headView.top + margin;
     self.timeLabel.bottom = self.audioImageView.bottom;
-    self.progressView.width = self.progressView.height = self.audioImageView.height;
-    self.progressView.bottom = self.audioImageView.bottom;
+    self.progressView.centerY = self.timeLabel.centerY;
 
     if (self.isOutgoing) {
         self.audioImageView.right = self.headView.left - padding - BUBBLE_ARROW_MARGIN;
-        self.progressView.right = self.audioImageView.left - CELL_PADDING_2;
         self.bubbleBgView.right = self.headView.left - padding;
         self.timeLabel.right = self.bubbleBgView.left - CELL_PADDING_2;
+        self.progressView.right = self.timeLabel.left - CELL_PADDING_4;
     }
     else {
         self.audioImageView.left = self.headView.right + padding + BUBBLE_ARROW_MARGIN;
-        self.progressView.left = self.audioImageView.right + CELL_PADDING_2;
         self.bubbleBgView.left = self.headView.right + padding;
         self.timeLabel.left = self.bubbleBgView.right + CELL_PADDING_2;
+        self.progressView.left = self.timeLabel.right + CELL_PADDING_4;
     }
     
     self.progressView.hidden = YES;

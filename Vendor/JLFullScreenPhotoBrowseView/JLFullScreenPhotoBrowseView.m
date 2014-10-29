@@ -16,9 +16,14 @@
 
 @interface JLFullScreenPhotoBrowseView ()<UIScrollViewDelegate>
 
-@property (nonatomic, assign) CGRect fromRect;
+@property (nonatomic, copy) NSString* urlPath;
+@property (nonatomic, strong) UIImage* thumbnail;
+@property (nonatomic, strong) UIScrollView* scrollView;
+@property (nonatomic, strong) UIImageView* imageView;
 @property (nonatomic, strong) MBRoundProgressView* progressIndicator;
 @property (nonatomic, strong) UIButton* saveBtn;
+
+@property (nonatomic, assign) CGRect fromRect;
 @property (nonatomic, assign) BOOL isOriginPhotoLoaded;
 @end
 

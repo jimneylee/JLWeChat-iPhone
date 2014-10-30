@@ -153,22 +153,6 @@ typedef void (^ContactCompleteBlock)(BOOL complete);
 }
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
-- (void)drawRect:(CGRect)rect
-{
-	[super drawRect:rect];
-    
-	CGContextRef ctx = UIGraphicsGetCurrentContext();
-	CGContextSetFillColorWithColor(ctx, [[UIColor whiteColor] CGColor]);
-	CGContextFillRect(ctx, CGRectMake(0, rect.size.height - 0.5f, rect.size.width, 0.5f));
-	
-	CGContextSetStrokeColorWithColor(ctx, [LINE_COLOR CGColor]);
-	CGContextBeginPath(ctx);
-	CGContextMoveToPoint(ctx, CELL_PADDING_10, rect.size.height - 0.5f);
-	CGContextAddLineToPoint(ctx, rect.size.width, rect.size.height - 0.5f);
-	CGContextDrawPath(ctx, kCGPathStroke);
-}
-
-///////////////////////////////////////////////////////////////////////////////////////////////////
 #pragma mark XMPPStreamDelegate
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 

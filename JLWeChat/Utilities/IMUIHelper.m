@@ -12,7 +12,7 @@
 
 @implementation IMUIHelper
 
-#pragma mark Show HUD Message
+#pragma mark - Show HUD Message
 
 + (void)showTextMessage:(NSString *)message
 {
@@ -48,7 +48,7 @@
     }];
 }
 
-#pragma mark Hide HUD Message
+#pragma mark - Hide HUD Message
 
 + (void)hideWaitingMessage:(NSString *)message
 {
@@ -84,7 +84,7 @@
 
 + (void)showAlertMessage:(NSString *)message
 {
-    UIAlertView *av = [[UIAlertView alloc] initWithTitle:nil message:message delegate:nil
+    UIAlertView *av = [[UIAlertView alloc] initWithTitle:@"提示" message:message delegate:nil
                                        cancelButtonTitle:@"确定" otherButtonTitles: nil];
     [av show];
 }
@@ -138,6 +138,15 @@
     [IMUIHelper configFlatForBarButtonItem:item];
     
     return item;
+}
+
+#pragma mark - Create Default TableFooterView
+
++ (UIView *)createDefaultTableFooterView
+{
+    UIView *footerView = [[UIView alloc] initWithFrame:CGRectMake(0.f, 0.f, SCREEN_SIZE.width, 10.f)];
+    footerView.backgroundColor = [UIColor clearColor];
+    return footerView;
 }
 
 @end

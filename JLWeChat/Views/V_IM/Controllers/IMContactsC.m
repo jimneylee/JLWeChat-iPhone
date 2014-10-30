@@ -58,9 +58,9 @@
     [super viewDidLoad];
     
     self.tableView.rowHeight = ADDRESS_BOOK_ROW_HEIGHT;
-    self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     self.tableView.sectionIndexColor = [UIColor darkGrayColor];
-    
+    self.tableView.tableFooterView = [IMUIHelper createDefaultTableFooterView];
+
     if (TTOSVersionIsAtLeast7()) {
         self.tableView.sectionIndexBackgroundColor = [UIColor clearColor];
     }

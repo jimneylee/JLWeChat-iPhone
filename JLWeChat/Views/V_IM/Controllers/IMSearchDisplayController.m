@@ -36,6 +36,7 @@
         _searchDisplayController.searchResultsDelegate = self;
         _searchDisplayController.searchResultsTableView.rowHeight = ADDRESS_BOOK_ROW_HEIGHT;
         _searchDisplayController.searchResultsTableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+        _searchDisplayController.searchResultsTableView.tableFooterView = [IMUIHelper createDefaultTableFooterView];
         _searchDisplayController.searchBar.delegate = self;
 
         // fix bug:http://stackoverflow.com/questions/19140020/ios7-uisearchbar-statusbar-color

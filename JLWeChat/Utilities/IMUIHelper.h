@@ -38,4 +38,7 @@
 + (UIBarButtonItem *)createButtonItemWithTitle:(NSString *)title target:(id)target selector:(SEL)selector;
 + (UIBarButtonItem *)createButtonItemWithImage:(UIImage *)image target:(id)target selector:(SEL)selector;
 
+// create default table footer view
++ (UIView *)createDefaultTableFooterView;
+
 @end

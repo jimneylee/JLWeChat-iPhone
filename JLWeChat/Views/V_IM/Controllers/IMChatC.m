@@ -36,12 +36,12 @@
 static XMPPJID *currentChatBuddyJid = nil;
 
 @interface IMChatC ()<UITableViewDelegate, UITableViewDataSource,
-IMVoiceRecordViewDelegate, IMChatSendBarDelegate, IMEmotionDelegate, IMChatShareMoreViewDelegate>
+IMAudioRecordViewDelegate, IMChatSendBarDelegate, IMEmotionDelegate, IMChatShareMoreViewDelegate>
 
 @property (nonatomic, strong) UIRefreshControl *refreshControl;
 @property (nonatomic, strong) UITableView *tableView;
 @property (nonatomic, strong) IMChatSendBar *chatSendBar;
-@property (nonatomic, strong) IMAudioRecordView *voiceRecordView;
+@property (nonatomic, strong) IMAudioRecordView *audioRecordView;
 @property (nonatomic, strong) IMEmotionMainView* emotionMainView;
 @property (nonatomic, strong) IMChatShareMoreView* shareMoreView;
 
@@ -172,7 +172,6 @@ IMVoiceRecordViewDelegate, IMChatSendBarDelegate, IMEmotionDelegate, IMChatShare
     self.willShowEmtionOrShareMoreView = NO;
     
     [self.viewModel fetchEarlierMessage];
-    
     [self.tableView reloadData];
     [self scrollToBottomAnimated:YES];
 }
@@ -249,15 +248,15 @@ IMVoiceRecordViewDelegate, IMChatSendBarDelegate, IMEmotionDelegate, IMChatShare
 #pragma mark - UI Create
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 
-- (IMAudioRecordView *)voiceRecordView
+- (IMAudioRecordView *)audioRecordView
 {
-    if (!_voiceRecordView) {
-        _voiceRecordView = [[IMAudioRecordView alloc] initWithFrame:
+    if (!_audioRecordView) {
+        _audioRecordView = [[IMAudioRecordView alloc] initWithFrame:
                             CGRectMake(0.f, self.view.height, self.view.width, TT_KEYBOARD_HEIGHT)];
-        _voiceRecordView.delegate = self;
-        [self.view addSubview:_voiceRecordView];
+        _audioRecordView.delegate = self;
+        [self.view addSubview:_audioRecordView];
     }
-    return _voiceRecordView;
+    return _audioRecordView;
 }
 
 - (IMEmotionMainView *)emotionMainView
@@ -292,7 +291,7 @@ IMVoiceRecordViewDelegate, IMChatSendBarDelegate, IMEmotionDelegate, IMChatShare
     [UIView animateWithDuration:.3f animations:^{
         self.chatSendBar.bottom = self.view.height;
         self.tableView.height = [self getTableViewHeight];
-        self.voiceRecordView.top =
+        self.audioRecordView.top =
         self.emotionMainView.top =
         self.shareMoreView.top = self.chatSendBar.bottom;
     } completion:^(BOOL finished) {
@@ -303,12 +302,12 @@ IMVoiceRecordViewDelegate, IMChatSendBarDelegate, IMEmotionDelegate, IMChatShare
 - (void)popupEmotionViewOrShareMoreViewAnimation
 {
     self.willShowEmtionOrShareMoreView = YES;
-    self.voiceRecordView.top =
+    self.audioRecordView.top =
     self.emotionMainView.top =
     self.shareMoreView.top = self.chatSendBar.bottom;
     
     [UIView animateWithDuration:.2f animations:^{
-        self.voiceRecordView.top =
+        self.audioRecordView.top =
         self.emotionMainView.top =
         self.shareMoreView.top = self.view.height - self.emotionMainView.height;
         self.chatSendBar.bottom = self.emotionMainView.top;
@@ -323,23 +322,23 @@ IMVoiceRecordViewDelegate, IMChatSendBarDelegate, IMEmotionDelegate, IMChatShare
 - (void)popdownEmotionViewOrShareMoreViewAnimation
 {
     [UIView animateWithDuration:.2f animations:^{
-        self.voiceRecordView.top =
+        self.audioRecordView.top =
         self.emotionMainView.top =
         self.shareMoreView.top = self.view.height;
     } completion:^(BOOL finished) {
     }];
 }
 
-- (void)popupVoiceRecordViewAnimation
+- (void)popupaudioRecordViewAnimation
 {
     // create shareMoreView
     if (self.shareMoreView && self.emotionMainView) {
-        [self.view bringSubviewToFront:self.voiceRecordView];
+        [self.view bringSubviewToFront:self.audioRecordView];
     }
     [self popupEmotionViewOrShareMoreViewAnimation];
 }
 
-- (void)popdownVoiceRecordViewAnimation
+- (void)popdownaudioRecordViewAnimation
 {
     [self popdownEmotionViewOrShareMoreViewAnimation];
 }
@@ -347,7 +346,7 @@ IMVoiceRecordViewDelegate, IMChatSendBarDelegate, IMEmotionDelegate, IMChatShare
 - (void)popupEmotionViewAnimation
 {
     // create shareMoreView
-    if (self.voiceRecordView && self.shareMoreView) {
+    if (self.audioRecordView && self.shareMoreView) {
         [self.view bringSubviewToFront:self.emotionMainView];
     }
     [self popupEmotionViewOrShareMoreViewAnimation];
@@ -407,7 +406,7 @@ IMVoiceRecordViewDelegate, IMChatSendBarDelegate, IMEmotionDelegate, IMChatShare
         
         self.chatSendBar.bottom = self.view.height - keyboardBounds.size.height;
         self.tableView.height = self.chatSendBar.top;
-        self.voiceRecordView.top =
+        self.audioRecordView.top =
         self.emotionMainView.top =
         self.shareMoreView.top = self.chatSendBar.bottom;
 
@@ -437,7 +436,7 @@ IMVoiceRecordViewDelegate, IMChatSendBarDelegate, IMEmotionDelegate, IMChatShare
         
         self.chatSendBar.bottom = self.view.height;
         self.tableView.height = self.chatSendBar.top;
-        self.voiceRecordView.top =
+        self.audioRecordView.top =
         self.emotionMainView.top = 
         self.shareMoreView.top = self.chatSendBar.bottom;
         //self.tableView.bottom = self.chatSendBar.bottom - self.chatSendBar.height;
@@ -462,7 +461,7 @@ IMVoiceRecordViewDelegate, IMChatSendBarDelegate, IMEmotionDelegate, IMChatShare
 
 - (void)showVoiceView
 {
-    [self popupVoiceRecordViewAnimation];
+    [self popupaudioRecordViewAnimation];
 }
 
 - (void)showKeyboard
@@ -485,10 +484,10 @@ IMVoiceRecordViewDelegate, IMChatSendBarDelegate, IMEmotionDelegate, IMChatShare
 }
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
-#pragma mark - IMVoiceRecordViewDelegate
+#pragma mark - IMaudioRecordViewDelegate
 //////////////////////////////////////////////////////////////////////////////////////////////////////
 
-- (void)didFinishRecordingVoiceWithUrlKey:(NSString *)urlKey time:(NSInteger)time
+- (void)didFinishRecordingAudioWithUrlKey:(NSString *)urlKey time:(NSInteger)time
 {
     [self.viewModel sendMessageWithAudioTime:time urlkey:urlKey];
 }

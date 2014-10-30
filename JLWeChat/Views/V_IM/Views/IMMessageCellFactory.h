@@ -12,7 +12,6 @@
 
 @end
 
-
 @interface IMMessageBaseCell : UITableViewCell
 
 - (BOOL)shouldUpdateCellWithObject:(id)object;

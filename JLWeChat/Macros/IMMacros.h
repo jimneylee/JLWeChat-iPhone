@@ -23,26 +23,18 @@
 // Qiniu
 #define QN_AK @"903l5JQnmIRgHD_Rhwdwnrtr0qKRj1C3GPcwj_jh"
 #define QN_SK @"kuZCw35r20ErLP8y5jaD9nxAAhIlnGASYdtRkdYH"
-#define QN_URL_FOR_KEY(key) [NSString stringWithFormat:@"http://jlwechat.qiniudn.com/%@", key]
 #define QN_BUCKET_NAME @"jlwechat"
+#define QN_URL_FOR_KEY(key) [NSString stringWithFormat:@"http://%@.qiniudn.com/%@", QN_BUCKET_NAME, key]
 
+// XMPP
 #define XMPP_RESOURCE       @"iPhoneXMPP"
 #define XMPP_DEFAULT_GROUP_NAME @"friends"
 
 #define XMPP_USER_ID        @"XMPP_USER_ID"
 #define XMPP_PASSWORD       @"XMPP_PASSWORD"
 
-#define STROE_USER_NAME     @"STROE_USER_NAME"
-#define STROE_PASSWORD      @"STROE_PASSWORD"
-#define STROE_NICKNAME      @"STROE_NICKNAME"
-#define ISLOGINED           @"ISLOGINED"
-
 #define DEFAULT_MESSAGE_MAX_COUNT 100
 #define DEFAULT_ROSTER_MAX_COUNT 100
-
-#define iPhone5 ([UIScreen instancesRespondToSelector:@selector(currentMode)] \
-                ? CGSizeEqualToSize(CGSizeMake(640, 1136), [[UIScreen mainScreen] currentMode].size) \
-                : NO)
 
 #define IM_MOC [IMDataBaseManager sharedManager].managedObjectContext
 #define MY_JID [IMManager sharedManager].myJID

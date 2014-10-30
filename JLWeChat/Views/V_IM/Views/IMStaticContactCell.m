@@ -112,6 +112,7 @@ typedef void (^ContactCompleteBlock)(BOOL complete);
     return YES;
 }
 
+///////////////////////////////////////////////////////////////////////////////////////////////////
 - (void)drawRect:(CGRect)rect
 {
 	[super drawRect:rect];

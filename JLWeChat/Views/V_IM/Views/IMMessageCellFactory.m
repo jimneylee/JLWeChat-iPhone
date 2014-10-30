@@ -586,6 +586,7 @@
 
 @implementation IMMessageAudioCell
 
+///////////////////////////////////////////////////////////////////////////////////////////////////
 + (CGFloat)heightForObject:(id)object atIndexPath:(NSIndexPath *)indexPath tableView:(UITableView *)tableView;
 {
     return CONTENT_LINE_HEIGHT + BUBBLE_TOP_MARGIN + BUBBLE_BOTTOM_MARGIN + CELL_BOTTOM_CLEAN_MARGIN;
@@ -679,6 +680,7 @@
     return YES;
 }
 
+///////////////////////////////////////////////////////////////////////////////////////////////////
 + (UIImage *)voiceImageForIsOutgoing:(BOOL)isOutgoing
 {
     UIImage *image = nil;
@@ -689,6 +691,7 @@
     return image;
 }
 
+///////////////////////////////////////////////////////////////////////////////////////////////////
 - (void)playVoiceAction
 {
     [self.audioEntity playAudioWithProgressBlock:^(CGFloat progress) {

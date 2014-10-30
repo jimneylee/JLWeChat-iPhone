@@ -12,7 +12,6 @@
 /**
  *  通讯录主页面
  */
-
 @interface IMContactsC : UITableViewController
 
 @property (nonatomic, strong) IMContactsViewModel *viewModel;

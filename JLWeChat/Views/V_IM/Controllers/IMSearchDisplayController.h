@@ -8,7 +8,10 @@
 
 #import <UIKit/UIKit.h>
 
-// 由于无法继承UISearchDisplayController，所以此处采用引入一个属性来实现封装
+/**
+ *  搜索控制器
+ *  由于无法继承UISearchDisplayController，所以此处采用引入一个属性来实现封装
+ */
 @interface IMSearchDisplayController : NSObject
 
 @property (nonatomic, strong) UISearchDisplayController *searchDisplayController;

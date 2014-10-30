@@ -1,5 +1,5 @@
 //
-//  IMVoiceRecordView.m
+//  IMAudioRecordView.m
 //  JLWeChat
 //
 //  Created by jimneylee on 14-10-25.
@@ -58,8 +58,8 @@
     self.recordBtn.backgroundColor = [UIColor blueColor];
     
     [[IMAudioRecordPlayManager sharedManager] stopRecordWithBlock:^(NSString *urlKey, NSInteger time) {
-        if (time >0 && self.delegate && [self.delegate respondsToSelector:@selector(didFinishRecordingVoiceWithUrlKey:time:)]) {
-            [self.delegate didFinishRecordingVoiceWithUrlKey:urlKey time:(NSInteger)time];
+        if (time >0 && self.delegate && [self.delegate respondsToSelector:@selector(didFinishRecordingAudioWithUrlKey:time:)]) {
+            [self.delegate didFinishRecordingAudioWithUrlKey:urlKey time:(NSInteger)time];
         }
     }];
 }

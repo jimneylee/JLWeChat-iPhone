@@ -10,7 +10,6 @@
 
 @interface IMStaticContactCell : UITableViewCell
 
-
 - (BOOL)shouldUpdateCellWithObject:(id)object unsubscribedCountNum:(NSNumber *)unsubscribedCountNum;
 
 @end

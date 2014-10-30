@@ -12,7 +12,6 @@
 /**
  * 消息主界面
  */
-
 @interface IMMainMessageC : UITableViewController
 
 @property (nonatomic, strong) IMMainMessageViewModel *viewModel;

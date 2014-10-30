@@ -1,5 +1,5 @@
 //
-//  IMVoiceRecordPlayManager.h
+//  IMAudioRecordPlayManager.h
 //  JLWeChat
 //
 //  Created by jimneylee on 14-10-26.

@@ -1,5 +1,5 @@
 //
-//  IMVoiceRecordView.h
+//  IMAudioRecordView.h
 //  JLWeChat
 //
 //  Created by jimneylee on 14-10-25.
@@ -8,16 +8,16 @@
 
 #import <UIKit/UIKit.h>
 
-@protocol IMVoiceRecordViewDelegate;
+@protocol IMAudioRecordViewDelegate;
 
 @interface IMAudioRecordView : UIView
 
-@property (nonatomic, weak) id<IMVoiceRecordViewDelegate> delegate;
+@property (nonatomic, weak) id<IMAudioRecordViewDelegate> delegate;
 
 @end
 
-@protocol IMVoiceRecordViewDelegate <NSObject>
+@protocol IMAudioRecordViewDelegate <NSObject>
 
-- (void)didFinishRecordingVoiceWithUrlKey:(NSString *)urlKey time:(NSInteger)time;
+- (void)didFinishRecordingAudioWithUrlKey:(NSString *)urlKey time:(NSInteger)time;
 
 @end

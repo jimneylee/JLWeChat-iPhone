@@ -38,10 +38,4 @@
 // group头部高度
 #define GROUP_SECTION_HEADER_HEIGHT 20.f
 
-// 朋友圈回复tableview的width
-#define COMMENT_LIST_VIEW_Width 250
-
-// 拍照分享图片最多张数
-#define PHOTO_PICK_MAX_COUNT 9
-
 #endif

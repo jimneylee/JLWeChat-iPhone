@@ -59,7 +59,7 @@
     }
     
     self.tableView.rowHeight = MESSAGE_MAIN_ROW_HEIGHT;
-    self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+    self.tableView.tableFooterView = [IMUIHelper createDefaultTableFooterView];
 
     UISearchBar *searchBar = [[UISearchBar alloc] initWithFrame:CGRectMake(0.f, 0.f,
                                                                            self.view.width, TT_TOOLBAR_HEIGHT)];

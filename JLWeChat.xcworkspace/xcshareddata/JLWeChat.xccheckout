@@ -10,29 +10,29 @@
 	<string>JLWeChat</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
-		<key>8C1F590B-0489-4115-ACE9-7976FC198BAE</key>
+		<key>76A5D368EFC75A61D222EB550835F2E2A4DD01DF</key>
 		<string>https://git.oschina.net/jimneylee/JLWeChat.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
 	<string>JLWeChat.xcworkspace</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
-		<key>8C1F590B-0489-4115-ACE9-7976FC198BAE</key>
+		<key>76A5D368EFC75A61D222EB550835F2E2A4DD01DF</key>
 		<string>..</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
 	<string>https://git.oschina.net/jimneylee/JLWeChat.git</string>
 	<key>IDESourceControlProjectVersion</key>
-	<integer>110</integer>
+	<integer>111</integer>
 	<key>IDESourceControlProjectWCCIdentifier</key>
-	<string>8C1F590B-0489-4115-ACE9-7976FC198BAE</string>
+	<string>76A5D368EFC75A61D222EB550835F2E2A4DD01DF</string>
 	<key>IDESourceControlProjectWCConfigurations</key>
 	<array>
 		<dict>
 			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
 			<string>public.vcs.git</string>
 			<key>IDESourceControlWCCIdentifierKey</key>
-			<string>8C1F590B-0489-4115-ACE9-7976FC198BAE</string>
+			<string>76A5D368EFC75A61D222EB550835F2E2A4DD01DF</string>
 			<key>IDESourceControlWCCName</key>
 			<string>JLWeChat</string>
 		</dict>

@@ -10,7 +10,7 @@
 #import "JLKeywordRegularParser.h"
 #import "IMEmotionManager.h"
 #import "IMAudioRecordPlayManager.h"
-#import "IMUtil.h"
+#import "IMQNFileLoadUtil.h"
 
 #pragma mark IMChatMessageBaseEntity
 
@@ -205,12 +205,12 @@ typedef void (^CompleteBlock)();
     }
     else {
         if (self.isDownloading) {
-            progressBlock = self.progressBlock;
+            progressBlock = self.progressBlock;//TODO:此处貌似有问题
         }
         else {
             @weakify(self);
             self.isDownloading = YES;
-            [IMUtil downloadFileWithUrl:self.url
+            [IMQNFileLoadUtil downloadFileWithUrl:self.url
                           progressBlock:^(CGFloat progress) {
                               @strongify(self);
                               progressBlock(progress);

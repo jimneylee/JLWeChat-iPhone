@@ -10,7 +10,10 @@ JLWeChat-iPhone
 
 3、工程中的图片资源，归微信APP版权所有，特此说明
 
-4、pod update完成后，需要修改xmppframework源码，以实现显示未读消息数，参考工程Doc目录下的XMPP_CHANGES文件说明，如想直接需要当前功能源码，请到oschina附件下载
+4、pod update完成后，需要修改xmppframework源码，以实现显示未读消息数，参考工程Doc目录下的XMPP_CHANGES文件说明
+
+##直接源码编译
+如不了解CocoaPod依赖，想直接编译当前源码，请到[oschina附件](http://git.oschina.net/jimneylee/JLWeChat-iPhone/attach_files)下载
 
 ##已知待改进问题
 1、图片的遮罩显示改进及下载进度的显示

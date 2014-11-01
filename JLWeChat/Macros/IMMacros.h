@@ -25,6 +25,7 @@
 #define QN_SK @"kuZCw35r20ErLP8y5jaD9nxAAhIlnGASYdtRkdYH"
 #define QN_BUCKET_NAME @"jlwechat"
 #define QN_URL_FOR_KEY(key) [NSString stringWithFormat:@"http://%@.qiniudn.com/%@", QN_BUCKET_NAME, key]
+#define QN_STATUS_CODE_SUCCESS 200
 
 // XMPP
 #define XMPP_RESOURCE       @"iPhoneXMPP"

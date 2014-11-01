@@ -22,7 +22,7 @@
 #import "IMChatC.h"
 #import "IMAudioRecordPlayManager.h"
 #import "IMCache.h"
-#import "IMUtil.h"
+#import "IMQNFileLoadUtil.h"
 
 #define HEAD_IAMGE_HEIGHT 40
 #define CELL_BOTTOM_CLEAN_MARGIN 10
@@ -581,6 +581,7 @@
 @property (nonatomic, strong) UIImageView *audioImageView;
 @property (nonatomic, strong) UILabel *timeLabel;
 @property (nonatomic, strong) MBRoundProgressView *progressView;
+@property (nonatomic, strong) UIActivityIndicatorView *indicatorView;
 
 @end
 
@@ -602,7 +603,6 @@
         self.contentView.backgroundColor = [UIColor clearColor];
         
         self.audioImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0.f, 0.f, IMAGE_VOICE_HEIGHT, IMAGE_VOICE_HEIGHT)];
-        self.audioImageView.userInteractionEnabled = YES;
         [self.contentView addSubview:self.audioImageView];
         
         self.timeLabel = [[UILabel alloc] initWithFrame:CGRectZero];
@@ -616,6 +616,9 @@
         self.progressView.backgroundTintColor = LINE_COLOR;
         [self.contentView addSubview:self.progressView];
         
+        self.indicatorView = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
+        [self.contentView addSubview:self.indicatorView];
+        
         UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self
                                                                                      action:@selector(playVoiceAction)];
         [self.bubbleBgView addGestureRecognizer:tapGesture];
@@ -628,6 +631,7 @@
 {
     [super prepareForReuse];
     
+    // TODO: 考虑cell复用时，如何处理音频的下载进度
 }
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
@@ -663,6 +667,7 @@
         self.progressView.left = self.timeLabel.right + CELL_PADDING_4;
     }
     
+    self.indicatorView.frame = self.progressView.frame;
     self.progressView.hidden = YES;
     self.audioImageView.image = [IMMessageAudioCell voiceImageForIsOutgoing:self.isOutgoing];
 }
@@ -676,6 +681,7 @@
         self.audioEntity = (IMChatMessageAudioEntity *)object;
         self.timeLabel.text = [NSString stringWithFormat:@"%d''", self.audioEntity.time];
         self.isOutgoing = self.audioEntity.isOutgoing;
+        
     }
     return YES;
 }
@@ -694,9 +700,17 @@
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 - (void)playVoiceAction
 {
+    [self.indicatorView startAnimating];
+    @weakify(self);
     [self.audioEntity playAudioWithProgressBlock:^(CGFloat progress) {
+        @strongify(self);
         self.progressView.progress = progress;
         self.progressView.hidden = (progress < 1.0) ? NO : YES;
+        NSLog(@"progress = %f",progress);
+        if (progress > 0.f && !self.indicatorView.hidden) {
+            [self.indicatorView stopAnimating];
+            self.indicatorView.hidden = YES;
+        }
     }];
 }
 

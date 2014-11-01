@@ -6,11 +6,13 @@ JLWeChat-iPhone
 ##简短说明
 1、后台采用OpenFire，部署在阿里云的ECS服务器，参考[我的blog](http://jimneylee.github.io/2014/10/31/install-openfire-in-aliyun-ecs-server/)
 
-2、注册只支持英文名或带数字，类似邮件地址的@前面的id
+2、资源存储采用[七牛](qiniu.com)免费的云存储
 
-3、工程中的图片资源，归微信APP版权所有，特此说明
+3、注册只支持英文名或带数字，类似邮件地址的@前面的id
 
-4、pod update完成后，需要修改xmppframework源码，以实现显示未读消息数，参考工程Doc目录下的XMPP_CHANGES文件说明
+4、工程中的图片资源，归微信APP版权所有，特此说明
+
+5、pod update完成后，需要修改xmppframework源码，以实现显示未读消息数，参考工程Doc目录下的XMPP_CHANGES文件说明
 
 ##直接源码编译
 如不了解CocoaPod依赖，想直接编译当前源码，请到[oschina附件](http://git.oschina.net/jimneylee/JLWeChat-iPhone/attach_files)下载

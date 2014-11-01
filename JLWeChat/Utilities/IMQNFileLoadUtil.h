@@ -1,5 +1,5 @@
 //
-//  IMUtil.h
+//  IMQNFileLoadUtil.h
 //  JLWeChat
 //
 //  Created by jimneylee on 14-10-25.
@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-@interface IMUtil : NSObject
+@interface IMQNFileLoadUtil : NSObject
 
 // yyyy-MM-dd-HH-mm-ss.jpg
 + (NSString *)generateImageTimeKeyWithPrefix:(NSString *)keyPrefix;
@@ -22,6 +22,7 @@
 
 //upload file with urlkey
 + (void)uploadFileWithUrlkey:(NSString *)urlkey
+               progressBlock:(void (^)(NSString *key, CGFloat progress))progressBlock
                completeBlock:(void (^)(BOOL success,  NSString *key))completeBlock;
 
 // download file with url

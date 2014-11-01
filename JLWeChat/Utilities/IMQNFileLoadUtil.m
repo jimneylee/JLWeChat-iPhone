@@ -1,31 +1,31 @@
 //
-//  IMUtil.m
+//  IMQNFileLoadUtil.m
 //  JLWeChat
 //
 //  Created by jimneylee on 14-10-25.
 //  Copyright (c) 2014年 jimneylee. All rights reserved.
 //
 
-#import "IMUtil.h"
+#import "IMQNFileLoadUtil.h"
 #import "AFHTTPRequestOperation.h"
 #import "QiniuSDK.h"
 #import "QNAuthPolicy.h"
 #import "IMCache.h"
 
-@implementation IMUtil
+@implementation IMQNFileLoadUtil
 
 
 #pragma mark -  Generate Key
 
 + (NSString *)generateImageTimeKeyWithPrefix:(NSString *)keyPrefix
 {
-    NSString *timeString = [IMUtil generateTimeKey];
+    NSString *timeString = [IMQNFileLoadUtil generateTimeKey];
     return [NSString stringWithFormat:@"%@-%@.jpg", keyPrefix, timeString];
 }
 
 + (NSString *)generateAudioTimeKeyWithPrefix:(NSString *)keyPrefix
 {
-    NSString *timeString = [IMUtil generateTimeKey];
+    NSString *timeString = [IMQNFileLoadUtil generateTimeKey];
     return [NSString stringWithFormat:@"%@-%@.voice", keyPrefix, timeString];
 }
 
@@ -58,33 +58,37 @@
     QNUploadOption *opt = [[QNUploadOption alloc] initWithMime:@"image/jpeg" progressHandler:nil
                                                         params:nil checkCrc:YES cancellationSignal:nil];
     QNUploadManager *upManager = [QNUploadManager sharedInstanceWithRecorder:nil recorderKeyGenerator:nil];
-    [upManager putData:imageData key:[IMUtil generateImageTimeKeyWithPrefix:keyPrefix]
+    [upManager putData:imageData key:[IMQNFileLoadUtil generateImageTimeKeyWithPrefix:keyPrefix]
                  token:token complete: ^(QNResponseInfo *info, NSString *key, NSDictionary *resp) {
-                     // TODO:check success with status code
-                     if (info.statusCode) {
-                         
+                     if (info.statusCode == QN_STATUS_CODE_SUCCESS) {
+                         completeBlock(YES, key, newImage.size.width, newImage.size.height);
                      }
-                     completeBlock(YES, key, newImage.size.width, newImage.size.height);
+                     else {
+                         completeBlock(NO, nil, 0.f, 0.f);
+                     }
                  } option:opt];
 }
 
 #pragma mark - Upload & Download File (Audio & Video)
 
 + (void)uploadFileWithUrlkey:(NSString *)urlkey
+               progressBlock:(void (^)(NSString *key, CGFloat progress))progressBlock
                completeBlock:(void (^)(BOOL success,  NSString *key))completeBlock
 {
     NSString *token = [QNAuthPolicy defaultToken];
-	QNUploadOption *opt = [[QNUploadOption alloc] initWithMime:nil progressHandler:nil
+	QNUploadOption *opt = [[QNUploadOption alloc] initWithMime:nil progressHandler:progressBlock//获取上传进度
                                                         params:nil checkCrc:YES cancellationSignal:nil];
+    
     QNUploadManager *upManager = [QNUploadManager sharedInstanceWithRecorder:nil recorderKeyGenerator:nil];
     NSData *data = [[IMCache sharedCache] cachedDataForUrlKey:urlkey];
 	[upManager putData:data key:urlkey
                  token:token complete:^(QNResponseInfo *info, NSString *key, NSDictionary *resp) {
-                     // TODO:check success with status code
-                     if (info.statusCode) {
-                         
+                     if (info.statusCode == QN_STATUS_CODE_SUCCESS) {
+                         completeBlock(YES, key);
                      }
-                     completeBlock(YES, key);
+                     else {
+                         completeBlock(NO, nil);
+                     }
                  } option:opt];
 }
 
@@ -105,7 +109,6 @@
     AFHTTPRequestOperation *operation = [[AFHTTPRequestOperation alloc] initWithRequest:request];
     [operation setOutputStream:[NSOutputStream outputStreamToFileAtPath:filePath append:NO]];
     [operation setDownloadProgressBlock:^(NSUInteger bytesRead, long long totalBytesRead, long long totalBytesExpectedToRead) {
-        NSLog(@"download progress = %f", (float)totalBytesRead / totalBytesExpectedToRead);
         progressBlock((float)totalBytesRead / totalBytesExpectedToRead);
     }];
     

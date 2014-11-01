@@ -11,7 +11,7 @@
 #import "IMChatMessageEntityFactory.h"
 #import "NSDate+IM.h"
 #import "QNAuthPolicy.h"
-#import "IMUtil.h"
+#import "IMQNFileLoadUtil.h"
 #import "IMCache.h"
 
 // Log levels: off, error, warn, info, verbose
@@ -176,7 +176,7 @@ static const int ddLogLevel = LOG_LEVEL_INFO;
 
 - (void)sendMessageWithImage:(UIImage *)image
 {
-    [IMUtil uploadImage:image
+    [IMQNFileLoadUtil uploadImage:image
               keyPrefix:self.buddyJID.user
           completeBlock:^(BOOL success, NSString *key, CGFloat width, CGFloat height) {
               // developer.qiniu.com/docs/v6/api/reference/fop/image/imageview2.html
@@ -195,14 +195,34 @@ static const int ddLogLevel = LOG_LEVEL_INFO;
 
 - (void)sendMessageWithAudioTime:(NSInteger)time urlkey:(NSString *)urlkey
 {
-    [IMUtil uploadFileWithUrlkey:urlkey completeBlock:^(BOOL success, NSString *key) {
-        if (success && key.length > 0) {
-            NSString *JSONString = [IMChatMessageAudioEntity JSONStringWithAudioTime:time
-                                                                                 url:QN_URL_FOR_KEY(key)];
-            if (JSONString.length > 0) {
-                [[IMXMPPManager sharedManager] sendChatMessage:JSONString
-                                                     toJID:self.buddyJID];
-            }
+    // TODO: 体验不太好，目前没有做到下载那样cell中多个语音异步上传，技术点
+    //[IMUIHelper showWaitingMessage:@"语音发传中..."];
+    __block MBProgressHUD *HUD = [MBProgressHUD showHUDAddedTo:[UIApplication sharedApplication].keyWindow animated:YES];
+    HUD.detailsLabelText = @"语音发传中...(%0.0)";
+    [HUD show:YES];
+    
+    @weakify(self);
+    [IMQNFileLoadUtil uploadFileWithUrlkey:urlkey
+                             progressBlock:^(NSString *key, CGFloat progress) {
+                                 HUD.detailsLabelText = [NSString stringWithFormat:@"语音发传中...(%.1f%%)", progress * 100];
+                             }
+                             completeBlock:^(BOOL success, NSString *key) {
+                                 @strongify(self);
+                                 if (success && key.length > 0) {
+                                     //[IMUIHelper hideWaitingMessageImmediately];
+                                     [HUD hide:YES];
+                                     NSString *JSONString = [IMChatMessageAudioEntity JSONStringWithAudioTime:time
+                                                                                                          url:QN_URL_FOR_KEY(key)];
+                                     if (JSONString.length > 0) {
+                                         [[IMXMPPManager sharedManager] sendChatMessage:JSONString
+                                                                                  toJID:self.buddyJID];
+                                     }
+                                 }
+                                 else {
+                                     HUD.detailsLabelText = @"发送失败";
+                                     HUD.mode = MBProgressHUDModeText;
+                                     [HUD hide:YES afterDelay:HUD_ANIMATION_DRURATION];
+                                     //[IMUIHelper hideWaitingMessage:@"发送失败"];
         }
     }];
 }

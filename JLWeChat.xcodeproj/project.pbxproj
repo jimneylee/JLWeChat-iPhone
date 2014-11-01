@@ -27,6 +27,11 @@
 		283FAAD419F4817F00ED6EEF /* QNAuthPolicy.m in Sources */ = {isa = PBXBuildFile; fileRef = 283FAAD319F4817F00ED6EEF /* QNAuthPolicy.m */; };
 		283FAAD819F4824800ED6EEF /* GTMBase64.m in Sources */ = {isa = PBXBuildFile; fileRef = 283FAAD719F4824800ED6EEF /* GTMBase64.m */; settings = {COMPILER_FLAGS = "-objc-no-arc"; }; };
 		284925741A048208008C3CE2 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 284925731A048208008C3CE2 /* README.md */; };
+		2849257B1A0486FF008C3CE2 /* jlwechat_chat1.png in Resources */ = {isa = PBXBuildFile; fileRef = 284925761A0486FF008C3CE2 /* jlwechat_chat1.png */; };
+		2849257C1A0486FF008C3CE2 /* jlwechat_chat2.png in Resources */ = {isa = PBXBuildFile; fileRef = 284925771A0486FF008C3CE2 /* jlwechat_chat2.png */; };
+		2849257D1A0486FF008C3CE2 /* jlwechat_chat3.png in Resources */ = {isa = PBXBuildFile; fileRef = 284925781A0486FF008C3CE2 /* jlwechat_chat3.png */; };
+		2849257E1A0486FF008C3CE2 /* jlwechat_contact.png in Resources */ = {isa = PBXBuildFile; fileRef = 284925791A0486FF008C3CE2 /* jlwechat_contact.png */; };
+		2849257F1A0486FF008C3CE2 /* jlwechat_main.png in Resources */ = {isa = PBXBuildFile; fileRef = 2849257A1A0486FF008C3CE2 /* jlwechat_main.png */; };
 		285119C319F685C100033E78 /* IMSimpleLoginC.m in Sources */ = {isa = PBXBuildFile; fileRef = 285119C119F685C100033E78 /* IMSimpleLoginC.m */; };
 		285119C419F685C100033E78 /* IMSimpleLoginC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 285119C219F685C100033E78 /* IMSimpleLoginC.xib */; };
 		289D6EDD19B0BF620046A853 /* IMSearchChatContactCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 289D6EDC19B0BF620046A853 /* IMSearchChatContactCell.m */; };
@@ -341,6 +346,11 @@
 		283FAAD719F4824800ED6EEF /* GTMBase64.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GTMBase64.m; sourceTree = "<group>"; };
 		283FAAD919F4835A00ED6EEF /* libcommonCrypto.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libcommonCrypto.dylib; path = usr/lib/system/libcommonCrypto.dylib; sourceTree = SDKROOT; };
 		284925731A048208008C3CE2 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.md; sourceTree = SOURCE_ROOT; };
+		284925761A0486FF008C3CE2 /* jlwechat_chat1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = jlwechat_chat1.png; sourceTree = "<group>"; };
+		284925771A0486FF008C3CE2 /* jlwechat_chat2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = jlwechat_chat2.png; sourceTree = "<group>"; };
+		284925781A0486FF008C3CE2 /* jlwechat_chat3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = jlwechat_chat3.png; sourceTree = "<group>"; };
+		284925791A0486FF008C3CE2 /* jlwechat_contact.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = jlwechat_contact.png; sourceTree = "<group>"; };
+		2849257A1A0486FF008C3CE2 /* jlwechat_main.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = jlwechat_main.png; sourceTree = "<group>"; };
 		285119C019F685C100033E78 /* IMSimpleLoginC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMSimpleLoginC.h; sourceTree = "<group>"; };
 		285119C119F685C100033E78 /* IMSimpleLoginC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMSimpleLoginC.m; sourceTree = "<group>"; };
 		285119C219F685C100033E78 /* IMSimpleLoginC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = IMSimpleLoginC.xib; sourceTree = "<group>"; };
@@ -783,6 +793,18 @@
 				283FAAD719F4824800ED6EEF /* GTMBase64.m */,
 			);
 			path = GTM;
+			sourceTree = "<group>";
+		};
+		284925751A0486FF008C3CE2 /* Screenshots */ = {
+			isa = PBXGroup;
+			children = (
+				284925761A0486FF008C3CE2 /* jlwechat_chat1.png */,
+				284925771A0486FF008C3CE2 /* jlwechat_chat2.png */,
+				284925781A0486FF008C3CE2 /* jlwechat_chat3.png */,
+				284925791A0486FF008C3CE2 /* jlwechat_contact.png */,
+				2849257A1A0486FF008C3CE2 /* jlwechat_main.png */,
+			);
+			path = Screenshots;
 			sourceTree = "<group>";
 		};
 		285119BE19F685C100033E78 /* V_Login */ = {
@@ -1281,6 +1303,7 @@
 		528E6A851920574500FFB5A6 = {
 			isa = PBXGroup;
 			children = (
+				284925751A0486FF008C3CE2 /* Screenshots */,
 				CE9FA522194E92DE00E7F77A /* Doc */,
 				289E0F3A192AF59900FFE90D /* Resource */,
 				289E0EFB192AF2FA00FFE90D /* Vendor */,
@@ -1562,6 +1585,7 @@
 				28F0D7D9192C1FA5001975AC /* ToolViewEmotion@2x.png in Resources */,
 				CE1EE25B1930D3670093DBB7 /* Expression_51@2x.png in Resources */,
 				28FAC129192EC53B00BBA9E0 /* emotion_icons.plist in Resources */,
+				2849257B1A0486FF008C3CE2 /* jlwechat_chat1.png in Resources */,
 				28F0D7D6192C1FA5001975AC /* SenderVoiceNodePlaying@2x.png in Resources */,
 				28F0D7D5192C1FA5001975AC /* SenderVoiceNodePlaying003@2x.png in Resources */,
 				CE1EE2561930D3670093DBB7 /* Expression_46@2x.png in Resources */,
@@ -1597,15 +1621,18 @@
 				528E6AA91920574500FFB5A6 /* Images.xcassets in Resources */,
 				CE1EE2571930D3670093DBB7 /* Expression_47@2x.png in Resources */,
 				CE1EE29F1930E6F80093DBB7 /* Expression_27@2x.png in Resources */,
+				2849257D1A0486FF008C3CE2 /* jlwechat_chat3.png in Resources */,
 				CE1EE27C1930D3670093DBB7 /* Expression_84@2x.png in Resources */,
 				28F0D7D0192C1FA5001975AC /* SenderVoiceNodeBkgHL@2x.png in Resources */,
 				28D7F69D19D6336B00F5B483 /* tabbar_contacts@2x.png in Resources */,
 				28F0D7C3192C1FA5001975AC /* ReceiverVoiceNodeBack@2x.png in Resources */,
 				28F0D7C2192C1FA5001975AC /* ReceiverTextNodeBkgHL@2x.png in Resources */,
 				CE1EE23A1930D3670093DBB7 /* Expression_10@2x.png in Resources */,
+				2849257C1A0486FF008C3CE2 /* jlwechat_chat2.png in Resources */,
 				CE1EE2741930D3670093DBB7 /* Expression_76@2x.png in Resources */,
 				CE1EE2331930D3670093DBB7 /* Expression_3@2x.png in Resources */,
 				CE1EE2811930D3670093DBB7 /* Expression_89@2x.png in Resources */,
+				2849257F1A0486FF008C3CE2 /* jlwechat_main.png in Resources */,
 				28F0D7E4192C24F9001975AC /* TypeSelectorBtnHL_Black@2x.png in Resources */,
 				CE1EE24E1930D3670093DBB7 /* Expression_38@2x.png in Resources */,
 				28F0D7D7192C1FA5001975AC /* sendmsg.caf in Resources */,
@@ -1667,6 +1694,7 @@
 				CE1EE2631930D3670093DBB7 /* Expression_59@2x.png in Resources */,
 				52B842DC1931DADD0051F056 /* Localizable.strings in Resources */,
 				28F0D7DD192C1FA5001975AC /* ToolViewInputVoice@2x.png in Resources */,
+				2849257E1A0486FF008C3CE2 /* jlwechat_contact.png in Resources */,
 				CE1EE2671930D3670093DBB7 /* Expression_63@2x.png in Resources */,
 				CE1EE24D1930D3670093DBB7 /* Expression_37@2x.png in Resources */,
 				28F0D7C8192C1FA5001975AC /* SenderImageNodeBorder@2x.png in Resources */,

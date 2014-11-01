@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		280AFE4319FBDDC7003440D6 /* IMAudioRecordView.m in Sources */ = {isa = PBXBuildFile; fileRef = 280AFE4219FBDDC7003440D6 /* IMAudioRecordView.m */; };
-		280AFE4619FBE30C003440D6 /* IMUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 280AFE4519FBE30C003440D6 /* IMUtil.m */; };
+		280AFE4619FBE30C003440D6 /* IMQNFileLoadUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 280AFE4519FBE30C003440D6 /* IMQNFileLoadUtil.m */; };
 		2828232F19FC8C5E004EA927 /* IMAudioRecordPlayManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 2828232E19FC8C5E004EA927 /* IMAudioRecordPlayManager.m */; };
 		282F801119CF174600827F78 /* IMContactsC.m in Sources */ = {isa = PBXBuildFile; fileRef = 282F800E19CF174600827F78 /* IMContactsC.m */; };
 		282F801219CF174600827F78 /* IMMainMessageC.m in Sources */ = {isa = PBXBuildFile; fileRef = 282F801019CF174600827F78 /* IMMainMessageC.m */; };
@@ -26,6 +26,7 @@
 		283FAAD119F4707E00ED6EEF /* QNUploadOption.m in Sources */ = {isa = PBXBuildFile; fileRef = 283FAAC519F4707E00ED6EEF /* QNUploadOption.m */; };
 		283FAAD419F4817F00ED6EEF /* QNAuthPolicy.m in Sources */ = {isa = PBXBuildFile; fileRef = 283FAAD319F4817F00ED6EEF /* QNAuthPolicy.m */; };
 		283FAAD819F4824800ED6EEF /* GTMBase64.m in Sources */ = {isa = PBXBuildFile; fileRef = 283FAAD719F4824800ED6EEF /* GTMBase64.m */; settings = {COMPILER_FLAGS = "-objc-no-arc"; }; };
+		284925741A048208008C3CE2 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 284925731A048208008C3CE2 /* README.md */; };
 		285119C319F685C100033E78 /* IMSimpleLoginC.m in Sources */ = {isa = PBXBuildFile; fileRef = 285119C119F685C100033E78 /* IMSimpleLoginC.m */; };
 		285119C419F685C100033E78 /* IMSimpleLoginC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 285119C219F685C100033E78 /* IMSimpleLoginC.xib */; };
 		289D6EDD19B0BF620046A853 /* IMSearchChatContactCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 289D6EDC19B0BF620046A853 /* IMSearchChatContactCell.m */; };
@@ -297,8 +298,8 @@
 /* Begin PBXFileReference section */
 		280AFE4119FBDDC7003440D6 /* IMAudioRecordView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMAudioRecordView.h; sourceTree = "<group>"; };
 		280AFE4219FBDDC7003440D6 /* IMAudioRecordView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMAudioRecordView.m; sourceTree = "<group>"; };
-		280AFE4419FBE30C003440D6 /* IMUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMUtil.h; sourceTree = "<group>"; };
-		280AFE4519FBE30C003440D6 /* IMUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMUtil.m; sourceTree = "<group>"; };
+		280AFE4419FBE30C003440D6 /* IMQNFileLoadUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMQNFileLoadUtil.h; sourceTree = "<group>"; };
+		280AFE4519FBE30C003440D6 /* IMQNFileLoadUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMQNFileLoadUtil.m; sourceTree = "<group>"; };
 		2828232D19FC8C5E004EA927 /* IMAudioRecordPlayManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMAudioRecordPlayManager.h; sourceTree = "<group>"; };
 		2828232E19FC8C5E004EA927 /* IMAudioRecordPlayManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMAudioRecordPlayManager.m; sourceTree = "<group>"; };
 		282F7FF719CEEDF600827F78 /* JLWeChat-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "JLWeChat-Prefix.pch"; sourceTree = "<group>"; };
@@ -339,6 +340,7 @@
 		283FAAD619F4824800ED6EEF /* GTMBase64.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GTMBase64.h; sourceTree = "<group>"; };
 		283FAAD719F4824800ED6EEF /* GTMBase64.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GTMBase64.m; sourceTree = "<group>"; };
 		283FAAD919F4835A00ED6EEF /* libcommonCrypto.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libcommonCrypto.dylib; path = usr/lib/system/libcommonCrypto.dylib; sourceTree = SDKROOT; };
+		284925731A048208008C3CE2 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.md; sourceTree = SOURCE_ROOT; };
 		285119C019F685C100033E78 /* IMSimpleLoginC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMSimpleLoginC.h; sourceTree = "<group>"; };
 		285119C119F685C100033E78 /* IMSimpleLoginC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMSimpleLoginC.m; sourceTree = "<group>"; };
 		285119C219F685C100033E78 /* IMSimpleLoginC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = IMSimpleLoginC.xib; sourceTree = "<group>"; };
@@ -1010,8 +1012,8 @@
 				28D7F69219D62FB500F5B483 /* IMUIHelper.m */,
 				283FAAD219F4817F00ED6EEF /* QNAuthPolicy.h */,
 				283FAAD319F4817F00ED6EEF /* QNAuthPolicy.m */,
-				280AFE4419FBE30C003440D6 /* IMUtil.h */,
-				280AFE4519FBE30C003440D6 /* IMUtil.m */,
+				280AFE4419FBE30C003440D6 /* IMQNFileLoadUtil.h */,
+				280AFE4519FBE30C003440D6 /* IMQNFileLoadUtil.m */,
 				2828232D19FC8C5E004EA927 /* IMAudioRecordPlayManager.h */,
 				2828232E19FC8C5E004EA927 /* IMAudioRecordPlayManager.m */,
 			);
@@ -1431,6 +1433,7 @@
 		CE9FA522194E92DE00E7F77A /* Doc */ = {
 			isa = PBXGroup;
 			children = (
+				284925731A048208008C3CE2 /* README.md */,
 				CE9FA523194E92FE00E7F77A /* XMPP_CHANGES */,
 				289D6EE419B0C3330046A853 /* TODO */,
 			);
@@ -1567,6 +1570,7 @@
 				CE1EE2311930D3670093DBB7 /* Expression_1@2x.png in Resources */,
 				CE1EE2A01930E6F80093DBB7 /* Expression_28@2x.png in Resources */,
 				CE1EE25D1930D3670093DBB7 /* Expression_53@2x.png in Resources */,
+				284925741A048208008C3CE2 /* README.md in Resources */,
 				CE1EE2361930D3670093DBB7 /* Expression_6@2x.png in Resources */,
 				CE1EE2861930D3670093DBB7 /* Expression_94@2x.png in Resources */,
 				CE1EE25C1930D3670093DBB7 /* Expression_52@2x.png in Resources */,
@@ -1773,7 +1777,7 @@
 				289E0F14192AF2FA00FFE90D /* NSStringAdditions.m in Sources */,
 				289E0F71192AF71000FFE90D /* IMXMPPManager.m in Sources */,
 				282F801219CF174600827F78 /* IMMainMessageC.m in Sources */,
-				280AFE4619FBE30C003440D6 /* IMUtil.m in Sources */,
+				280AFE4619FBE30C003440D6 /* IMQNFileLoadUtil.m in Sources */,
 				CE1EE1BE1930409B0093DBB7 /* XMPPMessageArchiving_Message_CoreDataObject+ChatMessage.m in Sources */,
 				CE21332819341CD6002EBE49 /* UIImage+Utils.m in Sources */,
 				289E0F8A192B4CA400FFE90D /* IMChatC.m in Sources */,

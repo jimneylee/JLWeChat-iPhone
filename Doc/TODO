@@ -1,7 +1,7 @@
 
 TODO:
 air push code
-IMUtil -> QNUtil/QNResourceManager
+IMQNFileLoadUtil -> QNUtil/QNResourceManager
 
 # Bug
 * 没中不足，图片模糊有分割线，mask遮罩算法还有待考究

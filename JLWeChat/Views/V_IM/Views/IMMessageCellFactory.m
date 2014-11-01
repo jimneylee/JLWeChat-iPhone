@@ -22,7 +22,7 @@
 #import "IMChatC.h"
 #import "IMAudioRecordPlayManager.h"
 #import "IMCache.h"
-#import "IMQNFileLoadUtil.h"
+#import "QNResourceManager.h"
 
 #define HEAD_IAMGE_HEIGHT 40
 #define CELL_BOTTOM_CLEAN_MARGIN 10

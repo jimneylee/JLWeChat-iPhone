@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		280AFE4319FBDDC7003440D6 /* IMAudioRecordView.m in Sources */ = {isa = PBXBuildFile; fileRef = 280AFE4219FBDDC7003440D6 /* IMAudioRecordView.m */; };
-		280AFE4619FBE30C003440D6 /* IMQNFileLoadUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 280AFE4519FBE30C003440D6 /* IMQNFileLoadUtil.m */; };
+		280AFE4619FBE30C003440D6 /* QNResourceManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 280AFE4519FBE30C003440D6 /* QNResourceManager.m */; };
 		2828232F19FC8C5E004EA927 /* IMAudioRecordPlayManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 2828232E19FC8C5E004EA927 /* IMAudioRecordPlayManager.m */; };
 		282F801119CF174600827F78 /* IMContactsC.m in Sources */ = {isa = PBXBuildFile; fileRef = 282F800E19CF174600827F78 /* IMContactsC.m */; };
 		282F801219CF174600827F78 /* IMMainMessageC.m in Sources */ = {isa = PBXBuildFile; fileRef = 282F801019CF174600827F78 /* IMMainMessageC.m */; };
@@ -298,8 +298,8 @@
 /* Begin PBXFileReference section */
 		280AFE4119FBDDC7003440D6 /* IMAudioRecordView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMAudioRecordView.h; sourceTree = "<group>"; };
 		280AFE4219FBDDC7003440D6 /* IMAudioRecordView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMAudioRecordView.m; sourceTree = "<group>"; };
-		280AFE4419FBE30C003440D6 /* IMQNFileLoadUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMQNFileLoadUtil.h; sourceTree = "<group>"; };
-		280AFE4519FBE30C003440D6 /* IMQNFileLoadUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMQNFileLoadUtil.m; sourceTree = "<group>"; };
+		280AFE4419FBE30C003440D6 /* QNResourceManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QNResourceManager.h; sourceTree = "<group>"; };
+		280AFE4519FBE30C003440D6 /* QNResourceManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QNResourceManager.m; sourceTree = "<group>"; };
 		2828232D19FC8C5E004EA927 /* IMAudioRecordPlayManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMAudioRecordPlayManager.h; sourceTree = "<group>"; };
 		2828232E19FC8C5E004EA927 /* IMAudioRecordPlayManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMAudioRecordPlayManager.m; sourceTree = "<group>"; };
 		282F7FF719CEEDF600827F78 /* JLWeChat-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "JLWeChat-Prefix.pch"; sourceTree = "<group>"; };
@@ -1012,8 +1012,8 @@
 				28D7F69219D62FB500F5B483 /* IMUIHelper.m */,
 				283FAAD219F4817F00ED6EEF /* QNAuthPolicy.h */,
 				283FAAD319F4817F00ED6EEF /* QNAuthPolicy.m */,
-				280AFE4419FBE30C003440D6 /* IMQNFileLoadUtil.h */,
-				280AFE4519FBE30C003440D6 /* IMQNFileLoadUtil.m */,
+				280AFE4419FBE30C003440D6 /* QNResourceManager.h */,
+				280AFE4519FBE30C003440D6 /* QNResourceManager.m */,
 				2828232D19FC8C5E004EA927 /* IMAudioRecordPlayManager.h */,
 				2828232E19FC8C5E004EA927 /* IMAudioRecordPlayManager.m */,
 			);
@@ -1777,7 +1777,7 @@
 				289E0F14192AF2FA00FFE90D /* NSStringAdditions.m in Sources */,
 				289E0F71192AF71000FFE90D /* IMXMPPManager.m in Sources */,
 				282F801219CF174600827F78 /* IMMainMessageC.m in Sources */,
-				280AFE4619FBE30C003440D6 /* IMQNFileLoadUtil.m in Sources */,
+				280AFE4619FBE30C003440D6 /* QNResourceManager.m in Sources */,
 				CE1EE1BE1930409B0093DBB7 /* XMPPMessageArchiving_Message_CoreDataObject+ChatMessage.m in Sources */,
 				CE21332819341CD6002EBE49 /* UIImage+Utils.m in Sources */,
 				289E0F8A192B4CA400FFE90D /* IMChatC.m in Sources */,

@@ -6,36 +6,24 @@
 //  Copyright (c) 2014年 jimneylee. All rights reserved.
 //
 
-#import "IMQNFileLoadUtil.h"
+#import "QNResourceManager.h"
 #import "AFHTTPRequestOperation.h"
 #import "QiniuSDK.h"
 #import "QNAuthPolicy.h"
 #import "IMCache.h"
 
-@implementation IMQNFileLoadUtil
+@implementation QNResourceManager
 
-
-#pragma mark -  Generate Key
-
-+ (NSString *)generateImageTimeKeyWithPrefix:(NSString *)keyPrefix
++ (instancetype)sharedManager
 {
-    NSString *timeString = [IMQNFileLoadUtil generateTimeKey];
-    return [NSString stringWithFormat:@"%@-%@.jpg", keyPrefix, timeString];
-}
-
-+ (NSString *)generateAudioTimeKeyWithPrefix:(NSString *)keyPrefix
-{
-    NSString *timeString = [IMQNFileLoadUtil generateTimeKey];
-    return [NSString stringWithFormat:@"%@-%@.voice", keyPrefix, timeString];
-}
-
-+ (NSString *)generateTimeKey
-{
-    NSDateFormatter *f = [[NSDateFormatter alloc] init];
-    [f setDateFormat:@"yyyy-MM-dd-HH-mm-ss"];
-    [f setTimeZone:[NSTimeZone timeZoneWithName:@"GMT"]];
-    NSString *timeString = [f stringFromDate:[NSDate date]];
-    return timeString;
+    static QNResourceManager *_sharedManager = nil;
+    static dispatch_once_t onceToken;
+    
+    dispatch_once(&onceToken, ^{
+        _sharedManager = [[self alloc ] init];
+    });
+    
+    return _sharedManager;
 }
 
 #pragma mark Upload Image
@@ -58,7 +46,7 @@
     QNUploadOption *opt = [[QNUploadOption alloc] initWithMime:@"image/jpeg" progressHandler:nil
                                                         params:nil checkCrc:YES cancellationSignal:nil];
     QNUploadManager *upManager = [QNUploadManager sharedInstanceWithRecorder:nil recorderKeyGenerator:nil];
-    [upManager putData:imageData key:[IMQNFileLoadUtil generateImageTimeKeyWithPrefix:keyPrefix]
+    [upManager putData:imageData key:[QNResourceManager generateImageTimeKeyWithPrefix:keyPrefix]
                  token:token complete: ^(QNResponseInfo *info, NSString *key, NSDictionary *resp) {
                      if (info.statusCode == QN_STATUS_CODE_SUCCESS) {
                          completeBlock(YES, key, newImage.size.width, newImage.size.height);
@@ -119,6 +107,30 @@
     }];
     
     [operation start];
+}
+
+
+#pragma mark -  Generate Key
+
++ (NSString *)generateImageTimeKeyWithPrefix:(NSString *)keyPrefix
+{
+    NSString *timeString = [QNResourceManager generateTimeKey];
+    return [NSString stringWithFormat:@"%@-%@.jpg", keyPrefix, timeString];
+}
+
++ (NSString *)generateAudioTimeKeyWithPrefix:(NSString *)keyPrefix
+{
+    NSString *timeString = [QNResourceManager generateTimeKey];
+    return [NSString stringWithFormat:@"%@-%@.voice", keyPrefix, timeString];
+}
+
++ (NSString *)generateTimeKey
+{
+    NSDateFormatter *f = [[NSDateFormatter alloc] init];
+    [f setDateFormat:@"yyyy-MM-dd-HH-mm-ss"];
+    [f setTimeZone:[NSTimeZone timeZoneWithName:@"GMT"]];
+    NSString *timeString = [f stringFromDate:[NSDate date]];
+    return timeString;
 }
 
 @end

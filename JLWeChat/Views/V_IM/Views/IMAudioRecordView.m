@@ -8,7 +8,7 @@
 
 #import "IMAudioRecordView.h"
 #import <AVFoundation/AVFoundation.h>
-#import "IMQNFileLoadUtil.h"
+#import "QNResourceManager.h"
 #import "IMCache.h"
 #import "IMAudioRecordPlayManager.h"
 

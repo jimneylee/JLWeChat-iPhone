@@ -10,7 +10,7 @@
 #import "JLKeywordRegularParser.h"
 #import "IMEmotionManager.h"
 #import "IMAudioRecordPlayManager.h"
-#import "IMQNFileLoadUtil.h"
+#import "QNResourceManager.h"
 
 #pragma mark IMChatMessageBaseEntity
 
@@ -210,15 +210,15 @@ typedef void (^CompleteBlock)();
         else {
             @weakify(self);
             self.isDownloading = YES;
-            [IMQNFileLoadUtil downloadFileWithUrl:self.url
-                          progressBlock:^(CGFloat progress) {
-                              @strongify(self);
-                              progressBlock(progress);
-                              self.progressBlock = progressBlock;
-                          } completeBlock:^(BOOL success, NSError *error) {
-                              [[IMAudioRecordPlayManager sharedManager] playWithUrl:self.url];
-                              self.isDownloading = NO;
-                          }];
+            [[QNResourceManager sharedManager] downloadFileWithUrl:self.url
+                                                     progressBlock:^(CGFloat progress) {
+                                                         @strongify(self);
+                                                         progressBlock(progress);
+                                                         self.progressBlock = progressBlock;
+                                                     } completeBlock:^(BOOL success, NSError *error) {
+                                                         [[IMAudioRecordPlayManager sharedManager] playWithUrl:self.url];
+                                                         self.isDownloading = NO;
+                                                     }];
         }
     }
 }

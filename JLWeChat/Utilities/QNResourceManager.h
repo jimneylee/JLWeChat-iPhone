@@ -8,26 +8,28 @@
 
 #import <Foundation/Foundation.h>
 
-@interface IMQNFileLoadUtil : NSObject
+@interface QNResourceManager : NSObject
+
++ (instancetype)sharedManager;
+
+- (void)uploadImage:(UIImage *)image
+          keyPrefix:(NSString *)keyPrefix
+      completeBlock:(void (^)(BOOL success,  NSString *key, CGFloat width, CGFloat height))completeBlock;
+
+//upload file with urlkey
+- (void)uploadFileWithUrlkey:(NSString *)urlkey
+               progressBlock:(void (^)(NSString *key, CGFloat progress))progressBlock
+               completeBlock:(void (^)(BOOL success,  NSString *key))completeBlock;
+
+// download file with url
+- (void)downloadFileWithUrl:(NSString*)url
+              progressBlock:(void (^)(CGFloat progress))progressBlock
+              completeBlock:(void (^)(BOOL success, NSError *error))completeBlock;
 
 // yyyy-MM-dd-HH-mm-ss.jpg
 + (NSString *)generateImageTimeKeyWithPrefix:(NSString *)keyPrefix;
 
 // yyyy-MM-dd-HH-mm-ss.voice
 + (NSString *)generateAudioTimeKeyWithPrefix:(NSString *)keyPrefix;
-
-+ (void)uploadImage:(UIImage *)image
-          keyPrefix:(NSString *)keyPrefix
-      completeBlock:(void (^)(BOOL success,  NSString *key, CGFloat width, CGFloat height))completeBlock;
-
-//upload file with urlkey
-+ (void)uploadFileWithUrlkey:(NSString *)urlkey
-               progressBlock:(void (^)(NSString *key, CGFloat progress))progressBlock
-               completeBlock:(void (^)(BOOL success,  NSString *key))completeBlock;
-
-// download file with url
-+ (void)downloadFileWithUrl:(NSString*)url
-              progressBlock:(void (^)(CGFloat progress))progressBlock
-              completeBlock:(void (^)(BOOL success, NSError *error))completeBlock;
 
 @end

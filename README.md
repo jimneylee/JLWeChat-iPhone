@@ -14,7 +14,12 @@ JLWeChat-iPhone
 
 ##已知待改进问题
 1、图片的遮罩显示改进及下载进度的显示
+
 2、音频上传、下载的异步显示，跟cell关联
+
 3、添加好友关系
+
+##添加截图
+![image](https://raw.githubusercontent.com/jimneylee/JLWeChat-iPhone/master/Screenshots/jlwechat_chat1.png)
 
 ##其他说明，未完待续。

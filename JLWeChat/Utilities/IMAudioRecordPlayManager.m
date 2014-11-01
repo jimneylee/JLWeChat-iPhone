@@ -7,7 +7,7 @@
 //
 
 #import "IMAudioRecordPlayManager.h"
-#import "IMUtil.h"
+#import "IMQNFileLoadUtil.h"
 
 @interface IMAudioRecordPlayManager()<AVAudioPlayerDelegate>
 
@@ -91,7 +91,7 @@
 - (void)startRecord
 {
     NSString *cacheDir = [NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES) objectAtIndex:0];
-    NSString *fileName = [IMUtil generateAudioTimeKeyWithPrefix:MY_JID.user];
+    NSString *fileName = [IMQNFileLoadUtil generateAudioTimeKeyWithPrefix:MY_JID.user];
     NSString *filePath = [cacheDir stringByAppendingPathComponent:fileName];
     self.recordUrlKey = fileName;
     self.recordFileURL = [NSURL fileURLWithPath:filePath];

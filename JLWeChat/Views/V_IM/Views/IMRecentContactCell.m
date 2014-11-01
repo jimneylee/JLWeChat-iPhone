@@ -11,7 +11,7 @@
 #import "XMPPMessageArchiving_Contact_CoreDataObject.h"
 #import "XMPPMessageArchiving_Contact_CoreDataObject+RecentContact.h"
 #import "NSDate+IM.h"
-#import "IMManager.h"
+#import "IMXMPPManager.h"
 #import "IMChatMessageEntityFactory.h"
 #import "UIImageView+AFNetworking.h"
 
@@ -132,7 +132,7 @@
     dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
     dispatch_async(queue, ^{
         
-        NSData *photoData = [[[IMManager sharedManager] xmppvCardAvatarModule]
+        NSData *photoData = [[[IMXMPPManager sharedManager] xmppvCardAvatarModule]
                              photoDataForJID:self.contact.bareJid];
         if (photoData != nil)
             self.headView.image = [UIImage imageWithData:photoData];

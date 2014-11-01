@@ -28,7 +28,7 @@
 #import "IMMacros.h"
 #import "IMUIMacros.h"
 #import "IMUIHelper.h"
-#import "IMManager.h"
+#import "IMXMPPManager.h"
 #import "IMDataBaseManager.h"
 
 #endif

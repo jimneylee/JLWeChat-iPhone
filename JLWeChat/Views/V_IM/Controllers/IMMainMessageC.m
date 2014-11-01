@@ -7,14 +7,14 @@
 //
 
 #import "IMMainMessageC.h"
-#import "IMManager.h"
+#import "IMXMPPManager.h"
 
 #import "IMSimpleLoginC.h"
 #import "IMChatC.h"
 #import "IMSearchDisplayController.h"
 #import "IMRecentContactCell.h"
 #import "IMMainMessageViewModel.h"
-#import "IMManager.h"
+#import "IMXMPPManager.h"
 
 @interface IMMainMessageC ()<NSFetchedResultsControllerDelegate, UISearchDisplayDelegate, UISearchBarDelegate>
 
@@ -32,7 +32,7 @@
         self.title = @"消息";
         self.viewModel = [IMMainMessageViewModel sharedViewModel];
         
-        [[IMManager sharedManager].xmppStream addDelegate:self delegateQueue:dispatch_get_main_queue()];
+        [[IMXMPPManager sharedManager].xmppStream addDelegate:self delegateQueue:dispatch_get_main_queue()];
         
         @weakify(self);
         [self.viewModel.updatedContentSignal subscribeNext:^(id x) {

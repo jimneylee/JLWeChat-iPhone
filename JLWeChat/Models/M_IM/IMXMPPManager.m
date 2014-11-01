@@ -6,7 +6,7 @@
 //  Copyright (c) 2014年 jimneylee. All rights reserved.
 //
 
-#import "IMManager.h"
+#import "IMXMPPManager.h"
 #import "GCDAsyncSocket.h"
 #import "XMPPMessage.h"
 #import "XMPPMessage+XEP_0085.h"
@@ -19,11 +19,11 @@ static const int ddLogLevel = LOG_LEVEL_VERBOSE;
 static const int ddLogLevel = LOG_LEVEL_INFO;
 #endif
 
-@implementation IMManager
+@implementation IMXMPPManager
 
 + (instancetype)sharedManager
 {
-    static IMManager *_sharedManager = nil;
+    static IMXMPPManager *_sharedManager = nil;
     static dispatch_once_t onceToken;
     
     dispatch_once(&onceToken, ^{
@@ -387,7 +387,7 @@ static const int ddLogLevel = LOG_LEVEL_INFO;
         XMPPMessage * xMessage = [XMPPMessage messageFromElement:message];
         [xMessage addActiveChatState];
         
-        [[IMManager sharedManager].xmppStream sendElement:message];
+        [[IMXMPPManager sharedManager].xmppStream sendElement:message];
     }
 }
 

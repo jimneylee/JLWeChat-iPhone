@@ -8,7 +8,7 @@
 
 #import "IMContactsViewModel.h"
 #import "IMContactModel.h"
-#import "IMManager.h"
+#import "IMXMPPManager.h"
 #import <UIAlertView+RACSignalSupport.h>
 #import "XMPPPresence+XEP_0172.h"
 #import "IMMainMessageViewModel.h"
@@ -43,18 +43,18 @@ static const int ddLogLevel = LOG_LEVEL_INFO;
 
 - (void)dealloc
 {
-    [[IMManager sharedManager].xmppRoster removeDelegate:self delegateQueue:dispatch_get_main_queue()];
-    [[IMManager sharedManager].xmppStream removeDelegate:self delegateQueue:dispatch_get_main_queue()];
+    [[IMXMPPManager sharedManager].xmppRoster removeDelegate:self delegateQueue:dispatch_get_main_queue()];
+    [[IMXMPPManager sharedManager].xmppStream removeDelegate:self delegateQueue:dispatch_get_main_queue()];
 }
 
 -(instancetype)init
 {
     self = [super init];
     if (self) {
-        self.model = [[IMManager sharedManager] managedObjectContext_roster];
+        self.model = [[IMXMPPManager sharedManager] managedObjectContext_roster];
 
-        [[IMManager sharedManager].xmppRoster addDelegate:self delegateQueue:dispatch_get_main_queue()];
-        [[IMManager sharedManager].xmppStream addDelegate:self delegateQueue:dispatch_get_main_queue()];
+        [[IMXMPPManager sharedManager].xmppRoster addDelegate:self delegateQueue:dispatch_get_main_queue()];
+        [[IMXMPPManager sharedManager].xmppStream addDelegate:self delegateQueue:dispatch_get_main_queue()];
 
         self.updatedContentSignal = [[RACSubject subject] setNameWithFormat:@"%@ updatedContentSignal",
                                      NSStringFromClass([IMContactsViewModel class])];
@@ -66,7 +66,7 @@ static const int ddLogLevel = LOG_LEVEL_INFO;
         }];
         
         // TODO:当完成正式的登录功能，此处需要同步考虑
-        RAC(self, active) = [RACObserve([IMManager sharedManager], myJID) map:^id(id value) {
+        RAC(self, active) = [RACObserve([IMXMPPManager sharedManager], myJID) map:^id(id value) {
             if (value) {
                 return @(YES);
             }
@@ -82,7 +82,7 @@ static const int ddLogLevel = LOG_LEVEL_INFO;
 //                
 //                // 更新sql中nickname
 //                NSString *bareJidStr = [NSString stringWithFormat:@"%@@%@",
-//                                        user.uname, [IMManager sharedManager].myJID.domain];
+//                                        user.uname, [IMXMPPManager sharedManager].myJID.domain];
 //                [IMNewFriendsViewModel updateNewFriendWithBareJidStr:bareJidStr nickname:user.nickname];
 //            }
 //        }];
@@ -255,7 +255,7 @@ static const int ddLogLevel = LOG_LEVEL_INFO;
 - (BOOL)deleteUser:(XMPPUserCoreDataStorageObject *)user
 {
     if (user) {
-        NSManagedObjectContext *context = [IMManager sharedManager].managedObjectContext_roster;
+        NSManagedObjectContext *context = [IMXMPPManager sharedManager].managedObjectContext_roster;
         [context deleteObject:user];
         
         NSError *error = nil;
@@ -270,7 +270,7 @@ static const int ddLogLevel = LOG_LEVEL_INFO;
 
 - (BOOL)deleteAllRoster
 {
-    NSManagedObjectContext *context = [IMManager sharedManager].managedObjectContext_roster;
+    NSManagedObjectContext *context = [IMXMPPManager sharedManager].managedObjectContext_roster;
     
     NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
     NSEntityDescription *entity = [NSEntityDescription entityForName:@"XMPPUserCoreDataStorageObject"
@@ -355,10 +355,10 @@ static const int ddLogLevel = LOG_LEVEL_INFO;
             
             [[alertView rac_buttonClickedSignal] subscribeNext:^(NSNumber *x) {
                 if ([x intValue] == 0) {
-                    [[[IMManager sharedManager] xmppRoster] rejectPresenceSubscriptionRequestFrom:[presence from]];
+                    [[[IMXMPPManager sharedManager] xmppRoster] rejectPresenceSubscriptionRequestFrom:[presence from]];
                 }
                 else {
-                    [[[IMManager sharedManager] xmppRoster] acceptPresenceSubscriptionRequestFrom:[presence from]
+                    [[[IMXMPPManager sharedManager] xmppRoster] acceptPresenceSubscriptionRequestFrom:[presence from]
                                                                                    andAddToRoster:YES];
                 }
             }];
@@ -428,9 +428,9 @@ static const int ddLogLevel = LOG_LEVEL_INFO;
                 NSLog(@"deleteRecentContact:%@", [XMPPJID jidWithString:jidStr]);
             }
             
-            XMPPUserCoreDataStorageObject *user = [[IMManager sharedManager].xmppRosterStorage
+            XMPPUserCoreDataStorageObject *user = [[IMXMPPManager sharedManager].xmppRosterStorage
                                                    userForJID:[XMPPJID jidWithString:jidStr]
-                                                   xmppStream:[IMManager sharedManager].xmppStream
+                                                   xmppStream:[IMXMPPManager sharedManager].xmppStream
                                                    managedObjectContext:IM_MOC];
             if ([self deleteUser:user]) {
                 NSLog(@"deleteUser:%@", user.jid.bare);
@@ -445,10 +445,10 @@ static const int ddLogLevel = LOG_LEVEL_INFO;
 	NSLog(@"%@: %@", THIS_FILE, THIS_METHOD);
     
     // 别人请求加为好友
-	XMPPUserCoreDataStorageObject *user = [[IMManager sharedManager].xmppRosterStorage
+	XMPPUserCoreDataStorageObject *user = [[IMXMPPManager sharedManager].xmppRosterStorage
                                            userForJID:[presence from]
-                                           xmppStream:[IMManager sharedManager].xmppStream
-                                           managedObjectContext:[[IMManager sharedManager] managedObjectContext_roster]];
+                                           xmppStream:[IMXMPPManager sharedManager].xmppStream
+                                           managedObjectContext:[[IMXMPPManager sharedManager] managedObjectContext_roster]];
     if (!user) {
         NSString *body = [NSString stringWithFormat:@"%@要加你为好友", [[presence from] user]];
         
@@ -462,10 +462,10 @@ static const int ddLogLevel = LOG_LEVEL_INFO;
             
             [[alertView rac_buttonClickedSignal] subscribeNext:^(NSNumber *x) {
                 if ([x intValue] == 0) {
-                    [[[IMManager sharedManager] xmppRoster] rejectPresenceSubscriptionRequestFrom:[presence from]];
+                    [[[IMXMPPManager sharedManager] xmppRoster] rejectPresenceSubscriptionRequestFrom:[presence from]];
                 }
                 else {
-                    [[[IMManager sharedManager] xmppRoster] acceptPresenceSubscriptionRequestFrom:[presence from]
+                    [[[IMXMPPManager sharedManager] xmppRoster] acceptPresenceSubscriptionRequestFrom:[presence from]
                                                                                      andAddToRoster:YES];
                 }
             }];

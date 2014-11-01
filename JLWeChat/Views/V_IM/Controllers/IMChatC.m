@@ -7,7 +7,7 @@
 //
 
 #import "IMChatC.h"
-#import "IMManager.h"
+#import "IMXMPPManager.h"
 #import "IMChatSendBar.h"
 #import "IMAudioRecordView.h"
 #import "IMEmotionMainView.h"
@@ -73,7 +73,7 @@ IMAudioRecordViewDelegate, IMChatSendBarDelegate, IMEmotionDelegate, IMChatShare
 
 - (void)dealloc
 {
-    [[IMManager sharedManager].xmppStream removeDelegate:self delegateQueue:dispatch_get_main_queue()];
+    [[IMXMPPManager sharedManager].xmppStream removeDelegate:self delegateQueue:dispatch_get_main_queue()];
     [[NSNotificationCenter defaultCenter] removeObserver:self];
     
     // 获取当前聊天联系人，清空未读消息数
@@ -93,10 +93,10 @@ IMAudioRecordViewDelegate, IMChatSendBarDelegate, IMEmotionDelegate, IMChatShare
         self.title = buddyName ?: buddyJID.user;
         self.hidesBottomBarWhenPushed = YES;
         
-        self.viewModel = [[IMChatViewModel alloc] initWithModel:[[IMManager sharedManager] managedObjectContext_messageArchiving]];
+        self.viewModel = [[IMChatViewModel alloc] initWithModel:[[IMXMPPManager sharedManager] managedObjectContext_messageArchiving]];
         self.viewModel.buddyJID = buddyJID;
         
-        [[IMManager sharedManager].xmppStream addDelegate:self delegateQueue:dispatch_get_main_queue()];
+        [[IMXMPPManager sharedManager].xmppStream addDelegate:self delegateQueue:dispatch_get_main_queue()];
         
         @weakify(self);
         [self.viewModel.fetchLaterSignal subscribeNext:^(id x) {

@@ -17,7 +17,7 @@
 #import <XMPPMessageArchiving.h>
 #import <XMPPMessageArchivingCoreDataStorage.h>
 
-@interface IMManager : NSObject
+@interface IMXMPPManager : NSObject
 
 @property (nonatomic, strong, readonly) XMPPStream *xmppStream;
 @property (nonatomic, strong, readonly) XMPPReconnect *xmppReconnect;

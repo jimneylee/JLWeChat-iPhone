@@ -169,7 +169,7 @@ static const int ddLogLevel = LOG_LEVEL_INFO;
 {
     if (text.length > 0) {
         NSString *JSONString = [IMChatMessageTextEntity JSONStringFromText:text];
-        [[IMManager sharedManager] sendChatMessage:JSONString
+        [[IMXMPPManager sharedManager] sendChatMessage:JSONString
                                                toJID:self.buddyJID];
     }
 }
@@ -186,8 +186,8 @@ static const int ddLogLevel = LOG_LEVEL_INFO;
                                                                                      height:height
                                                                                         url:QN_URL_FOR_KEY(key)];
                   if (JSONString.length > 0) {
-                      [[IMManager sharedManager] sendChatMessage:JSONString
-                                                           toJID:self.buddyJID];
+                      [[IMXMPPManager sharedManager] sendChatMessage:JSONString
+                                                               toJID:self.buddyJID];
                   }
               }
           }];
@@ -200,7 +200,7 @@ static const int ddLogLevel = LOG_LEVEL_INFO;
             NSString *JSONString = [IMChatMessageAudioEntity JSONStringWithAudioTime:time
                                                                                  url:QN_URL_FOR_KEY(key)];
             if (JSONString.length > 0) {
-                [[IMManager sharedManager] sendChatMessage:JSONString
+                [[IMXMPPManager sharedManager] sendChatMessage:JSONString
                                                      toJID:self.buddyJID];
             }
         }
@@ -237,7 +237,7 @@ static const int ddLogLevel = LOG_LEVEL_INFO;
 - (NSFetchedResultsController *)fetchedEarlierResultsController
 {
 	if (_fetchedEarlierResultsController == nil) {
-		NSManagedObjectContext *moc = [[IMManager sharedManager] managedObjectContext_messageArchiving];
+		NSManagedObjectContext *moc = [[IMXMPPManager sharedManager] managedObjectContext_messageArchiving];
 		
 		NSEntityDescription *entity = [NSEntityDescription entityForName:@"XMPPMessageArchiving_Message_CoreDataObject"
 		                                          inManagedObjectContext:moc];
@@ -265,7 +265,7 @@ static const int ddLogLevel = LOG_LEVEL_INFO;
 - (NSFetchedResultsController *)fetchedLaterResultsController
 {
 	if (_fetchedLaterResultsController == nil) {
-		NSManagedObjectContext *moc = [[IMManager sharedManager] managedObjectContext_messageArchiving];
+		NSManagedObjectContext *moc = [[IMXMPPManager sharedManager] managedObjectContext_messageArchiving];
 		
 		NSEntityDescription *entity = [NSEntityDescription entityForName:@"XMPPMessageArchiving_Message_CoreDataObject"
 		                                          inManagedObjectContext:moc];

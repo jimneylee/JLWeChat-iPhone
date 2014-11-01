@@ -37,6 +37,6 @@
 #define DEFAULT_ROSTER_MAX_COUNT 100
 
 #define IM_MOC [IMDataBaseManager sharedManager].managedObjectContext
-#define MY_JID [IMManager sharedManager].myJID
+#define MY_JID [IMXMPPManager sharedManager].myJID
 
 #endif

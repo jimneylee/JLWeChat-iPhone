@@ -7,7 +7,7 @@
 //
 
 #import "IMMainMessageViewModel.h"
-#import "IMManager.h"
+#import "IMXMPPManager.h"
 #import "IMMainMessageViewModel.h"
 
 // Log levels: off, error, warn, info, verbose
@@ -45,7 +45,7 @@ static const int ddLogLevel = LOG_LEVEL_INFO;
 {
     self = [super init];
     if (self) {
-        self.model = [[IMManager sharedManager] managedObjectContext_messageArchiving];
+        self.model = [[IMXMPPManager sharedManager] managedObjectContext_messageArchiving];
 
         self.updatedContentSignal = [[RACSubject subject] setNameWithFormat:@"%@ updatedContentSignal",
                                      NSStringFromClass([IMMainMessageViewModel class])];
@@ -57,7 +57,7 @@ static const int ddLogLevel = LOG_LEVEL_INFO;
         }];
         
         // TODO:当完成正式的登录功能，此处需要同步考虑
-        RAC(self, active) = [RACObserve([IMManager sharedManager], myJID) map:^id(id value) {
+        RAC(self, active) = [RACObserve([IMXMPPManager sharedManager], myJID) map:^id(id value) {
             if (value) {
                 return @(YES);
             }
@@ -88,13 +88,13 @@ static const int ddLogLevel = LOG_LEVEL_INFO;
         [self decreaseTotalUnreadMessagesCountWithValue:currentChatContact.unreadMessages.intValue];
         
         XMPPUserCoreDataStorageObject *rosterUser =
-        [[IMManager sharedManager].xmppRosterStorage userForJID:currentChatContact.bareJid
-                                                       xmppStream:[IMManager sharedManager].xmppStream
-                                             managedObjectContext:[IMManager sharedManager].managedObjectContext_roster];
+        [[IMXMPPManager sharedManager].xmppRosterStorage userForJID:currentChatContact.bareJid
+                                                       xmppStream:[IMXMPPManager sharedManager].xmppStream
+                                             managedObjectContext:[IMXMPPManager sharedManager].managedObjectContext_roster];
         rosterUser.unreadMessages = @0;
 #if 1
         NSError *error = nil;
-        if (![[IMManager sharedManager].managedObjectContext_roster save:&error]) {
+        if (![[IMXMPPManager sharedManager].managedObjectContext_roster save:&error]) {
             NSLog(@"resetCurrentContactUnreadMessagesCount save error: %@", [error description]);
         }
 #else
@@ -115,12 +115,12 @@ static const int ddLogLevel = LOG_LEVEL_INFO;
 - (BOOL)deleteRecentContactWithJid:(XMPPJID *)recentContactJId
 {
     XMPPMessageArchiving_Contact_CoreDataObject *recentContact =
-    [[IMManager sharedManager].xmppMessageArchivingCoreDataStorage contactWithJid:recentContactJId
+    [[IMXMPPManager sharedManager].xmppMessageArchivingCoreDataStorage contactWithJid:recentContactJId
                                                                           streamJid:MY_JID
-                                                               managedObjectContext:[IMManager sharedManager].managedObjectContext_messageArchiving];
+                                                               managedObjectContext:[IMXMPPManager sharedManager].managedObjectContext_messageArchiving];
     
     if (recentContact) {
-        NSManagedObjectContext *context = [IMManager sharedManager].managedObjectContext_messageArchiving;
+        NSManagedObjectContext *context = [IMXMPPManager sharedManager].managedObjectContext_messageArchiving;
         [context deleteObject:recentContact];
         
         NSError *error = nil;
@@ -136,7 +136,7 @@ static const int ddLogLevel = LOG_LEVEL_INFO;
 
 - (BOOL)deleteAllRecentContact
 {
-    NSManagedObjectContext *context = [IMManager sharedManager].managedObjectContext_messageArchiving;
+    NSManagedObjectContext *context = [IMXMPPManager sharedManager].managedObjectContext_messageArchiving;
     
     NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
     NSEntityDescription *entity = [NSEntityDescription entityForName:@"XMPPMessageArchiving_Contact_CoreDataObject"
@@ -169,7 +169,7 @@ static const int ddLogLevel = LOG_LEVEL_INFO;
 - (void)fetchRecentContact
 {
     NSPredicate *filterPredicate = [NSPredicate predicateWithFormat:[NSString stringWithFormat:@"streamBareJidStr = '%@'",
-                                                                     [IMManager sharedManager].myJID.bare]];
+                                                                     [IMXMPPManager sharedManager].myJID.bare]];
     [self.fetchedRecentResultsController.fetchRequest setPredicate:filterPredicate];
 
     NSError *error = nil;
@@ -192,9 +192,9 @@ static const int ddLogLevel = LOG_LEVEL_INFO;
             
             // 优先考虑从default
             rosterUser =
-            [[IMManager sharedManager].xmppRosterStorage userForJID:contact.bareJid
-                                                           xmppStream:[IMManager sharedManager].xmppStream
-                                                 managedObjectContext:[IMManager sharedManager].managedObjectContext_roster];
+            [[IMXMPPManager sharedManager].xmppRosterStorage userForJID:contact.bareJid
+                                                           xmppStream:[IMXMPPManager sharedManager].xmppStream
+                                                 managedObjectContext:[IMXMPPManager sharedManager].managedObjectContext_roster];
             
             contact.displayName = rosterUser.displayName;
             contact.unreadMessages = rosterUser.unreadMessages;

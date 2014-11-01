@@ -96,7 +96,7 @@ static const int ddLogLevel = LOG_LEVEL_INFO;
 - (void)fetchRecentContact
 {
     NSPredicate *filterPredicate = [NSPredicate predicateWithFormat:[NSString stringWithFormat:@"streamBareJidStr = '%@'",
-                                                                     [IMManager sharedManager].myJID.bare]];
+                                                                     [IMXMPPManager sharedManager].myJID.bare]];
     [self.fetchedRecentResultsController.fetchRequest setPredicate:filterPredicate];
     
     NSError *error = nil;
@@ -148,7 +148,7 @@ static const int ddLogLevel = LOG_LEVEL_INFO;
 - (NSFetchedResultsController *)contactFetchedResultsController
 {
 	if (_contactFetchedResultsController == nil) {
-        NSManagedObjectContext *moc = [[IMManager sharedManager] managedObjectContext_roster];
+        NSManagedObjectContext *moc = [[IMXMPPManager sharedManager] managedObjectContext_roster];
         NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
         // entity
 		NSEntityDescription *entity = [NSEntityDescription entityForName:@"XMPPUserCoreDataStorageObject"
@@ -172,7 +172,7 @@ static const int ddLogLevel = LOG_LEVEL_INFO;
 - (NSFetchedResultsController *)fetchedRecentResultsController
 {
 	if (!_fetchedRecentResultsController) {
-        NSManagedObjectContext *moc = [[IMManager sharedManager] managedObjectContext_messageArchiving];
+        NSManagedObjectContext *moc = [[IMXMPPManager sharedManager] managedObjectContext_messageArchiving];
 		NSEntityDescription *entity = [NSEntityDescription entityForName:@"XMPPMessageArchiving_Contact_CoreDataObject"
 		                                          inManagedObjectContext:moc];
 		
@@ -196,7 +196,7 @@ static const int ddLogLevel = LOG_LEVEL_INFO;
 - (NSFetchedResultsController *)chatMessageFetchedResultsController
 {
 	if (!_chatMessageFetchedResultsController) {
-		NSManagedObjectContext *moc = [[IMManager sharedManager] managedObjectContext_messageArchiving];
+		NSManagedObjectContext *moc = [[IMXMPPManager sharedManager] managedObjectContext_messageArchiving];
         NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
 
 		NSEntityDescription *entity = [NSEntityDescription entityForName:@"XMPPMessageArchiving_Message_CoreDataObject"
@@ -208,7 +208,7 @@ static const int ddLogLevel = LOG_LEVEL_INFO;
 		[fetchRequest setSortDescriptors:sortDescriptors];
 		
         NSPredicate *filterPredicate = [NSPredicate predicateWithFormat:[NSString stringWithFormat:@"streamBareJidStr = '%@'",
-                                                                         [IMManager sharedManager].myJID.bare]];
+                                                                         [IMXMPPManager sharedManager].myJID.bare]];
         [fetchRequest setPredicate:filterPredicate];
         
 		_chatMessageFetchedResultsController = [[NSFetchedResultsController alloc] initWithFetchRequest:fetchRequest

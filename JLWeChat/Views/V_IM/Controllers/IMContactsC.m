@@ -7,7 +7,7 @@
 //
 
 #import "IMContactsC.h"
-#import "IMManager.h"
+#import "IMXMPPManager.h"
 #import "IMLocalSearchViewModel.h"
 #import "IMContactCell.h"
 #import "IMStaticContactCell.h"
@@ -27,7 +27,7 @@
 
 - (void)dealloc
 {
-    [[IMManager sharedManager].xmppRoster removeDelegate:self delegateQueue:dispatch_get_main_queue()];
+    [[IMXMPPManager sharedManager].xmppRoster removeDelegate:self delegateQueue:dispatch_get_main_queue()];
 }
 
 - (instancetype)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -102,7 +102,7 @@
         if ([x intValue] == 1) {
             UITextField *tf = [av textFieldAtIndex:0];
             XMPPJID *jid = [XMPPJID jidWithUser:tf.text domain:XMPP_DOMAIN resource:XMPP_RESOURCE];
-            [[[IMManager sharedManager] xmppRoster] addUser:jid
+            [[[IMXMPPManager sharedManager] xmppRoster] addUser:jid
                                                withNickname:tf.text];
         }
     }];
@@ -203,7 +203,7 @@
 //                                               NSLog(@"delete friend error:%@", errorMsg);
 //                                           }];
         // 2、xmpp删除
-        [[IMManager sharedManager].xmppRoster removeUser:user.jid];
+        [[IMXMPPManager sharedManager].xmppRoster removeUser:user.jid];
 
         // 3、同步删除联系人
         if ([[IMMainMessageViewModel sharedViewModel] deleteRecentContactWithJid:user.jid]) {

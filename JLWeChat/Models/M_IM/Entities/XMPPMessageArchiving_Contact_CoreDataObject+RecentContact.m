@@ -72,9 +72,9 @@ static const char kUnreadMessagesKey;
         dispatch_async(dispatch_get_main_queue(), ^{
             
             XMPPUserCoreDataStorageObject *rosterUser =
-            [[IMManager sharedManager].xmppRosterStorage userForJID:self.bareJid
-                                                           xmppStream:[IMManager sharedManager].xmppStream
-                                                 managedObjectContext:[IMManager sharedManager].managedObjectContext_roster];
+            [[IMXMPPManager sharedManager].xmppRosterStorage userForJID:self.bareJid
+                                                           xmppStream:[IMXMPPManager sharedManager].xmppStream
+                                                 managedObjectContext:[IMXMPPManager sharedManager].managedObjectContext_roster];
             
             // 不是当前聊天，则需要修改未读消息数
             if (![[IMChatC currentBuddyJid] isEqualToJID:rosterUser.jid options:XMPPJIDCompareBare]) {
@@ -82,7 +82,7 @@ static const char kUnreadMessagesKey;
                 rosterUser.unreadMessages = @1;
 #if 1
                 NSError *error = nil;
-                if (![[IMManager sharedManager].managedObjectContext_roster save:&error]) {
+                if (![[IMXMPPManager sharedManager].managedObjectContext_roster save:&error]) {
                     NSLog(@"willInsertObject save error: %@", [error description]);
                 }
 #else
@@ -111,9 +111,9 @@ static const char kUnreadMessagesKey;
         dispatch_async(dispatch_get_main_queue(), ^{
             
             XMPPUserCoreDataStorageObject *rosterUser =
-            [[IMManager sharedManager].xmppRosterStorage userForJID:self.bareJid
-                                                           xmppStream:[IMManager sharedManager].xmppStream
-                                                 managedObjectContext:[IMManager sharedManager].managedObjectContext_roster];
+            [[IMXMPPManager sharedManager].xmppRosterStorage userForJID:self.bareJid
+                                                           xmppStream:[IMXMPPManager sharedManager].xmppStream
+                                                 managedObjectContext:[IMXMPPManager sharedManager].managedObjectContext_roster];
             
             // 不是当前聊天，则需要修改未读消息数
             if (![[IMChatC currentBuddyJid] isEqualToJID:rosterUser.jid options:XMPPJIDCompareBare]) {
@@ -121,7 +121,7 @@ static const char kUnreadMessagesKey;
                 rosterUser.unreadMessages = [NSNumber numberWithInt:rosterUser.unreadMessages.intValue + 1];
     #if 1
                 NSError *error = nil;
-                if (![[IMManager sharedManager].managedObjectContext_roster save:&error]) {
+                if (![[IMXMPPManager sharedManager].managedObjectContext_roster save:&error]) {
                     NSLog(@"didUpdateObject save error: %@", [error description]);
                 }
     #else

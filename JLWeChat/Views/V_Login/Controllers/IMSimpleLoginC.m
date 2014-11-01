@@ -7,7 +7,7 @@
 //
 
 #import "IMSimpleLoginC.h"
-#import "IMManager.h"
+#import "IMXMPPManager.h"
 
 @interface IMSimpleLoginC ()
 
@@ -21,7 +21,7 @@
 
 - (void)dealloc
 {
-    [[IMManager sharedManager].xmppStream removeDelegate:self delegateQueue:dispatch_get_main_queue()];
+    [[IMXMPPManager sharedManager].xmppStream removeDelegate:self delegateQueue:dispatch_get_main_queue()];
 }
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -29,7 +29,7 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         self.title = @"登录";
-        [[IMManager sharedManager].xmppStream addDelegate:self delegateQueue:dispatch_get_main_queue()];
+        [[IMXMPPManager sharedManager].xmppStream addDelegate:self delegateQueue:dispatch_get_main_queue()];
     }
     return self;
 }
@@ -98,7 +98,7 @@
         [self setField:self.userIDField forKey:XMPP_USER_ID];
         [self setField:self.passwordField forKey:XMPP_PASSWORD];
         
-        [[IMManager sharedManager] connectThenLogin];
+        [[IMXMPPManager sharedManager] connectThenLogin];
     }
 }
 
@@ -107,7 +107,7 @@
     [self setField:self.userIDField forKey:XMPP_USER_ID];
     [self setField:self.passwordField forKey:XMPP_PASSWORD];
     
-    [[IMManager sharedManager] connectThenRegister];
+    [[IMXMPPManager sharedManager] connectThenRegister];
 }
 
 - (void)tapAction

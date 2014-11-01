@@ -7,7 +7,7 @@
 //
 
 #import "RVMViewModel.h"
-#import "IMManager.h"
+#import "IMXMPPManager.h"
 
 /**
  *  消息聊天

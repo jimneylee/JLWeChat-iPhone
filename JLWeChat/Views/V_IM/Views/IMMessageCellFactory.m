@@ -16,7 +16,7 @@
 #import "UIImage+Utils.h"
 
 #import "XMPPMessageArchiving_Message_CoreDataObject+ChatMessage.h"
-#import "IMManager.h"
+#import "IMXMPPManager.h"
 #import "IMChatMessageEntityFactory.h"
 #import "UIView+findViewController.h"
 #import "IMChatC.h"

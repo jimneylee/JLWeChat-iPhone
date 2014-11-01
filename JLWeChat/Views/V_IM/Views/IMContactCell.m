@@ -9,7 +9,7 @@
 #import "IMContactCell.h"
 #import "XMPPUserCoreDataStorageObject.h"
 #import "Util.h"
-#import "IMManager.h"
+#import "IMXMPPManager.h"
 #import <ReactiveCocoa/UITableViewCell+RACSignalSupport.h>
 #import <ReactiveCocoa/ReactiveCocoa.h>
 #import "UIImageView+AFNetworking.h"
@@ -72,8 +72,8 @@ typedef void (^ContactCompleteBlock)(BOOL complete);
         _loadImageSignal = [[[RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {
             
             @strongify(self);
-            [[IMManager sharedManager].xmppStream addDelegate:self delegateQueue:dispatch_get_main_queue()];
-            NSData *photoData = [[[IMManager sharedManager] xmppvCardAvatarModule]
+            [[IMXMPPManager sharedManager].xmppStream addDelegate:self delegateQueue:dispatch_get_main_queue()];
+            NSData *photoData = [[[IMXMPPManager sharedManager] xmppvCardAvatarModule]
                                  photoDataForJID:self.contact.jid];
             
             dispatch_async(dispatch_get_main_queue(), ^{
@@ -96,7 +96,7 @@ typedef void (^ContactCompleteBlock)(BOOL complete);
                 };
             }
             return [RACDisposable disposableWithBlock:^{
-                [[IMManager sharedManager].xmppStream removeDelegate:self];
+                [[IMXMPPManager sharedManager].xmppStream removeDelegate:self];
             }];
         }] takeUntil:self.rac_prepareForReuseSignal] replayLazily];
     }

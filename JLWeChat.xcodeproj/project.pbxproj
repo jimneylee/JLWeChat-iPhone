@@ -40,7 +40,7 @@
 		289E0F1A192AF2FA00FFE90D /* UIViewAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 289E0F0F192AF2FA00FFE90D /* UIViewAdditions.m */; };
 		289E0F1B192AF2FA00FFE90D /* UIWindowAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 289E0F11192AF2FA00FFE90D /* UIWindowAdditions.m */; };
 		289E0F6C192AF6EC00FFE90D /* IMTabC.m in Sources */ = {isa = PBXBuildFile; fileRef = 289E0F66192AF6EC00FFE90D /* IMTabC.m */; };
-		289E0F71192AF71000FFE90D /* IMManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 289E0F70192AF71000FFE90D /* IMManager.m */; };
+		289E0F71192AF71000FFE90D /* IMXMPPManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 289E0F70192AF71000FFE90D /* IMXMPPManager.m */; };
 		289E0F8A192B4CA400FFE90D /* IMChatC.m in Sources */ = {isa = PBXBuildFile; fileRef = 289E0F83192B4CA400FFE90D /* IMChatC.m */; };
 		289E0FFE192B824400FFE90D /* IMChatSendBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 289E0FFD192B824400FFE90D /* IMChatSendBar.m */; };
 		28D7F69519D62FB500F5B483 /* IMCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 28D7F69019D62FB500F5B483 /* IMCache.m */; };
@@ -368,8 +368,8 @@
 		289E0F1E192AF30800FFE90D /* IMUIMacros.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMUIMacros.h; sourceTree = "<group>"; };
 		289E0F65192AF6EC00FFE90D /* IMTabC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMTabC.h; sourceTree = "<group>"; };
 		289E0F66192AF6EC00FFE90D /* IMTabC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMTabC.m; sourceTree = "<group>"; };
-		289E0F6F192AF71000FFE90D /* IMManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMManager.h; sourceTree = "<group>"; };
-		289E0F70192AF71000FFE90D /* IMManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMManager.m; sourceTree = "<group>"; };
+		289E0F6F192AF71000FFE90D /* IMXMPPManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMXMPPManager.h; sourceTree = "<group>"; };
+		289E0F70192AF71000FFE90D /* IMXMPPManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMXMPPManager.m; sourceTree = "<group>"; };
 		289E0F82192B4CA400FFE90D /* IMChatC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMChatC.h; sourceTree = "<group>"; };
 		289E0F83192B4CA400FFE90D /* IMChatC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMChatC.m; sourceTree = "<group>"; };
 		289E0FFC192B824400FFE90D /* IMChatSendBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMChatSendBar.h; sourceTree = "<group>"; };
@@ -951,8 +951,8 @@
 			isa = PBXGroup;
 			children = (
 				28FD4E56192DE04100A714AA /* Entities */,
-				289E0F6F192AF71000FFE90D /* IMManager.h */,
-				289E0F70192AF71000FFE90D /* IMManager.m */,
+				289E0F6F192AF71000FFE90D /* IMXMPPManager.h */,
+				289E0F70192AF71000FFE90D /* IMXMPPManager.m */,
 				28FD4E65192DE66000A714AA /* IMContactModel.h */,
 				28FD4E66192DE66000A714AA /* IMContactModel.m */,
 				28FAC12A192EC59F00BBA9E0 /* IMEmotionManager.h */,
@@ -1771,7 +1771,7 @@
 				289E0F1A192AF2FA00FFE90D /* UIViewAdditions.m in Sources */,
 				289E0F12192AF2FA00FFE90D /* NSDataAdditions.m in Sources */,
 				289E0F14192AF2FA00FFE90D /* NSStringAdditions.m in Sources */,
-				289E0F71192AF71000FFE90D /* IMManager.m in Sources */,
+				289E0F71192AF71000FFE90D /* IMXMPPManager.m in Sources */,
 				282F801219CF174600827F78 /* IMMainMessageC.m in Sources */,
 				280AFE4619FBE30C003440D6 /* IMUtil.m in Sources */,
 				CE1EE1BE1930409B0093DBB7 /* XMPPMessageArchiving_Message_CoreDataObject+ChatMessage.m in Sources */,
@@ -1943,8 +1943,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Developer: liu ling (RNU7H59V53)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: liu ling (RNU7H59V53)";
+				CODE_SIGN_IDENTITY = "iPhone Developer: cong wang (C8X98MEB96)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: cong wang (C8X98MEB96)";
 				GCC_INPUT_FILETYPE = automatic;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "JLWeChat/JLWeChat-Prefix.pch";
@@ -1977,7 +1977,7 @@
 				);
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_NAME = JLWeChat;
-				PROVISIONING_PROFILE = "d39f87b5-e700-42c0-a50f-48b4943b2e85";
+				PROVISIONING_PROFILE = "69c7e1a4-735c-48cc-bdef-09ef8aaf0ee6";
 				SDKROOT = iphoneos7.1;
 				VALID_ARCHS = "armv7 armv7s arm64";
 				WRAPPER_EXTENSION = app;
@@ -1990,8 +1990,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Developer: liu ling (RNU7H59V53)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: liu ling (RNU7H59V53)";
+				CODE_SIGN_IDENTITY = "iPhone Developer: cong wang (C8X98MEB96)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: cong wang (C8X98MEB96)";
 				GCC_INPUT_FILETYPE = automatic;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "JLWeChat/JLWeChat-Prefix.pch";
@@ -2024,7 +2024,7 @@
 				);
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_NAME = JLWeChat;
-				PROVISIONING_PROFILE = "d39f87b5-e700-42c0-a50f-48b4943b2e85";
+				PROVISIONING_PROFILE = "69c7e1a4-735c-48cc-bdef-09ef8aaf0ee6";
 				SDKROOT = iphoneos7.1;
 				VALID_ARCHS = "armv7 armv7s arm64";
 				WRAPPER_EXTENSION = app;

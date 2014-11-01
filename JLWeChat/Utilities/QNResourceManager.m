@@ -28,7 +28,7 @@
 
 #pragma mark Upload Image
 
-+ (void)uploadImage:(UIImage *)image
+- (void)uploadImage:(UIImage *)image
           keyPrefix:(NSString *)keyPrefix
       completeBlock:(void (^)(BOOL success,  NSString *key, CGFloat width, CGFloat height))completeBlock
 {
@@ -59,7 +59,7 @@
 
 #pragma mark - Upload & Download File (Audio & Video)
 
-+ (void)uploadFileWithUrlkey:(NSString *)urlkey
+- (void)uploadFileWithUrlkey:(NSString *)urlkey
                progressBlock:(void (^)(NSString *key, CGFloat progress))progressBlock
                completeBlock:(void (^)(BOOL success,  NSString *key))completeBlock
 {
@@ -80,7 +80,7 @@
                  } option:opt];
 }
 
-+ (void)downloadFileWithUrl:(NSString*)url
+- (void)downloadFileWithUrl:(NSString*)url
               progressBlock:(void (^)(CGFloat progress))progressBlock
               completeBlock:(void (^)(BOOL success, NSError *error))completeBlock
 {

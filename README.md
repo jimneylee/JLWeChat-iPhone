@@ -21,5 +21,9 @@ JLWeChat-iPhone
 
 ##添加截图
 ![image](https://raw.githubusercontent.com/jimneylee/JLWeChat-iPhone/master/Screenshots/jlwechat_chat1.png)
+![image](https://raw.githubusercontent.com/jimneylee/JLWeChat-iPhone/master/Screenshots/jlwechat_chat2.png)
+![image](https://raw.githubusercontent.com/jimneylee/JLWeChat-iPhone/master/Screenshots/jlwechat_chat3.png)
+![image](https://raw.githubusercontent.com/jimneylee/JLWeChat-iPhone/master/Screenshots/jlwechat_contact.png)
+![image](https://raw.githubusercontent.com/jimneylee/JLWeChat-iPhone/master/Screenshots/jlwechat_main.png)
 
 ##其他说明，未完待续。

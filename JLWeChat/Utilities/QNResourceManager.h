@@ -18,7 +18,7 @@
 
 //upload file with urlkey
 - (void)uploadFileWithUrlkey:(NSString *)urlkey
-               progressBlock:(void (^)(NSString *key, CGFloat progress))progressBlock
+               progressBlock:(void (^)(NSString *key, float progress))progressBlock
                completeBlock:(void (^)(BOOL success,  NSString *key))completeBlock;
 
 // download file with url

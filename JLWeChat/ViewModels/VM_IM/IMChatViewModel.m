@@ -202,7 +202,7 @@ static const int ddLogLevel = LOG_LEVEL_INFO;
     
     @weakify(self);
     [[QNResourceManager sharedManager] uploadFileWithUrlkey:urlkey
-                                              progressBlock:^(NSString *key, CGFloat progress) {
+                                              progressBlock:^(NSString *key, float progress) {
                                                   HUD.detailsLabelText = [NSString stringWithFormat:@"语音发传中...(%.1f%%)", progress * 100];
                                               }
                                               completeBlock:^(BOOL success, NSString *key) {

@@ -54,6 +54,7 @@
         // enable double tap
         [singleTap requireGestureRecognizerToFail:doubleTap];
         
+        [self.imageView sd_setImageWithURL:nil placeholderImage:self.thumbnail];
         self.isOriginPhotoLoaded = NO;
         self.saveBtn.enabled = NO;
         [self showImageViewAnimation];
